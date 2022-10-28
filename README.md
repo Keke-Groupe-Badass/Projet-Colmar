@@ -5,7 +5,7 @@ Google Doc: https://docs.google.com/document/d/1JgzV98xt5jfDupsE5H75ThKHllgZ1y3J
 N'oubliez pas de le fork 
 
 # utiliser git
-installer git /n
+installer git \n
 se créert un compte
 aller sur github et se creer un compte
 creer un fork
