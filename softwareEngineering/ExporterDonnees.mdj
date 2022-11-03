@@ -44,7 +44,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGEP0chH6rf09E="
 							},
-							"name": "SequenceDiagram1",
+							"name": "Exporter BD",
 							"ownedViews": [
 								{
 									"_type": "UMLFrameView",
@@ -65,9 +65,9 @@
 											"font": "Arial;13;0",
 											"left": 32.72998046875,
 											"top": 13,
-											"width": 115.9052734375,
+											"width": 71.8017578125,
 											"height": 13,
-											"text": "SequenceDiagram1"
+											"text": "Exporter BD"
 										},
 										{
 											"_type": "LabelView",
