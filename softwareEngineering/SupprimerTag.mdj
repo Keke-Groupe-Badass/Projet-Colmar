@@ -71,7 +71,7 @@
 									"_parent": {
 										"$ref": "AAAAAAGEPeY8Ljw9N0c="
 									},
-									"name": "SupprimerMetadonnees",
+									"name": "SupprimerTag",
 									"ownedViews": [
 										{
 											"_type": "UMLFrameView",
@@ -92,9 +92,9 @@
 													"font": "Arial;13;0",
 													"left": 32.72998046875,
 													"top": 13,
-													"width": 139.7470703125,
+													"width": 81.92626953125,
 													"height": 13,
-													"text": "SupprimerMetadonnees"
+													"text": "SupprimerTag"
 												},
 												{
 													"_type": "LabelView",
@@ -2027,12 +2027,12 @@
 														"$ref": "AAAAAAGEPeY8LTwu8cw="
 													},
 													"font": "Arial;13;0",
-													"left": 439,
-													"top": 664,
+													"left": 443,
+													"top": 628,
 													"width": 182.8125,
 													"height": 13,
-													"alpha": 1.4141947065696485,
-													"distance": 38.47076812334269,
+													"alpha": -1.190291673821652,
+													"distance": 5.385164807134504,
 													"hostEdge": {
 														"$ref": "AAAAAAGEPeY8KTwXUV4="
 													},
@@ -2051,7 +2051,7 @@
 													"visible": false,
 													"font": "Arial;13;0",
 													"left": 535,
-													"top": 651,
+													"top": 659,
 													"height": 13,
 													"alpha": 1.5707963267948966,
 													"distance": 25,
@@ -2072,7 +2072,7 @@
 													"visible": false,
 													"font": "Arial;13;0",
 													"left": 536,
-													"top": 616,
+													"top": 624,
 													"height": 13,
 													"alpha": -1.5707963267948966,
 													"distance": 10,
@@ -2093,7 +2093,7 @@
 													"visible": false,
 													"font": "Arial;13;0",
 													"left": 284,
-													"top": 632,
+													"top": 640,
 													"width": 14,
 													"height": 25
 												}
@@ -2105,7 +2105,7 @@
 											"tail": {
 												"$ref": "AAAAAAGEPeY8JTvfFKM="
 											},
-											"points": "788:632;284:632",
+											"points": "788:640;284:640",
 											"nameLabel": {
 												"$ref": "AAAAAAGEPeY8KTwTtbM="
 											},
