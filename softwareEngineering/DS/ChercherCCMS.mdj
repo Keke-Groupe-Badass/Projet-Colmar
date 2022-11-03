@@ -17,7 +17,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGEAFxN5I76tlg="
 					},
-					"name": "sd RechercheCCMS",
+					"name": " RechercheCCMS",
 					"ownedElements": [
 						{
 							"_type": "FCFlowchart",
@@ -58,9 +58,9 @@
 									"font": "Arial;13;0",
 									"left": 32.72998046875,
 									"top": 5,
-									"width": 119.4853515625,
+									"width": 105.75537109375,
 									"height": 13,
-									"text": "sd RechercheCCMS"
+									"text": " RechercheCCMS"
 								},
 								{
 									"_type": "LabelView",
