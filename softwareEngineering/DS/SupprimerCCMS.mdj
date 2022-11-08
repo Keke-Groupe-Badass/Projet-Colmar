@@ -4,25 +4,6 @@
 	"name": "Untitled",
 	"ownedElements": [
 		{
-			"_type": "UMLModel",
-			"_id": "AAAAAAFF+qBWK6M3Z8Y=",
-			"_parent": {
-				"$ref": "AAAAAAFF+h6SjaM2Hec="
-			},
-			"name": "Model",
-			"ownedElements": [
-				{
-					"_type": "UMLClassDiagram",
-					"_id": "AAAAAAFF+qBtyKM79qY=",
-					"_parent": {
-						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
-					},
-					"name": "Main",
-					"defaultDiagram": true
-				}
-			]
-		},
-		{
 			"_type": "UMLCollaboration",
 			"_id": "AAAAAAGEPc6xaB8R7lA=",
 			"_parent": {
@@ -432,6 +413,7 @@
 									"top": 40,
 									"width": 90.052734375,
 									"height": 777,
+									"showProperty": false,
 									"nameCompartment": {
 										"$ref": "AAAAAAGEPc6xZB6BuIw="
 									},
@@ -1019,11 +1001,11 @@
 												"$ref": "AAAAAAGEPc6xZh7BY0Q="
 											},
 											"font": "Arial;13;0",
-											"left": 39.9599609375,
+											"left": 32.72998046875,
 											"top": 245,
-											"width": 23.876953125,
+											"width": 31.34814453125,
 											"height": 13,
-											"text": "ALT"
+											"text": "choix"
 										},
 										{
 											"_type": "LabelView",
@@ -1034,9 +1016,9 @@
 											"font": "Arial;13;1",
 											"left": 13,
 											"top": 245,
-											"width": 21.9599609375,
+											"width": 14.72998046875,
 											"height": 13,
-											"text": "seq"
+											"text": "alt"
 										},
 										{
 											"_type": "UMLInteractionOperandCompartmentView",
@@ -1187,11 +1169,11 @@
 												"$ref": "AAAAAAGEPc6xZh7JRBc="
 											},
 											"font": "Arial;13;0",
-											"left": 207.9599609375,
+											"left": 200.72998046875,
 											"top": 493,
-											"width": 23.876953125,
+											"width": 66.0380859375,
 											"height": 13,
-											"text": "ALT"
+											"text": "reponseDB"
 										},
 										{
 											"_type": "LabelView",
@@ -1202,9 +1184,9 @@
 											"font": "Arial;13;1",
 											"left": 181,
 											"top": 493,
-											"width": 21.9599609375,
+											"width": 14.72998046875,
 											"height": 13,
-											"text": "seq"
+											"text": "alt"
 										},
 										{
 											"_type": "UMLInteractionOperandCompartmentView",
@@ -1232,11 +1214,12 @@
 															"_parent": {
 																"$ref": "AAAAAAGEPc6xZh7FkBY="
 															},
-															"visible": false,
 															"font": "Arial;13;0",
 															"left": 196,
 															"top": 526,
-															"height": 13
+															"width": 29.62451171875,
+															"height": 13,
+															"text": "[true]"
 														}
 													],
 													"font": "Arial;13;0",
@@ -1264,11 +1247,12 @@
 															"_parent": {
 																"$ref": "AAAAAAGEPc6xZh7HLS0="
 															},
-															"visible": false,
 															"font": "Arial;13;0",
 															"left": 196,
 															"top": 624,
-															"height": 13
+															"width": 41.90087890625,
+															"height": 13,
+															"text": "[erreur]"
 														}
 													],
 													"font": "Arial;13;0",
@@ -2687,8 +2671,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGEPc6xaB8LM1Y="
 							},
-							"name": "ALT",
-							"interactionOperator": "seq",
+							"name": "choix",
+							"interactionOperator": "alt",
 							"operands": [
 								{
 									"_type": "UMLInteractionOperand",
@@ -2725,8 +2709,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGEPc6xaB8LM1Y="
 							},
-							"name": "ALT",
-							"interactionOperator": "seq",
+							"name": "reponseDB",
+							"interactionOperator": "alt",
 							"operands": [
 								{
 									"_type": "UMLInteractionOperand",
@@ -2734,7 +2718,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGEPc6xaB8Kr1Y="
 									},
-									"name": "Operand1"
+									"name": "Operand1",
+									"guard": "true"
 								},
 								{
 									"_type": "UMLInteractionOperand",
@@ -2742,7 +2727,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGEPc6xaB8Kr1Y="
 									},
-									"name": "InteractionOperand1"
+									"name": "InteractionOperand1",
+									"guard": "erreur"
 								}
 							]
 						}

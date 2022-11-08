@@ -4,25 +4,6 @@
 	"name": "Untitled",
 	"ownedElements": [
 		{
-			"_type": "UMLModel",
-			"_id": "AAAAAAFF+qBWK6M3Z8Y=",
-			"_parent": {
-				"$ref": "AAAAAAFF+h6SjaM2Hec="
-			},
-			"name": "Model",
-			"ownedElements": [
-				{
-					"_type": "UMLClassDiagram",
-					"_id": "AAAAAAFF+qBtyKM79qY=",
-					"_parent": {
-						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
-					},
-					"name": "Main",
-					"defaultDiagram": true
-				}
-			]
-		},
-		{
 			"_type": "UMLCollaboration",
 			"_id": "AAAAAAGEP0chHqreMVY=",
 			"_parent": {
@@ -44,7 +25,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGEP0chH6rf09E="
 							},
-							"name": "Exporter BD",
+							"name": "ExporterBD",
 							"ownedViews": [
 								{
 									"_type": "UMLFrameView",
@@ -65,9 +46,9 @@
 											"font": "Arial;13;0",
 											"left": 32.72998046875,
 											"top": 13,
-											"width": 71.8017578125,
+											"width": 68.18994140625,
 											"height": 13,
-											"text": "Exporter BD"
+											"text": "ExporterBD"
 										},
 										{
 											"_type": "LabelView",
@@ -918,9 +899,9 @@
 											"font": "Arial;13;0",
 											"left": 56.72998046875,
 											"top": 261,
-											"width": 42.9072265625,
+											"width": 59.1826171875,
 											"height": 13,
-											"text": "answer"
+											"text": "reponse ="
 										},
 										{
 											"_type": "LabelView",
@@ -997,9 +978,9 @@
 															"font": "Arial;13;0",
 															"left": 52,
 															"top": 392,
-															"width": 34.68359375,
+															"width": 41.90087890625,
 															"height": 13,
-															"text": "[false]"
+															"text": "[erreur]"
 														}
 													],
 													"font": "Arial;13;0",
@@ -1394,7 +1375,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGEP0chH6rf09E="
 							},
-							"name": "answer",
+							"name": "reponse =",
 							"interactionOperator": "alt",
 							"operands": [
 								{
@@ -1413,7 +1394,7 @@
 										"$ref": "AAAAAAGEP1KwJqxgzIk="
 									},
 									"name": "Operand1",
-									"guard": "false"
+									"guard": "erreur"
 								}
 							]
 						}
@@ -1427,7 +1408,8 @@
 					"_parent": {
 						"$ref": "AAAAAAGEP0chHqreMVY="
 					},
-					"name": "Role1"
+					"name": "Role1",
+					"type": ""
 				},
 				{
 					"_type": "UMLAttribute",
@@ -1435,7 +1417,8 @@
 					"_parent": {
 						"$ref": "AAAAAAGEP0chHqreMVY="
 					},
-					"name": "Role2"
+					"name": "Role2",
+					"type": ""
 				},
 				{
 					"_type": "UMLAttribute",
@@ -1443,7 +1426,8 @@
 					"_parent": {
 						"$ref": "AAAAAAGEP0chHqreMVY="
 					},
-					"name": "Role3"
+					"name": "Role3",
+					"type": ""
 				},
 				{
 					"_type": "UMLAttribute",
@@ -1451,7 +1435,8 @@
 					"_parent": {
 						"$ref": "AAAAAAGEP0chHqreMVY="
 					},
-					"name": "Role4"
+					"name": "Role4",
+					"type": ""
 				}
 			]
 		}

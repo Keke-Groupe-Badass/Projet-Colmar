@@ -1040,9 +1040,9 @@
 													"font": "Arial;13;0",
 													"left": 28,
 													"top": 254,
-													"width": 96.103515625,
+													"width": 102.603515625,
 													"height": 13,
-													"text": "[utilisateur troué]"
+													"text": "[utilisateur trouvé]"
 												}
 											],
 											"font": "Arial;13;0",
@@ -1878,7 +1878,7 @@
 								"$ref": "AAAAAAGD9w8LW0+Qwg0="
 							},
 							"name": "InteractionOperand1",
-							"guard": "utilisateur troué"
+							"guard": "utilisateur trouvé"
 						},
 						{
 							"_type": "UMLInteractionOperand",
