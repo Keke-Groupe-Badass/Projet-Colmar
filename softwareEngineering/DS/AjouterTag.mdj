@@ -4,25 +4,6 @@
 	"name": "Untitled",
 	"ownedElements": [
 		{
-			"_type": "UMLModel",
-			"_id": "AAAAAAFF+qBWK6M3Z8Y=",
-			"_parent": {
-				"$ref": "AAAAAAFF+h6SjaM2Hec="
-			},
-			"name": "Model",
-			"ownedElements": [
-				{
-					"_type": "UMLClassDiagram",
-					"_id": "AAAAAAFF+qBtyKM79qY=",
-					"_parent": {
-						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
-					},
-					"name": "Main",
-					"defaultDiagram": true
-				}
-			]
-		},
-		{
 			"_type": "UMLCollaboration",
 			"_id": "AAAAAAGEPc6xaB8R7lA=",
 			"_parent": {
@@ -1574,11 +1555,11 @@
 												"$ref": "AAAAAAGEPc6xZh7BY0Q="
 											},
 											"font": "Arial;13;0",
-											"left": 39.9599609375,
+											"left": 32.72998046875,
 											"top": 245,
-											"width": 23.876953125,
+											"width": 46.16357421875,
 											"height": 13,
-											"text": "ALT"
+											"text": "choix = "
 										},
 										{
 											"_type": "LabelView",
@@ -1589,9 +1570,9 @@
 											"font": "Arial;13;1",
 											"left": 13,
 											"top": 245,
-											"width": 21.9599609375,
+											"width": 14.72998046875,
 											"height": 13,
-											"text": "seq"
+											"text": "alt"
 										},
 										{
 											"_type": "UMLInteractionOperandCompartmentView",
@@ -1742,11 +1723,11 @@
 												"$ref": "AAAAAAGEPc6xZh7JRBc="
 											},
 											"font": "Arial;13;0",
-											"left": 207.9599609375,
+											"left": 200.72998046875,
 											"top": 469,
-											"width": 23.876953125,
+											"width": 77.24169921875,
 											"height": 13,
-											"text": "ALT"
+											"text": "réponseBD ="
 										},
 										{
 											"_type": "LabelView",
@@ -1757,9 +1738,9 @@
 											"font": "Arial;13;1",
 											"left": 181,
 											"top": 469,
-											"width": 21.9599609375,
+											"width": 14.72998046875,
 											"height": 13,
-											"text": "seq"
+											"text": "alt"
 										},
 										{
 											"_type": "UMLInteractionOperandCompartmentView",
@@ -1787,11 +1768,12 @@
 															"_parent": {
 																"$ref": "AAAAAAGEPc6xZh7FkBY="
 															},
-															"visible": false,
 															"font": "Arial;13;0",
 															"left": 196,
 															"top": 502,
-															"height": 13
+															"width": 29.62451171875,
+															"height": 13,
+															"text": "[true]"
 														}
 													],
 													"font": "Arial;13;0",
@@ -1819,11 +1801,12 @@
 															"_parent": {
 																"$ref": "AAAAAAGEPc6xZh7HLS0="
 															},
-															"visible": false,
 															"font": "Arial;13;0",
 															"left": 196,
 															"top": 600,
-															"height": 13
+															"width": 34.6708984375,
+															"height": 13,
+															"text": "[error]"
 														}
 													],
 													"font": "Arial;13;0",
@@ -3061,8 +3044,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGEPc6xaB8LM1Y="
 							},
-							"name": "ALT",
-							"interactionOperator": "seq",
+							"name": "choix = ",
+							"interactionOperator": "alt",
 							"operands": [
 								{
 									"_type": "UMLInteractionOperand",
@@ -3099,8 +3082,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGEPc6xaB8LM1Y="
 							},
-							"name": "ALT",
-							"interactionOperator": "seq",
+							"name": "réponseBD =",
+							"interactionOperator": "alt",
 							"operands": [
 								{
 									"_type": "UMLInteractionOperand",
@@ -3108,7 +3091,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGEPc6xaB8Kr1Y="
 									},
-									"name": "Operand1"
+									"name": "d",
+									"guard": "true"
 								},
 								{
 									"_type": "UMLInteractionOperand",
@@ -3116,7 +3100,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGEPc6xaB8Kr1Y="
 									},
-									"name": "InteractionOperand1"
+									"name": "InteractionOperand1",
+									"guard": "error"
 								}
 							]
 						}

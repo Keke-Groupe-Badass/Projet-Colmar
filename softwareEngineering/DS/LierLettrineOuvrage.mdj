@@ -4,25 +4,6 @@
 	"name": "Untitled",
 	"ownedElements": [
 		{
-			"_type": "UMLModel",
-			"_id": "AAAAAAFF+qBWK6M3Z8Y=",
-			"_parent": {
-				"$ref": "AAAAAAFF+h6SjaM2Hec="
-			},
-			"name": "Model",
-			"ownedElements": [
-				{
-					"_type": "UMLClassDiagram",
-					"_id": "AAAAAAFF+qBtyKM79qY=",
-					"_parent": {
-						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
-					},
-					"name": "Main",
-					"defaultDiagram": true
-				}
-			]
-		},
-		{
 			"_type": "UMLCollaboration",
 			"_id": "AAAAAAGESKm7NhB3QhU=",
 			"_parent": {
@@ -2297,55 +2278,6 @@
 									"frameTypeLabel": {
 										"$ref": "AAAAAAGESPpqZxrns54="
 									}
-								},
-								{
-									"_type": "UMLFrameView",
-									"_id": "AAAAAAGESQhU/h/yyGM=",
-									"_parent": {
-										"$ref": "AAAAAAGESKm7NhB50oY="
-									},
-									"model": {
-										"$ref": "AAAAAAGESQDMFB9+6Eg="
-									},
-									"subViews": [
-										{
-											"_type": "LabelView",
-											"_id": "AAAAAAGESQhU/h/z6CY=",
-											"_parent": {
-												"$ref": "AAAAAAGESQhU/h/yyGM="
-											},
-											"font": "Arial;13;0",
-											"left": 240.72998046875,
-											"top": 101,
-											"width": 85.5126953125,
-											"height": 13,
-											"text": "ModifierCCMS"
-										},
-										{
-											"_type": "LabelView",
-											"_id": "AAAAAAGESQhU/h/0tmo=",
-											"_parent": {
-												"$ref": "AAAAAAGESQhU/h/yyGM="
-											},
-											"font": "Arial;13;1",
-											"left": 221,
-											"top": 101,
-											"width": 14.72998046875,
-											"height": 13,
-											"text": "sd"
-										}
-									],
-									"font": "Arial;13;0",
-									"left": 216,
-									"top": 96,
-									"width": 696,
-									"height": 53,
-									"nameLabel": {
-										"$ref": "AAAAAAGESQhU/h/z6CY="
-									},
-									"frameTypeLabel": {
-										"$ref": "AAAAAAGESQhU/h/0tmo="
-									}
 								}
 							]
 						}
@@ -2647,7 +2579,8 @@
 					"_parent": {
 						"$ref": "AAAAAAGESKm7NhB3QhU="
 					},
-					"name": "Role1"
+					"name": "Role1",
+					"type": ""
 				},
 				{
 					"_type": "UMLAttribute",
@@ -2655,7 +2588,8 @@
 					"_parent": {
 						"$ref": "AAAAAAGESKm7NhB3QhU="
 					},
-					"name": "Role2"
+					"name": "Role2",
+					"type": ""
 				},
 				{
 					"_type": "UMLAttribute",
@@ -2663,7 +2597,8 @@
 					"_parent": {
 						"$ref": "AAAAAAGESKm7NhB3QhU="
 					},
-					"name": "Role3"
+					"name": "Role3",
+					"type": ""
 				},
 				{
 					"_type": "UMLAttribute",
@@ -2671,7 +2606,8 @@
 					"_parent": {
 						"$ref": "AAAAAAGESKm7NhB3QhU="
 					},
-					"name": "Role4"
+					"name": "Role4",
+					"type": ""
 				},
 				{
 					"_type": "UMLAttribute",
@@ -2679,7 +2615,8 @@
 					"_parent": {
 						"$ref": "AAAAAAGESKm7NhB3QhU="
 					},
-					"name": "Role5"
+					"name": "Role5",
+					"type": ""
 				}
 			]
 		},
@@ -4835,75 +4772,6 @@
 							},
 							"name": "InteractionOperand1",
 							"guard": "échec de requête"
-						}
-					]
-				}
-			]
-		},
-		{
-			"_type": "UMLInteraction",
-			"_id": "AAAAAAGESP2puxyROtY=",
-			"_parent": {
-				"$ref": "AAAAAAFF+h6SjaM2Hec="
-			},
-			"name": "Interaction1",
-			"ownedElements": [
-				{
-					"_type": "UMLSequenceDiagram",
-					"_id": "AAAAAAGESQDMFB9+6Eg=",
-					"_parent": {
-						"$ref": "AAAAAAGESP2puxyROtY="
-					},
-					"name": "ModifierCCMS",
-					"ownedViews": [
-						{
-							"_type": "UMLFrameView",
-							"_id": "AAAAAAGESQDMFB9/UA0=",
-							"_parent": {
-								"$ref": "AAAAAAGESQDMFB9+6Eg="
-							},
-							"model": {
-								"$ref": "AAAAAAGESQDMFB9+6Eg="
-							},
-							"subViews": [
-								{
-									"_type": "LabelView",
-									"_id": "AAAAAAGESQDMFB+AVVo=",
-									"_parent": {
-										"$ref": "AAAAAAGESQDMFB9/UA0="
-									},
-									"font": "Arial;13;0",
-									"left": 32.72998046875,
-									"top": 13,
-									"width": 85.5126953125,
-									"height": 13,
-									"text": "ModifierCCMS"
-								},
-								{
-									"_type": "LabelView",
-									"_id": "AAAAAAGESQDMFB+BRvw=",
-									"_parent": {
-										"$ref": "AAAAAAGESQDMFB9/UA0="
-									},
-									"font": "Arial;13;1",
-									"left": 13,
-									"top": 13,
-									"width": 14.72998046875,
-									"height": 13,
-									"text": "sd"
-								}
-							],
-							"font": "Arial;13;0",
-							"left": 8,
-							"top": 8,
-							"width": 993,
-							"height": 625,
-							"nameLabel": {
-								"$ref": "AAAAAAGESQDMFB+AVVo="
-							},
-							"frameTypeLabel": {
-								"$ref": "AAAAAAGESQDMFB+BRvw="
-							}
 						}
 					]
 				}

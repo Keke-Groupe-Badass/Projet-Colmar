@@ -686,12 +686,12 @@
 										"$ref": "AAAAAAGEAF4Qco+toJw="
 									},
 									"font": "Arial;13;0",
-									"left": 192,
-									"top": 123,
+									"left": 232,
+									"top": 120,
 									"width": 83.0908203125,
 									"height": 13,
-									"alpha": 1.5707963267948966,
-									"distance": 10,
+									"alpha": 1.6522473545513294,
+									"distance": 49.16299421312742,
 									"hostEdge": {
 										"$ref": "AAAAAAGEAF4Qco+ub3E="
 									},
@@ -905,11 +905,11 @@
 										"$ref": "AAAAAAGEAGFMsJAx0Ik="
 									},
 									"font": "Arial;13;0",
-									"left": 183.9599609375,
+									"left": 176.72998046875,
 									"top": 261,
-									"width": 23.876953125,
+									"width": 71.09716796875,
 									"height": 13,
-									"text": "ALT"
+									"text": "ReponseBD"
 								},
 								{
 									"_type": "LabelView",
@@ -920,9 +920,9 @@
 									"font": "Arial;13;1",
 									"left": 157,
 									"top": 261,
-									"width": 21.9599609375,
+									"width": 14.72998046875,
 									"height": 13,
-									"text": "seq"
+									"text": "alt"
 								},
 								{
 									"_type": "UMLInteractionOperandCompartmentView",
@@ -950,11 +950,12 @@
 													"_parent": {
 														"$ref": "AAAAAAGEAGFMwpBATms="
 													},
-													"visible": false,
 													"font": "Arial;13;0",
 													"left": 172,
 													"top": 294,
-													"height": 13
+													"width": 29.62451171875,
+													"height": 13,
+													"text": "[true]"
 												}
 											],
 											"font": "Arial;13;0",
@@ -982,11 +983,12 @@
 													"_parent": {
 														"$ref": "AAAAAAGEAGK2fpBst78="
 													},
-													"visible": false,
 													"font": "Arial;13;0",
 													"left": 172,
 													"top": 376,
-													"height": 13
+													"width": 34.6708984375,
+													"height": 13,
+													"text": "[error]"
 												}
 											],
 											"font": "Arial;13;0",
@@ -1887,8 +1889,8 @@
 					"_parent": {
 						"$ref": "AAAAAAGEAFxN5I76tlg="
 					},
-					"name": "ALT",
-					"interactionOperator": "seq",
+					"name": "ReponseBD",
+					"interactionOperator": "alt",
 					"operands": [
 						{
 							"_type": "UMLInteractionOperand",
@@ -1896,7 +1898,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGEAGFMsJAvAAQ="
 							},
-							"name": "Operand1"
+							"name": "Operand1",
+							"guard": "true"
 						},
 						{
 							"_type": "UMLInteractionOperand",
@@ -1904,7 +1907,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGEAGFMsJAvAAQ="
 							},
-							"name": "InteractionOperand1"
+							"name": "InteractionOperand1",
+							"guard": "error"
 						}
 					]
 				}
