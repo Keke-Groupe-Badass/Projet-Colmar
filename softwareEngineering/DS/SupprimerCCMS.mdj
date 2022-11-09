@@ -441,9 +441,9 @@
 												"$ref": "AAAAAAGEPdIUBR+HlYg="
 											},
 											"font": "Arial;13;0",
-											"left": 113,
+											"left": 109,
 											"top": 168,
-											"width": 156.8251953125,
+											"width": 164.05517578125,
 											"height": 13,
 											"alpha": 1.5707963267948966,
 											"distance": 10,
@@ -451,7 +451,7 @@
 												"$ref": "AAAAAAGEPdIUBR+IfN8="
 											},
 											"edgePosition": 1,
-											"text": "1 : demande de supression"
+											"text": "1 : demande de suppression"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -1003,9 +1003,9 @@
 											"font": "Arial;13;0",
 											"left": 32.72998046875,
 											"top": 245,
-											"width": 31.34814453125,
+											"width": 34.236328125,
 											"height": 13,
-											"text": "choix"
+											"text": "Choix"
 										},
 										{
 											"_type": "LabelView",
@@ -1533,9 +1533,9 @@
 												"$ref": "AAAAAAGEPdNVqB/MnNo="
 											},
 											"font": "Arial;13;0",
-											"left": 672,
+											"left": 669,
 											"top": 395,
-											"width": 169.126953125,
+											"width": 175.626953125,
 											"height": 13,
 											"alpha": 1.5815475994299286,
 											"distance": 93.00537618869137,
@@ -1543,7 +1543,7 @@
 												"$ref": "AAAAAAGEPdNVqB/NzWY="
 											},
 											"edgePosition": 1,
-											"text": "6 : recherche de dependance"
+											"text": "6 : recherche de dépendances"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -1645,9 +1645,9 @@
 												"$ref": "AAAAAAGEPdPUnR/kerQ="
 											},
 											"font": "Arial;13;0",
-											"left": 429,
+											"left": 425,
 											"top": 425,
-											"width": 187.18603515625,
+											"width": 194.416015625,
 											"height": 13,
 											"alpha": 1.5707963267948966,
 											"distance": 10,
@@ -1655,7 +1655,7 @@
 												"$ref": "AAAAAAGEPdPUnR/l3hM="
 											},
 											"edgePosition": 1,
-											"text": "7 : supression des dépendances"
+											"text": "7 : suppression des dépendances"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -1757,9 +1757,9 @@
 												"$ref": "AAAAAAGEPdRL/SAFTGY="
 											},
 											"font": "Arial;13;0",
-											"left": 669,
+											"left": 667,
 											"top": 440,
-											"width": 158.25341796875,
+											"width": 162.59521484375,
 											"height": 13,
 											"alpha": 1.5707963267948966,
 											"distance": 10,
@@ -1767,7 +1767,7 @@
 												"$ref": "AAAAAAGEPdRL/SAGUGk="
 											},
 											"edgePosition": 1,
-											"text": "8 : supression de l élement"
+											"text": "8 : suppression de l'élément"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -1869,9 +1869,9 @@
 												"$ref": "AAAAAAGEPc6xaB76YfM="
 											},
 											"font": "Arial;13;0",
-											"left": 479,
+											"left": 475,
 											"top": 500,
-											"width": 200.87158203125,
+											"width": 208.1015625,
 											"height": 13,
 											"alpha": 1.5707963267948966,
 											"distance": 10,
@@ -1879,7 +1879,7 @@
 												"$ref": "AAAAAAGEPc6xZx7To7g="
 											},
 											"edgePosition": 1,
-											"text": "9 : confirmation supression réussie"
+											"text": "9 : confirmation suppression réussie"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -2104,7 +2104,7 @@
 												"$ref": "AAAAAAGEPc6xZx7kyzk="
 											},
 											"edgePosition": 1,
-											"text": "11 : changement de scene"
+											"text": "11 : changement de scène"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -2207,9 +2207,9 @@
 												"$ref": "AAAAAAGEPc6xaB79plA="
 											},
 											"font": "Arial;13;0",
-											"left": 487,
+											"left": 483,
 											"top": 596,
-											"width": 182.8125,
+											"width": 190.04248046875,
 											"height": 13,
 											"alpha": -1.190291673821652,
 											"distance": 5.385164807134504,
@@ -2217,7 +2217,7 @@
 												"$ref": "AAAAAAGEPc6xZx7pKMU="
 											},
 											"edgePosition": 1,
-											"text": "12 : erreur lors de la supression"
+											"text": "12 : erreur lors de la suppression"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -2420,7 +2420,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGEPc6xaB8LM1Y="
 							},
-							"name": "demande de supression",
+							"name": "demande de suppression",
 							"source": {
 								"$ref": "AAAAAAGEPc6xaB7/k10="
 							},
@@ -2491,7 +2491,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGEPc6xaB8LM1Y="
 							},
-							"name": "recherche de dependance",
+							"name": "recherche de dépendances",
 							"source": {
 								"$ref": "AAAAAAGEPc6xaB8Dtgs="
 							},
@@ -2505,7 +2505,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGEPc6xaB8LM1Y="
 							},
-							"name": "supression des dépendances",
+							"name": "suppression des dépendances",
 							"source": {
 								"$ref": "AAAAAAGEPc6xaB8Dtgs="
 							},
@@ -2519,7 +2519,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGEPc6xaB8LM1Y="
 							},
-							"name": "supression de l élement",
+							"name": "suppression de l'élément",
 							"source": {
 								"$ref": "AAAAAAGEPc6xaB8Dtgs="
 							},
@@ -2533,7 +2533,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGEPc6xaB8LM1Y="
 							},
-							"name": "confirmation supression réussie",
+							"name": "confirmation suppression réussie",
 							"source": {
 								"$ref": "AAAAAAGEPc6xaB8C4RM="
 							},
@@ -2563,7 +2563,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGEPc6xaB8LM1Y="
 							},
-							"name": "changement de scene",
+							"name": "changement de scène",
 							"source": {
 								"$ref": "AAAAAAGEPc6xaB8Bi/w="
 							},
@@ -2578,7 +2578,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGEPc6xaB8LM1Y="
 							},
-							"name": "erreur lors de la supression",
+							"name": "erreur lors de la suppression",
 							"source": {
 								"$ref": "AAAAAAGEPc6xaB8C4RM="
 							},
@@ -2671,7 +2671,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGEPc6xaB8LM1Y="
 							},
-							"name": "choix",
+							"name": "Choix",
 							"interactionOperator": "alt",
 							"operands": [
 								{

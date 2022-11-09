@@ -450,9 +450,9 @@
 												"$ref": "AAAAAAGEPeY8KTwlX/s="
 											},
 											"font": "Arial;13;0",
-											"left": 113,
+											"left": 109,
 											"top": 168,
-											"width": 156.8251953125,
+											"width": 164.05517578125,
 											"height": 13,
 											"alpha": 1.5707963267948966,
 											"distance": 10,
@@ -460,7 +460,7 @@
 												"$ref": "AAAAAAGEPeY8JDvKVRM="
 											},
 											"edgePosition": 1,
-											"text": "1 : demande de supression"
+											"text": "1 : demande de suppression"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -1542,9 +1542,9 @@
 												"$ref": "AAAAAAGEPeY8LTwqEPE="
 											},
 											"font": "Arial;13;0",
-											"left": 625,
+											"left": 624,
 											"top": 440,
-											"width": 158.25341796875,
+											"width": 161.46533203125,
 											"height": 13,
 											"alpha": 1.5707963267948966,
 											"distance": 10,
@@ -1552,7 +1552,7 @@
 												"$ref": "AAAAAAGEPeY8JjwDOUI="
 											},
 											"edgePosition": 1,
-											"text": "6 : supression de l élement"
+											"text": "6 : suppression de l'élément"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -1654,9 +1654,9 @@
 												"$ref": "AAAAAAGEPeY8LTwrgPs="
 											},
 											"font": "Arial;13;0",
-											"left": 435,
+											"left": 431,
 											"top": 508,
-											"width": 200.87158203125,
+											"width": 208.1015625,
 											"height": 13,
 											"alpha": 1.5707963267948966,
 											"distance": 10,
@@ -1664,7 +1664,7 @@
 												"$ref": "AAAAAAGEPeY8KTwIq7M="
 											},
 											"edgePosition": 1,
-											"text": "7 : confirmation supression réussie"
+											"text": "7 : confirmation suppression réussie"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -1879,9 +1879,9 @@
 												"$ref": "AAAAAAGEPeY8LTwtB7k="
 											},
 											"font": "Arial;13;0",
-											"left": 561,
+											"left": 557,
 											"top": 560,
-											"width": 224.01513671875,
+											"width": 233.72705078125,
 											"height": 13,
 											"alpha": 1.5707963267948966,
 											"distance": 10,
@@ -1889,7 +1889,7 @@
 												"$ref": "AAAAAAGEPeY8KTwSybE="
 											},
 											"edgePosition": 1,
-											"text": "9 : supression de lélement dans la liste"
+											"text": "9 : suppression de l'élément dans la liste"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -1991,9 +1991,9 @@
 												"$ref": "AAAAAAGEPeY8LTwu8cw="
 											},
 											"font": "Arial;13;0",
-											"left": 443,
+											"left": 439,
 											"top": 628,
-											"width": 182.8125,
+											"width": 190.04248046875,
 											"height": 13,
 											"alpha": -1.190291673821652,
 											"distance": 5.385164807134504,
@@ -2001,7 +2001,7 @@
 												"$ref": "AAAAAAGEPeY8KTwXUV4="
 											},
 											"edgePosition": 1,
-											"text": "10 : erreur lors de la supression"
+											"text": "10 : erreur lors de la suppression"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -2322,7 +2322,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGEPeY8Ljw9N0c="
 							},
-							"name": "demande de supression",
+							"name": "demande de suppression",
 							"source": {
 								"$ref": "AAAAAAGEPeY8LTwwUlk="
 							},
@@ -2393,7 +2393,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGEPeY8Ljw9N0c="
 							},
-							"name": "supression de l élement",
+							"name": "suppression de l'élément",
 							"source": {
 								"$ref": "AAAAAAGEPeY8Ljw0rAg="
 							},
@@ -2407,7 +2407,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGEPeY8Ljw9N0c="
 							},
-							"name": "confirmation supression réussie",
+							"name": "confirmation suppression réussie",
 							"source": {
 								"$ref": "AAAAAAGEPeY8Ljwzfwo="
 							},
@@ -2437,7 +2437,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGEPeY8Ljw9N0c="
 							},
-							"name": "supression de lélement dans la liste",
+							"name": "suppression de l'élément dans la liste",
 							"source": {
 								"$ref": "AAAAAAGEPeY8LTwy44w="
 							},
@@ -2451,7 +2451,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGEPeY8Ljw9N0c="
 							},
-							"name": "erreur lors de la supression",
+							"name": "erreur lors de la suppression",
 							"source": {
 								"$ref": "AAAAAAGEPeY8Ljwzfwo="
 							},

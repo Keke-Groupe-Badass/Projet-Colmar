@@ -560,7 +560,7 @@
 												"$ref": "AAAAAAGEPc6xZB6N40k="
 											},
 											"edgePosition": 1,
-											"text": "2 : verification"
+											"text": "2 : vérification"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -1871,7 +1871,7 @@
 												"$ref": "AAAAAAGEPc6xZh7OhRQ="
 											},
 											"edgePosition": 1,
-											"text": "10 : requette insertion"
+											"text": "10 : requête insertion"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -2321,7 +2321,7 @@
 												"$ref": "AAAAAAGEPc6xZx7kyzk="
 											},
 											"edgePosition": 1,
-											"text": "13 : changement de scene"
+											"text": "13 : changement de scène"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -2650,7 +2650,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGEPc6xaB8LM1Y="
 							},
-							"name": "verification",
+							"name": "vérification",
 							"source": {
 								"$ref": "AAAAAAGEPc6xaB8AO10="
 							},
@@ -2764,7 +2764,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGEPc6xaB8LM1Y="
 							},
-							"name": "requette insertion",
+							"name": "requête insertion",
 							"source": {
 								"$ref": "AAAAAAGEPc6xaB8Dtgs="
 							},
@@ -2808,7 +2808,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGEPc6xaB8LM1Y="
 							},
-							"name": "changement de scene",
+							"name": "changement de scène",
 							"source": {
 								"$ref": "AAAAAAGEPc6xaB8Bi/w="
 							},
