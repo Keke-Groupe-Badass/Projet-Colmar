@@ -552,7 +552,7 @@
 										"$ref": "AAAAAAGD9h84Fk77Vew="
 									},
 									"edgePosition": 1,
-									"text": "2 : verification"
+									"text": "2 : vérification"
 								},
 								{
 									"_type": "EdgeLabelView",
@@ -2642,7 +2642,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGD8Hv+wkze5kg="
 					},
-					"name": "verification",
+					"name": "vérification",
 					"source": {
 						"$ref": "AAAAAAGD8H3vhk0aasw="
 					},
