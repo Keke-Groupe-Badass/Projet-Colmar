@@ -83,7 +83,8 @@ CREATE TABLE auteurs(
 CREATE TABLE utilisateur(
         login    Varchar (50) NOT NULL ,
         password Varchar (50) NOT NULL ,
-        email    Varchar (50) NOT NULL
+        email    Varchar (50) NOT NULL ,
+        statut   Varchar (20) NOT NULL
 	,CONSTRAINT utilisateur_PK PRIMARY KEY (login)
 )ENGINE=InnoDB;
 
