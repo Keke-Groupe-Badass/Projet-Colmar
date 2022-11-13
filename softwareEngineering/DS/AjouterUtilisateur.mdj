@@ -135,7 +135,7 @@
 													"top": 47,
 													"width": 62.736328125,
 													"height": 13,
-													"text": "Fenetre"
+													"text": "Fenêtre"
 												},
 												{
 													"_type": "LabelView",
@@ -202,6 +202,7 @@
 									"top": 40,
 									"width": 72.736328125,
 									"height": 601,
+									"showProperty": false,
 									"nameCompartment": {
 										"$ref": "AAAAAAGESKEmHkptyw0="
 									},
@@ -366,7 +367,7 @@
 													"top": 47,
 													"width": 76.44091796875,
 													"height": 13,
-													"text": "Controleur"
+													"text": "Contrôleur"
 												},
 												{
 													"_type": "LabelView",
@@ -431,6 +432,7 @@
 									"top": 40,
 									"width": 86.44091796875,
 									"height": 601,
+									"showProperty": false,
 									"nameCompartment": {
 										"$ref": "AAAAAAGESKEz80qr05Q="
 									},
@@ -480,7 +482,7 @@
 													"top": 47,
 													"width": 73.57177734375,
 													"height": 13,
-													"text": "admin"
+													"text": "Admin"
 												},
 												{
 													"_type": "LabelView",
@@ -547,6 +549,7 @@
 									"top": 40,
 									"width": 83.57177734375,
 									"height": 609,
+									"showProperty": false,
 									"nameCompartment": {
 										"$ref": "AAAAAAGESKE64krKuiM="
 									},
@@ -685,17 +688,17 @@
 												"$ref": "AAAAAAGESXhjdUtalg4="
 											},
 											"font": "Arial;13;0",
-											"left": 241,
-											"top": 147,
+											"left": 278,
+											"top": 152,
 											"width": 80.20263671875,
 											"height": 13,
-											"alpha": 1.5707963267948966,
-											"distance": 10,
+											"alpha": 1.485893551322699,
+											"distance": 47.16990566028302,
 											"hostEdge": {
 												"$ref": "AAAAAAGESXhjdUtbgro="
 											},
 											"edgePosition": 1,
-											"text": "2 : verification"
+											"text": "2 : vérification"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -1041,9 +1044,9 @@
 											"font": "Arial;13;0",
 											"left": 96.72998046875,
 											"top": 397,
-											"width": 87.0234375,
+											"width": 96.41162109375,
 											"height": 13,
-											"text": "update donées"
+											"text": "Update données"
 										},
 										{
 											"_type": "LabelView",
@@ -1187,7 +1190,7 @@
 												"$ref": "AAAAAAGESa7Zuk06wFc="
 											},
 											"edgePosition": 1,
-											"text": "4 : pop-up erreur acces BDD"
+											"text": "4 : pop-up erreur accès BDD"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -1289,9 +1292,9 @@
 												"$ref": "AAAAAAGESZGeYkxVGs0="
 											},
 											"font": "Arial;13;0",
-											"left": 384,
+											"left": 369,
 											"top": 343,
-											"width": 93.21533203125,
+											"width": 123.5634765625,
 											"height": 13,
 											"alpha": -4.514994382073455,
 											"distance": 10.198039027185569,
@@ -1299,7 +1302,7 @@
 												"$ref": "AAAAAAGESZGeY0xWUhg="
 											},
 											"edgePosition": 1,
-											"text": "5 : creation user"
+											"text": "5 : création utilisateur"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -1410,7 +1413,7 @@
 												"$ref": "AAAAAAGESa2+8k0DHqU="
 											},
 											"edgePosition": 1,
-											"text": "6 : pop-up erreur update donnee"
+											"text": "6 : pop-up erreur update donnée"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -1628,7 +1631,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGESKEW9EpcXKs="
 							},
-							"name": "verification",
+							"name": "vérification",
 							"source": {
 								"$ref": "AAAAAAGESKEmHkprVA8="
 							},
@@ -1656,7 +1659,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGESKEW9EpcXKs="
 							},
-							"name": "pop-up erreur acces BDD",
+							"name": "pop-up erreur accès BDD",
 							"source": {
 								"$ref": "AAAAAAGESKEz80qpja4="
 							},
@@ -1671,7 +1674,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGESKEW9EpcXKs="
 							},
-							"name": "creation user",
+							"name": "création utilisateur",
 							"source": {
 								"$ref": "AAAAAAGESKEz80qpja4="
 							},
@@ -1685,7 +1688,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGESKEW9EpcXKs="
 							},
-							"name": "pop-up erreur update donnee",
+							"name": "pop-up erreur update donnée",
 							"source": {
 								"$ref": "AAAAAAGESKEsSUqKqno="
 							},
@@ -1717,7 +1720,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGESKEW9EpcXKs="
 							},
-							"name": "Fenetre",
+							"name": "Fenêtre",
 							"represent": {
 								"$ref": "AAAAAAGESKEmHUpqQfA="
 							},
@@ -1741,7 +1744,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGESKEW9EpcXKs="
 							},
-							"name": "Controleur",
+							"name": "Contrôleur",
 							"represent": {
 								"$ref": "AAAAAAGESKEz80qo0lc="
 							},
@@ -1753,7 +1756,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGESKEW9EpcXKs="
 							},
-							"name": "admin",
+							"name": "Admin",
 							"represent": {
 								"$ref": "AAAAAAGESKE64krHVng="
 							},
@@ -1796,7 +1799,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGESKEW9EpcXKs="
 							},
-							"name": "update donées",
+							"name": "Update données",
 							"interactionOperator": "alt",
 							"operands": [
 								{
