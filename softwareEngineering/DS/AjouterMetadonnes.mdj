@@ -560,7 +560,7 @@
 												"$ref": "AAAAAAGEPc6xZB6N40k="
 											},
 											"edgePosition": 1,
-											"text": "2 : verification"
+											"text": "2 : vérification"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -1871,7 +1871,7 @@
 												"$ref": "AAAAAAGEPc6xZh7OhRQ="
 											},
 											"edgePosition": 1,
-											"text": "10 : requette insertion"
+											"text": "10 : requête insertion"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -2436,7 +2436,7 @@
 												"$ref": "AAAAAAGEPc6xZx7pKMU="
 											},
 											"edgePosition": 1,
-											"text": "14 : erreur lors de l insertion"
+											"text": "14 : erreur lors de l'insertion"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -2767,7 +2767,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGEPc6xaB8LM1Y="
 							},
-							"name": "verification",
+							"name": "vérification",
 							"source": {
 								"$ref": "AAAAAAGEPc6xaB8AO10="
 							},
@@ -2881,7 +2881,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGEPc6xaB8LM1Y="
 							},
-							"name": "requette insertion",
+							"name": "requête insertion",
 							"source": {
 								"$ref": "AAAAAAGEPc6xaB8Dtgs="
 							},
@@ -2939,7 +2939,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGEPc6xaB8LM1Y="
 							},
-							"name": "erreur lors de l insertion",
+							"name": "erreur lors de l'insertion",
 							"source": {
 								"$ref": "AAAAAAGEPc6xaB8C4RM="
 							},

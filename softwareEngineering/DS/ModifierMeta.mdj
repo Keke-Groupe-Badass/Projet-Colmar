@@ -553,7 +553,7 @@
 										"$ref": "AAAAAAGD9h84Fk77Vew="
 									},
 									"edgePosition": 1,
-									"text": "2 : verification"
+									"text": "2 : vérification"
 								},
 								{
 									"_type": "EdgeLabelView",
@@ -1550,9 +1550,9 @@
 									"font": "Arial;13;0",
 									"left": 32.72998046875,
 									"top": 245,
-									"width": 28.4599609375,
+									"width": 34.236328125,
 									"height": 13,
-									"text": "chox"
+									"text": "Choix"
 								},
 								{
 									"_type": "LabelView",
@@ -1718,9 +1718,9 @@
 									"font": "Arial;13;0",
 									"left": 200.72998046875,
 									"top": 469,
-									"width": 66.0380859375,
+									"width": 71.09716796875,
 									"height": 13,
-									"text": "réponseBD"
+									"text": "RéponseBD"
 								},
 								{
 									"_type": "LabelView",
@@ -2328,9 +2328,9 @@
 											"font": "Arial;13;1",
 											"left": 1037,
 											"top": 47,
-											"width": 78.61181640625,
+											"width": 85.841796875,
 											"height": 13,
-											"text": "Metadonne"
+											"text": "Metadonnée"
 										},
 										{
 											"_type": "LabelView",
@@ -2361,7 +2361,7 @@
 									"font": "Arial;13;0",
 									"left": 1032,
 									"top": 40,
-									"width": 88.61181640625,
+									"width": 95.841796875,
 									"height": 40,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGESLJrh9r7Pm8="
@@ -2386,7 +2386,7 @@
 										"$ref": "AAAAAAGESLJrhtr4NcY="
 									},
 									"font": "Arial;13;0",
-									"left": 1076,
+									"left": 1080,
 									"top": 80,
 									"width": 1,
 									"height": 753
@@ -2395,7 +2395,7 @@
 							"font": "Arial;13;0",
 							"left": 1032,
 							"top": 40,
-							"width": 88.61181640625,
+							"width": 95.841796875,
 							"height": 793,
 							"showProperty": false,
 							"nameCompartment": {
@@ -2435,7 +2435,7 @@
 										"$ref": "AAAAAAGESLXlFtun5DQ="
 									},
 									"edgePosition": 1,
-									"text": "13 : selection de la metadonnee"
+									"text": "13 : sélection de la métadonnée"
 								},
 								{
 									"_type": "EdgeLabelView",
@@ -2651,7 +2651,7 @@
 										"$ref": "AAAAAAGESLZfmNu/HTE="
 									},
 									"font": "Arial;13;0",
-									"left": 932,
+									"left": 934,
 									"top": 584,
 									"width": 153.93701171875,
 									"height": 13,
@@ -2674,7 +2674,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 1008,
+									"left": 1010,
 									"top": 569,
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -2695,7 +2695,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 1008,
+									"left": 1010,
 									"top": 604,
 									"height": 13,
 									"alpha": -1.5707963267948966,
@@ -2715,7 +2715,7 @@
 										"$ref": "AAAAAAGESLZfmNu/HTE="
 									},
 									"font": "Arial;13;0",
-									"left": 1069,
+									"left": 1073,
 									"top": 600,
 									"width": 14,
 									"height": 29
@@ -2728,7 +2728,7 @@
 							"tail": {
 								"$ref": "AAAAAAGESLV6gtuCC9Y="
 							},
-							"points": "948:600;1069:600",
+							"points": "948:600;1073:600",
 							"nameLabel": {
 								"$ref": "AAAAAAGESLZfmNvB/z0="
 							},
@@ -2991,7 +2991,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGD8Hv+wkze5kg="
 					},
-					"name": "verification",
+					"name": "vérification",
 					"source": {
 						"$ref": "AAAAAAGD8H3vhk0aasw="
 					},
@@ -3149,7 +3149,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGD8Hv+wkze5kg="
 					},
-					"name": "selection de la metadonnee",
+					"name": "sélection de la métadonnée",
 					"source": {
 						"$ref": "AAAAAAGD9h+cHU8S/z0="
 					},
@@ -3269,7 +3269,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGD8Hv+wkze5kg="
 					},
-					"name": "Metadonne",
+					"name": "Metadonnée",
 					"represent": {
 						"$ref": "AAAAAAGESLJrhtr3Lrg="
 					},
@@ -3295,7 +3295,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGD8Hv+wkze5kg="
 					},
-					"name": "chox",
+					"name": "Choix",
 					"interactionOperator": "alt",
 					"operands": [
 						{
@@ -3333,7 +3333,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGD8Hv+wkze5kg="
 					},
-					"name": "réponseBD",
+					"name": "RéponseBD",
 					"interactionOperator": "alt",
 					"operands": [
 						{

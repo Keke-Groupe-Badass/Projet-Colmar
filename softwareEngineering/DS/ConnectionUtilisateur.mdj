@@ -553,7 +553,7 @@
 										"$ref": "AAAAAAGD9h84Fk77Vew="
 									},
 									"edgePosition": 1,
-									"text": "2 : verification"
+									"text": "2 : vérification"
 								},
 								{
 									"_type": "EdgeLabelView",
@@ -766,9 +766,9 @@
 										"$ref": "AAAAAAGEP14q/fR7RrQ="
 									},
 									"font": "Arial;13;0",
-									"left": 659,
+									"left": 655,
 									"top": 176,
-									"width": 82.38623046875,
+									"width": 91.78076171875,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 10,
@@ -776,7 +776,7 @@
 										"$ref": "AAAAAAGEP14q/fR8qGM="
 									},
 									"edgePosition": 1,
-									"text": "4 : requete sql"
+									"text": "4 : requête SQL"
 								},
 								{
 									"_type": "EdgeLabelView",
@@ -1073,9 +1073,9 @@
 													"font": "Arial;13;0",
 													"left": 28,
 													"top": 408,
-													"width": 40.47265625,
+													"width": 38.3017578125,
 													"height": 13,
-													"text": "[Sinon]"
+													"text": "[sinon]"
 												}
 											],
 											"font": "Arial;13;0",
@@ -1140,7 +1140,7 @@
 										"$ref": "AAAAAAGEP2Na/PU0gq8="
 									},
 									"edgePosition": 1,
-									"text": "5 : Connection"
+									"text": "5 : connexion"
 								},
 								{
 									"_type": "EdgeLabelView",
@@ -1253,7 +1253,7 @@
 										"$ref": "AAAAAAGEP2VUJPVKkBg="
 									},
 									"edgePosition": 1,
-									"text": "6 : changement de scene"
+									"text": "6 : changement de scène"
 								},
 								{
 									"_type": "EdgeLabelView",
@@ -1366,7 +1366,7 @@
 										"$ref": "AAAAAAGEP2WgpPViMfw="
 									},
 									"edgePosition": 1,
-									"text": "7 : Message d erreur"
+									"text": "7 : message d'erreur"
 								},
 								{
 									"_type": "EdgeLabelView",
@@ -1479,7 +1479,7 @@
 										"$ref": "AAAAAAGEP2YlBPV4EU8="
 									},
 									"edgePosition": 1,
-									"text": "8 : Affichage erreur"
+									"text": "8 : affichage erreur"
 								},
 								{
 									"_type": "EdgeLabelView",
@@ -1699,7 +1699,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGD8Hv+wkze5kg="
 					},
-					"name": "verification",
+					"name": "vérification",
 					"source": {
 						"$ref": "AAAAAAGD8H3vhk0aasw="
 					},
@@ -1727,7 +1727,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGD8Hv+wkze5kg="
 					},
-					"name": "requete sql",
+					"name": "requête SQL",
 					"source": {
 						"$ref": "AAAAAAGD8Is90U2XqNM="
 					},
@@ -1741,7 +1741,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGD8Hv+wkze5kg="
 					},
-					"name": "Connection",
+					"name": "connexion",
 					"source": {
 						"$ref": "AAAAAAGD9h+cHU8S/z0="
 					},
@@ -1756,7 +1756,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGD8Hv+wkze5kg="
 					},
-					"name": "changement de scene",
+					"name": "changement de scène",
 					"source": {
 						"$ref": "AAAAAAGD8Is90U2XqNM="
 					},
@@ -1771,7 +1771,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGD8Hv+wkze5kg="
 					},
-					"name": "Message d erreur",
+					"name": "message d'erreur",
 					"source": {
 						"$ref": "AAAAAAGD9h+cHU8S/z0="
 					},
@@ -1786,7 +1786,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGD8Hv+wkze5kg="
 					},
-					"name": "Affichage erreur",
+					"name": "affichage erreur",
 					"source": {
 						"$ref": "AAAAAAGD8Is90U2XqNM="
 					},
@@ -1887,7 +1887,7 @@
 								"$ref": "AAAAAAGD9w8LW0+Qwg0="
 							},
 							"name": "InteractionOperand1",
-							"guard": "Sinon"
+							"guard": "sinon"
 						}
 					]
 				}
