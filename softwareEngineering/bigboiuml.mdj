@@ -664,13 +664,47 @@
 											"height": 13,
 											"text": "+creerUtilisateur(login: String, mdp: String, mail: String): Boolean",
 											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAGEdjJsKkKqYV8=",
+											"_parent": {
+												"$ref": "AAAAAAGEEKfwRfbT7M0="
+											},
+											"model": {
+												"$ref": "AAAAAAGEdjJsC0KnGFk="
+											},
+											"font": "Arial;13;0",
+											"left": 957,
+											"top": 292,
+											"width": 373.18505859375,
+											"height": 13,
+											"text": "+exportLog(): String",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAGEdjKitUcYOpY=",
+											"_parent": {
+												"$ref": "AAAAAAGEEKfwRfbT7M0="
+											},
+											"model": {
+												"$ref": "AAAAAAGEdjKinkcVP4o="
+											},
+											"font": "Arial;13;0",
+											"left": 957,
+											"top": 307,
+											"width": 373.18505859375,
+											"height": 13,
+											"text": "+exportDonee(): String",
+											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 952,
 									"top": 227,
 									"width": 383.18505859375,
-									"height": 68
+									"height": 98
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -15756,6 +15790,44 @@
 												"$ref": "AAAAAAGEdjCyqhhkHuM="
 											},
 											"type": "Boolean",
+											"direction": "return"
+										}
+									]
+								},
+								{
+									"_type": "UMLOperation",
+									"_id": "AAAAAAGEdjJsC0KnGFk=",
+									"_parent": {
+										"$ref": "AAAAAAGEEKfwRPbK0gk="
+									},
+									"name": "exportLog",
+									"parameters": [
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAGEdjKQnURD610=",
+											"_parent": {
+												"$ref": "AAAAAAGEdjJsC0KnGFk="
+											},
+											"type": "String",
+											"direction": "return"
+										}
+									]
+								},
+								{
+									"_type": "UMLOperation",
+									"_id": "AAAAAAGEdjKinkcVP4o=",
+									"_parent": {
+										"$ref": "AAAAAAGEEKfwRPbK0gk="
+									},
+									"name": "exportDonee",
+									"parameters": [
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAGEdjLv4U6sQ/c=",
+											"_parent": {
+												"$ref": "AAAAAAGEdjKinkcVP4o="
+											},
+											"type": "String",
 											"direction": "return"
 										}
 									]
