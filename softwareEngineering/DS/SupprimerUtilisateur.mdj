@@ -44,7 +44,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGESKEW9EpcXKs="
 							},
-							"name": "AjouterUtilisateur",
+							"name": "SupprimerUtilisateur",
 							"ownedViews": [
 								{
 									"_type": "UMLFrameView",
@@ -65,9 +65,9 @@
 											"font": "Arial;13;0",
 											"left": 24.72998046875,
 											"top": 5,
-											"width": 99.9853515625,
+											"width": 118.76171875,
 											"height": 13,
-											"text": "AjouterUtilisateur"
+											"text": "SupprimerUtilisateur"
 										},
 										{
 											"_type": "LabelView",
@@ -689,9 +689,9 @@
 												"$ref": "AAAAAAGESXhjdUtalg4="
 											},
 											"font": "Arial;13;0",
-											"left": 278,
+											"left": 274,
 											"top": 152,
-											"width": 80.20263671875,
+											"width": 88.87353515625,
 											"height": 13,
 											"alpha": 1.485893551322699,
 											"distance": 47.16990566028302,
@@ -699,7 +699,7 @@
 												"$ref": "AAAAAAGESXhjdUtbgro="
 											},
 											"edgePosition": 1,
-											"text": "2 : vérification"
+											"text": "2 : confirmation"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -1635,17 +1635,17 @@
 												"$ref": "AAAAAAGEf5CTSzhJdCo="
 											},
 											"font": "Arial;13;0",
-											"left": 503,
-											"top": 488,
-											"width": 102.6162109375,
+											"left": 480,
+											"top": 487,
+											"width": 147.41162109375,
 											"height": 13,
-											"alpha": 1.5707963267948966,
-											"distance": 10,
+											"alpha": -4.612721317992635,
+											"distance": 10.04987562112089,
 											"hostEdge": {
 												"$ref": "AAAAAAGEf5CTSzhKpKg="
 											},
 											"edgePosition": 1,
-											"text": "7 : ajout utlisateur"
+											"text": "7 : suppression utilisateur"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -1863,7 +1863,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGESKEW9EpcXKs="
 							},
-							"name": "vérification",
+							"name": "confirmation",
 							"source": {
 								"$ref": "AAAAAAGESKEmHkprVA8="
 							},
@@ -1935,7 +1935,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGESKEW9EpcXKs="
 							},
-							"name": "ajout utlisateur",
+							"name": "suppression utilisateur",
 							"source": {
 								"$ref": "AAAAAAGEf4w6SDfZ+xw="
 							},
@@ -2135,7 +2135,8 @@
 					"_parent": {
 						"$ref": "AAAAAAGESKEW80pb900="
 					},
-					"name": "Role6"
+					"name": "Role6",
+					"type": ""
 				}
 			]
 		}
