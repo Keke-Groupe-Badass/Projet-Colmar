@@ -81,11 +81,25 @@ CREATE TABLE auteurs(
 #------------------------------------------------------------
 
 CREATE TABLE utilisateur(
-        login    Varchar (50) NOT NULL ,
-        password Varchar (50) NOT NULL ,
         email    Varchar (50) NOT NULL ,
+        password Varchar (50) NOT NULL ,
         statut   Varchar (20) NOT NULL
-	,CONSTRAINT utilisateur_PK PRIMARY KEY (login)
+	,CONSTRAINT utilisateur_PK PRIMARY KEY (email)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: log
+#------------------------------------------------------------
+
+CREATE TABLE log(
+        id    Int  Auto_increment  NOT NULL ,
+        text  Text NOT NULL ,
+        date  Date NOT NULL ,
+        email Varchar (50)
+	,CONSTRAINT log_PK PRIMARY KEY (id)
+
+	,CONSTRAINT log_utilisateur_FK FOREIGN KEY (email) REFERENCES utilisateur(email)
 )ENGINE=InnoDB;
 
 
