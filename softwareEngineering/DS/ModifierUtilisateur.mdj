@@ -44,7 +44,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGESKEW9EpcXKs="
 							},
-							"name": "AjouterUtilisateur",
+							"name": "ModifierUtilisateur",
 							"ownedViews": [
 								{
 									"_type": "UMLFrameView",
@@ -65,9 +65,9 @@
 											"font": "Arial;13;0",
 											"left": 24.72998046875,
 											"top": 5,
-											"width": 99.9853515625,
+											"width": 105.03173828125,
 											"height": 13,
-											"text": "AjouterUtilisateur"
+											"text": "ModifierUtilisateur"
 										},
 										{
 											"_type": "LabelView",
@@ -1635,9 +1635,9 @@
 												"$ref": "AAAAAAGEf5CTSzhJdCo="
 											},
 											"font": "Arial;13;0",
-											"left": 503,
+											"left": 481,
 											"top": 488,
-											"width": 102.6162109375,
+											"width": 146.681640625,
 											"height": 13,
 											"alpha": 1.5707963267948966,
 											"distance": 10,
@@ -1645,7 +1645,7 @@
 												"$ref": "AAAAAAGEf5CTSzhKpKg="
 											},
 											"edgePosition": 1,
-											"text": "7 : ajout utlisateur"
+											"text": "7 : modification utilisateur"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -1935,7 +1935,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGESKEW9EpcXKs="
 							},
-							"name": "ajout utlisateur",
+							"name": "modification utilisateur",
 							"source": {
 								"$ref": "AAAAAAGEf4w6SDfZ+xw="
 							},
@@ -2135,7 +2135,8 @@
 					"_parent": {
 						"$ref": "AAAAAAGESKEW80pb900="
 					},
-					"name": "Role6"
+					"name": "Role6",
+					"type": ""
 				}
 			]
 		}
