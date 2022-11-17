@@ -221,7 +221,7 @@
 											"top": 47,
 											"width": 62.736328125,
 											"height": 13,
-											"text": "Fenêtre"
+											"text": "Fenetre"
 										},
 										{
 											"_type": "LabelView",
@@ -288,6 +288,7 @@
 							"top": 40,
 							"width": 72.736328125,
 							"height": 777,
+							"showProperty": false,
 							"nameCompartment": {
 								"$ref": "AAAAAAGD8H3vh00cvEI="
 							},
@@ -337,7 +338,7 @@
 											"top": 47,
 											"width": 80.052734375,
 											"height": 13,
-											"text": "Contrôleur"
+											"text": "Controleur"
 										},
 										{
 											"_type": "LabelView",
@@ -1130,9 +1131,9 @@
 										"$ref": "AAAAAAGEf5HM5Yj/K0c="
 									},
 									"font": "Arial;13;0",
-									"left": 760,
+									"left": 756,
 									"top": 184,
-									"width": 82.38623046875,
+									"width": 91.78076171875,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 10,
@@ -1140,7 +1141,7 @@
 										"$ref": "AAAAAAGEf5HM5okAhUY="
 									},
 									"edgePosition": 1,
-									"text": "5 : requete sql"
+									"text": "5 : requête SQL"
 								},
 								{
 									"_type": "EdgeLabelView",
@@ -1967,7 +1968,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGD8Hv+wkze5kg="
 					},
-					"name": "requete sql",
+					"name": "requête SQL",
 					"source": {
 						"$ref": "AAAAAAGEf5FFtYjUE9c="
 					},
@@ -2070,7 +2071,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGD8Hv+wkze5kg="
 					},
-					"name": "Fenêtre",
+					"name": "Fenetre",
 					"represent": {
 						"$ref": "AAAAAAGD8H3vhk0ZLio="
 					},
@@ -2082,7 +2083,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGD8Hv+wkze5kg="
 					},
-					"name": "Contrôleur",
+					"name": "Controleur",
 					"represent": {
 						"$ref": "AAAAAAGD8Is90U2W3z8="
 					},
@@ -2162,8 +2163,7 @@
 			"_parent": {
 				"$ref": "AAAAAAGD8Hv+wUzdItI="
 			},
-			"name": "Role2",
-			"type": ""
+			"name": "Role2"
 		},
 		{
 			"_type": "UMLAttribute",
@@ -2171,8 +2171,7 @@
 			"_parent": {
 				"$ref": "AAAAAAGD8Hv+wUzdItI="
 			},
-			"name": "Role3",
-			"type": ""
+			"name": "Role3"
 		},
 		{
 			"_type": "UMLAttribute",
@@ -2198,7 +2197,8 @@
 			"_parent": {
 				"$ref": "AAAAAAGD8Hv+wUzdItI="
 			},
-			"name": "Role6"
+			"name": "Role6",
+			"type": ""
 		}
 	]
 }

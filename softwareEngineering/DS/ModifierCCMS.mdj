@@ -221,7 +221,7 @@
 											"top": 47,
 											"width": 62.736328125,
 											"height": 13,
-											"text": "Fenêtre"
+											"text": "Fenetre"
 										},
 										{
 											"_type": "LabelView",
@@ -288,6 +288,7 @@
 							"top": 40,
 							"width": 72.736328125,
 							"height": 777,
+							"showProperty": false,
 							"nameCompartment": {
 								"$ref": "AAAAAAGD8H3vh00cvEI="
 							},
@@ -337,7 +338,7 @@
 											"top": 47,
 											"width": 80.052734375,
 											"height": 13,
-											"text": "Contrôleur"
+											"text": "Controleur"
 										},
 										{
 											"_type": "LabelView",
@@ -404,6 +405,7 @@
 							"top": 40,
 							"width": 90.052734375,
 							"height": 777,
+							"showProperty": false,
 							"nameCompartment": {
 								"$ref": "AAAAAAGD8Is90U2ZsJ0="
 							},
@@ -2303,17 +2305,17 @@
 										"$ref": "AAAAAAGD9iHUmk9hGag="
 									},
 									"font": "Arial;13;0",
-									"left": 263,
-									"top": 556,
+									"left": 264,
+									"top": 559,
 									"width": 153.2197265625,
 									"height": 13,
-									"alpha": 1.5707963267948966,
-									"distance": 10,
+									"alpha": 1.5707970410806107,
+									"distance": 14,
 									"hostEdge": {
 										"$ref": "AAAAAAGD9iHUmk9ihHI="
 									},
 									"edgePosition": 1,
-									"text": "13 : changement de scene"
+									"text": "13 : changement de scène"
 								},
 								{
 									"_type": "EdgeLabelView",
@@ -2800,7 +2802,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGD8Hv+wkze5kg="
 					},
-					"name": "changement de scene",
+					"name": "changement de scène",
 					"source": {
 						"$ref": "AAAAAAGD8Is90U2XqNM="
 					},
@@ -2858,7 +2860,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGD8Hv+wkze5kg="
 					},
-					"name": "Fenêtre",
+					"name": "Fenetre",
 					"represent": {
 						"$ref": "AAAAAAGD8H3vhk0ZLio="
 					},
@@ -2870,7 +2872,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGD8Hv+wkze5kg="
 					},
-					"name": "Contrôleur",
+					"name": "Controleur",
 					"represent": {
 						"$ref": "AAAAAAGD8Is90U2W3z8="
 					},
@@ -2988,8 +2990,7 @@
 			"_parent": {
 				"$ref": "AAAAAAGD8Hv+wUzdItI="
 			},
-			"name": "Role2",
-			"type": ""
+			"name": "Role2"
 		},
 		{
 			"_type": "UMLAttribute",
@@ -2997,8 +2998,7 @@
 			"_parent": {
 				"$ref": "AAAAAAGD8Hv+wUzdItI="
 			},
-			"name": "Role3",
-			"type": ""
+			"name": "Role3"
 		},
 		{
 			"_type": "UMLAttribute",
