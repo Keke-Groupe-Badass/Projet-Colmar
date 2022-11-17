@@ -84,7 +84,7 @@
 										}
 									],
 									"font": "Arial;13;0",
-									"width": 692,
+									"width": 729,
 									"height": 657,
 									"nameLabel": {
 										"$ref": "AAAAAAGESKEW9UpfvJg="
@@ -135,7 +135,7 @@
 													"top": 47,
 													"width": 62.736328125,
 													"height": 13,
-													"text": "Fenêtre"
+													"text": "Fenetre"
 												},
 												{
 													"_type": "LabelView",
@@ -368,7 +368,7 @@
 													"top": 47,
 													"width": 76.44091796875,
 													"height": 13,
-													"text": "Contrôleur"
+													"text": "Controleur"
 												},
 												{
 													"_type": "LabelView",
@@ -1966,7 +1966,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGESKEW9EpcXKs="
 							},
-							"name": "Fenêtre",
+							"name": "Fenetre",
 							"represent": {
 								"$ref": "AAAAAAGESKEmHUpqQfA="
 							},
@@ -1990,7 +1990,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGESKEW9EpcXKs="
 							},
-							"name": "Contrôleur",
+							"name": "Controleur",
 							"represent": {
 								"$ref": "AAAAAAGESKEz80qo0lc="
 							},
@@ -2090,8 +2090,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGESKEW80pb900="
 					},
-					"name": "Role1",
-					"type": ""
+					"name": "Role1"
 				},
 				{
 					"_type": "UMLAttribute",
@@ -2108,8 +2107,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGESKEW80pb900="
 					},
-					"name": "Role3",
-					"type": ""
+					"name": "Role3"
 				},
 				{
 					"_type": "UMLAttribute",

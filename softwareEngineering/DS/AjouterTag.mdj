@@ -229,7 +229,7 @@
 													"top": 47,
 													"width": 62.736328125,
 													"height": 13,
-													"text": "Fenêtre"
+													"text": "Fenetre"
 												},
 												{
 													"_type": "LabelView",
@@ -296,6 +296,7 @@
 									"top": 40,
 									"width": 72.736328125,
 									"height": 777,
+									"showProperty": false,
 									"nameCompartment": {
 										"$ref": "AAAAAAGEPc6xZB564ns="
 									},
@@ -345,7 +346,7 @@
 													"top": 47,
 													"width": 80.052734375,
 													"height": 13,
-													"text": "Contrôleur"
+													"text": "Controleur"
 												},
 												{
 													"_type": "LabelView",
@@ -412,6 +413,7 @@
 									"top": 40,
 									"width": 90.052734375,
 									"height": 777,
+									"showProperty": false,
 									"nameCompartment": {
 										"$ref": "AAAAAAGEPc6xZB6BuIw="
 									},
@@ -2982,7 +2984,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGEPc6xaB8LM1Y="
 							},
-							"name": "Fenêtre",
+							"name": "Fenetre",
 							"represent": {
 								"$ref": "AAAAAAGEPc6xaB8NEL8="
 							},
@@ -2994,7 +2996,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGEPc6xaB8LM1Y="
 							},
-							"name": "Contrôleur",
+							"name": "Controleur",
 							"represent": {
 								"$ref": "AAAAAAGEPc6xaB8OoGQ="
 							},
@@ -3124,8 +3126,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGEPc6xaB8R7lA="
 					},
-					"name": "Role2",
-					"type": ""
+					"name": "Role2"
 				},
 				{
 					"_type": "UMLAttribute",
@@ -3133,8 +3134,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGEPc6xaB8R7lA="
 					},
-					"name": "Role3",
-					"type": ""
+					"name": "Role3"
 				},
 				{
 					"_type": "UMLAttribute",
