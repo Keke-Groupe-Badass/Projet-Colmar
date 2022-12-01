@@ -10,39 +10,32 @@ import java.util.*;
 import java.time.*;
 
 
-
-// ----------- << imports@AAAAAAGEzpKTNDlXH7I= >>
-// ----------- >>
-
-// ----------- << class.annotations@AAAAAAGEzpKTNDlXH7I= >>
-// ----------- >>
 public class AdminDao {
     /**
-    * @param file
+     * Permet de stocker dans un fichier la bd
+    * @param file le fichier où sera exporter les données
+     * @see whole.exportPackage.ExportTypeInterface
     */
 
-    // ----------- << method.annotations@AAAAAAGEzpSgDJiRGIY= >>
-    // ----------- >>
+
     public void exportDonee(File file) {
-    // ----------- << method.body@AAAAAAGEzpSgDJiRGIY= >>
-    // ----------- >>
+
     }
     /**
-    * @param file
-    */
+     * Permet de stocker dans un fichier les logs
+     * @param file le fichier où sera exporter les logs
+     */
 
-    // ----------- << method.annotations@AAAAAAGEzpT/0ar5GIQ= >>
-    // ----------- >>
+
     public void exportLog(File file) {
-    // ----------- << method.body@AAAAAAGEzpT/0ar5GIQ= >>
-    // ----------- >>
+
     }
-    // ----------- << method.annotations@AAAAAAGEzpUiRLRKiMQ= >>
-    // ----------- >>
+
+    /**
+     * Supprime les logs de la bd
+     */
     public void deleteLog() {
-    // ----------- << method.body@AAAAAAGEzpUiRLRKiMQ= >>
-    // ----------- >>
+
     }
-// ----------- << class.extras@AAAAAAGEzpKTNDlXH7I= >>
-// ----------- >>
+
 }
