@@ -9,16 +9,8 @@ import java.sql.Connection;
 import java.util.*;
 import java.time.*;
 
-
-
-// ----------- << imports@AAAAAAGEE5yCdUieF1o= >>
-// ----------- >>
-
-// ----------- << class.annotations@AAAAAAGEE5yCdUieF1o= >>
-// ----------- >>
 public abstract class AbstractDao {
-    // ----------- << attribute.annotations@AAAAAAGEE4dM2ZIpTbM= >>
-    // ----------- >>
+
     private static Connection cn;
 
     /**
@@ -26,42 +18,32 @@ public abstract class AbstractDao {
     * @param changement
     */
 
-    // ----------- << method.annotations@AAAAAAGEE4qS0JvDFhc= >>
-    // ----------- >>
+
     public Boolean modifier(CCMS objet , CCMS changement ) {
-    // ----------- << method.body@AAAAAAGEE4qS0JvDFhc= >>
-    // ----------- >>
+
     }
     /**
-    * @param objet
+     * Supprime de la db un CCMS
+    * @param objet un CCMS d'un type à déterminer dans chaque implémentation
+     *
     */
 
-    // ----------- << method.annotations@AAAAAAGEE4wyOaBHozw= >>
-    // ----------- >>
-    public Boolean supprimer(CCMS objet ) {
-    // ----------- << method.body@AAAAAAGEE4wyOaBHozw= >>
-    // ----------- >>
+    public void supprimer(CCMS objet ) {
+
     }
     /**
     * @param donne
     */
 
-    // ----------- << method.annotations@AAAAAAGEE7L+kh2QhOo= >>
-    // ----------- >>
     public CCMS creer(CCMS donne) {
-    // ----------- << method.body@AAAAAAGEE7L+kh2QhOo= >>
-    // ----------- >>
+
     }
     /**
     * @param donne
     */
 
-    // ----------- << method.annotations@AAAAAAGEE7T9TEE3oMU= >>
-    // ----------- >>
     public ArrayList<CCMS> chercher(CCMS donne) {
-    // ----------- << method.body@AAAAAAGEE7T9TEE3oMU= >>
-    // ----------- >>
+
     }
-// ----------- << class.extras@AAAAAAGEE5yCdUieF1o= >>
-// ----------- >>
+
 }

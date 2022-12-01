@@ -21,6 +21,7 @@ import java.time.*;
 // ----------- << class.annotations@AAAAAAGEEKfwRPbK0gk= >>
 // ----------- >>
 public class UtilisateurDAO extends AbstractDao {
+
     /**
     * @param url 
     * @param login 
