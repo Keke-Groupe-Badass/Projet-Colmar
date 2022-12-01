@@ -5,6 +5,7 @@
 */
 package whole;
 
+import java.sql.Connection;
 import java.util.*;
 import java.time.*;
 
