@@ -6,8 +6,6 @@
 package whole;
 
 import java.util.*;
-import java.time.*;
-
 
 
 // ----------- << imports@AAAAAAGEEKlTM/dIQDY= >>
@@ -22,7 +20,7 @@ public class Lettrine implements CCMS {
 
     // ----------- << attribute.annotations@AAAAAAGEE6c7UiKWdLo= >>
     // ----------- >>
-    private ArrayList<Metadonnees> metadonnees;
+    private ArrayList<Metadonnee> metadonnees;
 
     // ----------- << attribute.annotations@AAAAAAGEE6ebxicMu3w= >>
     // ----------- >>
@@ -44,7 +42,7 @@ public class Lettrine implements CCMS {
         return ouvrage;
     }
 
-    private ArrayList<Metadonnees> getMetadonnees() {
+    private ArrayList<Metadonnee> getMetadonnees() {
         return metadonnees;
     }
 
@@ -68,7 +66,7 @@ public class Lettrine implements CCMS {
         this.ouvrage = ouvrage;
     }
 
-    private void setMetadonnees(ArrayList<Metadonnees> metadonnees) {
+    private void setMetadonnees(ArrayList<Metadonnee> metadonnees) {
         this.metadonnees = metadonnees;
     }
 
@@ -128,7 +126,7 @@ public class Lettrine implements CCMS {
 
     // ----------- << method.annotations@AAAAAAGEJC6p8/QYVKI= >>
     // ----------- >>
-    public void SupprimerMetadonnees(Metadonnees meta) {
+    public void SupprimerMetadonnees(Metadonnee meta) {
     // ----------- << method.body@AAAAAAGEJC6p8/QYVKI= >>
     // ----------- >>
     }

@@ -5,19 +5,16 @@
 */
 package whole;
 
-import java.util.*;
-import java.time.*;
-
-
 
 // ----------- << imports@AAAAAAGEE5qV6vFwH5E= >>
 // ----------- >>
 
 // ----------- << class.annotations@AAAAAAGEE5qV6vFwH5E= >>
 // ----------- >>
-public class Metadonnees {
+public class Metadonnee {
     // ----------- << attribute.annotations@AAAAAAGEE6zXdR7UaOE= >>
     // ----------- >>
+    private Lettrine lettrine;
     private String nom;
 
     // ----------- << attribute.annotations@AAAAAAGEE6z/dyCLQ5I= >>
@@ -82,7 +79,7 @@ public class Metadonnees {
 
     // ----------- << method.annotations@AAAAAAGEdlwMksQ43p0= >>
     // ----------- >>
-    public void Modifier(Metadonnees meta) {
+    public void Modifier(Metadonnee meta) {
     // ----------- << method.body@AAAAAAGEdlwMksQ43p0= >>
     // ----------- >>
     }
