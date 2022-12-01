@@ -11,19 +11,19 @@ import java.time.*;
 
 
 
-// ----------- << imports@AAAAAAGEzphHSnsOPuY= >>
-// ----------- >>
-
-// ----------- << class.annotations@AAAAAAGEzphHSnsOPuY= >>
-// ----------- >>
+/**
+ * Implémentation de ExportTypeIntetface pour le SQL
+ * @see ExportTypeInterface
+ */
 public class ExportXLS implements ExportTypeInterface {
+    /**
+     *  Implémante en XLS la sauvegarde de la base de donnée dans un fichier
+     * @param f Fichier de sauvegarde
+     * @see whole.AdminDao.exportDonee
+     */
     @Override
-    // ----------- << method.annotations@AAAAAAGEzpbIUAevq+k= >>
-    // ----------- >>
     public void export(File f) {
-    // ----------- << method.body@AAAAAAGEzpbIUAevq+k= >>
-    // ----------- >>
+
     }
-// ----------- << class.extras@AAAAAAGEzphHSnsOPuY= >>
-// ----------- >>
+
 }

@@ -13,7 +13,8 @@ import java.io.File;
  * @see AbstractDao
  */
 public class LettrineDAO extends AbstractDao {
-
+    LettrineDAO(){
+    }
     /**
      *permet de lier dans la base de donnée une lettrine à ouvrage, en effet une lettrine n'est présente dans un seul et unique ouvrage.
     * @param l la lettrine à lier à l'ouvrage
@@ -22,11 +23,9 @@ public class LettrineDAO extends AbstractDao {
      * @see Lettrine
     */
 
-    // ----------- << method.annotations@AAAAAAGEIHt5eyFqOnk= >>
-    // ----------- >>
-    public void provient(Lettrine l , Ouvrage O)   {
-    // ----------- << method.body@AAAAAAGEIHt5eyFqOnk= >>
-    // ----------- >>
+
+    public static void provient(Lettrine l , Ouvrage O)   {
+
     }
     /**
      *Permet de lier dans la base de donnée une lettrine à un tag
@@ -36,11 +35,8 @@ public class LettrineDAO extends AbstractDao {
      * @see Tag
     */
 
-    // ----------- << method.annotations@AAAAAAGEIHvxLSTVufQ= >>
-    // ----------- >>
-    public void tager(Lettrine l , Tag t) {
-    // ----------- << method.body@AAAAAAGEIHvxLSTVufQ= >>
-    // ----------- >>
+    public static void tager(Lettrine l , Tag t) {
+
     }
     /**
      * permet de caracteriser une lettrine en ajoutant une métadonnée
@@ -48,11 +44,9 @@ public class LettrineDAO extends AbstractDao {
      * @see Metadonnee
     */
 
-    // ----------- << method.annotations@AAAAAAGEfcqAt1VgxHs= >>
-    // ----------- >>
-    public void ajouterMeta(Metadonnee meta) {
-    // ----------- << method.body@AAAAAAGEfcqAt1VgxHs= >>
-    // ----------- >>
+
+    public static void ajouterMeta(Metadonnee meta) {
+
     }
     /**
      * permet de décaracteriser une lettrine en supprimant une métadonnée
@@ -60,11 +54,8 @@ public class LettrineDAO extends AbstractDao {
      * @see Metadonnee
      */
 
-    // ----------- << method.annotations@AAAAAAGEfcyVPFpkdWk= >>
-    // ----------- >>
-    public void supprimerMeta(Metadonnee meta) {
-    // ----------- << method.body@AAAAAAGEfcyVPFpkdWk= >>
-    // ----------- >>
+    public static void supprimerMeta(Metadonnee meta) {
+
     }
     /**
      * Met à jour la base de donnée avec les nouvelles valeurs de la métadonnée
@@ -72,21 +63,18 @@ public class LettrineDAO extends AbstractDao {
      * @see Metadonnee
     */
 
-    public void modifierMeta(Metadonnee meta) {
-    // ----------- << method.body@AAAAAAGEfc0dGGFnIFc= >>
-    // ----------- >>
+    public static void modifierMeta(Metadonnee meta) {
+
     }
-    // ----------- << method.annotations@AAAAAAGErxGufsFVogM= >>
-    // ----------- >>
 
     /**
      * Met en ligne une image stockée sur disque et renvoie son URL
-     * @param file le fichier où se trouve l'image dans le disque, obtenue grâce à la fênetre
+     * @param l le fichier où se trouve l'image dans le disque, obtenue grâce à la fênetre
      * @return String: le lien vers l'image en ligne
      * @see File
      * @see #Fenetre.savePopUp
      */
-    private String upload(File file) {
+    public static String upload(String l) {
         return null;
     }
 // ----------- << class.extras@AAAAAAGEEKm5d/fG0Tk= >>
