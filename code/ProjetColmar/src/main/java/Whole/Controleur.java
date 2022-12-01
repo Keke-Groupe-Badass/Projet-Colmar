@@ -3,7 +3,7 @@
 *
 * Drop us a line or two at feedback@archetypesoftware.com: we would love to hear from you!
 */
-package Whole;
+package whole;
 
 import java.util.*;
 import java.time.*;
@@ -19,7 +19,7 @@ import java.time.*;
 
 // ----------- << class.annotations@AAAAAAGEEKdRevZ0lk0= >>
 // ----------- >>
-public class Controlleur {
+public class Controleur {
     // ----------- << attribute.annotations@AAAAAAGEIHa8b/dPHI8= >>
     // ----------- >>
     private Connection bd;
@@ -69,6 +69,19 @@ public class Controlleur {
     // ----------- >>
     public Boolean AddUser(void String name, void String pwd, void String confirm) {
     // ----------- << method.body@AAAAAAGELsui0MkWVxw= >>
+    // ----------- >>
+    }
+    /**
+    * @param name String 
+    * @param oldPwd String 
+    * @param newPwd String 
+    * @param confirm String
+    */
+
+    // ----------- << method.annotations@AAAAAAGEPgENpAkdq2k= >>
+    // ----------- >>
+    public Boolean ChnagePWD(void name String, void oldPwd String, void newPwd String, void confirm String) {
+    // ----------- << method.body@AAAAAAGEPgENpAkdq2k= >>
     // ----------- >>
     }
 // ----------- << class.extras@AAAAAAGEEKdRevZ0lk0= >>
