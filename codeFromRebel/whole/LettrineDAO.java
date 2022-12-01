@@ -5,52 +5,47 @@
 */
 package whole;
 
-import java.util.*;
-import java.time.*;
 
+import java.io.File;
 
-
-// ----------- << imports@AAAAAAGEEKm5d/fG0Tk= >>
-// ----------- >>
-
-// ----------- << class.annotations@AAAAAAGEEKm5d/fG0Tk= >>
-// ----------- >>
+/**
+ * Classe héritant d'AbstractDAO, permettant de lier une Lettrine à la base de donnée
+ * @see AbstractDao
+ */
 public class LettrineDAO extends AbstractDao {
-    /**
-    * @param l1 Lettrine 
-    * @param l2 Lettrine
-    */
 
-    // ----------- << method.annotations@AAAAAAGEIHo0vhVzv4g= >>
-    // ----------- >>
-    public void lie(void l1 Lettrine, void l2 Lettrine) {
-    // ----------- << method.body@AAAAAAGEIHo0vhVzv4g= >>
-    // ----------- >>
-    }
     /**
-    * @param l Lettrine 
-    * @param O ouvrage
+     *permet de lier dans la base de donnée une lettrine à ouvrage, en effet une lettrine n'est présente dans un seul et unique ouvrage.
+    * @param l la lettrine à lier à l'ouvrage
+    * @param O l'ouvrage d'origine
+     * @see Ouvrage
+     * @see Lettrine
     */
 
     // ----------- << method.annotations@AAAAAAGEIHt5eyFqOnk= >>
     // ----------- >>
-    public void provient(void l Lettrine, void O ouvrage) {
+    public void provient(Lettrine l , Ouvrage O)   {
     // ----------- << method.body@AAAAAAGEIHt5eyFqOnk= >>
     // ----------- >>
     }
     /**
-    * @param l Lettrine 
-    * @param t Tag
+     *Permet de lier dans la base de donnée une lettrine à un tag
+    * @param l La lettrine dont on souhaite ajouter un tag
+    * @param t Le tag à ajouter à la lettrine
+     * @see Lettrine
+     * @see Tag
     */
 
     // ----------- << method.annotations@AAAAAAGEIHvxLSTVufQ= >>
     // ----------- >>
-    public void tager(void l Lettrine, void t Tag) {
+    public void tager(Lettrine l , Tag t) {
     // ----------- << method.body@AAAAAAGEIHvxLSTVufQ= >>
     // ----------- >>
     }
     /**
-    * @param meta
+     * permet de caracteriser une lettrine en ajoutant une métadonnée
+    * @param meta Métadonnée à ajouter à la lettrine
+     * @see Metadonnee
     */
 
     // ----------- << method.annotations@AAAAAAGEfcqAt1VgxHs= >>
@@ -60,8 +55,10 @@ public class LettrineDAO extends AbstractDao {
     // ----------- >>
     }
     /**
-    * @param meta
-    */
+     * permet de décaracteriser une lettrine en supprimant une métadonnée
+     * @param meta Métadonnée à supprimer à la lettrine
+     * @see Metadonnee
+     */
 
     // ----------- << method.annotations@AAAAAAGEfcyVPFpkdWk= >>
     // ----------- >>
@@ -70,21 +67,26 @@ public class LettrineDAO extends AbstractDao {
     // ----------- >>
     }
     /**
-    * @param metaOrigine 
-    * @param metaChnagement
+     * Met à jour la base de donnée avec les nouvelles valeurs de la métadonnée
+     * @param meta La métadonnée dont l'on souhaite que la partie code correspond avec la partie base de donnée
+     * @see Metadonnee
     */
 
-    // ----------- << method.annotations@AAAAAAGEfc0dGGFnIFc= >>
-    // ----------- >>
-    public void modifierMeta(Metadonnee metaOrigine, MetaDonnee metaChnagement) {
+    public void modifierMeta(Metadonnee meta) {
     // ----------- << method.body@AAAAAAGEfc0dGGFnIFc= >>
     // ----------- >>
     }
     // ----------- << method.annotations@AAAAAAGErxGufsFVogM= >>
     // ----------- >>
-    private String upload() {
-    // ----------- << method.body@AAAAAAGErxGufsFVogM= >>
-    // ----------- >>
+
+    /**
+     * Met en ligne une image stockée sur disque et renvoie son URL
+     * @param file le fichier où se trouve l'image dans le disque
+     * @return String: le lien vers l'image en ligne
+     * @see File
+     */
+    private String upload(File file) {
+        return null;
     }
 // ----------- << class.extras@AAAAAAGEEKm5d/fG0Tk= >>
 // ----------- >>
