@@ -81,9 +81,10 @@ public class LettrineDAO extends AbstractDao {
 
     /**
      * Met en ligne une image stockée sur disque et renvoie son URL
-     * @param file le fichier où se trouve l'image dans le disque
+     * @param file le fichier où se trouve l'image dans le disque, obtenue grâce à la fênetre
      * @return String: le lien vers l'image en ligne
      * @see File
+     * @see #Fenetre.savePopUp
      */
     private String upload(File file) {
         return null;
