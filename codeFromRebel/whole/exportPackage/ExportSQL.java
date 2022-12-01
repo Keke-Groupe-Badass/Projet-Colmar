@@ -5,6 +5,7 @@
 */
 package whole.exportPackage;
 
+import java.io.File;
 import java.util.*;
 import java.time.*;
 
@@ -19,7 +20,7 @@ public class ExportSQL implements ExportTypeInterface {
     @Override
     // ----------- << method.annotations@AAAAAAGEzpbIUAevq+k= >>
     // ----------- >>
-    public void export() {
+    public void export(File f) {
     // ----------- << method.body@AAAAAAGEzpbIUAevq+k= >>
     // ----------- >>
     }

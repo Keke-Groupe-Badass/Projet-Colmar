@@ -5,20 +5,21 @@
 */
 package whole.exportPackage;
 
-import java.util.*;
-import java.time.*;
+import java.io.File;
 
-
-
-// ----------- << imports@AAAAAAGEzpXcBdick5I= >>
-// ----------- >>
-
-// ----------- << class.annotations@AAAAAAGEzpXcBdick5I= >>
-// ----------- >>
+/**
+ * Interface qui permet d'ajouter facilement des nouvelles méthodes d'export
+ */
 public interface ExportTypeInterface {
+
+    /**
+     *  Implémante d'une manière à définir la sauvegarde de la base de donnée dans un fichier
+     * @param f Fichier de sauvegarde
+     * @see whole.AdminDao.exportDonee
+     */
+    void export(File f);
+
     // ----------- << method.annotations@AAAAAAGEzpbIUAevq+k= >>
     // ----------- >>
-    void export();
-// ----------- << interface.extras@AAAAAAGEzpXcBdick5I= >>
-// ----------- >>
+
 }
