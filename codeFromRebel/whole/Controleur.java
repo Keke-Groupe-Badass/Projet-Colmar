@@ -19,7 +19,7 @@ import java.time.*;
 
 // ----------- << class.annotations@AAAAAAGEEKdRevZ0lk0= >>
 // ----------- >>
-public class Controlleur {
+public class Controleur {
     // ----------- << attribute.annotations@AAAAAAGEIHa8b/dPHI8= >>
     // ----------- >>
     private Connection bd;
