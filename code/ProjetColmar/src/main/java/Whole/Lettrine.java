@@ -6,92 +6,120 @@
 package Whole;
 
 import java.util.*;
-import java.time.*;
 
-
-
-// ----------- << imports@AAAAAAGEEKlTM/dIQDY= >>
-// ----------- >>
-
-// ----------- << class.annotations@AAAAAAGEEKlTM/dIQDY= >>
-// ----------- >>
 public class Lettrine implements CCMS {
-    // ----------- << attribute.annotations@AAAAAAGEE6blvh6f+aY= >>
-    // ----------- >>
+
     private Ouvrage ouvrage;
 
-    // ----------- << attribute.annotations@AAAAAAGEE6c7UiKWdLo= >>
-    // ----------- >>
+    /**
+     * Liste des métadonnées associées à la lettrine
+     */
     private ArrayList<Metadonnees> metadonnees;
 
-    // ----------- << attribute.annotations@AAAAAAGEE6ebxicMu3w= >>
-    // ----------- >>
+    /**
+     * numéro de la page sur laquelle figure la lettrine
+     */
     private int nbPage;
 
-    // ----------- << attribute.annotations@AAAAAAGEE6jfbDkXR34= >>
-    // ----------- >>
+    /**
+     * id de la lettrine dans la base
+     */
     private int id;
 
-    // ----------- << attribute.annotations@AAAAAAGEE6odtWRFSiA= >>
-    // ----------- >>
+    /**
+     * Liste des tags associés à la lettrine
+     */
     private ArrayList<Tag> tags;
 
+    /**
+     * Constructeur de la classe Lettrine
+     * @param ouvrage
+     * @param metadonnees
+     * @param nbPage
+     * @param id
+     * @param tags
+     */
+    public Lettrine(Ouvrage ouvrage, ArrayList<Metadonnees> metadonnees, int nbPage, int id, ArrayList<Tag> tags) {
+        this.ouvrage = ouvrage;
+        this.metadonnees = metadonnees;
+        this.nbPage = nbPage;
+        this.id = id;
+        this.tags = tags;
+    }
+
+    /**
+     * Renvoie un objet de type Ouvrage
+     * @return Ouvrage ouvrage
+     */
     private Ouvrage getOuvrage() {
         return ouvrage;
     }
 
+    /**
+     * Renvoie la liste des métadonnées associées à la lettrine
+     * @return ArrayList<Metadonnees> metadonnees
+     */
     private ArrayList<Metadonnees> getMetadonnees() {
         return metadonnees;
     }
 
+    /**
+     * Renvoie le numéro de la page sur laquelle la lettrine figure.
+     * @return int nbPage
+     */
     private int getNbPage() {
         return nbPage;
     }
 
+    /**
+     * Renvoie l'id de la lettrine dans la base de données
+     * @return int id
+     */
     private int getId() {
         return id;
     }
 
+    /**
+     * Renvoie la liste des tags associés à la lettrine
+     * @return ArrayList<Tag> tags
+     */
     private ArrayList<Tag> getTags() {
         return tags;
     }
 
+    /**
+     * permet de modifier la valeur de l'ouvrage par l'objet en paramètre
+     * @param ouvrage : nouvelle valeur de ouvrage
+     */
     private void setOuvrage(Ouvrage ouvrage) {
         this.ouvrage = ouvrage;
     }
 
-    private void setMetadonnees(ArrayList<Metadonnees> metadonnees) {
-        this.metadonnees = metadonnees;
-    }
-
+    /**
+     * permet de modifier la valeur du numéro de la page par l'objet en paramètre
+     * @param nbPage : nouvelle valeur de nbPage
+     */
     private void setNbPage(int nbPage) {
         this.nbPage = nbPage;
     }
 
-    private void setId(int id) {
-        this.id = id;
-    }
-
-    private void setTags(ArrayList<Tag> tags) {
-        this.tags = tags;
-    }
-
-    // ----------- << method.annotations@AAAAAAGEJC33Ou5EqO4= >>
-    // ----------- >>
-    public void AjouterMetadonnees() {
-    // ----------- << method.body@AAAAAAGEJC33Ou5EqO4= >>
-    // ----------- >>
-    }
     /**
-    * @param meta
-    */
+     * Cette methode permet d'ajouter la métadonnée passée en paramètre à la lettrine.
+     *Elle affecte la liste de métadonnées metadonnees en y ajoutant la métadonnée passée en paramètre.
+     * @param meta : metadonnée à ajouter
+     * @see #metadonnees
+     */
+    public void AjouterMetadonnees(Metadonnee meta) {
 
-    // ----------- << method.annotations@AAAAAAGEJC6p8/QYVKI= >>
-    // ----------- >>
-    public void SupprimerMetadonnees(Metadonnees meta) {
-    // ----------- << method.body@AAAAAAGEJC6p8/QYVKI= >>
-    // ----------- >>
     }
-// ----------- << class.extras@AAAAAAGEEKlTM/dIQDY= >>
-// ----------- >>
+
+    /**
+     * Cette méthode permet de supprimer la métadonnée passée en paramètre à la lettrine.
+     * Elle affecte la liste de métadonnées metadonnees en en retirant la métadonnée passée en paramètre.
+     * @param meta : métadonnée à supprimer
+     * @see #metadonnees
+     */
+    public void SupprimerMetadonnees(Metadonnees meta) {
+
+    }
 }
