@@ -5,16 +5,11 @@
 */
 package whole;
 
-import java.util.*;
-import java.time.*;
+import java.io.File;
 
 
 
-// ----------- << imports@AAAAAAGEEKeR9vafVXg= >>
-// ----------- >>
 
-// ----------- << class.annotations@AAAAAAGEEKeR9vafVXg= >>
-// ----------- >>
 public class Fenetre {
     /**
     * @param s Scene
@@ -25,6 +20,9 @@ public class Fenetre {
     public Boolean afficher(void s Scene) {
     // ----------- << method.body@AAAAAAGEFFMIn3R+xuw= >>
     // ----------- >>
+    }
+    public File savePopUp(){
+        return null;
     }
 // ----------- << class.extras@AAAAAAGEEKeR9vafVXg= >>
 // ----------- >>
