@@ -3,33 +3,22 @@
 *
 * Drop us a line or two at feedback@archetypesoftware.com: we would love to hear from you!
 */
-package whole;
+package Whole;
 
+import java.sql.Connection;
 import java.util.*;
 import java.time.*;
 
-
-
-// ----------- << imports@AAAAAAGEEKdRevZ0lk0= >>
-// ----------- >>
-
 /**
-* Coeur de l'application, doit avant tou lancer COnnectionUniqueBD
+* Coeur de l'application, doit avant tout lancer COnnectionUniqueBD
 */
-
-// ----------- << class.annotations@AAAAAAGEEKdRevZ0lk0= >>
-// ----------- >>
 public class Controleur {
-    // ----------- << attribute.annotations@AAAAAAGEIHa8b/dPHI8= >>
-    // ----------- >>
+
     private Connection bd;
 
     /**
     * Permet de sauvegarder des métadonnés (ou autre) dans le but d'un copier coller
     */
-
-    // ----------- << attribute.annotations@AAAAAAGEIIIlXMkTv6I= >>
-    // ----------- >>
     private Object pressePapier;
 
     private Connection getBd() {
@@ -49,27 +38,19 @@ public class Controleur {
     }
 
     /**
-    * @param String name 
-    * @param String pwd
+    * @param name String
+    * @param pwd String
     */
-
-    // ----------- << method.annotations@AAAAAAGELrr87wPx3E0= >>
-    // ----------- >>
-    public Boolean Login(void String name, void String pwd) {
-    // ----------- << method.body@AAAAAAGELrr87wPx3E0= >>
-    // ----------- >>
+    public Boolean Login( String name,  String pwd) {
+        return true;
     }
     /**
-    * @param String name 
-    * @param String pwd 
-    * @param String confirm
+    * @param name String
+    * @param pwd String
+    * @param confirm String
     */
-
-    // ----------- << method.annotations@AAAAAAGELsui0MkWVxw= >>
-    // ----------- >>
-    public Boolean AddUser(void String name, void String pwd, void String confirm) {
-    // ----------- << method.body@AAAAAAGELsui0MkWVxw= >>
-    // ----------- >>
+    public Boolean AddUser(String name, String pwd, String confirm) {
+        return true; //en attendant de coder la fonction
     }
     /**
     * @param name String 
@@ -77,13 +58,7 @@ public class Controleur {
     * @param newPwd String 
     * @param confirm String
     */
-
-    // ----------- << method.annotations@AAAAAAGEPgENpAkdq2k= >>
-    // ----------- >>
-    public Boolean ChnagePWD(void name String, void oldPwd String, void newPwd String, void confirm String) {
-    // ----------- << method.body@AAAAAAGEPgENpAkdq2k= >>
-    // ----------- >>
+    public Boolean ChnagePWD(String name, String oldPwd, String newPwd, String confirm) {
+        return true;
     }
-// ----------- << class.extras@AAAAAAGEEKdRevZ0lk0= >>
-// ----------- >>
 }

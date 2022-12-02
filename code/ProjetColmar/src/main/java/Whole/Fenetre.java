@@ -5,27 +5,17 @@
 */
 package Whole;
 
+import javafx.scene.Scene;
+
 import java.util.*;
 import java.time.*;
 
-
-
-// ----------- << imports@AAAAAAGEEKeR9vafVXg= >>
-// ----------- >>
-
-// ----------- << class.annotations@AAAAAAGEEKeR9vafVXg= >>
-// ----------- >>
 public class Fenetre {
+
     /**
     * @param s Scene
     */
-
-    // ----------- << method.annotations@AAAAAAGEFFMIn3R+xuw= >>
-    // ----------- >>
-    public Boolean afficher(void s Scene) {
-    // ----------- << method.body@AAAAAAGEFFMIn3R+xuw= >>
-    // ----------- >>
+    public Boolean afficher(Scene s) {
+        return true;
     }
-// ----------- << class.extras@AAAAAAGEEKeR9vafVXg= >>
-// ----------- >>
 }

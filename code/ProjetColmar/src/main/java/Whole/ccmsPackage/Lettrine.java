@@ -16,6 +16,7 @@ public class Lettrine implements CCMS {
 
     /**
      * Liste des métadonnées associées à la lettrine
+     * @see Whole.Metadonnee
      */
     private ArrayList<Metadonnee> metadonnees;
 
@@ -36,11 +37,11 @@ public class Lettrine implements CCMS {
 
     /**
      * Constructeur de la classe Lettrine
-     * @param ouvrage
-     * @param metadonnees
-     * @param nbPage
-     * @param id
-     * @param tags
+     * @param ouvrage Ouvrage
+     * @param metadonnees ArrayList<Metadonnee>
+     * @param nbPage int
+     * @param id int
+     * @param tags ArrayList<Tag>
      */
     public Lettrine(Ouvrage ouvrage, ArrayList<Metadonnee> metadonnees, int nbPage, int id, ArrayList<Tag> tags) {
         this.ouvrage = ouvrage;
@@ -52,7 +53,7 @@ public class Lettrine implements CCMS {
 
     /**
      * Renvoie un objet de type Ouvrage
-     * @return Ouvrage ouvrage
+     * @return ouvrage
      */
     private Ouvrage getOuvrage() {
         return ouvrage;
@@ -68,7 +69,7 @@ public class Lettrine implements CCMS {
 
     /**
      * Renvoie le numéro de la page sur laquelle la lettrine figure.
-     * @return int nbPage
+     * @return nbPage
      */
     private int getNbPage() {
         return nbPage;
@@ -76,7 +77,7 @@ public class Lettrine implements CCMS {
 
     /**
      * Renvoie l'id de la lettrine dans la base de données
-     * @return int id
+     * @return id
      */
     private int getId() {
         return id;
@@ -84,7 +85,7 @@ public class Lettrine implements CCMS {
 
     /**
      * Renvoie la liste des tags associés à la lettrine
-     * @return ArrayList<Tag> tags
+     * @return tags
      */
     private ArrayList<Tag> getTags() {
         return tags;
@@ -92,7 +93,7 @@ public class Lettrine implements CCMS {
 
     /**
      * permet de modifier la valeur de l'ouvrage par l'objet en paramètre
-     * @param ouvrage : nouvelle valeur de ouvrage
+     * @param ouvrage Ouvrage : nouvelle valeur de ouvrage
      */
     private void setOuvrage(Ouvrage ouvrage) {
         this.ouvrage = ouvrage;
@@ -100,7 +101,7 @@ public class Lettrine implements CCMS {
 
     /**
      * permet de modifier la valeur du numéro de la page par l'objet en paramètre
-     * @param nbPage : nouvelle valeur de nbPage
+     * @param nbPage int : nouvelle valeur de nbPage
      */
     private void setNbPage(int nbPage) {
         this.nbPage = nbPage;
@@ -109,7 +110,7 @@ public class Lettrine implements CCMS {
     /**
      * Cette methode permet d'ajouter la métadonnée passée en paramètre à la lettrine.
      *Elle affecte la liste de métadonnées metadonnees en y ajoutant la métadonnée passée en paramètre.
-     * @param meta : metadonnée à ajouter
+     * @param meta Metadonnee : metadonnée à ajouter
      * @see #metadonnees
      */
     public void AjouterMetadonnees(Metadonnee meta) {
