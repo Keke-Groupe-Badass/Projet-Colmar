@@ -38,4 +38,13 @@ public class AdminDAO {
 
     }
 
+    /**
+     * Ajoute au log un text
+     * @param txt Le message à enregistrer
+     * @param user L'utilisateur qui a provoqué une action
+     */
+    public void writeLog(String txt, String user){
+
+    }
+
 }
