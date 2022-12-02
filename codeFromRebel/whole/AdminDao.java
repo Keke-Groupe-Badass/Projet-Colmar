@@ -7,9 +7,6 @@ package whole;
 
 import java.io.File;
 import java.sql.Connection;
-import java.util.*;
-import java.time.*;
-
 
 public class AdminDao {
     private static Connection cn;

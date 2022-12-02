@@ -1,5 +1,5 @@
 package Whole;
 
-public class AuteurDAO extends AbstractDao {
+public class AuteurDAO extends AbstractDAO {
 
 }

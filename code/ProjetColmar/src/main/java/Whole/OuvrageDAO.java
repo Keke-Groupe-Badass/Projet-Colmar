@@ -5,17 +5,13 @@
 */
 package Whole;
 
-import java.util.*;
-import java.time.*;
-
-
 
 // ----------- << imports@AAAAAAGEEKml1vecxvo= >>
 // ----------- >>
 
 // ----------- << class.annotations@AAAAAAGEEKml1vecxvo= >>
 // ----------- >>
-public class OuvrageDAO extends AbstractDao {
+public class OuvrageDAO extends AbstractDAO {
     /**
     * @param a Auteur 
     * @param o Ouvrage

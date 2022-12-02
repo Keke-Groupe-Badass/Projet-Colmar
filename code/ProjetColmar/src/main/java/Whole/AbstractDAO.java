@@ -3,13 +3,12 @@
 *
 * Drop us a line or two at feedback@archetypesoftware.com: we would love to hear from you!
 */
-package whole;
+package Whole;
 
 import java.sql.Connection;
 import java.util.*;
-import java.time.*;
 
-public abstract class AbstractDao {
+public abstract class AbstractDAO {
 
     private static Connection cn;
 

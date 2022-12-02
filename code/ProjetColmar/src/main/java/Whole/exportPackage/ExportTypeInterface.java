@@ -3,7 +3,7 @@
 *
 * Drop us a line or two at feedback@archetypesoftware.com: we would love to hear from you!
 */
-package whole.exportPackage;
+package Whole.exportPackage;
 
 import java.io.File;
 
@@ -15,7 +15,7 @@ public interface ExportTypeInterface {
     /**
      *  Implémante d'une manière à définir la sauvegarde de la base de donnée dans un fichier
      * @param f Fichier de sauvegarde
-     * @see whole.AdminDao.exportDonee
+     * @see #Whole.AdminDao.exportDonee()
      */
     void export(File f);
 

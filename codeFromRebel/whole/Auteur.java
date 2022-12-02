@@ -5,23 +5,13 @@
 */
 package whole;
 
-import java.util.*;
-import java.time.*;
 
-
-
-// ----------- << imports@AAAAAAGEE5woOiUo4O8= >>
-// ----------- >>
-
-// ----------- << class.annotations@AAAAAAGEE5woOiUo4O8= >>
-// ----------- >>
 public class Auteur implements CCMS {
     // ----------- << attribute.annotations@AAAAAAGEE6k55EBSKXE= >>
     // ----------- >>
     private int id;
 
-    // ----------- << attribute.annotations@AAAAAAGEE6lpf0It0Aw= >>
-    // ----------- >>
+
     private String nom;
 
     // ----------- << attribute.annotations@AAAAAAGEE6mNZEPAXTM= >>

@@ -5,17 +5,13 @@
 */
 package Whole;
 
-import java.util.*;
-import java.time.*;
-
-
 
 // ----------- << imports@AAAAAAGEEKm5d/fG0Tk= >>
 // ----------- >>
 
 // ----------- << class.annotations@AAAAAAGEEKm5d/fG0Tk= >>
 // ----------- >>
-public class LettrineDAO extends AbstractDao {
+public class LettrineDAO extends AbstractDAO {
     /**
     * @param l1 Lettrine 
     * @param l2 Lettrine

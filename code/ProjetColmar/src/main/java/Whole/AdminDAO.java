@@ -3,12 +3,9 @@
 *
 * Drop us a line or two at feedback@archetypesoftware.com: we would love to hear from you!
 */
-package whole;
+package Whole;
 
 import java.io.File;
-import java.util.*;
-import java.time.*;
-
 
 
 // ----------- << imports@AAAAAAGEzpKTNDlXH7I= >>
@@ -16,7 +13,7 @@ import java.time.*;
 
 // ----------- << class.annotations@AAAAAAGEzpKTNDlXH7I= >>
 // ----------- >>
-public class AdminDao {
+public class AdminDAO {
     /**
     * @param file
     */
