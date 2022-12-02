@@ -52,6 +52,26 @@ public class Ouvrage implements CCMS {
     // ----------- >>
     private int id;
 
+    public Ouvrage(String titre, ArrayList<Auteur> auteurs, String editeur, String imprimeur, String lieuEdition, String dateEdition, int nbPage, String lien, int id) {
+        this.titre = titre;
+        this.auteurs = auteurs;
+        this.editeur = editeur;
+        this.imprimeur = imprimeur;
+        this.lieuEdition = lieuEdition;
+        this.dateEdition = dateEdition;
+        this.nbPage = nbPage;
+        this.lien = lien;
+        this.id = id;
+    }
+    /**
+     * Constructeur à utiliser pour les instances de changement
+     */
+    public Ouvrage() {
+        this.id = -2;
+        this.nbPage = -2;
+
+    }
+
     private String getTitre() {
         return titre;
     }

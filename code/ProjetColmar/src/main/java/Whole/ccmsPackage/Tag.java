@@ -8,24 +8,27 @@ package Whole.ccmsPackage;
 import Whole.daoPackage.AbstractDAO;
 
 
-// ----------- << imports@AAAAAAGEEKketvcezw8= >>
-// ----------- >>
-
-// ----------- << class.annotations@AAAAAAGEEKketvcezw8= >>
-// ----------- >>
 public class Tag implements CCMS {
-    // ----------- << attribute.annotations@AAAAAAGEE6qQjWdBWHI= >>
-    // ----------- >>
+
     private int id;
 
-    // ----------- << attribute.annotations@AAAAAAGEE6rkXmsqMsw= >>
-    // ----------- >>
+
     private String nom;
 
-    // ----------- << attribute.annotations@AAAAAAGEE6s4xW0Fm4U= >>
-    // ----------- >>
+
     private String description;
 
+    public Tag(int id, String nom, String description) {
+        this.id = id;
+        this.nom = nom;
+        this.description = description;
+    }
+    /**
+     * Constructeur à utiliser pour les instances de changement
+     */
+    public Tag() {
+        this.id = -2;
+    }
     private int getId() {
         return id;
     }
@@ -90,6 +93,4 @@ public class Tag implements CCMS {
 
     }
 
-// ----------- << class.extras@AAAAAAGEEKketvcezw8= >>
-// ----------- >>
 }
