@@ -5,28 +5,16 @@
 */
 package Whole.daoPackage;
 
-
-// ----------- << imports@AAAAAAGEEKml1vecxvo= >>
-// ----------- >>
-
 import Whole.ccmsPackage.Auteur;
 import Whole.ccmsPackage.Ouvrage;
 import Whole.daoPackage.AbstractDAO;
 
-// ----------- << class.annotations@AAAAAAGEEKml1vecxvo= >>
-// ----------- >>
 public class OuvrageDAO extends AbstractDAO {
     /**
     * @param a Auteur 
     * @param o Ouvrage
     */
+    public void ecrit( Auteur a, Ouvrage o) {
 
-    // ----------- << method.annotations@AAAAAAGEIH0zp2+Q014= >>
-    // ----------- >>
-    public void ecrit(void a Auteur, void o Ouvrage) {
-    // ----------- << method.body@AAAAAAGEIH0zp2+Q014= >>
-    // ----------- >>
     }
-// ----------- << class.extras@AAAAAAGEEKml1vecxvo= >>
-// ----------- >>
 }
