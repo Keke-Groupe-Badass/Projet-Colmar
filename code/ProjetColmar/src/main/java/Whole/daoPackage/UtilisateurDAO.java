@@ -1,63 +1,71 @@
-package Whole.daoPackage;
+package whole;
 
 import java.util.*;
 import java.time.*;
 
 /**
-* Cette classe est appelÃ©e une fois pour crÃ©er un lien entre l'application et la base de donnÃ©es
-* pour tout ce qui concerne les intÃ©ractions et les modifications de l'utilisateur
+* Cette classe est appelée pour créer un lien entre l'application et la base de données
+* pour tout ce qui concerne les intéractions et les modifications de l'utilisateur
 */
 
 public class UtilisateurDAO extends AbstractDao {
-    /**
-    * @param url 
-    * @param login 
-    * @param pwd
-    * @return
+	/**
+    * La méthode se charge de créer une connexion avec la base de données pour pouvoir
+    * ensuite effectuer des échanges et des modifications dessus. Elle prend l'url de la base,
+    * le login de la personne souhaitant y accéder ainsi que le mot de passe puis fait appel
+    * à SingleConnection pour créer la connexion.
+    * 
+    * @param url : lien vers la base de données
+    * @param login : login de l'utilisateur de la BDD, permet de s'identifier sur la base de données
+    * pour y avoir accès
+    * @param pwd : mot de passe de l'utilisateur de la BDD, permet également de s'identifier sur
+    * la base de données
+    * @return Renvoie la connexion qui a été créée sous forme d'objet Connection si la
+    * connexion s'est effectuée avec succès. Sinon, elle lève une exception SQLException.
+    * @see SingleConnection
     */
-    public Connection connection(String url, String login, String pwd) {
-
+    public Connection connexion(String url, String login, String pwd) {
+    	
     }
 
     /**
-    * @param login 
-    * @param mdp
-    * @return
+    * Permet de changer le mot de passe de l'utilisateur. On donne le login et le
+    * nouveau mot de passe souhaité, puis on retrouve l'utilisateur dans la base de
+    * données à l'aide du login. Le nouveau mot de passe est encrypté puis stocké
+    * dans la base à la place de l'ancien.
+    * 
+    * @param login : login de l'utilisateur, permet de l'identifier dans la BDD
+    * @param mdp : nouveau mot de passe qui doit venir remplacer l'ancien
+    * @return Renvoie true si le changement s'est correctement effectué, false sinon.
     */
     public Boolean changeMDP(String login, String mdp) {
 
     }
 
     /**
-    * @param login
-    * @return
+    * Permet de supprimer un utilisateur de la base de données à partir de son login.
+    * Le login est recherché dans la base de données, puis si trouvé l'utilisateur
+    * correspondant est alors supprimé.
+    * 
+    * @param login : login de l'utilisateur
+    * @return Renvoie true si la suppression s'est correctement effectuée, false sinon.
     */
     public Boolean supprimerUtilisateur(String login) {
     
     }
 
     /**
-    * @param login 
-    * @param mdp 
-    * @param mail
+    * Permet de créer un nouvel utilisateur dans la base de données.
+    * Si le login n'existe pas déjà, ni que l'adresse mail est déjà utilisée, on
+    * encrypte le mot de passe et on effectue une requête d'insertion avec le login,
+    * mot de passe et adresse mail de l'utilisateur qu'on souhaite ajouter.
+    *
+    * @param login : login de l'utilisateur à ajouter
+    * @param mdp : mot de passe de l'utilisateur à ajouter
+    * @param mail : adresse mail de l'utilisateur à ajouter
+    * @return Renvoie true si l'insertion s'est correctement effectuée, false sinon.
     */
     public Boolean creerUtilisateur(String login, String mdp, String mail) {
-
-    }
-
-    /**
-     * 
-     * @return
-     */
-    public String exportLog() {
-
-    }
-
-    /**
-     * 
-     * @return
-     */
-    public String exportDonnee() {
 
     }
 }
