@@ -8,19 +8,20 @@ package Whole.exportPackage;
 import java.io.File;
 
 
-// ----------- << imports@AAAAAAGEzpgiZ2u/fBo= >>
-// ----------- >>
-
-// ----------- << class.annotations@AAAAAAGEzpgiZ2u/fBo= >>
-// ----------- >>
+/**
+ * Implémentation de ExportTypeIntetface pour le SQL
+ * @see ExportTypeInterface
+ */
 public class ExportCSV implements ExportTypeInterface {
+
+    /**
+     *  Implémante en CSV la sauvegarde de la base de donnée dans un fichier
+     * @param f Fichier de sauvegarde
+     * @see whole.AdminDao.exportDonee
+     */
     @Override
-    // ----------- << method.annotations@AAAAAAGEzpbIUAevq+k= >>
-    // ----------- >>
     public void export(File f) {
-    // ----------- << method.body@AAAAAAGEzpbIUAevq+k= >>
-    // ----------- >>
+
     }
-// ----------- << class.extras@AAAAAAGEzpgiZ2u/fBo= >>
-// ----------- >>
+
 }

@@ -15,7 +15,7 @@ public interface ExportTypeInterface {
     /**
      *  Implémante d'une manière à définir la sauvegarde de la base de donnée dans un fichier
      * @param f Fichier de sauvegarde
-     * @see #Whole.AdminDao.exportDonee()
+     * @see whole.AdminDao.exportDonee
      */
     void export(File f);
 

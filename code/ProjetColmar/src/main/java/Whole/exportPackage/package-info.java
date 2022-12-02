@@ -7,4 +7,4 @@
 
 // ----------- << package.info >>
 // ----------- >>
-package whole.exportPackage;
+package Whole.exportPackage;
