@@ -26,7 +26,7 @@ public class UtilisateurDAO extends AbstractDAO {
     * @see Whole.SingleConnection
     */
     public Connection connexion(String url, String login, String pwd) {
-    	
+    	return null;
     }
 
     /**
@@ -37,9 +37,8 @@ public class UtilisateurDAO extends AbstractDAO {
     * 
     * @param login : login de l'utilisateur, permet de l'identifier dans la BDD
     * @param mdp : nouveau mot de passe qui doit venir remplacer l'ancien
-    * @return Renvoie true si le changement s'est correctement effectu�, false sinon.
     */
-    public Boolean changeMDP(String login, String mdp) {
+    public void changeMDP(String login, String mdp) {
 
     }
 
@@ -49,9 +48,8 @@ public class UtilisateurDAO extends AbstractDAO {
     * correspondant est alors supprim�.
     * 
     * @param login : login de l'utilisateur
-    * @return Renvoie true si la suppression s'est correctement effectu�e, false sinon.
     */
-    public Boolean supprimerUtilisateur(String login) {
+    public void supprimerUtilisateur(String login) {
     
     }
 
@@ -64,9 +62,8 @@ public class UtilisateurDAO extends AbstractDAO {
     * @param login : login de l'utilisateur � ajouter
     * @param mdp : mot de passe de l'utilisateur � ajouter
     * @param mail : adresse mail de l'utilisateur � ajouter
-    * @return Renvoie true si l'insertion s'est correctement effectu�e, false sinon.
     */
-    public Boolean creerUtilisateur(String login, String mdp, String mail) {
+    public void creerUtilisateur(String login, String mdp, String mail) {
 
     }
 }

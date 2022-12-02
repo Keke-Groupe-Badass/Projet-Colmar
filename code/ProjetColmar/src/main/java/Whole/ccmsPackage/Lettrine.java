@@ -50,7 +50,15 @@ public class Lettrine implements CCMS {
         this.id = id;
         this.tags = tags;
     }
-
+    /**
+     * Constructeur à utiliser pour les instances de changement
+     */
+    public Lettrine(){
+        this.ouvrage = null;
+        this.metadonnees = null;
+        this.nbPage = -2;
+        this.id = -2;
+    }
     /**
      * Renvoie un objet de type Ouvrage
      * @return ouvrage

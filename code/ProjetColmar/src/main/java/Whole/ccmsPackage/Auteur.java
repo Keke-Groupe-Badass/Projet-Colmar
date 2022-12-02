@@ -25,6 +25,15 @@ public class Auteur implements CCMS {
     }
 
     /**
+     * Constructeur à utiliser pour les instances de changement
+     */
+    public Auteur(){
+        this.id=-2;
+        this.nom=null;
+        this.prenom=null;
+    }
+
+    /**
      * renvoie l'id de l'auteur dans la base
      * @return id int
      */

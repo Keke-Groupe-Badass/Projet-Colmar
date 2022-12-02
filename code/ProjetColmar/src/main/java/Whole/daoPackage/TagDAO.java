@@ -5,15 +5,50 @@
 */
 package Whole.daoPackage;
 
+import Whole.ccmsPackage.CCMS;
+import Whole.ccmsPackage.Tag;
 
-// ----------- << imports@AAAAAAGEEKmRc/dy6X0= >>
-// ----------- >>
+import java.sql.Connection;
+import java.util.ArrayList;
 
-import Whole.daoPackage.AbstractDAO;
-
-// ----------- << class.annotations@AAAAAAGEEKmRc/dy6X0= >>
-// ----------- >>
 public class TagDAO extends AbstractDAO {
-// ----------- << class.extras@AAAAAAGEEKmRc/dy6X0= >>
-// ----------- >>
+    private static Connection cn;
+
+    /**
+     * Met à jour la BD
+     * @param objet Tag à changer
+     * @param changement Tag de changement (les paramètres null ne sont pas à changer)
+     */
+
+
+    public void modifier(Tag objet , Tag changement ) {
+
+    }
+    /**
+     * Supprime de la db un Tag
+     * @param objet un Tag d'un type à déterminer dans chaque implémentation
+     * @see Tag
+     */
+
+    public void supprimer(Tag objet ) {
+
+    }
+    /**
+     * Ajoute à la base de donnée un Tag
+     * @param donne le Tag à ajouter
+     * @see Tag
+     */
+
+    public void creer(Tag donne) {
+
+    }
+    /**
+     *Cherche un Tag dans la base
+     * @param donne Tag avec tout les paramètres nuls sauf ceux à chercher
+     * @see Tag
+     */
+
+    public ArrayList<Tag> chercher(Tag donne) {
+        return null;
+    }
 }

@@ -7,14 +7,25 @@ package Whole;
 
 import java.sql.Connection;
 
+
 /**
 * Est appelé une fois pour créer un lien entre l'application et la base de donnée
 */
+
+
 public class SingleConnection {
+    SingleConnection(){
+
+    }
+    public Connection connection(String url, String login, String pwd) {
+        return null;
+    }
 
     private String url;
 
+
     private String login;
+
 
     private String password;
 
@@ -43,12 +54,11 @@ public class SingleConnection {
     }
 
     /**
-    * @param url 
-    * @param login 
-    * @param pwd
-    */
+     * @param url
+     * @param login
+     * @param pwd
+     */
 
-    public Connection connection(String url, String login, String pwd) {
 
-    }
+
 }

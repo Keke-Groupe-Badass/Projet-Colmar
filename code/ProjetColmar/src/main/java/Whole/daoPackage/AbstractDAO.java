@@ -16,7 +16,7 @@ public abstract class AbstractDAO {
     */
 
 
-    public Boolean modifier(CCMS objet , CCMS changement ) {
+    public void modifier(CCMS objet , CCMS changement ) {
 
     }
     /**
@@ -44,7 +44,7 @@ public abstract class AbstractDAO {
     */
 
     public ArrayList<CCMS> chercher(CCMS donne) {
-
+        return null;
     }
 
 }
