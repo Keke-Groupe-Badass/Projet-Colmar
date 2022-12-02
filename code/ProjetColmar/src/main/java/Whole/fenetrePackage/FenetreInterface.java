@@ -8,13 +8,11 @@ package Whole.fenetrePackage;
 import javafx.scene.Scene;
 
 import java.io.File;
-import java.util.*;
-import java.time.*;
 
 /**
  * Interface permettant de changer simplement d'Interface utilisateur
  */
-public interface Fenetre {
+public interface FenetreInterface {
 
     /**
      * Permet de changer la scène
