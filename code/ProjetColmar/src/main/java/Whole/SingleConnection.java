@@ -19,7 +19,7 @@ import java.time.*;
 
 // ----------- << class.annotations@AAAAAAGEEKfwRPbK0gk= >>
 // ----------- >>
-public class ConnectionUniqueBD {
+public class SingleConnection {
     // ----------- << attribute.annotations@AAAAAAGEFF+AQYYZOVw= >>
     // ----------- >>
     private String url;
