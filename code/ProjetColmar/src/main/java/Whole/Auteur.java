@@ -6,16 +6,13 @@
 package Whole;
 
 public class Auteur implements CCMS {
-    // ----------- << attribute.annotations@AAAAAAGEE6k55EBSKXE= >>
-    // ----------- >>
+
     private int id;
 
-    // ----------- << attribute.annotations@AAAAAAGEE6lpf0It0Aw= >>
-    // ----------- >>
+
     private String nom;
 
-    // ----------- << attribute.annotations@AAAAAAGEE6mNZEPAXTM= >>
-    // ----------- >>
+
     private String prenom;
 
     private int getId() {
@@ -42,6 +39,4 @@ public class Auteur implements CCMS {
         this.prenom = prenom;
     }
 
-// ----------- << class.extras@AAAAAAGEE5woOiUo4O8= >>
-// ----------- >>
 }
