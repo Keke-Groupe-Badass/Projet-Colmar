@@ -1,5 +1,7 @@
 package Whole;
 
+import Whole.ccmsPackage.Lettrine;
+
 public class Metadonnee {
 
     private Lettrine lettrine;

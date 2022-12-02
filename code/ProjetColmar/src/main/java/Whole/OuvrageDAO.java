@@ -9,6 +9,9 @@ package Whole;
 // ----------- << imports@AAAAAAGEEKml1vecxvo= >>
 // ----------- >>
 
+import Whole.ccmsPackage.Auteur;
+import Whole.ccmsPackage.Ouvrage;
+
 // ----------- << class.annotations@AAAAAAGEEKml1vecxvo= >>
 // ----------- >>
 public class OuvrageDAO extends AbstractDAO {

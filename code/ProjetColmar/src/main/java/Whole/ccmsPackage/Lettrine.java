@@ -3,7 +3,11 @@
 *
 * Drop us a line or two at feedback@archetypesoftware.com: we would love to hear from you!
 */
-package Whole;
+package Whole.ccmsPackage;
+
+import Whole.AbstractDAO;
+import Whole.Metadonnee;
+import Whole.Metadonnees;
 
 import java.util.*;
 
@@ -120,6 +124,47 @@ public class Lettrine implements CCMS {
      * @see #metadonnees
      */
     public void SupprimerMetadonnees(Metadonnees meta) {
+
+    }
+
+
+    /**
+     * Modifie un CCMS, appel une méthode d'un objet de type AbstractDAO
+     *
+     * @see AbstractDAO
+     */
+    @Override
+    public void modifier() {
+
+    }
+
+    /**
+     * Cherche un CCMS, appel une méthode d'un objet de type AbstractDAO
+     *
+     * @see AbstractDAO
+     */
+    @Override
+    public void chercher() {
+
+    }
+
+    /**
+     * Créer un CCMS, appel une méthode d'un objet de type AbstractDAO
+     *
+     * @see AbstractDAO
+     */
+    @Override
+    public void creer() {
+
+    }
+
+    /**
+     * Supprime un CCMS, appel une méthode d'un objet de type AbstractDAO
+     *
+     * @see AbstractDAO
+     */
+    @Override
+    public void supprimer() {
 
     }
 }

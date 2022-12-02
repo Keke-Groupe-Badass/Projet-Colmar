@@ -3,11 +3,11 @@
 *
 * Drop us a line or two at feedback@archetypesoftware.com: we would love to hear from you!
 */
-package Whole;
+package Whole.ccmsPackage;
+
+import Whole.AbstractDAO;
 
 import java.util.*;
-import java.time.*;
-
 
 
 // ----------- << imports@AAAAAAGEEKiFAPb0eJU= >>
@@ -124,6 +124,43 @@ public class Ouvrage implements CCMS {
         this.id = id;
     }
 
-// ----------- << class.extras@AAAAAAGEEKiFAPb0eJU= >>
-// ----------- >>
+    /**
+     * Modifie un CCMS, appel une méthode d'un objet de type AbstractDAO
+     *
+     * @see AbstractDAO
+     */
+    @Override
+    public void modifier() {
+
+    }
+
+    /**
+     * Cherche un CCMS, appel une méthode d'un objet de type AbstractDAO
+     *
+     * @see AbstractDAO
+     */
+    @Override
+    public void chercher() {
+
+    }
+
+    /**
+     * Créer un CCMS, appel une méthode d'un objet de type AbstractDAO
+     *
+     * @see AbstractDAO
+     */
+    @Override
+    public void creer() {
+
+    }
+
+    /**
+     * Supprime un CCMS, appel une méthode d'un objet de type AbstractDAO
+     *
+     * @see AbstractDAO
+     */
+    @Override
+    public void supprimer() {
+
+    }
 }

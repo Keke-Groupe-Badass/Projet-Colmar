@@ -9,6 +9,9 @@ package Whole;
 // ----------- << imports@AAAAAAGEEKm5d/fG0Tk= >>
 // ----------- >>
 
+import Whole.ccmsPackage.Lettrine;
+import Whole.ccmsPackage.Tag;
+
 // ----------- << class.annotations@AAAAAAGEEKm5d/fG0Tk= >>
 // ----------- >>
 public class LettrineDAO extends AbstractDAO {

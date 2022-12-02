@@ -1,34 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="268cee68-80af-4a44-9dc0-0d6baa272f1f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../code/ProjetColmar/src/main/java/Whole/AbstractDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../code/ProjetColmar/src/main/java/Whole/AbstractDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../code/ProjetColmar/src/main/java/Whole/AdminDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../code/ProjetColmar/src/main/java/Whole/AdminDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../code/ProjetColmar/src/main/java/Whole/Auteur.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../code/ProjetColmar/src/main/java/Whole/Auteur.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AdminDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Auteur.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AuteurDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CCMS.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controleur.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fenetre.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lettrine.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LettrineDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Metadonnee.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ouvrage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OuvrageDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SIngleConnection.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tag.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TagDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/UtilisateurDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/whole.iml" beforeDir="false" />
-    </list>
+    <list default="true" id="268cee68-80af-4a44-9dc0-0d6baa272f1f" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
