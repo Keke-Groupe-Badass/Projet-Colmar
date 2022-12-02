@@ -1,5 +1,6 @@
 package Whole.daoPackage;
 
+import java.sql.Connection;
 import java.util.*;
 import java.time.*;
 
@@ -22,7 +23,7 @@ public class UtilisateurDAO extends AbstractDao {
     * la base de donn�es
     * @return Renvoie la connexion qui a �t� cr��e sous forme d'objet Connection si la
     * connexion s'est effectu�e avec succ�s. Sinon, elle l�ve une exception SQLException.
-    * @see SingleConnection
+    * @see Whole.SingleConnection
     */
     public Connection connexion(String url, String login, String pwd) {
     	
