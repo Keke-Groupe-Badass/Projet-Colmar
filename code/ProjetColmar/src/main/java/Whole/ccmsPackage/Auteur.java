@@ -6,7 +6,7 @@
 package Whole.ccmsPackage;
 
 
-import Whole.AbstractDAO;
+import Whole.daoPackage.AbstractDAO;
 
 public class Auteur implements CCMS {
 

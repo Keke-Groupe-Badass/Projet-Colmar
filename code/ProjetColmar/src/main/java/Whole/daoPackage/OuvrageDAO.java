@@ -3,7 +3,7 @@
 *
 * Drop us a line or two at feedback@archetypesoftware.com: we would love to hear from you!
 */
-package Whole;
+package Whole.daoPackage;
 
 
 // ----------- << imports@AAAAAAGEEKml1vecxvo= >>
@@ -11,6 +11,7 @@ package Whole;
 
 import Whole.ccmsPackage.Auteur;
 import Whole.ccmsPackage.Ouvrage;
+import Whole.daoPackage.AbstractDAO;
 
 // ----------- << class.annotations@AAAAAAGEEKml1vecxvo= >>
 // ----------- >>

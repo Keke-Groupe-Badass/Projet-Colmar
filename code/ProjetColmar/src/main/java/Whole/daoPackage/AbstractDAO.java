@@ -1,4 +1,4 @@
-package Whole;
+package Whole.daoPackage;
 
 import Whole.ccmsPackage.CCMS;
 

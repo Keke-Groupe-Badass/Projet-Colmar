@@ -5,7 +5,7 @@
 */
 package Whole.ccmsPackage;
 
-import Whole.AbstractDAO;
+import Whole.daoPackage.AbstractDAO;
 import Whole.Metadonnee;
 import Whole.Metadonnees;
 

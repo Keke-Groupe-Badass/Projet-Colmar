@@ -5,7 +5,7 @@
 */
 package Whole.ccmsPackage;
 
-import Whole.AbstractDAO;
+import Whole.daoPackage.AbstractDAO;
 
 import java.util.*;
 

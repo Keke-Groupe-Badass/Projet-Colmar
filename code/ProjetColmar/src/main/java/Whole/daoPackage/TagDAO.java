@@ -3,11 +3,13 @@
 *
 * Drop us a line or two at feedback@archetypesoftware.com: we would love to hear from you!
 */
-package Whole;
+package Whole.daoPackage;
 
 
 // ----------- << imports@AAAAAAGEEKmRc/dy6X0= >>
 // ----------- >>
+
+import Whole.daoPackage.AbstractDAO;
 
 // ----------- << class.annotations@AAAAAAGEEKmRc/dy6X0= >>
 // ----------- >>

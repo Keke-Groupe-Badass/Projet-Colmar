@@ -3,7 +3,7 @@
  *
  * Drop us a line or two at feedback@archetypesoftware.com: we would love to hear from you!
  */
-package Whole;
+package Whole.daoPackage;
 
 import java.io.File;
 import java.sql.Connection;
