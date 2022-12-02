@@ -3,19 +3,19 @@
 *
 * Drop us a line or two at feedback@archetypesoftware.com: we would love to hear from you!
 */
-package Whole;
-
-import java.util.*;
-import java.time.*;
-
+package Whole.daoPackage;
 
 
 // ----------- << imports@AAAAAAGEEKml1vecxvo= >>
 // ----------- >>
 
+import Whole.ccmsPackage.Auteur;
+import Whole.ccmsPackage.Ouvrage;
+import Whole.daoPackage.AbstractDAO;
+
 // ----------- << class.annotations@AAAAAAGEEKml1vecxvo= >>
 // ----------- >>
-public class OuvrageDAO extends AbstractDao {
+public class OuvrageDAO extends AbstractDAO {
     /**
     * @param a Auteur 
     * @param o Ouvrage

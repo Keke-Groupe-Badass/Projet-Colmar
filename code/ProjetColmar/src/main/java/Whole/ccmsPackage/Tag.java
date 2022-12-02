@@ -3,11 +3,9 @@
 *
 * Drop us a line or two at feedback@archetypesoftware.com: we would love to hear from you!
 */
-package Whole;
+package Whole.ccmsPackage;
 
-import java.util.*;
-import java.time.*;
-
+import Whole.daoPackage.AbstractDAO;
 
 
 // ----------- << imports@AAAAAAGEEKketvcezw8= >>
@@ -50,6 +48,46 @@ public class Tag implements CCMS {
 
     private void setDescription(String description) {
         this.description = description;
+    }
+
+    /**
+     * Modifie un CCMS, appel une méthode d'un objet de type AbstractDAO
+     *
+     * @see AbstractDAO
+     */
+    @Override
+    public void modifier() {
+
+    }
+
+    /**
+     * Cherche un CCMS, appel une méthode d'un objet de type AbstractDAO
+     *
+     * @see AbstractDAO
+     */
+    @Override
+    public void chercher() {
+
+    }
+
+    /**
+     * Créer un CCMS, appel une méthode d'un objet de type AbstractDAO
+     *
+     * @see AbstractDAO
+     */
+    @Override
+    public void creer() {
+
+    }
+
+    /**
+     * Supprime un CCMS, appel une méthode d'un objet de type AbstractDAO
+     *
+     * @see AbstractDAO
+     */
+    @Override
+    public void supprimer() {
+
     }
 
 // ----------- << class.extras@AAAAAAGEEKketvcezw8= >>

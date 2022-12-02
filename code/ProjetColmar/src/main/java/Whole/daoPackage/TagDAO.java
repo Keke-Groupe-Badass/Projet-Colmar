@@ -3,19 +3,17 @@
 *
 * Drop us a line or two at feedback@archetypesoftware.com: we would love to hear from you!
 */
-package whole;
-
-import java.util.*;
-import java.time.*;
-
+package Whole.daoPackage;
 
 
 // ----------- << imports@AAAAAAGEEKmRc/dy6X0= >>
 // ----------- >>
 
+import Whole.daoPackage.AbstractDAO;
+
 // ----------- << class.annotations@AAAAAAGEEKmRc/dy6X0= >>
 // ----------- >>
-public class TagDAO extends AbstractDao {
+public class TagDAO extends AbstractDAO {
 // ----------- << class.extras@AAAAAAGEEKmRc/dy6X0= >>
 // ----------- >>
 }

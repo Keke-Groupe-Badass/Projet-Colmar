@@ -3,7 +3,7 @@
 *
 * Drop us a line or two at feedback@archetypesoftware.com: we would love to hear from you!
 */
-package whole.exportPackage;
+package Whole.exportPackage;
 
 import java.io.File;
 import java.util.*;
@@ -11,19 +11,19 @@ import java.time.*;
 
 
 
-// ----------- << imports@AAAAAAGEzpaVgv6cMRw= >>
-// ----------- >>
-
-// ----------- << class.annotations@AAAAAAGEzpaVgv6cMRw= >>
-// ----------- >>
+/**
+ * Implémentation de ExportTypeIntetface pour le SQL
+ * @see ExportTypeInterface
+ */
 public class ExportSQL implements ExportTypeInterface {
     @Override
-    // ----------- << method.annotations@AAAAAAGEzpbIUAevq+k= >>
-    // ----------- >>
+    /**
+     *  Implémante en SQL la sauvegarde de la base de donnée dans un fichier
+     * @param f Fichier de sauvegarde
+     * @see whole.AdminDao.exportDonee
+     */
     public void export(File f) {
-    // ----------- << method.body@AAAAAAGEzpbIUAevq+k= >>
-    // ----------- >>
+
     }
-// ----------- << class.extras@AAAAAAGEzpaVgv6cMRw= >>
-// ----------- >>
+
 }
