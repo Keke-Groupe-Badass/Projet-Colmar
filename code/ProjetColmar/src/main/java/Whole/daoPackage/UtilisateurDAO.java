@@ -9,7 +9,7 @@ import java.time.*;
 * pour tout ce qui concerne les int�ractions et les modifications de l'utilisateur
 */
 
-public class UtilisateurDAO extends AbstractDao {
+public class UtilisateurDAO extends AbstractDAO {
 	/**
     * La m�thode se charge de cr�er une connexion avec la base de donn�es pour pouvoir
     * ensuite effectuer des �changes et des modifications dessus. Elle prend l'url de la base,
