@@ -5,31 +5,17 @@
 */
 package Whole;
 
-import java.util.*;
-import java.time.*;
-
-
-
-// ----------- << imports@AAAAAAGEEKfwRPbK0gk= >>
-// ----------- >>
+import java.sql.Connection;
 
 /**
 * Est appelé une fois pour créer un lien entre l'application et la base de donnée
 */
+public class SingleConnection {
 
-// ----------- << class.annotations@AAAAAAGEEKfwRPbK0gk= >>
-// ----------- >>
-public class ConnectionUniqueBD {
-    // ----------- << attribute.annotations@AAAAAAGEFF+AQYYZOVw= >>
-    // ----------- >>
     private String url;
 
-    // ----------- << attribute.annotations@AAAAAAGEFF+SrYf/lLw= >>
-    // ----------- >>
     private String login;
 
-    // ----------- << attribute.annotations@AAAAAAGEFF+WVIkTciQ= >>
-    // ----------- >>
     private String password;
 
     private String getUrl() {
@@ -62,12 +48,7 @@ public class ConnectionUniqueBD {
     * @param pwd
     */
 
-    // ----------- << method.annotations@AAAAAAGEFGJMb+vb2Rc= >>
-    // ----------- >>
     public Connection connection(String url, String login, String pwd) {
-    // ----------- << method.body@AAAAAAGEFGJMb+vb2Rc= >>
-    // ----------- >>
+
     }
-// ----------- << class.extras@AAAAAAGEEKfwRPbK0gk= >>
-// ----------- >>
 }
