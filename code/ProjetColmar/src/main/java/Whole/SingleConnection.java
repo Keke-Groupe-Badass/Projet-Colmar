@@ -14,6 +14,12 @@ import java.sql.Connection;
 
 
 public class SingleConnection {
+    SingleConnection(){
+
+    }
+    public Connection connection(String url, String login, String pwd) {
+        return null;
+    }
 
     private String url;
 
@@ -53,8 +59,6 @@ public class SingleConnection {
      * @param pwd
      */
 
-    public Connection connection(String url, String login, String pwd) {
 
-    }
 
 }
