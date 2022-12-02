@@ -1,27 +1,27 @@
-package whole;
+package Whole.daoPackage;
 
 import java.util.*;
 import java.time.*;
 
 /**
-* Cette classe est appelée pour créer un lien entre l'application et la base de données
-* pour tout ce qui concerne les intéractions et les modifications de l'utilisateur
+* Cette classe est appelï¿½e pour crï¿½er un lien entre l'application et la base de donnï¿½es
+* pour tout ce qui concerne les intï¿½ractions et les modifications de l'utilisateur
 */
 
 public class UtilisateurDAO extends AbstractDao {
 	/**
-    * La méthode se charge de créer une connexion avec la base de données pour pouvoir
-    * ensuite effectuer des échanges et des modifications dessus. Elle prend l'url de la base,
-    * le login de la personne souhaitant y accéder ainsi que le mot de passe puis fait appel
-    * à SingleConnection pour créer la connexion.
+    * La mï¿½thode se charge de crï¿½er une connexion avec la base de donnï¿½es pour pouvoir
+    * ensuite effectuer des ï¿½changes et des modifications dessus. Elle prend l'url de la base,
+    * le login de la personne souhaitant y accï¿½der ainsi que le mot de passe puis fait appel
+    * ï¿½ SingleConnection pour crï¿½er la connexion.
     * 
-    * @param url : lien vers la base de données
-    * @param login : login de l'utilisateur de la BDD, permet de s'identifier sur la base de données
-    * pour y avoir accès
-    * @param pwd : mot de passe de l'utilisateur de la BDD, permet également de s'identifier sur
-    * la base de données
-    * @return Renvoie la connexion qui a été créée sous forme d'objet Connection si la
-    * connexion s'est effectuée avec succès. Sinon, elle lève une exception SQLException.
+    * @param url : lien vers la base de donnï¿½es
+    * @param login : login de l'utilisateur de la BDD, permet de s'identifier sur la base de donnï¿½es
+    * pour y avoir accï¿½s
+    * @param pwd : mot de passe de l'utilisateur de la BDD, permet ï¿½galement de s'identifier sur
+    * la base de donnï¿½es
+    * @return Renvoie la connexion qui a ï¿½tï¿½ crï¿½ï¿½e sous forme d'objet Connection si la
+    * connexion s'est effectuï¿½e avec succï¿½s. Sinon, elle lï¿½ve une exception SQLException.
     * @see SingleConnection
     */
     public Connection connexion(String url, String login, String pwd) {
@@ -30,40 +30,40 @@ public class UtilisateurDAO extends AbstractDao {
 
     /**
     * Permet de changer le mot de passe de l'utilisateur. On donne le login et le
-    * nouveau mot de passe souhaité, puis on retrouve l'utilisateur dans la base de
-    * données à l'aide du login. Le nouveau mot de passe est encrypté puis stocké
-    * dans la base à la place de l'ancien.
+    * nouveau mot de passe souhaitï¿½, puis on retrouve l'utilisateur dans la base de
+    * donnï¿½es ï¿½ l'aide du login. Le nouveau mot de passe est encryptï¿½ puis stockï¿½
+    * dans la base ï¿½ la place de l'ancien.
     * 
     * @param login : login de l'utilisateur, permet de l'identifier dans la BDD
     * @param mdp : nouveau mot de passe qui doit venir remplacer l'ancien
-    * @return Renvoie true si le changement s'est correctement effectué, false sinon.
+    * @return Renvoie true si le changement s'est correctement effectuï¿½, false sinon.
     */
     public Boolean changeMDP(String login, String mdp) {
 
     }
 
     /**
-    * Permet de supprimer un utilisateur de la base de données à partir de son login.
-    * Le login est recherché dans la base de données, puis si trouvé l'utilisateur
-    * correspondant est alors supprimé.
+    * Permet de supprimer un utilisateur de la base de donnï¿½es ï¿½ partir de son login.
+    * Le login est recherchï¿½ dans la base de donnï¿½es, puis si trouvï¿½ l'utilisateur
+    * correspondant est alors supprimï¿½.
     * 
     * @param login : login de l'utilisateur
-    * @return Renvoie true si la suppression s'est correctement effectuée, false sinon.
+    * @return Renvoie true si la suppression s'est correctement effectuï¿½e, false sinon.
     */
     public Boolean supprimerUtilisateur(String login) {
     
     }
 
     /**
-    * Permet de créer un nouvel utilisateur dans la base de données.
-    * Si le login n'existe pas déjà, ni que l'adresse mail est déjà utilisée, on
-    * encrypte le mot de passe et on effectue une requête d'insertion avec le login,
+    * Permet de crï¿½er un nouvel utilisateur dans la base de donnï¿½es.
+    * Si le login n'existe pas dï¿½jï¿½, ni que l'adresse mail est dï¿½jï¿½ utilisï¿½e, on
+    * encrypte le mot de passe et on effectue une requï¿½te d'insertion avec le login,
     * mot de passe et adresse mail de l'utilisateur qu'on souhaite ajouter.
     *
-    * @param login : login de l'utilisateur à ajouter
-    * @param mdp : mot de passe de l'utilisateur à ajouter
-    * @param mail : adresse mail de l'utilisateur à ajouter
-    * @return Renvoie true si l'insertion s'est correctement effectuée, false sinon.
+    * @param login : login de l'utilisateur ï¿½ ajouter
+    * @param mdp : mot de passe de l'utilisateur ï¿½ ajouter
+    * @param mail : adresse mail de l'utilisateur ï¿½ ajouter
+    * @return Renvoie true si l'insertion s'est correctement effectuï¿½e, false sinon.
     */
     public Boolean creerUtilisateur(String login, String mdp, String mail) {
 
