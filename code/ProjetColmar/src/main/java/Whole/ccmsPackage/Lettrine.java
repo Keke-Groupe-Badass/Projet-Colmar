@@ -7,7 +7,6 @@ package Whole.ccmsPackage;
 
 import Whole.daoPackage.AbstractDAO;
 import Whole.Metadonnee;
-import Whole.Metadonnees;
 
 import java.util.*;
 
@@ -18,7 +17,7 @@ public class Lettrine implements CCMS {
     /**
      * Liste des métadonnées associées à la lettrine
      */
-    private ArrayList<Metadonnees> metadonnees;
+    private ArrayList<Metadonnee> metadonnees;
 
     /**
      * numéro de la page sur laquelle figure la lettrine
@@ -43,7 +42,7 @@ public class Lettrine implements CCMS {
      * @param id
      * @param tags
      */
-    public Lettrine(Ouvrage ouvrage, ArrayList<Metadonnees> metadonnees, int nbPage, int id, ArrayList<Tag> tags) {
+    public Lettrine(Ouvrage ouvrage, ArrayList<Metadonnee> metadonnees, int nbPage, int id, ArrayList<Tag> tags) {
         this.ouvrage = ouvrage;
         this.metadonnees = metadonnees;
         this.nbPage = nbPage;
@@ -63,7 +62,7 @@ public class Lettrine implements CCMS {
      * Renvoie la liste des métadonnées associées à la lettrine
      * @return ArrayList<Metadonnees> metadonnees
      */
-    private ArrayList<Metadonnees> getMetadonnees() {
+    private ArrayList<Metadonnee> getMetadonnees() {
         return metadonnees;
     }
 
@@ -123,7 +122,7 @@ public class Lettrine implements CCMS {
      * @param meta : métadonnée à supprimer
      * @see #metadonnees
      */
-    public void SupprimerMetadonnees(Metadonnees meta) {
+    public void SupprimerMetadonnees(Metadonnee meta) {
 
     }
 

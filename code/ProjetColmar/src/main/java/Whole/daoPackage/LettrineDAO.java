@@ -5,50 +5,37 @@
 */
 package Whole.daoPackage;
 
-
-// ----------- << imports@AAAAAAGEEKm5d/fG0Tk= >>
-// ----------- >>
-
 import Whole.ccmsPackage.Lettrine;
+import Whole.ccmsPackage.Ouvrage;
 import Whole.ccmsPackage.Tag;
-import Whole.daoPackage.AbstractDAO;
 
-// ----------- << class.annotations@AAAAAAGEEKm5d/fG0Tk= >>
-// ----------- >>
+
 public class LettrineDAO extends AbstractDAO {
     /**
     * @param l1 Lettrine 
     * @param l2 Lettrine
     */
 
-    // ----------- << method.annotations@AAAAAAGEIHo0vhVzv4g= >>
-    // ----------- >>
-    public void lie(void l1 Lettrine, void l2 Lettrine) {
-    // ----------- << method.body@AAAAAAGEIHo0vhVzv4g= >>
-    // ----------- >>
+    public void lie(Lettrine l1 , Lettrine l2 ) {
+
     }
     /**
     * @param l Lettrine 
     * @param O ouvrage
     */
 
-    // ----------- << method.annotations@AAAAAAGEIHt5eyFqOnk= >>
-    // ----------- >>
-    public void provient(void l Lettrine, void O ouvrage) {
-    // ----------- << method.body@AAAAAAGEIHt5eyFqOnk= >>
-    // ----------- >>
+
+    public void provient(Lettrine l , Ouvrage O ) {
+
     }
     /**
     * @param l Lettrine 
     * @param t Tag
     */
 
-    // ----------- << method.annotations@AAAAAAGEIHvxLSTVufQ= >>
-    // ----------- >>
-    public void tager(void l Lettrine, void t Tag) {
-    // ----------- << method.body@AAAAAAGEIHvxLSTVufQ= >>
-    // ----------- >>
+
+    public void tager(Lettrine l , Tag t ) {
+
     }
-// ----------- << class.extras@AAAAAAGEEKm5d/fG0Tk= >>
-// ----------- >>
+
 }
