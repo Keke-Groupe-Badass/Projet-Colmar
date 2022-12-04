@@ -30,7 +30,7 @@ public class AuteurDAO extends AbstractDAO {
     }
     /**
      * Ajoute à la base de donnée un Auteur
-     * @param donne le Auteur à ajouter
+     * @param donne l'Auteur à ajouter
      * @see Auteur
      */
 
@@ -39,7 +39,7 @@ public class AuteurDAO extends AbstractDAO {
     }
     /**
      *Cherche un Auteur dans la base
-     * @param donne Auteur avec tout les paramètres nuls sauf ceux à chercher
+     * @param donne Auteur avec tous les paramètres nuls sauf ceux à chercher
      * @see Auteur
      */
 
