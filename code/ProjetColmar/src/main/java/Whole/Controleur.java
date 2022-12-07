@@ -38,21 +38,25 @@ public class Controleur {
     }
 
     /**
-    * @param name String
-    * @param pwd String
+    * Permet de se connecter a la base de donnee en faisant un appel de SingleConnection avec les parametres choisis
+    * @param String name nom d'utilisateur
+    * @param String pwd mot de passe
+    * @see SingleConnection
     */
     public Boolean Login( String name,  String pwd) {
         return true;
     }
     /**
-    * @param name String
-    * @param pwd String
-    * @param confirm String
+     * Demande a utilisateurDAO de creer un utilisateur
+    * @param String name nom d'utilisateur
+    * @param String pwd mot de passe
+    * @param String confirm confirmation du mot de passe 
     */
     public Boolean AddUser(String name, String pwd, String confirm) {
         return true; //en attendant de coder la fonction
     }
-    /**
+     /**
+     * Permet le changement de mot de passe en en remplacent l'ancien demander par un nouveau tout en le confirmant 
     * @param name String 
     * @param oldPwd String 
     * @param newPwd String 
