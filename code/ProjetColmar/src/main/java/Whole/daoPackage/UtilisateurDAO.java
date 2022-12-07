@@ -6,7 +6,7 @@ import java.time.*;
 
 /**
 * Cette classe est appelée pour créer un lien entre l'application et la base de données
-* pour tout ce qui concerne les intéractions et les modifications de l'utilisateur
+* pour tout ce qui concerne les interactions et les modifications de l'utilisateur.
 */
 
 public class UtilisateurDAO extends AbstractDAO {
