@@ -29,6 +29,11 @@ public class Tag implements CCMS {
     public Tag() {
         this.id = -2;
     }
+
+    /**
+     * permet de renvoyer l'id du tag dans la base de données
+     * @return id int
+     */
     private int getId() {
         return id;
     }
