@@ -11,6 +11,9 @@ import Whole.Metadonnee;
 import java.awt.image.BufferedImage;
 import java.util.*;
 
+/**
+ * Classe représentant les lettrines
+ */
 public class Lettrine implements CCMS {
 
     private Ouvrage ouvrage;
