@@ -5,6 +5,10 @@ import Whole.ccmsPackage.CCMS;
 import java.sql.Connection;
 import java.util.*;
 
+/**
+ * Classe abstraite servant à factoriser à lié à la base de donnée les méthodes
+ * modifier, creer, chercher et supprimer des CCMS
+ */
 public abstract class AbstractDAO {
 
     private static Connection cn;

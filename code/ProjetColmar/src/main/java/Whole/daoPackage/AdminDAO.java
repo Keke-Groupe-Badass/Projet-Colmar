@@ -5,9 +5,13 @@
  */
 package Whole.daoPackage;
 
+import Whole.ccmsPackage.Auteur;
+
 import java.io.File;
 import java.sql.Connection;
-
+/**
+ * Classe permettant à l'administrateur de gérer la base de donnée
+ */
 public class AdminDAO {
     private static Connection cn;
 

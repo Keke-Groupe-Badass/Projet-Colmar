@@ -5,7 +5,10 @@ import Whole.ccmsPackage.Auteur;
 import java.sql.Connection;
 
 import java.util.ArrayList;
-
+/**
+ * Classe servant à lié à la base de donnée les méthodes d'Auteurs
+ * @see Auteur
+ */
 public class AuteurDAO extends AbstractDAO {
     private static Connection cn;
 

@@ -5,12 +5,14 @@
 */
 package Whole.daoPackage;
 
-import Whole.ccmsPackage.CCMS;
 import Whole.ccmsPackage.Tag;
 
 import java.sql.Connection;
 import java.util.ArrayList;
-
+/**
+ * Classe servant à lié à la base de donnée les méthodes de Tag
+ * @see Tag
+ */
 public class TagDAO extends AbstractDAO {
     private static Connection cn;
 

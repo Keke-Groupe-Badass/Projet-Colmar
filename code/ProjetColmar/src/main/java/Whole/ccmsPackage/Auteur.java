@@ -2,6 +2,9 @@ package Whole.ccmsPackage;
 
 import Whole.daoPackage.AbstractDAO;
 
+/**
+ * Classe représentant les auteurs
+ */
 public class Auteur implements CCMS {
 
     private int id;

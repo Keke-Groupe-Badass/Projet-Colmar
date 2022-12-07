@@ -7,7 +7,9 @@ package Whole.ccmsPackage;
 
 import Whole.daoPackage.AbstractDAO;
 
-
+/**
+ * Classe représentant les tags
+ */
 public class Tag implements CCMS {
 
     private int id;

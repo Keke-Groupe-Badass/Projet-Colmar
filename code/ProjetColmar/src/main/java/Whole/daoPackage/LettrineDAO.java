@@ -11,7 +11,7 @@ import java.io.File;
 
 /**
  * Classe héritant d'AbstractDAO, permettant de lier une Lettrine à la base de donnée
- * @see AbstractDAO
+ * @see Lettrine
  */
 public class LettrineDAO extends AbstractDAO {
 

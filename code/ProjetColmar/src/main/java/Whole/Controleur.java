@@ -10,12 +10,12 @@ import java.util.*;
 import java.time.*;
 
 /**
-* Coeur de l'application, doit avant tout lancer COnnectionUniqueBD
+* Coeur de l'application, doit avant tout lancer ConnectionUniqueBD
 */
 public class Controleur {
 	
 	 /**
-	 *connection a la base de donn�e
+	 *connection a la base de donn�e
 	 */
     private Connection bd;
 
@@ -25,6 +25,7 @@ public class Controleur {
     private Object pressePapier;
     /**
      *getter de bd
+     *
      */
     private Connection getBd() {
         return bd;
@@ -41,17 +42,19 @@ public class Controleur {
     private void setBd(Connection bd) {
         this.bd = bd;
     }
+
     /**
-     * Permet de sauvegarder des métadonnés (ou autre) dans le but d'un copier coller
+     * Permet de sauvegarder n'importe quel type dans le but d'un copier coller
+     * @param objet, objet à copier
      */
-    private void setPressePapier(Object pressePapier) {
+    private void setPressePapier(Object objet) {
         this.pressePapier = pressePapier;
     }
 
     /**
     * Permet de se connecter a la base de donnee en faisant un appel de SingleConnection avec les parametres choisis
-    * @param String name nom d'utilisateur
-    * @param String pwd mot de passe
+    * @param name nom d'utilisateur
+    * @param pwd mot de passe
     * @see SingleConnection
     */
     public Boolean Login( String name,  String pwd) {
@@ -59,9 +62,9 @@ public class Controleur {
     }
     /**
      * Demande a utilisateurDAO de creer un utilisateur
-    * @param String name nom d'utilisateur
-    * @param String pwd mot de passe
-    * @param String confirm confirmation du mot de passe 
+    * @param  name nom d'utilisateur
+    * @param  pwd mot de passe
+    * @param  confirm confirmation du mot de passe
     */
     public Boolean AddUser(String name, String pwd, String confirm) {
         return true; //en attendant de coder la fonction
