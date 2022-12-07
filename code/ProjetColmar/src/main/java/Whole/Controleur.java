@@ -13,26 +13,37 @@ import java.time.*;
 * Coeur de l'application, doit avant tout lancer COnnectionUniqueBD
 */
 public class Controleur {
-
+	
+	 /**
+	 *connection a la base de donn�e
+	 */
     private Connection bd;
 
     /**
     * Permet de sauvegarder des métadonnés (ou autre) dans le but d'un copier coller
     */
     private Object pressePapier;
-
+    /**
+     *getter de bd
+     */
     private Connection getBd() {
         return bd;
     }
-
+    /**
+     *getter de PressePapier
+     */
     private Object getPressePapier() {
         return pressePapier;
     }
-
+    /**
+     *setter de bd 
+     */
     private void setBd(Connection bd) {
         this.bd = bd;
     }
-
+    /**
+     * Permet de sauvegarder des métadonnés (ou autre) dans le but d'un copier coller
+     */
     private void setPressePapier(Object pressePapier) {
         this.pressePapier = pressePapier;
     }
