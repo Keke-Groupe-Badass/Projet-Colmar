@@ -4,6 +4,7 @@ import Whole.daoPackage.AbstractDAO;
 
 import java.util.*;
 
+
 public class Ouvrage implements CCMS {
     private String titre;
 
@@ -12,6 +13,7 @@ public class Ouvrage implements CCMS {
     private String editeur;
 
     private String imprimeur;
+
 
     private String lieuEdition;
 
@@ -226,5 +228,26 @@ public class Ouvrage implements CCMS {
     @Override
     public void supprimer() {
 
+    }
+
+    /**
+     * Ajoute à la liste des Auteurs un auteur
+     * @param a l'auteur à ajouter
+     */
+    public void addAuteur(Auteur a){
+        if(a!=null){
+            if(!auteurs.contains(a)){
+                auteurs.add(a);
+            }
+        }
+    }
+    /**
+     * Supprime à la liste des Auteurs un auteur
+     * @param a l'auteur à supprimer
+     */
+    public void retirerAuteur(Auteur a){
+        if(a!=null){
+            auteurs.remove(a);
+        }
     }
 }

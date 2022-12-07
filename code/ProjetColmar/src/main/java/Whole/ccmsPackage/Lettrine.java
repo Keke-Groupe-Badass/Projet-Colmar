@@ -70,7 +70,8 @@ public class Lettrine implements CCMS {
 
     /**
      * Renvoie la liste des métadonnées associées à la lettrine
-     * @return ArrayList<Metadonnees> metadonnees
+     * @return ArrayList<Metadonnees> liste des métadonnées associés
+     * @see Metadonnee
      */
     private ArrayList<Metadonnee> getMetadonnees() {
         return metadonnees;
@@ -120,7 +121,7 @@ public class Lettrine implements CCMS {
      * Cette methode permet d'ajouter la métadonnée passée en paramètre à la lettrine.
      *Elle affecte la liste de métadonnées metadonnees en y ajoutant la métadonnée passée en paramètre.
      * @param meta Metadonnee : metadonnée à ajouter
-     * @see #metadonnees
+     * @see Metadonnee
      */
     public void AjouterMetadonnees(Metadonnee meta) {
 
@@ -130,7 +131,7 @@ public class Lettrine implements CCMS {
      * Cette méthode permet de supprimer la métadonnée passée en paramètre à la lettrine.
      * Elle affecte la liste de métadonnées metadonnees en en retirant la métadonnée passée en paramètre.
      * @param meta : métadonnée à supprimer
-     * @see #metadonnees
+     * @see Metadonnee
      */
     public void SupprimerMetadonnees(Metadonnee meta) {
 
