@@ -7,6 +7,7 @@ package Whole.fenetrePackage;
 
 import javafx.scene.Scene;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
 
 /**
@@ -25,6 +26,6 @@ public interface FenetreInterface {
      * Permet d'ouvrir une fenetre pour obtenir un fichier
      * @return le fichier ou sera sauvegardé un contenu
      */
-    File savePopUp();
+    BufferedImage savePopUp();
 
 }

@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
 
 /**
@@ -42,7 +43,7 @@ public class FXInterface extends Application implements FenetreInterface {
      * @return le fichier ou sera sauvegardé un contenu
      */
     @Override
-    public File savePopUp() {
+    public BufferedImage savePopUp() {
         return null;
     }
 }
