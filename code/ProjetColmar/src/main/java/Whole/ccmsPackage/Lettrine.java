@@ -8,6 +8,7 @@ package Whole.ccmsPackage;
 import Whole.daoPackage.AbstractDAO;
 import Whole.Metadonnee;
 
+import java.awt.image.BufferedImage;
 import java.util.*;
 
 public class Lettrine implements CCMS {
@@ -174,5 +175,14 @@ public class Lettrine implements CCMS {
     @Override
     public void supprimer() {
 
+    }
+
+    /**
+     * Renvoie l'image d'une lettrine sur un serveur distant, si non-trouvable alors envoyé image par défaut
+     * @return L'image issue du lien
+     * @see BufferedImage
+     */
+    public BufferedImage loadImage(){
+        return null;
     }
 }

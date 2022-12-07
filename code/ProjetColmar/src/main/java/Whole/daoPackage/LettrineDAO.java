@@ -6,6 +6,7 @@ import Whole.ccmsPackage.Lettrine;
 import Whole.ccmsPackage.Ouvrage;
 import Whole.ccmsPackage.Tag;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
 
 /**
@@ -70,11 +71,11 @@ public class LettrineDAO extends AbstractDAO {
 
     /**
      * Met en ligne une image stockée sur disque et renvoie son URL
-     * @param file le fichier où se trouve l'image dans le disque
+     * @param img le fichier où se trouve l'image dans le disque
      * @return String: le lien vers l'image en ligne
-     * @see File
+     * @see BufferedImage
      */
-    private String upload(File file) {
+    private String upload(BufferedImage img) {
         return null;
     }
 }
