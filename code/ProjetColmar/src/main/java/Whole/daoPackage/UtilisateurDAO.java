@@ -5,11 +5,14 @@ import java.util.*;
 import java.time.*;
 
 /**
-* Cette classe est appelée pour créer un lien entre l'application et la base de données
-* pour tout ce qui concerne les interactions et les modifications de l'utilisateur.
+* Cette classe est appelee pour creer un lien entre l'application et la base de donnees
+* pour tout ce qui concerne les interactions et les modifications de l'utilisateur
+* @see AbstractDAO
 */
 
 public class UtilisateurDAO extends AbstractDAO {
+	private static Connection cn;
+	
 	/**
     * La méthode se charge de créer une connexion avec la base de données pour pouvoir
     * ensuite effectuer des échanges et des modifications dessus. Elle prend l'url de la base,
@@ -34,9 +37,21 @@ public class UtilisateurDAO extends AbstractDAO {
     * nouveau mot de passe souhaité, puis on retrouve l'utilisateur dans la base de
     * données à l'aide du login. Le nouveau mot de passe est encrypté puis stocké
     * dans la base à la place de l'ancien.
-    * 
-    * @param login : login de l'utilisateur, permet de l'identifier dans la BDD
-    * @param mdp : nouveau mot de passe qui doit venir remplacer l'ancien
+	 * Constructeur de la classe UtilisateurDAO. Instancie l'objet Connection
+	 * cn avec le cn passe en parametre.
+	 * 
+	 * @param cn objet Connection provenant de SingleConnection
+	 */
+	public UtilisateurDAO(Connection cn) {
+	}
+
+    /**
+    * Permet de changer le mot de passe de l'utilisateur. On donne le login et le
+    * nouveau mot de passe souhaite, puis on retrouve l'utilisateur dans la base de
+    * donnees a l'aide du login. Le nouveau mot de passe est encrypte puis stocke
+    * dans la base a la place de l'ancien.
+    * @param login login de l'utilisateur, permet de l'identifier dans la BDD
+    * @param mdp nouveau mot de passe qui doit venir remplacer l'ancien
     */
     public void changeMDP(String login, String mdp) {
 
@@ -47,7 +62,7 @@ public class UtilisateurDAO extends AbstractDAO {
     * Le login est recherché dans la base de données, puis si trouvé l'utilisateur
     * correspondant est alors supprimé.
     * 
-    * @param login : login de l'utilisateur
+    * @param login login de l'utilisateur
     */
     public void supprimerUtilisateur(String login) {
     
@@ -62,6 +77,7 @@ public class UtilisateurDAO extends AbstractDAO {
     * @param login : login de l'utilisateur à ajouter
     * @param mdp : mot de passe de l'utilisateur à ajouter
     * @param mail : adresse mail de l'utilisateur à ajouter
+
     */
     public void creerUtilisateur(String login, String mdp, String mail) {
 

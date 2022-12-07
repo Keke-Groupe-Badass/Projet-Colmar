@@ -19,7 +19,7 @@ public class AuteurDAO extends AbstractDAO {
      */
 
 
-    public void modifier(Auteur objet , Auteur changement ) {
+    public void modifier(Auteur objet , Auteur changement) {
 
     }
     /**
@@ -28,7 +28,7 @@ public class AuteurDAO extends AbstractDAO {
      * @see Auteur
      */
 
-    public void supprimer(Auteur objet ) {
+    public void supprimer(Auteur objet) {
 
     }
     /**
