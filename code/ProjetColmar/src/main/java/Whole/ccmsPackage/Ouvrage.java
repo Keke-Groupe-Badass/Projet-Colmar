@@ -10,46 +10,31 @@ import Whole.daoPackage.AbstractDAO;
 import java.util.*;
 
 
-// ----------- << imports@AAAAAAGEEKiFAPb0eJU= >>
-// ----------- >>
-
-// ----------- << class.annotations@AAAAAAGEEKiFAPb0eJU= >>
-// ----------- >>
 public class Ouvrage implements CCMS {
-    // ----------- << attribute.annotations@AAAAAAGEE5kHfev4KiE= >>
-    // ----------- >>
+
     private String titre;
 
-    // ----------- << attribute.annotations@AAAAAAGEE5lN1O6Hp5M= >>
-    // ----------- >>
+
     private ArrayList<Auteur> auteurs;
 
-    // ----------- << attribute.annotations@AAAAAAGEE6CrXOnszyc= >>
-    // ----------- >>
+
     private String editeur;
 
-    // ----------- << attribute.annotations@AAAAAAGEE6DZyu0dPGA= >>
-    // ----------- >>
     private String imprimeur;
 
-    // ----------- << attribute.annotations@AAAAAAGEE6UodQ/hdiQ= >>
-    // ----------- >>
+
     private String lieuEdition;
 
-    // ----------- << attribute.annotations@AAAAAAGEE6WSghIoOu0= >>
-    // ----------- >>
+
     private String dateEdition;
 
-    // ----------- << attribute.annotations@AAAAAAGEE6YCzhax948= >>
-    // ----------- >>
+
     private int nbPage;
 
-    // ----------- << attribute.annotations@AAAAAAGEE6ZHdhiMUGE= >>
-    // ----------- >>
+
     private String lien;
 
-    // ----------- << attribute.annotations@AAAAAAGEE6kJJjryfrU= >>
-    // ----------- >>
+
     private int id;
 
     public Ouvrage(String titre, ArrayList<Auteur> auteurs, String editeur, String imprimeur, String lieuEdition, String dateEdition, int nbPage, String lien, int id) {
@@ -182,5 +167,26 @@ public class Ouvrage implements CCMS {
     @Override
     public void supprimer() {
 
+    }
+
+    /**
+     * Ajoute à la liste des Auteurs un auteur
+     * @param a l'auteur à ajouter
+     */
+    public void addAuteur(Auteur a){
+        if(a!=null){
+            if(!auteurs.contains(a)){
+                auteurs.add(a);
+            }
+        }
+    }
+    /**
+     * Supprime à la liste des Auteurs un auteur
+     * @param a l'auteur à supprimer
+     */
+    public void retirerAuteur(Auteur a){
+        if(a!=null){
+            auteurs.remove(a);
+        }
     }
 }
