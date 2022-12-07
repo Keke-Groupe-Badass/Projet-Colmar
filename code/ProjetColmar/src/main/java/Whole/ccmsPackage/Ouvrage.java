@@ -4,7 +4,9 @@ import Whole.daoPackage.AbstractDAO;
 
 import java.util.*;
 
-
+/**
+ * Classe représentant les ouvrages
+ */
 public class Ouvrage implements CCMS {
     private String titre;
 
