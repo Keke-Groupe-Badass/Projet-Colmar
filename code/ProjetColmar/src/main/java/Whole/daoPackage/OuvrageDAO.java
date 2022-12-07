@@ -8,7 +8,10 @@ package Whole.daoPackage;
 import Whole.ccmsPackage.Auteur;
 import Whole.ccmsPackage.Ouvrage;
 import Whole.daoPackage.AbstractDAO;
-
+/**
+ * Classe servant à lié à la base de donnée les méthodes d'Auteurs
+ * @see Ouvrage
+ */
 public class OuvrageDAO extends AbstractDAO {
     /**
     * @param a Auteur 
