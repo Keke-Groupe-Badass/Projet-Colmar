@@ -1,0 +1,8 @@
+INSERT INTO fprojectcolmar.`auteurs`
+SELECT idSimilarite,CONCAT("Generated",idSimilarite),Notes FROM bdjimenes.t_similarites_graphiques
+
+String sql ="SELECT `Num_personne`,`nom_prenom` FROM `t_personne`";
+PreparedStatement stmt=con.prepareStatement("INSERT INTO `auteurs`(`idAuteur`, `nom`, `prenom`) VALUES (?,?,?)");
+
+UPDATE `auteurs` SET `nom`=null WHERE `nom`=null
+UPDATE `auteurs` SET `prenom`=null WHERE `prenom`="null"
