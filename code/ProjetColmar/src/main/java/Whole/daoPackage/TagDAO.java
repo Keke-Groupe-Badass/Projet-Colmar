@@ -15,6 +15,17 @@ import java.util.ArrayList;
  */
 public class TagDAO extends AbstractDAO {
     private static Connection cn;
+    /**
+     * Constructeur de la classe OuvrageDAO. Instancie l'objet Connection
+     * cn avec le cn passe en parametre.
+     *
+     * @param cn objet Connection provenant de SingleConnection
+     * @see Connection
+     * @see Whole.SingleConnection
+     */
+    public TagDAO(Connection cn) {
+        super(cn);
+    }
 
     /**
      * Met à jour la BD
