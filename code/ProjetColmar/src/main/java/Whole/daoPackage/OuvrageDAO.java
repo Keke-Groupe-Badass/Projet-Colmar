@@ -11,18 +11,23 @@ import java.util.ArrayList;
  * @see AbstractDAO
  */
 public class OuvrageDAO extends AbstractDAO {
-	private static Connection cn;
-	
-	/**
-	 * Constructeur de la classe OuvrageDAO. Instancie l'objet Connection
-	 * cn avec le cn passe en parametre.
-	 * 
-	 * @param cn objet Connection provenant de SingleConnection
+
+    private Connection cn;
+    /**
+     * Constructeur de la classe OuvrageDAO. Instancie l'objet Connection
+     * cn avec le cn passe en parametre.
+     *
+     * @param cn objet Connection provenant de SingleConnection
+     * @see Connection
      * @see Whole.SingleConnection
-	 */
-	public OuvrageDAO(Connection cn) {
-		
-	}
+     */
+
+    public OuvrageDAO(Connection cn) {
+        super(cn);
+    }
+
+
+
 	
     /**
     * Permet d'ajouter un ouvrage dans la base de donnees. L'auteur peut être NULL,

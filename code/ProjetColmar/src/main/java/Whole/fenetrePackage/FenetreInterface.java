@@ -17,15 +17,14 @@ public interface FenetreInterface {
 
     /**
      * Permet de changer la scène
-    * @param s une scène
+     * @param s une scène
      * @see javafx.scene.Scene
     */
     void afficher(Scene s);
 
     /**
-     * Permet d'ouvrir une fenetre pour obtenir un fichier
-     * @return le fichier ou sera sauvegardé un contenu
+     * @return l'emplacement du fichier où sera sauvegarder un contenu.
      */
-    BufferedImage savePopUp();
+    String savePopUp();
 
 }

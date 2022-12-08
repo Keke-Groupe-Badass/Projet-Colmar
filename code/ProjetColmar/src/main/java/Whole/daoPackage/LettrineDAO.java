@@ -9,12 +9,21 @@ import java.sql.Connection;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.sql.Connection;
 
 /**
  * Classe héritant d'AbstractDAO, permettant de lier une Lettrine à la base de donnée
  * @see Lettrine
  */
 public class LettrineDAO extends AbstractDAO {
+    /**
+     * Constructeur de LettrineDAO
+     * @param cn la connectionObtenue par SingleConnection
+     * @see Whole.SingleConnection
+     */
+    public LettrineDAO(Connection cn) {
+        super(cn);
+    }
 
     private static Connection cn;
 

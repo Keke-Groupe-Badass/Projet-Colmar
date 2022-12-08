@@ -6,7 +6,7 @@
 package Whole.exportPackage;
 
 import java.io.File;
-
+import Whole.daoPackage.AbstractDAO;
 
 /**
  * Implémentation de ExportTypeIntetface pour le SQL
@@ -17,7 +17,7 @@ public class ExportCSV implements ExportTypeInterface {
     /**
      *  Implémante en CSV la sauvegarde de la base de donnée dans un fichier
      * @param f Fichier de sauvegarde
-     * @see whole.AdminDao.exportDonee
+     * @see Whole.daoPackage.AbstractDAO
      */
     @Override
     public void export(File f) {

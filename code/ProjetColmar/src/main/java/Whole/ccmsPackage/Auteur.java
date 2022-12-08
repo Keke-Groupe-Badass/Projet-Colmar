@@ -9,11 +9,12 @@ public class Auteur implements CCMS {
 
     private int id;
 
-
     private String nom;
 
-
     private String prenom;
+
+
+
 
     /**
      * Constructeur de la classe Auteur
@@ -28,6 +29,14 @@ public class Auteur implements CCMS {
     }
 
     /**
+     * Constructeur de la classe Auteur
+     * @param id int
+     */
+    public Auteur(int id) {
+        this.id = id;
+    }
+
+    /**
      * Constructeur à utiliser pour les instances de changement
      */
     public Auteur(){
@@ -35,6 +44,7 @@ public class Auteur implements CCMS {
         this.nom=null;
         this.prenom=null;
     }
+
 
     /**
      * renvoie l'id de l'auteur dans la base

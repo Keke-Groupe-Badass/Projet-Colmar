@@ -10,7 +10,19 @@ import java.util.ArrayList;
  * @see Auteur
  */
 public class AuteurDAO extends AbstractDAO {
-    private static Connection cn;
+
+    private  Connection cn;
+    /**
+     * Constructeur d'AdminDAO
+     * @param cn la connectionObtenue par SingleConnection
+     * @see Whole.SingleConnection
+     */
+    public AuteurDAO(Connection cn) {
+        super(cn);
+    }
+
+
+
 
     /**
      * Constructeur de la classe

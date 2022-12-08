@@ -10,8 +10,11 @@ import java.util.*;
  * modifier, creer, chercher et supprimer des CCMS
  */
 public abstract class AbstractDAO {
+    private  Connection cn;
 
-    private static Connection cn;
+    public AbstractDAO(Connection cn) {
+        this.cn = cn;
+    }
 
     /**
      * Met à jour la BD
