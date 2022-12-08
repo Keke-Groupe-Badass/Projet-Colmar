@@ -27,6 +27,12 @@ public class AdminDAO {
 
 
     /**
+     * Constructeur de la classe
+     */
+    public AdminDAO() {
+    }
+
+    /**
      * Permet de stocker dans un fichier la bd
      * @param file le fichier où sera exporter les données
      * @see Whole.exportPackage.ExportTypeInterface
