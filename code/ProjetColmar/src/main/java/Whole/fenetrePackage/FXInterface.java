@@ -16,15 +16,7 @@ public class FXInterface extends Application implements FenetreInterface {
         launch(args);
     }
 
-    /**
-     *
-     * @param primaryStage
-     *
-     */
-    @Override
-    public void start(Stage primaryStage) {
 
-    }
 
     /**
      * Permet de changer la scène
@@ -46,4 +38,12 @@ public class FXInterface extends Application implements FenetreInterface {
     }
 
 
+    /**
+     * @param stage
+     * @throws Exception
+     */
+    @Override
+    public void start(Stage stage) throws Exception {
+
+    }
 }
