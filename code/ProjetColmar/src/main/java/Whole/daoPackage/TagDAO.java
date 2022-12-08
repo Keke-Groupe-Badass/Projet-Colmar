@@ -17,10 +17,17 @@ public class TagDAO extends AbstractDAO {
     private static Connection cn;
 
     /**
+     * Constructeur de la classe TagDAO
+     */
+    public TagDAO() {
+    }
+
+    /**
      * Met à jour la BD
      * @param objet Tag à changer
      * @param changement Tag de changement (les paramètres null ne sont pas à changer)
      */
+
 
 
     public void modifier(Tag objet , Tag changement ) {
