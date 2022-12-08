@@ -2,8 +2,8 @@ package Whole.daoPackage;
 
 import Whole.ccmsPackage.Auteur;
 import Whole.ccmsPackage.Ouvrage;
-import Whole.daoPackage.AbstractDAO;
-
+import java.sql.Connection;
+import java.util.ArrayList;
 
 /**
  * Cette classe est appelee pour creer un lien entre l'application et la base de donnees
@@ -18,6 +18,7 @@ public class OuvrageDAO extends AbstractDAO {
 	 * cn avec le cn passe en parametre.
 	 * 
 	 * @param cn objet Connection provenant de SingleConnection
+     * @see Whole.SingleConnection
 	 */
 	public OuvrageDAO(Connection cn) {
 		

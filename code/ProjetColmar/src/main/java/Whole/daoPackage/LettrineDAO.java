@@ -5,6 +5,7 @@ import Whole.Metadonnee;
 import Whole.ccmsPackage.Lettrine;
 import Whole.ccmsPackage.Ouvrage;
 import Whole.ccmsPackage.Tag;
+import java.sql.Connection;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -15,6 +16,14 @@ import java.io.File;
  */
 public class LettrineDAO extends AbstractDAO {
 
+    private static Connection cn;
+
+    /**
+     * Constructeur de la classe LettrineDAO
+     */
+    public LettrineDAO() {
+    }
+
     /**
      *permet de lier dans la base de donnée une lettrine à ouvrage, en effet une lettrine n'est présente dans un seul et unique ouvrage.
      * @param l la lettrine à lier à l'ouvrage
@@ -22,8 +31,6 @@ public class LettrineDAO extends AbstractDAO {
      * @see Ouvrage
      * @see Lettrine
      */
-
-
     public void provient(Lettrine l , Ouvrage O)   {
 
     }
