@@ -37,30 +37,6 @@ public class Ouvrage implements CCMS {
 
     private String copyright;
 
-
-    /**
-     * construteur de la classe Ouvrage
-     * @param titre String
-     * @param auteurs String
-     * @param editeur String
-     * @param imprimeur String
-     * @param lieuEdition String
-     * @param dateEdition String
-     * @param nbPage int
-     * @param lien String
-     * @param id int
-     */
-    public Ouvrage(String titre, ArrayList<Auteur> auteurs, String editeur, String imprimeur, String lieuEdition, int dateEdition, int nbPage, String lien, int id) {
-        this.titre = titre;
-        this.auteurs = auteurs;
-        this.editeur = editeur;
-        this.imprimeur = imprimeur;
-        this.lieuEdition = lieuEdition;
-        this.dateEdition = dateEdition;
-        this.nbPage = nbPage;
-        this.lien = lien;
-        this.id = id;
-    }
     /**
      * Constructeur à utiliser pour les instances de changement
      */
@@ -70,9 +46,48 @@ public class Ouvrage implements CCMS {
 
     }
 
+    /**
+     * Constructeur de la classe ouvrage à utiliser en cas normal
+     * @param titre
+     * @param id
+     */
     public Ouvrage(String titre, int id) {
         this.titre = titre;
         this.id = id;
+    }
+
+    /**
+     * Constructeur à utilisé pour les copies uniquements
+     * @param titre
+     * @param auteurs
+     * @param editeur
+     * @param imprimeur
+     * @param lieuEdition
+     * @param dateEdition
+     * @param nbPage
+     * @param lien
+     * @param id
+     * @param format
+     * @param resolution
+     * @param creditResolution
+     * @param reechantillonage
+     * @param copyright
+     */
+    public Ouvrage(String titre, ArrayList<Auteur> auteurs, String editeur, String imprimeur, String lieuEdition, int dateEdition, int nbPage, String lien, int id, String format, String resolution, String creditResolution, boolean reechantillonage, String copyright) {
+        this.titre = titre;
+        this.auteurs = auteurs;
+        this.editeur = editeur;
+        this.imprimeur = imprimeur;
+        this.lieuEdition = lieuEdition;
+        this.dateEdition = dateEdition;
+        this.nbPage = nbPage;
+        this.lien = lien;
+        this.id = id;
+        this.format = format;
+        this.resolution = resolution;
+        this.creditResolution = creditResolution;
+        this.reechantillonage = reechantillonage;
+        this.copyright = copyright;
     }
 
     public String getFormat() {
@@ -119,7 +134,7 @@ public class Ouvrage implements CCMS {
      * renvoie le titre de l'ouvrage
      * @return titre String
      */
-    private String getTitre() {
+    public String getTitre() {
         return titre;
     }
 
@@ -127,7 +142,7 @@ public class Ouvrage implements CCMS {
      * renvoie les auteurs de l'ouvrage
      * @return auteurs String
      */
-    private ArrayList<Auteur> getAuteurs() {
+    public ArrayList<Auteur> getAuteurs() {
         return auteurs;
     }
 
@@ -135,7 +150,7 @@ public class Ouvrage implements CCMS {
      * renvoie l'editeur de l'ouvrage
      * @return editeur String
      */
-    private String getEditeur() {
+    public String getEditeur() {
         return editeur;
     }
 
@@ -143,7 +158,7 @@ public class Ouvrage implements CCMS {
      * renvoie l'imprimeur de l'ouvrage
      * @return imprimeur String
      */
-    private String getImprimeur() {
+    public String getImprimeur() {
         return imprimeur;
     }
 
@@ -151,7 +166,7 @@ public class Ouvrage implements CCMS {
      * renvoie le lieu où l'ouvrage a été imprimé
      * @return lieuEdition String
      */
-    private String getLieuEdition() {
+    public String getLieuEdition() {
         return lieuEdition;
     }
 
@@ -159,7 +174,7 @@ public class Ouvrage implements CCMS {
      * renvoie la date d'édition de l'ouvrage
      * @return dateEdition String
      */
-    private int getDateEdition() {
+    public int getDateEdition() {
         return dateEdition;
     }
 
@@ -167,12 +182,12 @@ public class Ouvrage implements CCMS {
      * renvoie le nombre de pages de l'ouvrage
      * @return nbPages int
      */
-    private int getNbPage() {
+    public int getNbPage() {
         return nbPage;
     }
 
 
-    private String getLien() {
+    public String getLien() {
         return lien;
     }
 
@@ -180,7 +195,7 @@ public class Ouvrage implements CCMS {
      * renvoie l'id de l'ouvrage dans la base
      * @return id int
      */
-    private int getId() {
+    public int getId() {
         return id;
     }
 
@@ -188,7 +203,7 @@ public class Ouvrage implements CCMS {
      * change le titre de l'ouvrage par le titre passé en paramètre
      * @param titre String
      */
-    private void setTitre(String titre) {
+    public void setTitre(String titre) {
         this.titre = titre;
     }
 
@@ -196,7 +211,7 @@ public class Ouvrage implements CCMS {
      * change les auteurs de l'ouvrage par les auteurs passés en paramètre
      * @param auteurs String
      */
-    private void setAuteurs(ArrayList<Auteur> auteurs) {
+    public void setAuteurs(ArrayList<Auteur> auteurs) {
         this.auteurs = auteurs;
     }
 
@@ -204,7 +219,7 @@ public class Ouvrage implements CCMS {
      * change l'éditeur de l'ouvrage par l'éditeur passé en paramètre
      * @param editeur String
      */
-    private void setEditeur(String editeur) {
+    public void setEditeur(String editeur) {
         this.editeur = editeur;
     }
 
@@ -212,7 +227,7 @@ public class Ouvrage implements CCMS {
      * change l'imprimeur de l'ouvrage par l'imprimeur passé en paramètre
      * @param imprimeur String
      */
-    private void setImprimeur(String imprimeur) {
+    public void setImprimeur(String imprimeur) {
         this.imprimeur = imprimeur;
     }
 
@@ -220,15 +235,22 @@ public class Ouvrage implements CCMS {
      * Change le lieu d'édition de l'ouvrage par le lieu d'édition passé en paramètre
      * @param lieuEdition String
      */
-    private void setLieuEdition(String lieuEdition) {
+    public void setLieuEdition(String lieuEdition) {
         this.lieuEdition = lieuEdition;
     }
 
     /**
+     * Permet de copier les valeurs d'un ouvrage
+     * @return la copie exacte d'un ouvrage
+     */
+    public Ouvrage copie(){
+        return new Ouvrage( titre,  auteurs,  editeur,  imprimeur,  lieuEdition,  dateEdition,  nbPage,  lien,  id,  format,  resolution,  creditResolution,  reechantillonage, copyright);
+    }
+    /**
      * Change la date d'édition de l'ouvrage par la date passée en paramètre
      * @param dateEdition String
      */
-    private void setDateEdition(int dateEdition) {
+    public void setDateEdition(int dateEdition) {
         this.dateEdition = dateEdition;
     }
 
@@ -236,7 +258,7 @@ public class Ouvrage implements CCMS {
      * change le nombre de pages de l'ouvrage par le nombre de pages passé en paramètres
      * @param nbPage int
      */
-    private void setNbPage(int nbPage) {
+    public void setNbPage(int nbPage) {
         this.nbPage = nbPage;
     }
 
@@ -244,7 +266,7 @@ public class Ouvrage implements CCMS {
      * change le lien de l'ouvrage par le lien passé en paramètre
      * @param lien String
      */
-    private void setLien(String lien) {
+    public void setLien(String lien) {
         this.lien = lien;
     }
 
