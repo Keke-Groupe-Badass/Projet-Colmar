@@ -12,11 +12,17 @@ import java.util.ArrayList;
 public class AuteurDAO extends AbstractDAO {
 
     private  Connection cn;
-    
-
+    /**
+     * Constructeur d'AdminDAO
+     * @param cn la connectionObtenue par SingleConnection
+     * @see Whole.SingleConnection
+     */
     public AuteurDAO(Connection cn) {
-        this.cn = cn;
+        super(cn);
     }
+
+
+
 
     /**
      * Met à jour la BD
