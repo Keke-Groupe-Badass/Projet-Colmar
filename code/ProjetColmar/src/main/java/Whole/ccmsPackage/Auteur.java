@@ -9,11 +9,20 @@ public class Auteur implements CCMS {
 
     private int id;
 
-
     private String nom;
 
-
     private String prenom;
+
+    private String format;
+
+    private String resolution;
+
+    private String creditResolution;
+
+    private boolean reechantillonage;
+
+    private String copyright;
+
 
     /**
      * Constructeur de la classe Auteur
@@ -28,12 +37,60 @@ public class Auteur implements CCMS {
     }
 
     /**
+     * Constructeur de la classe Auteur
+     * @param id int
+     */
+    public Auteur(int id) {
+        this.id = id;
+    }
+
+    /**
      * Constructeur à utiliser pour les instances de changement
      */
     public Auteur(){
         this.id=-2;
         this.nom=null;
         this.prenom=null;
+    }
+
+    public String getFormat() {
+        return format;
+    }
+
+    public void setFormat(String format) {
+        this.format = format;
+    }
+
+    public String getResolution() {
+        return resolution;
+    }
+
+    public void setResolution(String resolution) {
+        this.resolution = resolution;
+    }
+
+    public String getCreditResolution() {
+        return creditResolution;
+    }
+
+    public void setCreditResolution(String creditResolution) {
+        this.creditResolution = creditResolution;
+    }
+
+    public boolean isReechantillonage() {
+        return reechantillonage;
+    }
+
+    public void setReechantillonage(boolean reechantillonage) {
+        this.reechantillonage = reechantillonage;
+    }
+
+    public String getCopyright() {
+        return copyright;
+    }
+
+    public void setCopyright(String copyright) {
+        this.copyright = copyright;
     }
 
     /**
