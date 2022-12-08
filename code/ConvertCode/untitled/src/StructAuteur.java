@@ -29,6 +29,19 @@ public class StructAuteur {
 
     }
 
+    public StructAuteur(String string) {
+        this.nom=string;
+        String[] sp=nom.split(",");
+        this.nb = nb;
+        this.nom = sp[0];
+        if(sp.length>1){
+            this.prenom=sp[1];
+        }
+        else {
+            this.prenom="null";
+        }
+    }
+
     @Override
     public String toString() {
         return "StructAuteur: " +nb+" " +nom+" "+prenom;
