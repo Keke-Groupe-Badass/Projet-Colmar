@@ -8,12 +8,21 @@ import Whole.ccmsPackage.Tag;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.sql.Connection;
 
 /**
  * Classe héritant d'AbstractDAO, permettant de lier une Lettrine à la base de donnée
  * @see Lettrine
  */
 public class LettrineDAO extends AbstractDAO {
+    /**
+     * Constructeur de LettrineDAO
+     * @param cn la connectionObtenue par SingleConnection
+     * @see Whole.SingleConnection
+     */
+    public LettrineDAO(Connection cn) {
+        super(cn);
+    }
 
     /**
      *permet de lier dans la base de donnée une lettrine à ouvrage, en effet une lettrine n'est présente dans un seul et unique ouvrage.
