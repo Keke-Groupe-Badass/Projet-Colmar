@@ -13,7 +13,18 @@ import java.sql.Connection;
  * Classe permettant à l'administrateur de gérer la base de donnée
  */
 public class AdminDAO {
-    private static Connection cn;
+
+    private Connection cn;
+
+    /**
+     * Constructeur d'AdminDAO
+     * @param cn la connectionObtenue par SingleConnection
+     * @see Whole.SingleConnection
+     */
+    public AdminDAO(Connection cn) {
+        this.cn=cn;
+    }
+
 
     /**
      * Permet de stocker dans un fichier la bd

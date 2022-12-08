@@ -10,7 +10,13 @@ import java.util.ArrayList;
  * @see Auteur
  */
 public class AuteurDAO extends AbstractDAO {
-    private static Connection cn;
+
+    private  Connection cn;
+    
+
+    public AuteurDAO(Connection cn) {
+        this.cn = cn;
+    }
 
     /**
      * Met à jour la BD
