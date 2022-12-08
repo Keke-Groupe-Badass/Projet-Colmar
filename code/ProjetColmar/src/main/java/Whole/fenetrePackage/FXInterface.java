@@ -38,12 +38,12 @@ public class FXInterface extends Application implements FenetreInterface {
     }
 
     /**
-     * Permet d'ouvrir une fenetre pour obtenir un fichier
-     *
-     * @return le fichier ou sera sauvegardé un contenu
+     * @return l'emplacement du fichier où sera sauvegarder un contenu.
      */
     @Override
-    public BufferedImage savePopUp() {
+    public String savePopUp() {
         return null;
     }
+
+
 }
