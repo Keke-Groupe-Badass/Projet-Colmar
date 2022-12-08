@@ -43,6 +43,7 @@ public class UtilisateurDAO extends AbstractDAO {
 	 * @param cn objet Connection provenant de SingleConnection
 	 */
 	public UtilisateurDAO(Connection cn) {
+        super(cn);
 	}
 
     /**
