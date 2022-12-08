@@ -19,13 +19,24 @@ public class Ouvrage implements CCMS {
 
     private String lieuEdition;
 
-    private String dateEdition;
+    private int dateEdition;
 
     private int nbPage;
 
     private String lien;
 
     private int id;
+
+    private String format;
+
+    private String resolution;
+
+    private String creditResolution;
+
+    private boolean reechantillonage;
+
+    private String copyright;
+
 
     /**
      * construteur de la classe Ouvrage
@@ -39,7 +50,7 @@ public class Ouvrage implements CCMS {
      * @param lien String
      * @param id int
      */
-    public Ouvrage(String titre, ArrayList<Auteur> auteurs, String editeur, String imprimeur, String lieuEdition, String dateEdition, int nbPage, String lien, int id) {
+    public Ouvrage(String titre, ArrayList<Auteur> auteurs, String editeur, String imprimeur, String lieuEdition, int dateEdition, int nbPage, String lien, int id) {
         this.titre = titre;
         this.auteurs = auteurs;
         this.editeur = editeur;
@@ -57,6 +68,51 @@ public class Ouvrage implements CCMS {
         this.id = -2;
         this.nbPage = -2;
 
+    }
+
+    public Ouvrage(String titre, int id) {
+        this.titre = titre;
+        this.id = id;
+    }
+
+    public String getFormat() {
+        return format;
+    }
+
+    public void setFormat(String format) {
+        this.format = format;
+    }
+
+    public String getResolution() {
+        return resolution;
+    }
+
+    public void setResolution(String resolution) {
+        this.resolution = resolution;
+    }
+
+    public String getCreditResolution() {
+        return creditResolution;
+    }
+
+    public void setCreditResolution(String creditResolution) {
+        this.creditResolution = creditResolution;
+    }
+
+    public boolean isReechantillonage() {
+        return reechantillonage;
+    }
+
+    public void setReechantillonage(boolean reechantillonage) {
+        this.reechantillonage = reechantillonage;
+    }
+
+    public String getCopyright() {
+        return copyright;
+    }
+
+    public void setCopyright(String copyright) {
+        this.copyright = copyright;
     }
 
     /**
@@ -103,7 +159,7 @@ public class Ouvrage implements CCMS {
      * renvoie la date d'édition de l'ouvrage
      * @return dateEdition String
      */
-    private String getDateEdition() {
+    private int getDateEdition() {
         return dateEdition;
     }
 
@@ -172,7 +228,7 @@ public class Ouvrage implements CCMS {
      * Change la date d'édition de l'ouvrage par la date passée en paramètre
      * @param dateEdition String
      */
-    private void setDateEdition(String dateEdition) {
+    private void setDateEdition(int dateEdition) {
         this.dateEdition = dateEdition;
     }
 
