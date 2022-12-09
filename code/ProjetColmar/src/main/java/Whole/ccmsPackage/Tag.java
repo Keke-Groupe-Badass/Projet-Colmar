@@ -20,6 +20,13 @@ public class Tag implements CCMS {
 
     private String description;
 
+    
+    /**
+     * Constructeur de la classe tag
+     * @param id Int 
+     * @param nom String
+     * @param description String
+     */
     public Tag(int id, String nom, String description) {
         this.id = id;
         this.nom = nom;
@@ -39,23 +46,35 @@ public class Tag implements CCMS {
     private int getId() {
         return id;
     }
-
+    /**
+     * permet de renvoyer le nom du tag dans la base de données
+     * @return nom String
+     */
     private String getNom() {
         return nom;
     }
-
+    
+    /**
+     * permet de renvoyer la description du tag dans la base de données
+     * @return description String
+     */
     private String getDescription() {
         return description;
     }
-
-    private void setId(int id) {
-        this.id = id;
-    }
-
+    
+    /**
+     * permet de remplacer le nom du tag dans la base de données
+     * @param nom String
+     * @return nom String
+     */
     private void setNom(String nom) {
         this.nom = nom;
     }
-
+    /**
+     * permet de remplacer la description du tag dans la base de données
+     * @param description String
+     * @return description String
+     */
     private void setDescription(String description) {
         this.description = description;
     }
