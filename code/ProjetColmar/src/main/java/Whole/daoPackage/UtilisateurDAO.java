@@ -1,5 +1,7 @@
 package Whole.daoPackage;
 
+import Whole.LinkToDb;
+
 import java.sql.Connection;
 import java.util.*;
 import java.time.*;
@@ -11,16 +13,12 @@ import java.time.*;
 */
 
 public class UtilisateurDAO extends AbstractDAO {
-	private static Connection cn;
 
     /**
-	 * Constructeur de la classe UtilisateurDAO. Instancie l'objet Connection
-	 * cn avec le cn passe en parametre.
-	 * 
-	 * @param cn objet Connection provenant de SingleConnection
+	 * Constructeur de la classe UtilisateurDAO.
 	 */
-	public UtilisateurDAO(Connection cn) {
-        super(cn);
+	public UtilisateurDAO() {
+        super();
 	}
 
 	/**
@@ -28,11 +26,12 @@ public class UtilisateurDAO extends AbstractDAO {
 	 * et le mot de passe de l'utilisateur, puis on fait une requête à la base de
 	 * donnees pour s'assurer que l'utilisateur existe et que le mot de passe est
 	 * le bon.
-	 * 
+	 * @param cn La connection à la base de donnée
 	 * @return renvoie le login sous forme de String si la connexion s'est correctement
 	 * effectuée, sinon elle renvoie null.
+	 * @see LinkToDb
 	 */
-	public String connexion(String login, String pwd) {
+	public String connexion(String login, String pwd,Connection cn) {
     	return null;
     }
 	
@@ -43,8 +42,10 @@ public class UtilisateurDAO extends AbstractDAO {
     * dans la base à la place de l'ancien.
     * @param login login de l'utilisateur, permet de l'identifier dans la BDD
     * @param mdp nouveau mot de passe qui doit venir remplacer l'ancien
+	 * @param cn La connection à la base de donnée
+	 * @see LinkToDb
     */
-    public void changeMDP(String login, String mdp) {
+    public void changeMDP(String login, String mdp,Connection cn) {
 
     }
 
@@ -54,8 +55,10 @@ public class UtilisateurDAO extends AbstractDAO {
     * correspondant est alors supprimé.
     * 
     * @param login login de l'utilisateur
+	 * @param cn La connection à la base de donnée
+	 * @see LinkToDb
     */
-    public void supprimerUtilisateur(String login) {
+    public void supprimerUtilisateur(String login,Connection cn) {
     
     }
 
@@ -68,9 +71,10 @@ public class UtilisateurDAO extends AbstractDAO {
     * @param login login de l'utilisateur à ajouter
     * @param mdp mot de passe de l'utilisateur à ajouter
     * @param mail adresse mail de l'utilisateur à ajouter
-
+	 * @param cn La connection à la base de donnée
+	 * @see LinkToDb
     */
-    public void creerUtilisateur(String login, String mdp, String mail) {
+    public void creerUtilisateur(String login, String mdp, String mail,Connection cn) {
 
     }
 }

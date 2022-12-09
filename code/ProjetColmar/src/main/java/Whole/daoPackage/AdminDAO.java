@@ -5,7 +5,7 @@
  */
 package Whole.daoPackage;
 
-import Whole.ccmsPackage.Auteur;
+import Whole.LinkToDb;
 
 import java.io.File;
 import java.sql.Connection;
@@ -14,16 +14,7 @@ import java.sql.Connection;
  */
 public class AdminDAO {
 
-    private Connection cn;
 
-    /**
-     * Constructeur d'AdminDAO
-     * @param cn la connectionObtenue par SingleConnection
-     * @see Whole.SingleConnection
-     */
-    public AdminDAO(Connection cn) {
-        this.cn=cn;
-    }
 
 
     /**
@@ -35,27 +26,35 @@ public class AdminDAO {
     /**
      * Permet de stocker dans un fichier la bd
      * @param file le fichier où sera exporter les données
+     * @param cn La connection à la base de donnée
+     * @see LinkToDb
      * @see Whole.exportPackage.ExportTypeInterface
+     *
      */
 
 
-    public void exportDonee(File file) {
+    public void exportDonee(File file,Connection cn) {
 
     }
     /**
      * Permet de stocker dans un fichier les logs
-     * @param file le fichier où sera exporter les logs
+     * @param cn La connection à la base de donnée
+     * @param file le fichier où sera exporter les log
+     * @see LinkToDb
      */
 
 
-    public void exportLog(File file) {
+    public void exportLog(File file,Connection cn) {
 
     }
 
     /**
      * Supprime les logs de la bd
+     * @param cn La connection à la base de donnée
+     * @see LinkToDb
+     *
      */
-    public void deleteLog() {
+    public void deleteLog(Connection cn) {
 
     }
 
@@ -63,8 +62,10 @@ public class AdminDAO {
      * Ajoute au log un text
      * @param txt Le message à enregistrer
      * @param user L'utilisateur qui a provoqué une action
+     * @param cn La connection à la base de donnée
+     * @see LinkToDb
      */
-    public void writeLog(String txt, String user){
+    public void writeLog(String txt, String user,Connection cn){
 
     }
 

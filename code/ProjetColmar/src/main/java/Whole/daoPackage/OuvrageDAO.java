@@ -1,5 +1,6 @@
 package Whole.daoPackage;
 
+import Whole.LinkToDb;
 import Whole.ccmsPackage.Auteur;
 import Whole.ccmsPackage.Ouvrage;
 import java.sql.Connection;
@@ -14,16 +15,14 @@ public class OuvrageDAO extends AbstractDAO {
 
     private Connection cn;
     /**
-     * Constructeur de la classe OuvrageDAO. Instancie l'objet Connection
-     * cn avec le cn passe en parametre.
+     * Constructeur de la classe OuvrageDAO.
      *
-     * @param cn objet Connection provenant de SingleConnection
      * @see Connection
-     * @see Whole.SingleConnection
+     * @see LinkToDb
      */
 
-    public OuvrageDAO(Connection cn) {
-        super(cn);
+    public OuvrageDAO() {
+        super();
     }
 
 
@@ -34,11 +33,13 @@ public class OuvrageDAO extends AbstractDAO {
     * on ne connait pas forcement l'auteur d'un ouvrage. Si il n'est pas NULL, on
     * vérifie que l'auteur passé en paramètre existe bien dans la base de données,
     * puis on effectue une requete d'insertion.
-    * 
+    *
     * @param a Auteur auteur de l'ouvrage
     * @param o Ouvrage ouvrage qu'on souhaite inserer
+     * @param cn La connection à la base de donnée
+     * @see LinkToDb
     */
-    public void ecrit(Auteur a, Ouvrage o) {
+    public void ecrit(Auteur a, Ouvrage o,Connection cn) {
     	
     }
     
@@ -49,8 +50,10 @@ public class OuvrageDAO extends AbstractDAO {
      * 
      * @param objet l'ouvrage cible qu'on souhaite modifier
      * @param changement l'ouvrage par lequel on souhaite remplacer l'ancien
+     * @param cn La connection à la base de donnée
+     * @see LinkToDb
      */
-    public void modifier(Ouvrage objet, Ouvrage changement) {
+    public void modifier(Ouvrage objet, Ouvrage changement,Connection cn) {
     	
     }
     
@@ -60,8 +63,10 @@ public class OuvrageDAO extends AbstractDAO {
      * si trouve on le supprime.
      * 
      * @param objet l'ouvrage cible qu'on souhaite supprimer
+     * @param cn La connection à la base de donnée
+     * @see LinkToDb
      */
-    public void supprimer(Ouvrage objet) {
+    public void supprimer(Ouvrage objet,Connection cn) {
 
     }
     
@@ -72,8 +77,10 @@ public class OuvrageDAO extends AbstractDAO {
      * @param donne ouvrage avec tous les parametres nuls sauf ceux a chercher
      * @return renvoie une liste des ouvrages qui correspondent aux critères
      * de recherche
+     * @param cn La connection à la base de donnée
+     * @see LinkToDb
      */
-    public ArrayList<Ouvrage> chercher(Ouvrage donne) {
+    public ArrayList<Ouvrage> chercher(Ouvrage donne,Connection cn) {
         return null;
     }
 }

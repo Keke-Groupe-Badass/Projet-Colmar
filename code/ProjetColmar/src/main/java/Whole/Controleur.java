@@ -6,8 +6,6 @@
 package Whole;
 
 import java.sql.Connection;
-import java.util.*;
-import java.time.*;
 
 /**
 * Coeur de l'application, doit avant tout lancer ConnectionUniqueBD
@@ -55,7 +53,7 @@ public class Controleur {
     * Permet de se connecter a la base de donnee en faisant un appel de SingleConnection avec les parametres choisis
     * @param name nom d'utilisateur
     * @param pwd mot de passe
-    * @see SingleConnection
+    * @see LinkToDb
     */
     public Boolean Login( String name,  String pwd) {
         return true;

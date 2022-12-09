@@ -6,13 +6,12 @@ import java.sql.Connection;
 /**
 * SingleConnection est appelee pour creer une unique connexion entre l'application et la base de donnees
 */
-public class SingleConnection {
-	private static Connection cn;
-    
+public class LinkToDb {
+
 	/**
 	 * Constructeur de la classe SingleConnection. 
 	 */
-    public SingleConnection(){
+    public LinkToDb(){
     	
     }
     
