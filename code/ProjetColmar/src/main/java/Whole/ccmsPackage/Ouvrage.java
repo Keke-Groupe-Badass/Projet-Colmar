@@ -48,8 +48,8 @@ public class Ouvrage implements CCMS {
 
     /**
      * Constructeur de la classe ouvrage à utiliser en cas normal
-     * @param titre
-     * @param id
+     * @param titre String
+     * @param id int
      */
     public Ouvrage(String titre, int id) {
         this.titre = titre;
@@ -58,20 +58,20 @@ public class Ouvrage implements CCMS {
 
     /**
      * Constructeur à utilisé pour les copies uniquements
-     * @param titre
-     * @param auteurs
-     * @param editeur
-     * @param imprimeur
-     * @param lieuEdition
-     * @param dateEdition
-     * @param nbPage
-     * @param lien
-     * @param id
-     * @param format
-     * @param resolution
-     * @param creditResolution
-     * @param reechantillonage
-     * @param copyright
+     * @param titre String
+     * @param auteurs ArrayList<String>
+     * @param editeur String
+     * @param imprimeur String
+     * @param lieuEdition String
+     * @param dateEdition String
+     * @param nbPage int
+     * @param lien String
+     * @param id int
+     * @param format String
+     * @param resolution String
+     * @param creditResolution String
+     * @param reechantillonage boolean
+     * @param copyright String
      */
     public Ouvrage(String titre, ArrayList<Auteur> auteurs, String editeur, String imprimeur, String lieuEdition, int dateEdition, int nbPage, String lien, int id, String format, String resolution, String creditResolution, boolean reechantillonage, String copyright) {
         this.titre = titre;
@@ -90,42 +90,82 @@ public class Ouvrage implements CCMS {
         this.copyright = copyright;
     }
 
+    /**
+     * getter de l'attribut format
+     * @return format
+     */
     public String getFormat() {
         return format;
     }
 
+    /**
+     * setter de l'attribut format
+     * @param format String
+     */
     public void setFormat(String format) {
         this.format = format;
     }
 
+    /**
+     * getter de l'attribut résolution
+     * @return resolution
+     */
     public String getResolution() {
         return resolution;
     }
 
+    /**
+     * setter de l'attribut résolution
+     * @param resolution String
+     */
     public void setResolution(String resolution) {
         this.resolution = resolution;
     }
 
+    /**
+     * getter de l'attribut CreditResolution
+     * @return ceditResolution
+     */
     public String getCreditResolution() {
         return creditResolution;
     }
 
+    /**
+     * setter de l'attribut creditResolution
+     * @param creditResolution String
+     */
     public void setCreditResolution(String creditResolution) {
         this.creditResolution = creditResolution;
     }
 
+    /**
+     * equivalent getter de l'attribut reechantillonage
+     * @return reechantillonage
+     */
     public boolean isReechantillonage() {
         return reechantillonage;
     }
 
+    /**
+     * setter de l'attribut reechantillonage
+     * @param reechantillonage boolean
+     */
     public void setReechantillonage(boolean reechantillonage) {
         this.reechantillonage = reechantillonage;
     }
 
+    /**
+     * getter de l'attribut copyright
+     * @return copytight
+     */
     public String getCopyright() {
         return copyright;
     }
 
+    /**
+     * setter de l'attribut copyright
+     * @param copyright String
+     */
     public void setCopyright(String copyright) {
         this.copyright = copyright;
     }
