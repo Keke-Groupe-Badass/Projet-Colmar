@@ -12,19 +12,18 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.ArrayList;
 
 /**
  * Classe permettant à l'administrateur de gérer la base de donnée
  */
-public class AdminDAO<E extends ExportTypeInterface> {
+public class AdminDAO {
 
     /**
      * Constructeur de la classe
      */
+    private ArrayList<ExportTypeInterface> listeMethode;
     public AdminDAO() {
     }
 
@@ -38,8 +37,18 @@ public class AdminDAO<E extends ExportTypeInterface> {
      */
 
 
-    public Boolean exportDonee(File file,Connection cn, E e) {
-        return e.export(file);
+    public Boolean exportDonee(File file,Connection cn, String methode) {
+        for(ExportTypeInterface e:listeMethode){
+            if(e.getName().equals(methode)){
+                if(e.getName().equals("SQL")){
+
+                }
+                else{
+                    ArrayList<ArrayList<String>> list =new ArrayList<ArrayList<String>>();
+                }
+            }
+        }
+        return false;
     }
     /**
      * Permet de stocker dans un fichier les logs
@@ -56,10 +65,11 @@ public class AdminDAO<E extends ExportTypeInterface> {
             String str = "Hello";
             BufferedWriter bw = new BufferedWriter(new FileWriter(file));
             bw.write("Log exporté le "+System.currentTimeMillis());
+
             while(rs.next()){
+                bw.newLine();
                 str=rs.getString(2)+" par "+rs.getString(3)+": "+rs.getString(1);
                 bw.write(str);
-                bw.newLine();
 
             }
             bw.close();
@@ -79,8 +89,16 @@ public class AdminDAO<E extends ExportTypeInterface> {
      * @see LinkToDb
      *
      */
-    public void deleteLog(Connection cn) {
-
+    public Boolean deleteLog(Connection cn) {
+        Statement stm = null;
+        try {
+            stm = cn.createStatement();
+            stm.execute("DELETE FROM `log`");
+            return true;
+        } catch (SQLException e) {
+            System.err.println("something went wrong with the database link");
+        }
+        return false;
     }
 
     /**

@@ -17,14 +17,31 @@ import java.time.*;
  * @see ExportTypeInterface
  */
 public class ExportSQL implements ExportTypeInterface {
-    @Override
+    String name="SQL";
+
+
+
+
     /**
-     *  Implémante en SQL la sauvegarde de la base de donnée dans un fichier
+     * Ne pas utiliser
+     * @param f Fichier de sauvegarde
+     * @return renvoir toujours false, n'est pas sensé être appelé
+     *
+     * @see Whole.daoPackage.AbstractDAO
+     */
+    @Override
+    @Deprecated
+    public Boolean export(File f, ArrayList<ArrayList<String>> list) {
+        return false;
+    }
+    /**
+     *  Implémante en CSV la sauvegarde de la base de donnée dans un fichier
      * @param f Fichier de sauvegarde
      * @return true si la base peut être exportée, false sinon
-     * @see whole.AdminDao.exportDonee
+     *
+     * @see Whole.daoPackage.AbstractDAO
      */
-    public Boolean export(File f, ResultSet rs) {
+    public Boolean export(File f){
         return true;
     }
 

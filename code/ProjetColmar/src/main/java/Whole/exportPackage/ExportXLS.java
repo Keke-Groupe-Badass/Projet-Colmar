@@ -17,6 +17,7 @@ import java.time.*;
  * @see ExportTypeInterface
  */
 public class ExportXLS implements ExportTypeInterface {
+    String name="XLS";
     /**
      *  Implémante en XLS la sauvegarde de la base de donnée dans un fichier
      * @param f Fichier de sauvegarde
@@ -25,7 +26,7 @@ public class ExportXLS implements ExportTypeInterface {
      * @see
      */
     @Override
-    public Boolean export(File f, ResultSet rs) {
+    public Boolean export(File f, ArrayList<ArrayList<String>> list) {
         return true;
     }
 
