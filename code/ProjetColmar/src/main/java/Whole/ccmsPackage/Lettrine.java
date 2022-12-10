@@ -114,7 +114,8 @@ public class Lettrine implements CCMS {
 
     /**
      * permet de modifier la valeur du numéro de la page par l'objet en paramètre
-     * @param nbPage int : nouvelle valeur de nbPage
+     * @param nbPage int : nouvelle valeur de nbPage. Si on ne connait pas le numéro de la page sur
+     *                     laquelle la lettrine figure, nbPage = -1
      */
     public void setNbPage(int nbPage) {
         this.nbPage = nbPage;
