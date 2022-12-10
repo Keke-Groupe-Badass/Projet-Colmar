@@ -36,7 +36,6 @@ public class LettrineDAO<l extends Lettrine> extends AbstractDAO<l> {
      */
     @Override
     public void modifier(l objet, l changement, Connection cn) {
-
     }
 
     /**
