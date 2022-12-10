@@ -34,7 +34,7 @@ public class OuvrageDAO<objet extends Ouvrage> extends AbstractDAO<objet> {
      * @see LinkToDb
      */
     @Override
-    public void creer(objet donne, Connection cn) {
+    public void creer(Ouvrage donne, Connection cn) {
 
     }
 
