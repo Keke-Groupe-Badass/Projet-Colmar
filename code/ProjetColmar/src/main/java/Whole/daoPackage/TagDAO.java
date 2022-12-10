@@ -5,50 +5,75 @@
 */
 package Whole.daoPackage;
 
-import Whole.ccmsPackage.CCMS;
+import Whole.LinkToDb;
 import Whole.ccmsPackage.Tag;
 
 import java.sql.Connection;
 import java.util.ArrayList;
+/**
+ * Classe servant à lié à la base de donnée les méthodes de Tag
+ * @see Tag
+ */
+public class TagDAO<objet extends Tag> extends AbstractDAO<objet>{
 
-public class TagDAO extends AbstractDAO {
-    private static Connection cn;
+    /**
+     * Constructeur de la classe OuvrageDAO.
+     * @see LinkToDb
+     */
+    public TagDAO() {
+        super();
+    }
+
 
     /**
      * Met à jour la BD
      * @param objet Tag à changer
      * @param changement Tag de changement (les paramètres null ne sont pas à changer)
+     * @param cn La connection à la base de donnée
+     * @see LinkToDb
      */
 
 
-    public void modifier(Tag objet , Tag changement ) {
+    @Override
+    public void modifier(Tag objet , Tag changement ,Connection cn) {
 
     }
     /**
      * Supprime de la db un Tag
      * @param objet un Tag d'un type à déterminer dans chaque implémentation
+     * @param cn La connection à la base de donnée
+     * @see LinkToDb
      * @see Tag
      */
+    @Override
 
-    public void supprimer(Tag objet ) {
+    public void supprimer(Tag objet ,Connection cn) {
 
     }
     /**
      * Ajoute à la base de donnée un Tag
-     * @param donne le Tag à ajouter
+     * @param objet le Tag à ajouter
+     * @param cn La connection à la base de donnée
+     * @see LinkToDb
      * @see Tag
      */
+    @Override
 
-    public void creer(Tag donne) {
+    public void creer(Tag objet,Connection cn) {
 
     }
     /**
      *Cherche un Tag dans la base
-     * @param donne Tag avec tout les paramètres nuls sauf ceux à chercher
+     * @param objet Tag avec tous les paramètres nuls sauf ceux à chercher
+     * @param cn La connection à la base de donnée
+     * @return La liste des tags qui correspond auc paramètres donnés
+     * @see LinkToDb
      * @see Tag
+     *
      */
+    @Override
 
-    public ArrayList<Tag> chercher(Tag donne) {
+    public ArrayList<Tag> chercher(Tag objet,Connection cn) {
         return null;
     }
 }

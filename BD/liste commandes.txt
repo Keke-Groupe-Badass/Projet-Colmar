@@ -1,0 +1,25 @@
+INSERT INTO fprojectcolmar.`auteurs`
+SELECT idSimilarite,CONCAT("Generated",idSimilarite),Notes FROM bdjimenes.t_similarites_graphiques
+
+String sql ="SELECT `Num_personne`,`nom_prenom` FROM `t_personne`";
+PreparedStatement stmt=con.prepareStatement("INSERT INTO `auteurs`(`idAuteur`, `nom`, `prenom`) VALUES (?,?,?)");
+
+UPDATE `auteurs` SET `nom`=null WHERE `nom`=null
+UPDATE `auteurs` SET `prenom`=null WHERE `prenom`="null"
+
+
+
+INSERT INTO fprojectcolmar.ouvrages(`idOuvrage`, `titre`, `dateEdition`, `format`, `table_s`, `resolution`, `credit_photo`, `reechantillonage`, `copyright`)
+
+
+SELECT `Id_ouvrage`,`Titre`,`Date_ouvrage`,`Format`,`Table`,`Resolution`,`Credit_photo`,`Reechantillonnage`,`copyright` FROM `t_ouvrages`
+
+`Id_ouvrage`,
+
+
+INSERT INTO fprojectcolmar.ecrit
+SELECT `Id_ouvrage`,Num_personne FROM t_ouvrages t
+inner join t_personne a on t.Auteur=a.nom_prenom  
+
+SELECT distinct t.Auteur FROM t_ouvrages t left join t_personne a on t.Auteur=a.nom_prenom where Num_personne is Null ORDER BY `a`.`Num_personne` ASC
+

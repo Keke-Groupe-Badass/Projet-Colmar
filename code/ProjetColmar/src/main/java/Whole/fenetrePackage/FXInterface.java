@@ -16,15 +16,7 @@ public class FXInterface extends Application implements FenetreInterface {
         launch(args);
     }
 
-    /**
-     *
-     * @param primaryStage
-     *
-     */
-    @Override
-    public void start(Stage primaryStage) {
 
-    }
 
     /**
      * Permet de changer la scène
@@ -38,12 +30,20 @@ public class FXInterface extends Application implements FenetreInterface {
     }
 
     /**
-     * Permet d'ouvrir une fenetre pour obtenir un fichier
-     *
-     * @return le fichier ou sera sauvegardé un contenu
+     * @return l'emplacement du fichier où sera sauvegarder un contenu.
      */
     @Override
-    public BufferedImage savePopUp() {
+    public String savePopUp() {
         return null;
+    }
+
+
+    /**
+     * @param stage
+     * @throws Exception
+     */
+    @Override
+    public void start(Stage stage) throws Exception {
+
     }
 }

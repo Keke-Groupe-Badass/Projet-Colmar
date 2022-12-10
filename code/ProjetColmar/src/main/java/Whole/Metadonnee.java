@@ -32,6 +32,10 @@ public class Metadonnee {
     }
 
 
+    /**
+     * renvoie la valeur de la métadonnée (ex : nom = "couleur", valeur = "rouge")
+     * @return entree String
+     */
     private String getEntree() {
         return entree;
     }
@@ -60,6 +64,10 @@ public class Metadonnee {
         this.nom = nom;
     }
 
+    /**
+     * change la valeur de la métadonnée par l'entree passée en paramètre
+     * @param entree String
+     */
     private void setEntree(String entree) {
         this.entree = entree;
     }

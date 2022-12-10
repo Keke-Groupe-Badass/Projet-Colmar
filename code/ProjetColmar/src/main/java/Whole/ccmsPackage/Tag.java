@@ -7,7 +7,9 @@ package Whole.ccmsPackage;
 
 import Whole.daoPackage.AbstractDAO;
 
-
+/**
+ * Classe représentant les tags
+ */
 public class Tag implements CCMS {
 
     private int id;
@@ -18,6 +20,12 @@ public class Tag implements CCMS {
 
     private String description;
 
+    /**
+     * Constructeur de la classe tag à utilisé en cas normal
+     * @param id l'identifiant du tag dans la bd
+     * @param nom le nom du tag
+     * @param description la description du tag
+     */
     public Tag(int id, String nom, String description) {
         this.id = id;
         this.nom = nom;
