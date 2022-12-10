@@ -62,10 +62,12 @@ public class TagDAO extends AbstractDAO {
     }
     /**
      *Cherche un Tag dans la base
-     * @param donne Tag avec tout les paramètres nuls sauf ceux à chercher
+     * @param donne Tag avec tous les paramètres nuls sauf ceux à chercher
      * @param cn La connection à la base de donnée
+     * @return La liste des tags qui correspond auc paramètres donnés
      * @see LinkToDb
      * @see Tag
+     *
      */
 
     public ArrayList<Tag> chercher(Tag donne,Connection cn) {

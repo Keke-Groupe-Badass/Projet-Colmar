@@ -24,9 +24,7 @@ public abstract class AbstractDAO {
     */
 
 
-    public void modifier(CCMS objet , CCMS changement ,Connection cn) {
-
-    }
+    public abstract void modifier(CCMS objet , CCMS changement ,Connection cn);
     /**
      * Supprime de la db un CCMS
     * @param objet un CCMS d'un type à déterminer dans chaque implémentation
@@ -35,9 +33,7 @@ public abstract class AbstractDAO {
      * @see Whole.LinkToDb
     */
 
-    public void supprimer(CCMS objet ,Connection cn) {
-
-    }
+    public abstract void supprimer(CCMS objet ,Connection cn);
     /**
      * Ajoute à la base de donnée un CCMS
     * @param donne le CCMS à ajouter
@@ -46,19 +42,16 @@ public abstract class AbstractDAO {
      * @see Whole.LinkToDb
     */
 
-    public void creer(CCMS donne,Connection cn) {
-
-    }
+    public abstract void creer(CCMS donne,Connection cn);
     /**
      *Cherche un CCMS dans la base
     * @param donne CCMS avec tout les paramètres nuls sauf ceux à chercher
      *@param cn La connection à la base de donnée
+     * @return la Liste des des CCMS correspondant aux critères
      * @see CCMS
      * @see Whole.LinkToDb
     */
 
-    public ArrayList<CCMS> chercher(CCMS donne,Connection cn) {
-        return null;
-    }
+    public abstract ArrayList<CCMS> chercher(CCMS donne,Connection cn);
 
 }
