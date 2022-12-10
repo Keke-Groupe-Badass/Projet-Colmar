@@ -50,16 +50,24 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
     }
 
     /**
-     * Supprime une db de la db
+     * Supprime une lettrine de la db
      *
-     * @param objet La lettrine à supprimer
+     * @param lettrine La lettrine à supprimer
      * @param cn    La connection à la base de donnée
      * @see Lettrine
      * @see LinkToDb
      */
     @Override
-    public void supprimer(Lettrine objet, Connection cn) {
-
+    public void supprimer(Lettrine lettrine, Connection cn) {
+        try {
+            Statement stmt = cn.createStatement();
+            String sql = "DELETE FROM lettrine WHERE id=" + lettrine.getId();
+            stmt.executeQuery(sql);
+        }
+        catch (SQLException e) {
+            System.err.println("Erreur de requete");
+            e.printStackTrace();
+        }
     }
 
     /**
