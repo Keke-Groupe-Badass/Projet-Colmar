@@ -12,7 +12,7 @@ import java.time.*;
 * @see AbstractDAO
 */
 
-public class UtilisateurDAO extends AbstractDAO {
+public class UtilisateurDAO  {
 
     /**
 	 * Constructeur de la classe UtilisateurDAO.

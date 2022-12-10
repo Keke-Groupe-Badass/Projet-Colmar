@@ -3,24 +3,80 @@ package Whole.daoPackage;
 
 import Whole.LinkToDb;
 import Whole.Metadonnee;
+import Whole.ccmsPackage.CCMS;
 import Whole.ccmsPackage.Lettrine;
 import Whole.ccmsPackage.Ouvrage;
 import Whole.ccmsPackage.Tag;
 import java.sql.Connection;
 
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 /**
  * Classe héritant d'AbstractDAO, permettant de lier une Lettrine à la base de donnée
  * @see Lettrine
  */
-public class LettrineDAO extends AbstractDAO {
+public class LettrineDAO<l extends Lettrine> extends AbstractDAO<l> {
     /**
      * Constructeur de LettrineDAO
      * @see LinkToDb
      */
     public LettrineDAO() {
         super();
+    }
+
+    /**
+     * Met à jour la BD
+     *
+     * @param objet      La Lettrine à modifier
+     * @param changement La lettrine de changement (les paramètres null ne sont pas à changer)
+     * @param cn         La connection à la base de donnée
+     * @see Lettrine
+     * @see LinkToDb
+     */
+    @Override
+    public void modifier(l objet, l changement, Connection cn) {
+
+    }
+
+    /**
+     * Supprime une db de la db
+     *
+     * @param objet La lettrine à supprimer
+     * @param cn    La connection à la base de donnée
+     * @see Lettrine
+     * @see LinkToDb
+     */
+    @Override
+    public void supprimer(l objet, Connection cn) {
+
+    }
+
+    /**
+     * Ajoute à la base de donnée d'une lettrine
+     *
+     * @param donne la lettrine à ajouter
+     * @param cn    La connection à la base de donnée
+     * @see Lettrine
+     * @see LinkToDb
+     */
+    @Override
+    public void creer(l donne, Connection cn) {
+
+    }
+
+    /**
+     * Cherche un CCMS dans la base
+     *
+     * @param donne CCMS avec tout les paramètres nuls sauf ceux à chercher
+     * @param cn    La connection à la base de donnée
+     * @return la Liste des des CCMS correspondant aux critères
+     * @see CCMS
+     * @see LinkToDb
+     */
+    @Override
+    public ArrayList<l> chercher(l donne, Connection cn) {
+        return null;
     }
 
 
