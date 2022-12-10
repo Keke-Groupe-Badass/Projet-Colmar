@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="code/ConvertCode/untitled/src"/>
+	<classpathentry kind="src" path="code/ProjetColmar/src/main/java"/>
+	<classpathentry kind="lib" path="code/ConvertCode/lib/mysql-connector.jar"/>
+	<classpathentry kind="lib" path="code/ProjetColmar/.mvn/wrapper/maven-wrapper.jar"/>
+	<classpathentry kind="lib" path="code/ProjetColmar/lib/mysql-connector.jar"/>
+	<classpathentry kind="output" path="code/ConvertCode/out/production/ConvertCode"/>
+</classpath>

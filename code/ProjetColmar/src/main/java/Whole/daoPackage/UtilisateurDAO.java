@@ -2,84 +2,213 @@ package Whole.daoPackage;
 
 import Whole.LinkToDb;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.sql.Connection;
-import java.util.*;
-import java.time.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
-* Cette classe est appelÃ©e pour crÃ©er un lien entre l'application et la base de donnÃ©es
+* Cette classe est appelée pour créer un lien entre l'application et la base de données
 * pour tout ce qui concerne les interactions et les modifications de l'utilisateur.
 * @see AbstractDAO
 */
 
-public class UtilisateurDAO  {
+public class UtilisateurDAO {
 
     /**
 	 * Constructeur de la classe UtilisateurDAO.
 	 */
 	public UtilisateurDAO() {
-        super();
 	}
 
 	/**
-	 * Permet Ã  un utilisateur de se connecter sur l'application. On donne le login
-	 * et le mot de passe de l'utilisateur, puis on fait une requÃªte Ã  la base de
-	 * donnees pour s'assurer que l'utilisateur existe et que le mot de passe est
+	 * Permet à un utilisateur de se connecter sur l'application. On donne le login
+	 * et le mot de passe de l'utilisateur, puis on fait une requête à la base de
+	 * données pour s'assurer que l'utilisateur existe et que le mot de passe est
 	 * le bon.
-	 * @param login Le nom d'utilisateur pour se connecter Ã  la base de donnÃ©e
-	 * @param pwd  Le mot de passe de la base de donnÃ©e
-	 * @param cn La connection Ã  la base de donnÃ©e
+	 * @param login Le nom d'utilisateur pour se connecter à la base de donnée
+	 * @param mdp Le mot de passe de la base de donnée
+	 * @param cn La connection à la base de donnée
 	 * @return renvoie le login sous forme de String si la connexion s'est correctement
-	 * effectuÃ©e, sinon elle renvoie null.
+	 * effectuée, sinon elle renvoie null.
 	 * @see LinkToDb
 	 */
-	public String connexion(String login, String pwd,Connection cn) {
-    	return null;
+	public String connexion(String login, String mdp,Connection cn) {
+		if (!mdpValide(mdp))
+			return null;
+		final String mdpEncrypte=encrypte(mdp);
+		String sql="SELECT * FROM utilisateur WHERE email='"+login+"' AND password='"+mdpEncrypte+"'";
+		try {
+			Statement stmt=cn.createStatement();
+			ResultSet rs=stmt.executeQuery(sql);
+			if (rs.next() == false) //Si l'utilisateur n'est pas trouvé
+				return null;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return login;
     }
 	
     /**
     * Permet de changer le mot de passe de l'utilisateur. On donne le login et le
     * nouveau mot de passe souhaite, puis on retrouve l'utilisateur dans la base de
-    * donnees Ã  l'aide du login. Le nouveau mot de passe est encryptÃ© puis stockÃ©
-    * dans la base Ã  la place de l'ancien.
+    * donnees à l'aide du login. Le nouveau mot de passe est encrypté puis stocké
+    * dans la base à la place de l'ancien.
     * @param login login de l'utilisateur, permet de l'identifier dans la BDD
     * @param mdp nouveau mot de passe qui doit venir remplacer l'ancien
-	 * @param cn La connection Ã  la base de donnÃ©e
-	 * @return True si le mot de passe a pu Ãªtre changÃ©, false sinon
-	 * @see LinkToDb
+	* @param cn La connection à la base de données
+	* @return renvoie true si la modification s'est correctement effectuée, false sinon
+	* @see LinkToDb
     */
-    public Boolean changeMDP(String login, String mdp,Connection cn) {
-		return true;
+    public boolean changeMDP(String login, String mdp, Connection cn) {
+    	boolean fonctionne=false; 
+    	if (mdpValide(mdp)) {
+    		String sql="SELECT email FROM utilisateur WHERE email='"+login+"'";
+        	try {
+        		final String mdpEncrypte=encrypte(mdp);
+    			Statement stmt=cn.createStatement();
+    			ResultSet rs=stmt.executeQuery(sql);
+    			if (rs.next()) { //Si l'utilisateur existe
+    				sql="UPDATE utilisateur SET password='"+mdpEncrypte
+    					+"' WHERE email='"+login+"'";
+    				fonctionne=stmt.execute(sql);
+    			}
+    		} catch (SQLException e) {
+    			e.printStackTrace();
+    		}
+    	}
+    	return fonctionne;
     }
 
     /**
-    * Permet de supprimer un utilisateur de la base de donnees Ã  partir de son login.
-    * Le login est recherchÃ© dans la base de donnees, puis si trouve l'utilisateur
-    * correspondant est alors supprimÃ©.
+    * Permet de supprimer un utilisateur de la base de données à partir de son login.
+    * Le login est recherché dans la base de donnees, puis si trouve l'utilisateur
+    * correspondant est alors supprimé.
     * 
     * @param login login de l'utilisateur
-	 * @param cn La connection Ã  la base de donnÃ©e
-	 * @return True si l'utilisateur a pu Ãªtre supprimÃ©, false sinon
-	 * @see LinkToDb
+	* @param cn La connection à la base de données
+	* @return true si la suppression s'est correctement passée, false sinon
+	* @see LinkToDb
     */
-    public Boolean supprimerUtilisateur(String login,Connection cn) {
-    	return true;
+    public boolean supprimerUtilisateur(String login, Connection cn) {
+    	boolean fonctionne=false; 
+    	String sql="SELECT email FROM utilisateur WHERE email='"+login+"'";
+    	try {
+			Statement stmt=cn.createStatement();
+			ResultSet rs=stmt.executeQuery(sql);
+			if (rs.next()) { //Si l'utilisateur existe
+				sql="DELETE FROM utilisateur WHERE email='"+login+"'";
+				fonctionne=stmt.execute(sql);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+    	return fonctionne;
     }
 
     /**
-    * Permet de crÃ©er un nouvel utilisateur dans la base de donnees.
-    * Si le login n'existe pas dÃ©jÃ , ni que l'adresse mail est dÃ©jÃ  utilisÃ©e, on
-    * encrypte le mot de passe et on effectue une requÃªte d'insertion avec le login,
-    * mot de passe et adresse mail de l'utilisateur qu'on souhaite ajouter.
+    * Permet de créer un nouvel utilisateur dans la base de donnees.
+    * Si le login n'existe pas déjà, on encrypte le mot de passe et on
+    * effectue une requête d'insertion avec le login et le mot de passe
+    * de l'utilisateur qu'on souhaite ajouter.
     *
-    * @param login login de l'utilisateur Ã  ajouter
-    * @param mdp mot de passe de l'utilisateur Ã  ajouter
-    * @param mail adresse mail de l'utilisateur Ã  ajouter
-	 * @param cn La connection Ã  la base de donnÃ©e
-	 * @return True si l'utilisateur a pu Ãªtre crÃ©Ã©, false sinon
-	 * @see LinkToDb
+    * @param login login de l'utilisateur à ajouter = mail
+    * @param mdp mot de passe de l'utilisateur à ajouter
+    * @param statut statut de l'utilisateur
+	* @param cn La connection à la base de données
+	* @return renvoie true si l'insertion s'est correctement passée, false
+	* sinon
+	* @see LinkToDb
     */
-    public Boolean creerUtilisateur(String login, String mdp, String mail,Connection cn) {
-		return true;
+    public boolean creerUtilisateur(String login, String mdp, String statut, Connection cn) {
+    	boolean loginValide=false;
+    	boolean statutValide=false;
+    	//On vérifie que rien n'est null, puis on vérifie le format du login et du statut
+    	if (login != null && mdp != null && statut!=null) {
+    		String regex="^[a-zA-Z.]+@([a-zA-Z-]+.)+[a-zA-Z-]{2,4}$";
+        	Pattern p = Pattern.compile(regex);
+        	Matcher m = p.matcher(login);
+        	loginValide=m.matches();
+        	regex="^[a-zA-Z]*$";
+    		p = Pattern.compile(regex);
+    		m = p.matcher(statut);
+    		statutValide=m.matches();
+    	}
+		
+    	boolean fonctionne=false; 
+    	if (loginValide && mdpValide(mdp) && statutValide) {
+    		String sql="SELECT email FROM utilisateur WHERE email='"+login+"'";
+        	try {
+    			Statement stmt=cn.createStatement();
+    			ResultSet rs=stmt.executeQuery(sql);
+    			if (rs.next() == false) { //Si le login n'est pas deja utilise
+    				final String mdpEncrypte=encrypte(mdp);
+    				sql="INSERT INTO utilisateur VALUES(?, ?, ?)";
+    				PreparedStatement pstmt=cn.prepareStatement(sql);
+    				pstmt.setString(1, login);
+    				pstmt.setString(2, mdpEncrypte);
+    				pstmt.setString(3, statut);
+    				fonctionne=pstmt.execute();
+    			}
+    		} catch (SQLException e) {
+    			e.printStackTrace();
+    		}
+    	}
+    	
+    	return fonctionne;
+    }
+    
+    /**
+     * Permet de vérifier que le mot de passe correspond au format
+     * attendu. C'est à dire : 6 caractères minimum, des majuscules et
+     * des minuscules, des caractères spéciaux sauf " et '
+     * 
+     * @param mdp mot de passe qu'on souhaite verifier
+     * @return renvoie true si le mdp correspond aux conditions,
+     * false sinon
+     */
+    public boolean mdpValide(String mdp) {
+		String regex="^[A-Za-z0-9_!?=-]{6,}$";
+		Pattern p = Pattern.compile(regex);
+		Matcher m = p.matcher(mdp);
+		boolean valide=m.matches();
+		return valide;
+    }
+    
+    /**
+     * Permet d'encrypter le mot de passe pour qu'il n'apparaisse
+     * pas tel quel dans la base de données.
+     * 
+     * @param mdp mot de passe qu'on souhaite encrypter
+     * @return renvoie le mot de passe encrypte
+     */
+    public String encrypte(String mdp) {
+    	String mdpEncrypte=null;
+    	
+		try {
+			SecureRandom sr=SecureRandom.getInstance("SHA1PRNG");
+			
+	        byte[] salt=new byte[16];
+	        sr.nextBytes(salt);
+	        String saltString=salt.toString();
+	    	MessageDigest md=MessageDigest.getInstance("SHA-1");
+	    	
+			md.update(saltString.getBytes());
+	        byte[] bytes = md.digest(mdp.getBytes());
+	        StringBuilder sb = new StringBuilder();
+	        for (int i = 0; i < bytes.length; i++) {
+	            sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+	        }
+	        mdpEncrypte = sb.toString();
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+        return mdpEncrypte;
     }
 }
