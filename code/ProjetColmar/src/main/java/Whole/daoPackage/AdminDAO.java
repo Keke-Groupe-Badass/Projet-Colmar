@@ -24,6 +24,7 @@ public class AdminDAO {
      * Constructeur de la classe
      */
     private ArrayList<ExportTypeInterface> listeMethode;
+    private ArrayList<String> listeTable;
     public AdminDAO() {
     }
 
@@ -37,19 +38,32 @@ public class AdminDAO {
      */
 
 
-    public Boolean exportDonee(File file,Connection cn, String methode) {
+    public Boolean exportDonee(File file,Connection cn, String methode, String path) {
         for(ExportTypeInterface e:listeMethode){
             if(e.getName().equals(methode)){
                 if(e.getName().equals("SQL")){
 
                 }
                 else{
+                    Boolean b = true;
                     ArrayList<ArrayList<String>> list =new ArrayList<ArrayList<String>>();
+                    for(String st:listeTable){
+                        list=getTableList(st);
+                        File f = new File(path+"/"+st);
+                        b = b && e.export(f,list );
+                    }
+                    return b;
+
                 }
             }
         }
         return false;
     }
+    public ArrayList<ArrayList<String>> getTableList(String table){
+        return null;
+    }
+
+
     /**
      * Permet de stocker dans un fichier les logs
      * @param cn La connection à la base de donnée
