@@ -56,6 +56,7 @@ public class AuteurDAO extends AbstractDAO {
      *Cherche un Auteur dans la base
      * @param donne Auteur avec tous les paramètres nuls sauf ceux à chercher
      * @param cn La connection à la base de donnée
+     * @return la Liste des auteurs correspondant aux critères
      * @see Auteur
      * @see LinkToDb
      */

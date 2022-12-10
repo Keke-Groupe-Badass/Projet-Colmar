@@ -26,6 +26,8 @@ public class UtilisateurDAO extends AbstractDAO {
 	 * et le mot de passe de l'utilisateur, puis on fait une requête à la base de
 	 * donnees pour s'assurer que l'utilisateur existe et que le mot de passe est
 	 * le bon.
+	 * @param login Le nom d'utilisateur pour se connecter à la base de donnée
+	 * @param pwd  Le mot de passe de la base de donnée
 	 * @param cn La connection à la base de donnée
 	 * @return renvoie le login sous forme de String si la connexion s'est correctement
 	 * effectuée, sinon elle renvoie null.
