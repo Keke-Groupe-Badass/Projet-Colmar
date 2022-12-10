@@ -6,6 +6,7 @@
 package Whole.exportPackage;
 
 import java.io.File;
+import java.sql.ResultSet;
 import java.util.*;
 import java.time.*;
 
@@ -19,11 +20,13 @@ public class ExportXLS implements ExportTypeInterface {
     /**
      *  Implémante en XLS la sauvegarde de la base de donnée dans un fichier
      * @param f Fichier de sauvegarde
-     * @see whole.AdminDao.exportDonee
+     * @return true si la base peut être exportée, false sinon
+     * @see Whole.daoPackage.AdminDAO#exportDonee
+     * @see
      */
     @Override
-    public void export(File f) {
-
+    public Boolean export(File f, ResultSet rs) {
+        return true;
     }
 
 }
