@@ -122,7 +122,7 @@ public class Lettrine implements CCMS {
 
     /**
      * Cette methode permet d'ajouter la métadonnée passée en paramètre à la lettrine.
-     *Elle affecte la liste de métadonnées metadonnees en y ajoutant la métadonnée passée en paramètre.
+     * Elle affecte la liste de métadonnées metadonnees en y ajoutant la métadonnée passée en paramètre.
      * @param meta Metadonnee : metadonnée à ajouter
      * @see Metadonnee
      */

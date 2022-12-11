@@ -7,12 +7,16 @@ import Whole.ccmsPackage.CCMS;
 import Whole.ccmsPackage.Lettrine;
 import Whole.ccmsPackage.Ouvrage;
 import Whole.ccmsPackage.Tag;
+
+import javax.swing.plaf.nimbus.State;
 import java.sql.Connection;
 
 import java.awt.image.BufferedImage;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Classe héritant d'AbstractDAO, permettant de lier une Lettrine à la base de donnée
@@ -37,16 +41,17 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * @see LinkToDb
      */
     @Override
-    public void modifier(Lettrine actuelle, Lettrine changement, Connection cn) {
+    public boolean modifier(Lettrine actuelle, Lettrine changement, Connection cn) {
         try {
             Statement stmt = cn.createStatement();
             String sql = "UPDATE lettrine SET WHERE id=" + actuelle.getId();
+            stmt.executeQuery(sql);
+            return true;
         }
         catch (SQLException e) {
-            System.err.println("Erreur de requete");
-            e.printStackTrace();
+           return false;
         }
-
+        return false;
     }
 
     /**
@@ -58,16 +63,17 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * @see LinkToDb
      */
     @Override
-    public void supprimer(Lettrine lettrine, Connection cn) {
+    public boolean supprimer(Lettrine lettrine, Connection cn) {
         try {
             Statement stmt = cn.createStatement();
             String sql = "DELETE FROM lettrine WHERE id=" + lettrine.getId();
             stmt.executeQuery(sql);
+            return true;
         }
         catch (SQLException e) {
-            System.err.println("Erreur de requete");
-            e.printStackTrace();
+           return false;
         }
+        return false;
     }
 
     /**
@@ -79,8 +85,17 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * @see LinkToDb
      */
     @Override
-    public void creer(Lettrine donne, Connection cn) {
-
+    public boolean creer(Lettrine donne, Connection cn) {
+        try {
+            Statement stmt = cn.createStatement();
+            String sql = "INSERT INTO lettrine VALUES (" + donne.getId() + ", ";
+            stmt.executeQuery(sql);
+            return true;
+        }
+        catch (SQLException e) {
+            return false;
+        }
+        return false;
     }
 
     /**
@@ -94,12 +109,77 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      */
     @Override
     public ArrayList<Lettrine> chercher(Lettrine donne, Connection cn) {
-        return null;
+        if(donne.getOuvrage() != null) {
+            int idOuvrage = donne.getOuvrage().getId();
+        }
+        if(donne.getMetadonnees() != null) {
+            ArrayList<Integer> idMeta = new ArrayList<Integer>();
+            for(Metadonnee met : donne.getMetadonnees())
+                idMeta.add(met.getId());
+        }
+        if(donne.getNbPage() != -1) {
+            int numPage = donne.getNbPage();
+        }
+
+        int numPage = donne.getNbPage();
+        ArrayList<Tag> tagsList = donne.getTags();
+
+
+
+        ArrayList<Metadonnee> meta = new ArrayList<>();
+        try {
+            Statement stmtMeta = cn.createStatement();
+            String sqlMeta = "SELECT * FROM metadonnees WHERE idLettrine=" + donne.getId();
+            ResultSet resMeta = stmtMeta.executeQuery(sqlMeta);
+
+            while (resMeta.next()) {
+                Metadonnee m = new Metadonnee();
+                m.setId(resMeta.getInt(1));
+                m.setNom(resMeta.getString(2));
+                m.setDescription(resMeta.getString(3));
+                m.setEntree(resMeta.getString(4));
+                m.setUnite(resMeta.getString(5));
+                meta.add(m);
+            }
+        }
+            catch (SQLException e) {
+                System.err.println("Erreur récuperation des métadonnées");
+                e.printStackTrace();
+            }
+
+            ArrayList<Tag> tags = new ArrayList<>();
+        try {
+            Statement stmtTag = cn.createStatement();
+            String sqlTag = "SELECT * FROM tags INNER JOIN lettrines_tags ON tags.tagID = " +
+                    "lettrines_tags.tagID INNER JOIN lettrines ON lettrines_tags.lettrineId = " +
+                    "lettrines.lettrineId WHERE lettrineId=" + donne.getId();
+            ResultSet resTag = stmtTag.executeQuery(sqlTag);
+            while(resTag.next()) {
+                Tag t = new Tag();
+                t.setId(resTag.getInt(1));
+                t.setDescription(resTag.getString(2));
+                t.setNom(resTag.getString(3));
+                tags.add(t);
+            }
+        }
+        catch (SQLException e) {
+            System.err.println("Erreur récuperation des tags");
+            e.printStackTrace();
+        }
+        Lettrine let = new Lettrine();
+        try {
+
+        }
+        catch (SQLException e) {
+            System.err.println("Erreur de requete");
+            e.printStackTrace();
+        }
     }
 
 
     /**
-     *permet de lier dans la base de donnée une lettrine à ouvrage, en effet une lettrine n'est présente dans un seul et unique ouvrage.
+     *permet de lier dans la base de donnée une lettrine à ouvrage, en effet une lettrine n'est présente
+     * que dans un seul et unique ouvrage.
      * @param l la lettrine à lier à l'ouvrage
      * @param o l'ouvrage d'origine
      * @param cn La connection à la base de donnée
@@ -109,8 +189,18 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      *
      */
     public void provient(Lettrine l , Ouvrage o,Connection cn)   {
-
+        try {
+            Statement stmt = cn.createStatement();
+            String sql = "UPDATE lettrine SET idOuvrage=" + o.getId() + " WHERE id=" + l.getId();
+            stmt.executeQuery(sql);
+            System.out.println("requete effectuee");
+        }
+        catch (SQLException e) {
+            System.err.println("Erreur de requete");
+            e.printStackTrace();
+        }
     }
+
     /**
      *Permet de lier dans la base de donnée une lettrine à un tag
      * @param l La lettrine dont on souhaite ajouter un tag
@@ -120,11 +210,10 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * @see Lettrine
      * @see Tag
      */
-
-
     public void tager(Lettrine l , Tag t,Connection cn) {
 
     }
+
     /**
      * permet de caracteriser une lettrine en ajoutant une métadonnée
      * @param meta Métadonnée à ajouter à la lettrine
@@ -132,8 +221,6 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * @see LinkToDb
      * @see Metadonnee
      */
-
-
     public void ajouterMeta(Metadonnee meta,Connection cn) {
 
     }

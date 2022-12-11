@@ -19,7 +19,7 @@ public class Metadonnee {
      * renvoie le nom de la métadonnée
      * @return nom String
      */
-    private String getNom() {
+    public String getNom() {
         return nom;
     }
 
@@ -27,7 +27,7 @@ public class Metadonnee {
      * renvoie l'id de la métadonnée dans la base de données
      * @return id int
      */
-    private int getId() {
+    public int getId() {
         return id;
     }
 
@@ -36,7 +36,7 @@ public class Metadonnee {
      * renvoie la valeur de la métadonnée (ex : nom = "couleur", valeur = "rouge")
      * @return entree String
      */
-    private String getEntree() {
+    public String getEntree() {
         return entree;
     }
 
@@ -44,7 +44,7 @@ public class Metadonnee {
      * renvoie l'unité de la métadonnée si elle existe
      * @return unite String
      */
-    private String getUnite() {
+    public String getUnite() {
         return unite;
     }
 
@@ -52,15 +52,21 @@ public class Metadonnee {
      * renvoie la description de la métadonnée
      * @return description String
      */
-    private String getDescription() {
+    public String getDescription() {
         return description;
     }
+
+    /**
+     * définit l'id de la métadonnée
+     * @param id : id de la métadonnée
+     */
+    public void setId(int id) {this.id = id;}
 
     /**
      * change le nom de la métadonnée
      * @param nom String : nouveau nom
      */
-    private void setNom(String nom) {
+    public void setNom(String nom) {
         this.nom = nom;
     }
 
@@ -68,7 +74,7 @@ public class Metadonnee {
      * change la valeur de la métadonnée par l'entree passée en paramètre
      * @param entree String
      */
-    private void setEntree(String entree) {
+    public void setEntree(String entree) {
         this.entree = entree;
     }
 
@@ -76,7 +82,7 @@ public class Metadonnee {
      * change l'unité de la métadonnée
      * @param unite String : nouvelle unité
      */
-    private void setUnite(String unite) {
+    public void setUnite(String unite) {
         this.unite = unite;
     }
 
@@ -84,7 +90,7 @@ public class Metadonnee {
      * change la description de la métadonnée
      * @param description String : nouvelle description
      */
-    private void setDescription(String description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 
