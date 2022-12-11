@@ -81,7 +81,8 @@ public class Lettrine implements CCMS {
     }
 
     /**
-     * Renvoie le numéro de la page sur laquelle la lettrine figure.
+     * Renvoie le numéro de la page sur laquelle la lettrine figure. Si le numero de page de la lettrine
+     * est inconue : return -1
      * @return nbPage
      */
     public int getNbPage() {
