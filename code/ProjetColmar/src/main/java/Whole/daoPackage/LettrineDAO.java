@@ -17,6 +17,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.IdentityHashMap;
 
 /**
  * Classe héritant d'AbstractDAO, permettant de lier une Lettrine à la base de donnée
@@ -109,66 +110,122 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      */
     @Override
     public ArrayList<Lettrine> chercher(Lettrine donne, Connection cn) {
+
+        String sqlOuvrage = "";
         if(donne.getOuvrage() != null) {
             int idOuvrage = donne.getOuvrage().getId();
+            sqlOuvrage = "idOuvrage=" + idOuvrage;
         }
-        if(donne.getMetadonnees() != null) {
-            ArrayList<Integer> idMeta = new ArrayList<Integer>();
-            for(Metadonnee met : donne.getMetadonnees())
-                idMeta.add(met.getId());
-        }
-        if(donne.getNbPage() != -1) {
-            int numPage = donne.getNbPage();
-        }
-
-        int numPage = donne.getNbPage();
-        ArrayList<Tag> tagsList = donne.getTags();
-
-
 
         ArrayList<Metadonnee> meta = new ArrayList<>();
-        try {
-            Statement stmtMeta = cn.createStatement();
-            String sqlMeta = "SELECT * FROM metadonnees WHERE idLettrine=" + donne.getId();
-            ResultSet resMeta = stmtMeta.executeQuery(sqlMeta);
 
-            while (resMeta.next()) {
-                Metadonnee m = new Metadonnee();
-                m.setId(resMeta.getInt(1));
-                m.setNom(resMeta.getString(2));
-                m.setDescription(resMeta.getString(3));
-                m.setEntree(resMeta.getString(4));
-                m.setUnite(resMeta.getString(5));
-                meta.add(m);
+        if(donne.getMetadonnees() != null) {
+            ArrayList<Integer> idMeta = new ArrayList<Integer>();
+            for (Metadonnee met : donne.getMetadonnees())
+                idMeta.add(met.getId());
+
+            try {
+                for(int id : idMeta) {
+                    Statement stmtMeta = cn.createStatement();
+                    String sqlMeta = "SELECT * FROM metadonnees WHERE idMeta=" + id;
+                    ResultSet resMeta = stmtMeta.executeQuery(sqlMeta);
+
+                    if (resMeta.next()) {
+                        Metadonnee m = new Metadonnee();
+                        m.setId(resMeta.getInt(1));
+                        m.setNom(resMeta.getString(2));
+                        m.setDescription(resMeta.getString(3));
+                        m.setEntree(resMeta.getString(4));
+                        m.setUnite(resMeta.getString(5));
+                        meta.add(m);
+                    }
+                }
+            }
+            catch (SQLException e) {
+                System.err.println("Erreur récuperation des métadonnées");
+                e.printStackTrace();
             }
         }
+
+        else {
+            try {
+
+                Statement stmtMeta = cn.createStatement();
+                String sqlMeta = "SELECT * FROM metadonnees WHERE idLettrine=" + donne.getId();
+                ResultSet resMeta = stmtMeta.executeQuery(sqlMeta);
+
+                while (resMeta.next()) {
+                    Metadonnee m = new Metadonnee();
+                    m.setId(resMeta.getInt(1));
+                    m.setNom(resMeta.getString(2));
+                    m.setDescription(resMeta.getString(3));
+                    m.setEntree(resMeta.getString(4));
+                    m.setUnite(resMeta.getString(5));
+                    meta.add(m);
+                }
+            }
             catch (SQLException e) {
                 System.err.println("Erreur récuperation des métadonnées");
                 e.printStackTrace();
             }
 
-            ArrayList<Tag> tags = new ArrayList<>();
-        try {
-            Statement stmtTag = cn.createStatement();
-            String sqlTag = "SELECT * FROM tags INNER JOIN lettrines_tags ON tags.tagID = " +
-                    "lettrines_tags.tagID INNER JOIN lettrines ON lettrines_tags.lettrineId = " +
-                    "lettrines.lettrineId WHERE lettrineId=" + donne.getId();
-            ResultSet resTag = stmtTag.executeQuery(sqlTag);
-            while(resTag.next()) {
-                Tag t = new Tag();
-                t.setId(resTag.getInt(1));
-                t.setDescription(resTag.getString(2));
-                t.setNom(resTag.getString(3));
-                tags.add(t);
+        }
+
+        if(donne.getNbPage() != -1) {
+            int numPage = donne.getNbPage();
+        }
+
+        ArrayList<Tag> tags = new ArrayList<>();
+        if(donne.getTags() != null) {
+            ArrayList<Integer> idTags = new ArrayList<>();
+            for(Tag tag : donne.getTags()) {
+                idTags.add(tag.getId());
+
+                try {
+                    for(int id : idTags) {
+                        Statement stmtTag = cn.createStatement();
+                        String sqlTag = "SELECT * FROM tags WHERE idTag=" + id;
+                        ResultSet resTag = stmtTag.executeQuery(sqlTag);
+                        if(resTag.next()) {
+                            Tag t = new Tag();
+                            t.setId(resTag.getInt(1));
+                            t.setDescription(resTag.getString(2));
+                            t.setNom(resTag.getString(3));
+                            tags.add(t);
+                        }
+                    }
+                }
+                catch (SQLException e) {
+                    System.err.println("Erreur récuperation des tags");
+                    e.printStackTrace();
+                }
             }
         }
-        catch (SQLException e) {
-            System.err.println("Erreur récuperation des tags");
-            e.printStackTrace();
+        else {
+            try {
+                Statement stmtTag = cn.createStatement();
+                String sqlTag = "SELECT * FROM tags INNER JOIN lettrines_tags ON tags.tagID = " +
+                        "lettrines_tags.tagID INNER JOIN lettrines ON lettrines_tags.lettrineId = " +
+                        "lettrines.lettrineId WHERE lettrineId=" + donne.getId();
+                ResultSet resTag = stmtTag.executeQuery(sqlTag);
+                while(resTag.next()) {
+                    Tag t = new Tag();
+                    t.setId(resTag.getInt(1));
+                    t.setDescription(resTag.getString(2));
+                    t.setNom(resTag.getString(3));
+                    tags.add(t);
+                }
+            }
+            catch (SQLException e) {
+                System.err.println("Erreur récuperation des tags");
+                e.printStackTrace();
+            }
         }
+
         Lettrine let = new Lettrine();
         try {
-
+            Statement stmt = cn.createStatement();
+            String sql = "SELECT * FROM lettrine WHERE ";
         }
         catch (SQLException e) {
             System.err.println("Erreur de requete");
