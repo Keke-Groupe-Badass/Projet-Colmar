@@ -49,7 +49,6 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
         catch (SQLException e) {
            return false;
         }
-        return false;
     }
 
     /**
@@ -71,7 +70,6 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
         catch (SQLException e) {
            return false;
         }
-        return false;
     }
 
     /**
@@ -93,7 +91,6 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
         catch (SQLException e) {
             return false;
         }
-        return false;
     }
 
     /**
@@ -134,7 +131,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
          */
         Lettrine let = new Lettrine();
         try {
-            for(String sqlTag : tabSqlTags) {
+            for(String sqlTag : tagSQL) {
 
             }
             Statement stmt = cn.createStatement();
