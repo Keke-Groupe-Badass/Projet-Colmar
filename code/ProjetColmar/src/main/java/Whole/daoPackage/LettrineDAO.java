@@ -8,7 +8,6 @@ import Whole.ccmsPackage.Lettrine;
 import Whole.ccmsPackage.Ouvrage;
 import Whole.ccmsPackage.Tag;
 
-import javax.swing.plaf.nimbus.State;
 import java.sql.Connection;
 
 import java.awt.image.BufferedImage;
@@ -16,8 +15,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.IdentityHashMap;
 
 /**
  * Classe héritant d'AbstractDAO, permettant de lier une Lettrine à la base de donnée
@@ -110,13 +107,61 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      */
     @Override
     public ArrayList<Lettrine> chercher(Lettrine donne, Connection cn) {
-
+        /*
+        recherche sur l'ouvrage, si non null, on inclue l'id de l'ouvrage dans la requete
+        */
         String sqlOuvrage = "";
         if(donne.getOuvrage() != null) {
             int idOuvrage = donne.getOuvrage().getId();
             sqlOuvrage = "idOuvrage=" + idOuvrage;
         }
 
+        ArrayList<String> metaSQL = tabSqlMeta(donne, cn);
+
+        /*
+        recherche sur le numéro de la page. S'il existe, on inclue le numero de la page dans la requete
+         */
+        String sqlNumPage = "";
+        if(donne.getNbPage() != -1) {
+            int numPage = donne.getNbPage();
+            sqlNumPage = "nbPage=" + numPage;
+        }
+
+        ArrayList<String> tagSQL = tabSqlTags(donne, cn);
+
+        /*
+        recherche des lettrines correspondants aux critères récupérés au dessus.
+         */
+        Lettrine let = new Lettrine();
+        try {
+            for(String sqlTag : tabSqlTags) {
+
+            }
+            Statement stmt = cn.createStatement();
+            String sql = "SELECT * FROM lettrine WHERE " + sqlOuvrage + " AND " + sqlNumPage + " AND " +
+                    "";
+        }
+        catch (SQLException e) {
+            System.err.println("Erreur de requete");
+            e.printStackTrace();
+        }
+    }
+
+
+
+    /**
+     * recherche sur les métadonnées, si des métadonnées sont passées en attribut de la lettrine
+     * de recherche, on commence par récupérer tous les id de ces métadonnées, puis on les stockes dans
+     * un ArrayList. Si aucune métadonnée n'est passée en attribut de la lettrine
+     * (donne.getMetadonnees == null) alors on récupère toutes les métadonnées de la base. On commence par
+     * récuperer chaque id de chacune des métadonnées récupérées par la requete, puis on utilice cet
+     * id pour créer un bout de requete sql, finalement on stocke de bout de requete (String) dans
+     * un ArrayList.
+     * @param donne Lettrine :  lettrine contenant les attributs sur lesquels effectuer la recherche
+     * @param cn Connection : connexion
+     * @return ArrayList<String> tab : ArrayList contenant les sql de chaque tags
+     */
+    private static ArrayList<String> tabSqlMeta(Lettrine donne, Connection cn) {
         ArrayList<Metadonnee> meta = new ArrayList<>();
 
         if(donne.getMetadonnees() != null) {
@@ -145,6 +190,13 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
                 System.err.println("Erreur récuperation des métadonnées");
                 e.printStackTrace();
             }
+            String sqlMeta = "";
+            ArrayList<String> tab = new ArrayList<>();
+            for(Metadonnee idmeta : meta) {
+                sqlMeta = "idMeta=" + idmeta;
+                tab.add(sqlMeta);
+            }
+            return tab;
         }
 
         else {
@@ -168,13 +220,26 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
                 System.err.println("Erreur récuperation des métadonnées");
                 e.printStackTrace();
             }
-
+            String sqlMeta = "";
+            ArrayList<String> tab = new ArrayList<>();
+            for(Metadonnee idmeta : meta) {
+                sqlMeta = "idMeta=" + idmeta;
+                tab.add(sqlMeta);
+            }
+            return tab;
         }
+    }
 
-        if(donne.getNbPage() != -1) {
-            int numPage = donne.getNbPage();
-        }
-
+    /**
+     * recherche sur les tags: meme principe que pour les métadonnées. On récupère une liste de morceaux
+     * de requêtes SQL, un morceau de requete par tag (idTag= id du tag de l'ArrayList contenant les tags
+     * obtenues lors de la requete permettant des les obtenirs en fonction de leur présence dans les
+     * attributs de la lettrine de recherche).
+     * @param donne Lettrine :  lettrine contenant les attributs sur lesquels effectuer la recherche
+     * @param cn Connection : connexion
+     * @return ArrayList<String> tab : ArrayList contenant les sql de chaque tags
+     */
+    private static ArrayList<String> tabSqlTags(Lettrine donne, Connection cn) {
         ArrayList<Tag> tags = new ArrayList<>();
         if(donne.getTags() != null) {
             ArrayList<Integer> idTags = new ArrayList<>();
@@ -200,7 +265,15 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
                     e.printStackTrace();
                 }
             }
+            String sqlTag = "";
+            ArrayList<String> tab = new ArrayList<>();
+            for(Tag idtag : tags) {
+                sqlTag = "idTag=" + idtag;
+                tab.add(sqlTag);
+            }
+            return tab;
         }
+
         else {
             try {
                 Statement stmtTag = cn.createStatement();
@@ -220,19 +293,15 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
                 System.err.println("Erreur récuperation des tags");
                 e.printStackTrace();
             }
-        }
-
-        Lettrine let = new Lettrine();
-        try {
-            Statement stmt = cn.createStatement();
-            String sql = "SELECT * FROM lettrine WHERE ";
-        }
-        catch (SQLException e) {
-            System.err.println("Erreur de requete");
-            e.printStackTrace();
+            String sqlTag = "";
+            ArrayList<String> tab = new ArrayList<>();
+            for(Tag idtag : tags) {
+                sqlTag = "idTag=" + idtag;
+                tab.add(sqlTag);
+            }
+            return tab;
         }
     }
-
 
     /**
      *permet de lier dans la base de donnée une lettrine à ouvrage, en effet une lettrine n'est présente
