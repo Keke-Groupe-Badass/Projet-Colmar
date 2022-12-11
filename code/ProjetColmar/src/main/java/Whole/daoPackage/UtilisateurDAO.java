@@ -2,9 +2,10 @@ package Whole.daoPackage;
 
 import Whole.LinkToDb;
 
+import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -47,12 +48,12 @@ public class UtilisateurDAO {
 		try {
 			Statement stmt=cn.createStatement();
 			ResultSet rs=stmt.executeQuery(sql);
-			if (rs.next() == false) //Si l'utilisateur n'est pas trouvé
-				return null;
+			if (rs.next()) //Si l'utilisateur est trouvé
+				return login;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return login;
+		return null;
     }
 	
     /**
@@ -192,23 +193,17 @@ public class UtilisateurDAO {
     	String mdpEncrypte=null;
     	
 		try {
-			SecureRandom sr=SecureRandom.getInstance("SHA1PRNG");
-			
-	        byte[] salt=new byte[16];
-	        sr.nextBytes(salt);
-	        String saltString=salt.toString();
-	    	MessageDigest md=MessageDigest.getInstance("SHA-1");
-	    	
-			md.update(saltString.getBytes());
-	        byte[] bytes = md.digest(mdp.getBytes());
-	        StringBuilder sb = new StringBuilder();
-	        for (int i = 0; i < bytes.length; i++) {
-	            sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
-	        }
-	        mdpEncrypte = sb.toString();
+			MessageDigest md=MessageDigest.getInstance("SHA-256");
+			BigInteger nb=new BigInteger(1, md.digest(mdp.getBytes(StandardCharsets.UTF_8)));
+			StringBuilder hexString=new StringBuilder(nb.toString(16));
+			while (hexString.length() < 32) {
+				hexString.insert(0, '0');
+			}
+			mdpEncrypte=hexString.toString();
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
 		}
+    	
         return mdpEncrypte;
     }
 }
