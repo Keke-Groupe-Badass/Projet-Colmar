@@ -9,7 +9,7 @@ import java.util.*;
  * Classe abstraite servant à factoriser à lié à la base de donnée les méthodes
  * modifier, creer, chercher et supprimer des CCMS
  */
-public abstract class AbstractDAO {
+public abstract class AbstractDAO <CCMS>{
 
     public AbstractDAO() {
     }

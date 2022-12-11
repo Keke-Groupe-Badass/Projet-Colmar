@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * Classe servant à lié à la base de donnée les méthodes d'Auteurs
  * @see Auteur
  */
-public class AuteurDAO extends AbstractDAO {
+public class AuteurDAO<objet extends Auteur> extends AbstractDAO<objet> {
 
     /**
      * Constructeur d'AdminDAO

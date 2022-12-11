@@ -12,7 +12,7 @@ import java.time.*;
 * @see AbstractDAO
 */
 
-public class UtilisateurDAO extends AbstractDAO {
+public class UtilisateurDAO  {
 
     /**
 	 * Constructeur de la classe UtilisateurDAO.
@@ -45,10 +45,11 @@ public class UtilisateurDAO extends AbstractDAO {
     * @param login login de l'utilisateur, permet de l'identifier dans la BDD
     * @param mdp nouveau mot de passe qui doit venir remplacer l'ancien
 	 * @param cn La connection à la base de donnée
+	 * @return True si le mot de passe a pu être changé, false sinon
 	 * @see LinkToDb
     */
-    public void changeMDP(String login, String mdp,Connection cn) {
-
+    public Boolean changeMDP(String login, String mdp,Connection cn) {
+		return true;
     }
 
     /**
@@ -58,10 +59,11 @@ public class UtilisateurDAO extends AbstractDAO {
     * 
     * @param login login de l'utilisateur
 	 * @param cn La connection à la base de donnée
+	 * @return True si l'utilisateur a pu être supprimé, false sinon
 	 * @see LinkToDb
     */
-    public void supprimerUtilisateur(String login,Connection cn) {
-    
+    public Boolean supprimerUtilisateur(String login,Connection cn) {
+    	return true;
     }
 
     /**
@@ -74,9 +76,10 @@ public class UtilisateurDAO extends AbstractDAO {
     * @param mdp mot de passe de l'utilisateur à ajouter
     * @param mail adresse mail de l'utilisateur à ajouter
 	 * @param cn La connection à la base de donnée
+	 * @return True si l'utilisateur a pu être créé, false sinon
 	 * @see LinkToDb
     */
-    public void creerUtilisateur(String login, String mdp, String mail,Connection cn) {
-
+    public Boolean creerUtilisateur(String login, String mdp, String mail,Connection cn) {
+		return true;
     }
 }
