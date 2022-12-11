@@ -27,7 +27,7 @@ public abstract class AbstractDAO <CCMS>{
     public abstract void modifier(CCMS objet , CCMS changement ,Connection cn);
     /**
      * Supprime de la db un CCMS
-    * @param objet un CCMS d'un type à déterminer dans chaque implémentation
+     * @param objet un CCMS d'un type à déterminer dans chaque implémentation
      * @param cn La connection à la base de donnée
      * @see CCMS
      * @see Whole.LinkToDb

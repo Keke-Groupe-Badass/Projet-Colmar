@@ -67,7 +67,7 @@ public class Lettrine implements CCMS {
      * Renvoie un objet de type Ouvrage
      * @return ouvrage
      */
-    private Ouvrage getOuvrage() {
+    public Ouvrage getOuvrage() {
         return ouvrage;
     }
 
@@ -76,15 +76,16 @@ public class Lettrine implements CCMS {
      * @return ArrayList<Metadonnees> liste des métadonnées associés
      * @see Metadonnee
      */
-    private ArrayList<Metadonnee> getMetadonnees() {
+    public ArrayList<Metadonnee> getMetadonnees() {
         return metadonnees;
     }
 
     /**
-     * Renvoie le numéro de la page sur laquelle la lettrine figure.
+     * Renvoie le numéro de la page sur laquelle la lettrine figure. Si le numero de page de la lettrine
+     * est inconue : return -1
      * @return nbPage
      */
-    private int getNbPage() {
+    public int getNbPage() {
         return nbPage;
     }
 
@@ -92,7 +93,7 @@ public class Lettrine implements CCMS {
      * Renvoie l'id de la lettrine dans la base de données
      * @return id
      */
-    private int getId() {
+    public int getId() {
         return id;
     }
 
@@ -100,7 +101,7 @@ public class Lettrine implements CCMS {
      * Renvoie la liste des tags associés à la lettrine
      * @return tags
      */
-    private ArrayList<Tag> getTags() {
+    public ArrayList<Tag> getTags() {
         return tags;
     }
 
@@ -108,15 +109,16 @@ public class Lettrine implements CCMS {
      * permet de modifier la valeur de l'ouvrage par l'objet en paramètre
      * @param ouvrage Ouvrage : nouvelle valeur de ouvrage
      */
-    private void setOuvrage(Ouvrage ouvrage) {
+    public void setOuvrage(Ouvrage ouvrage) {
         this.ouvrage = ouvrage;
     }
 
     /**
      * permet de modifier la valeur du numéro de la page par l'objet en paramètre
-     * @param nbPage int : nouvelle valeur de nbPage
+     * @param nbPage int : nouvelle valeur de nbPage. Si on ne connait pas le numéro de la page sur
+     *                     laquelle la lettrine figure, nbPage = -1
      */
-    private void setNbPage(int nbPage) {
+    public void setNbPage(int nbPage) {
         this.nbPage = nbPage;
     }
 
