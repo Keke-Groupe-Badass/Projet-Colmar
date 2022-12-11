@@ -6,16 +6,21 @@
 package Whole.daoPackage;
 
 import Whole.LinkToDb;
+import Whole.exportPackage.ExportTypeInterface;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 /**
  * Classe permettant à l'administrateur de gérer la base de donnée
  */
-public class AdminDAO {
-
-
-
+public class AdminDAO<E extends ExportTypeInterface> {
 
     /**
      * Constructeur de la classe
@@ -33,8 +38,8 @@ public class AdminDAO {
      */
 
 
-    public void exportDonee(File file,Connection cn) {
-
+    public Boolean exportDonee(File file,Connection cn, E e) {
+        return e.export(file);
     }
     /**
      * Permet de stocker dans un fichier les logs
@@ -44,8 +49,28 @@ public class AdminDAO {
      */
 
 
-    public void exportLog(File file,Connection cn) {
+    public Boolean exportLog(File file,Connection cn)  {
+        try {
+            Statement stmt = cn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT `text`,`date`,`userLogin` FROM `log`");
+            String str = "Hello";
+            BufferedWriter bw = new BufferedWriter(new FileWriter(file));
+            bw.write("Log exporté le "+System.currentTimeMillis());
+            while(rs.next()){
+                str=rs.getString(2)+" par "+rs.getString(3)+": "+rs.getString(1);
+                bw.write(str);
+                bw.newLine();
 
+            }
+            bw.close();
+
+        }catch(SQLException e){
+            System.err.println("something went wrong with the database link");
+        } catch (IOException e) {
+            System.err.println("something went wrong with the writing of the file");
+
+        }
+        return false;
     }
 
     /**

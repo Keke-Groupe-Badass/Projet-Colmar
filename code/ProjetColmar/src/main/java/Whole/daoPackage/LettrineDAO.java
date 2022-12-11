@@ -36,6 +36,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      */
     @Override
     public void modifier(Lettrine actuelle, Lettrine changement, Connection cn) {
+
     }
 
     /**
@@ -75,6 +76,8 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      */
     @Override
     public ArrayList<Lettrine> chercher(Lettrine donne, Connection cn) {
+
+
         return null;
     }
 
@@ -137,6 +140,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
     }
     /**
      * permet de caracteriser une lettrine en ajoutant une métadonnée
+     * @param l la Lettrine à décrire.
      * @param meta Métadonnée à ajouter à la lettrine
      * @param cn La connection à la base de donnée
      * @see LinkToDb
@@ -144,7 +148,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      */
 
 
-    public void ajouterMeta(Metadonnee meta,Connection cn) {
+    public void ajouterMeta(Lettrine l,Metadonnee meta,Connection cn) {
 
     }
     /**

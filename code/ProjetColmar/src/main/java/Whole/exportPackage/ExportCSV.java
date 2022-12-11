@@ -6,6 +6,8 @@
 package Whole.exportPackage;
 
 import java.io.File;
+import java.sql.ResultSet;
+
 import Whole.daoPackage.AbstractDAO;
 
 /**
@@ -17,11 +19,13 @@ public class ExportCSV implements ExportTypeInterface {
     /**
      *  Implémante en CSV la sauvegarde de la base de donnée dans un fichier
      * @param f Fichier de sauvegarde
+     * @return true si la base peut être exportée, false sinon
+     *
      * @see Whole.daoPackage.AbstractDAO
      */
     @Override
-    public void export(File f) {
-
+    public Boolean export(File f, ResultSet rs) {
+        return true;
     }
 
 }
