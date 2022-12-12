@@ -159,7 +159,6 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
             ResultSet res = stmt.executeQuery(sql);
             while(res.next()) {
                 Lettrine let = new Lettrine();
-
             }
         }
         catch (SQLException e) {
@@ -343,16 +342,15 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * @see Lettrine
      *
      */
-    public void provient(Lettrine l , Ouvrage o,Connection cn)   {
+    public boolean provient(Lettrine l , Ouvrage o,Connection cn)   {
         try {
             Statement stmt = cn.createStatement();
             String sql = "UPDATE lettrine SET idOuvrage=" + o.getId() + " WHERE id=" + l.getId();
             stmt.executeQuery(sql);
-            System.out.println("requete effectuee");
+            return true;
         }
         catch (SQLException e) {
-            System.err.println("Erreur de requete");
-            e.printStackTrace();
+            return false;
         }
     }
 
@@ -365,8 +363,16 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * @see Lettrine
      * @see Tag
      */
-    public void tager(Lettrine l , Tag t,Connection cn) {
-
+    public boolean tager(Lettrine l , Tag t,Connection cn) {
+        try {
+            Statement stmt = cn.createStatement();
+            String sql = "UPDATE lettrines_tags SET idTags=" + t.getId() + " WHERE idLettrine =" + l.getId();
+            stmt.executeQuery(sql);
+            return true;
+        }
+        catch (SQLException e) {
+            return false;
+        }
     }
 
     /**
@@ -376,7 +382,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * @see LinkToDb
      * @see Metadonnee
      */
-    public void ajouterMeta(Metadonnee meta,Connection cn) {
+    public boolean ajouterMeta(Metadonnee meta,Connection cn) {
 
     }
     /**
