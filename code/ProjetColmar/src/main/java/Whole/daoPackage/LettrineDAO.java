@@ -16,7 +16,7 @@ import java.util.ArrayList;
  * Classe héritant d'AbstractDAO, permettant de lier une Lettrine à la base de donnée
  * @see Lettrine
  */
-public class LettrineDAO<l extends Lettrine> extends AbstractDAO<l> {
+public class LettrineDAO extends AbstractDAO<Lettrine> {
     /**
      * Constructeur de LettrineDAO
      * @see LinkToDb
@@ -28,15 +28,16 @@ public class LettrineDAO<l extends Lettrine> extends AbstractDAO<l> {
     /**
      * Met à jour la BD
      *
-     * @param objet      La Lettrine à modifier
+     * @param actuelle   La Lettrine à modifier
      * @param changement La lettrine de changement (les paramètres null ne sont pas à changer)
      * @param cn         La connection à la base de donnée
      * @see Lettrine
      * @see LinkToDb
+     * @return true : si la requete a été effectuée, false sinon
      */
     @Override
-    public void modifier(Lettrine objet, Lettrine changement, Connection cn) {
-
+    public boolean modifier(Lettrine actuelle, Lettrine changement, Connection cn) {
+        return false;
     }
 
     /**
@@ -46,10 +47,11 @@ public class LettrineDAO<l extends Lettrine> extends AbstractDAO<l> {
      * @param cn    La connection à la base de donnée
      * @see Lettrine
      * @see LinkToDb
+     * @return true : si la requete a été effectuée, false sinon
      */
     @Override
-    public void supprimer(Lettrine objet, Connection cn) {
-
+    public boolean supprimer(Lettrine objet, Connection cn) {
+        return false;
     }
 
     /**
@@ -59,10 +61,11 @@ public class LettrineDAO<l extends Lettrine> extends AbstractDAO<l> {
      * @param cn    La connection à la base de donnée
      * @see Lettrine
      * @see LinkToDb
+     * @return true : si la requete a été effectuée, false sinon
      */
     @Override
-    public void creer(Lettrine donne, Connection cn) {
-
+    public boolean creer(Lettrine donne, Connection cn) {
+        return false;
     }
 
     /**
@@ -75,10 +78,45 @@ public class LettrineDAO<l extends Lettrine> extends AbstractDAO<l> {
      * @see LinkToDb
      */
     @Override
-    public ArrayList<l> chercher(Lettrine donne, Connection cn) {
+    public ArrayList<Lettrine> chercher(Lettrine donne, Connection cn) {
+
+
         return null;
     }
 
+    /**
+     * recherche sur les métadonnées, si des métadonnées sont passées en attribut de la lettrine
+     * de recherche, on commence par récupérer tous les id de ces métadonnées, puis on les stockes dans
+     * un ArrayList. Si aucune métadonnée n'est passée en attribut de la lettrine
+     * (donne.getMetadonnees == null) alors on récupère toutes les métadonnées de la base. On commence par
+     * récuperer chaque id de chacune des métadonnées récupérées par la requete, puis on utilice cet
+     * id pour créer un bout de requete sql, finalement on stocke ce bout de requete (String) dans
+     * un StringBuilder, qui sera converti en un String contenant la partie de requete correspondante a la
+     * recherche des métadonnées, String qui sera retourné.
+     * @param donne Lettrine :  lettrine contenant les attributs sur lesquels effectuer la recherche
+     * @param cn Connection : connexion
+     * @param idMeta : ArrayList d'entiers contenant les id des métadonnées contenues dans l'attribut métadonnée
+     * de donne.
+     * @return String resSql : String contenant le bout de requete permettant d'obtenir les métadonnées
+     * cherchées
+     */
+    private static String createTabSqlMeta(Lettrine donne, Connection cn, ArrayList<Integer> idMeta) {
+        return null;
+    }
+
+
+    /**
+     * recherche sur les tags: meme principe que pour les métadonnées. On récupère String contenant la
+     * requête SQL de recherche des tags.
+     * @param donne Lettrine :  lettrine contenant les attributs sur lesquels effectuer la recherche
+     * @param cn Connection : connexion
+     * @param idTags : ArrayList d'entiers contenant les id des métadonnées contenues dans l'attribut tag
+     * de donne.
+     * @return resSql : String contenant le morceau de requete correspondant a la recherche des tags
+     */
+    private static String createTabSqlTags(Lettrine donne, Connection cn, ArrayList<Integer> idTags) {
+        return null;
+    }
 
     /**
      *permet de lier dans la base de donnée une lettrine à ouvrage, en effet une lettrine n'est présente dans un seul et unique ouvrage.
@@ -88,11 +126,12 @@ public class LettrineDAO<l extends Lettrine> extends AbstractDAO<l> {
      * @see LinkToDb
      * @see Ouvrage
      * @see Lettrine
-     *
+     * @return true : si la requete a été effectuée, false sinon
      */
-    public void provient(Lettrine l , Ouvrage o,Connection cn)   {
-
+    public boolean provient(Lettrine l , Ouvrage o,Connection cn)   {
+        return false;
     }
+
     /**
      *Permet de lier dans la base de donnée une lettrine à un tag
      * @param l La lettrine dont on souhaite ajouter un tag
@@ -101,12 +140,12 @@ public class LettrineDAO<l extends Lettrine> extends AbstractDAO<l> {
      * @see LinkToDb
      * @see Lettrine
      * @see Tag
+     * @return true : si la requete a été effectuée, false sinon
      */
-
-
-    public void tager(Lettrine l , Tag t,Connection cn) {
-
+    public boolean tager(Lettrine l , Tag t,Connection cn) {
+        return false;
     }
+
     /**
      * permet de caracteriser une lettrine en ajoutant une métadonnée
      * @param l la Lettrine à décrire.
@@ -114,34 +153,34 @@ public class LettrineDAO<l extends Lettrine> extends AbstractDAO<l> {
      * @param cn La connection à la base de donnée
      * @see LinkToDb
      * @see Metadonnee
+     * @return true : si la requete a été effectuée, false sinon
      */
-
-
-    public void ajouterMeta(Lettrine l,Metadonnee meta,Connection cn) {
-
+    public boolean ajouterMeta(Lettrine l,Metadonnee meta,Connection cn) {
+        return false;
     }
+
     /**
      * permet de décaracteriser une lettrine en supprimant une métadonnée
      * @param meta Métadonnée à supprimer à la lettrine
      * @param cn La connection à la base de donnée
      * @see LinkToDb
      * @see Metadonnee
+     * @return true : si la requete a été effectuée, false sinon
      */
-
-
-    public void supprimerMeta(Metadonnee meta,Connection cn) {
-
+    public boolean supprimerMeta(Metadonnee meta,Connection cn) {
+        return false;
     }
+
     /**
      * Met à jour la base de donnée avec les nouvelles valeurs de la métadonnée
      * @param meta La métadonnée dont l'on souhaite que la partie code correspond avec la partie base de donnée
      * @param cn La connection à la base de donnée
      * @see LinkToDb
      * @see Metadonnee
+     * @return true : si la requete a été effectuée, false sinon
      */
-
-    public void modifierMeta(Metadonnee meta,Connection cn) {
-
+    public boolean modifierMeta(Metadonnee meta,Connection cn) {
+        return false;
     }
 
     /**
