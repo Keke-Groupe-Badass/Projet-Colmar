@@ -1,8 +1,9 @@
 #!/bin/bash
   echo "program launch"
-  if [ $# -eq 3]
+  if [ $# -eq 4]
   then
-    mysqldump -u "$1" -p "$2" fprojectcolmar > "$3"
+    mysqldump -u "$1" -p "$2" "$3" > "$4"+"/db.sql"
+    #mysqldump -u "utilisateur" -p "mot de passe" "base de donnée" > "chemin"
   fi
   else
   then

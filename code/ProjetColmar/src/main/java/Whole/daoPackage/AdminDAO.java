@@ -21,11 +21,16 @@ import java.util.ArrayList;
  */
 public class AdminDAO {
 
+    private static String user;
+    private static String mdp;
+    private static String dbName;
+
+
+    private ArrayList<ExportTypeInterface> listeMethode;
+    private ArrayList<String> listeTable;
     /**
      * Constructeur de la classe
      */
-    private ArrayList<ExportTypeInterface> listeMethode;
-    private ArrayList<String> listeTable;
     public AdminDAO() {
     }
 
@@ -48,7 +53,7 @@ public class AdminDAO {
                     if(os.contains("Windows")){
                         type="cmd.exe";
                     }
-                    String[] cmd = { type, "exportSQL.sh", "src/main/shell/exportSQL.sh",path};
+                    String[] cmd = { type, "exportSQL.sh", "src/main/shell/exportSQL.sh",user,mdp,dbName,path};
                     try {
                         Runtime.getRuntime().exec(cmd);
                     } catch (IOException ex) {
@@ -119,7 +124,7 @@ public class AdminDAO {
             ResultSet rs = stmt.executeQuery("SELECT `text`,`date`,`userLogin` FROM `log`");
             String str = "Hello";
             BufferedWriter bw = new BufferedWriter(new FileWriter(file));
-            bw.write("Log exporté le "+System.currentTimeMillis());
+            bw.write("Log exporté le "+new Date( System.currentTimeMillis()));
 
             while(rs.next()){
                 bw.newLine();

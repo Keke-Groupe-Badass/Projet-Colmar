@@ -1,14 +1,14 @@
 package Whole;
 
 import java.io.File;
-import java.net.URI;
-import java.sql.Connection;
+
 
 public class Main {
     /**
      * Permet de démarrer l'application
      * @param args String[]
      */
+
     public static void main(String[] args) {
         /**
         try {
