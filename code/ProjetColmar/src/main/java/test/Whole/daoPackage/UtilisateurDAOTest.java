@@ -1,5 +1,6 @@
-package Whole.daoPackage;
+package test.Whole.daoPackage;
 
+import Whole.daoPackage.UtilisateurDAO;
 import org.junit.jupiter.api.Test;
 
 import java.sql.Connection;

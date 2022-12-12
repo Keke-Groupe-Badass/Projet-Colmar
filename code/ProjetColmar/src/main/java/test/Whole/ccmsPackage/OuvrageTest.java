@@ -1,4 +1,4 @@
-package Whole.ccmsPackage;
+package test.Whole.ccmsPackage;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
+import Whole.ccmsPackage.Auteur;
+import Whole.ccmsPackage.Ouvrage;
 import org.junit.jupiter.api.Test;
 
 class OuvrageTest {
