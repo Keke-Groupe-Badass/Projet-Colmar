@@ -37,6 +37,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * @param cn         La connection à la base de donnée
      * @see Lettrine
      * @see LinkToDb
+     * @return true : si la requete a été effectuée, false sinon
      */
     @Override
     public boolean modifier(Lettrine actuelle, Lettrine changement, Connection cn) {
@@ -58,6 +59,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * @param cn    La connection à la base de donnée
      * @see Lettrine
      * @see LinkToDb
+     * @return true : si la requete a été effectuée, false sinon
      */
     @Override
     public boolean supprimer(Lettrine lettrine, Connection cn) {
@@ -79,6 +81,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * @param cn    La connection à la base de donnée
      * @see Lettrine
      * @see LinkToDb
+     * @return true : si la requete a été effectuée, false sinon
      */
     @Override
     public boolean creer(Lettrine donne, Connection cn) {
@@ -340,7 +343,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * @see LinkToDb
      * @see Ouvrage
      * @see Lettrine
-     *
+     * @return true : si la requete a été effectuée, false sinon
      */
     public boolean provient(Lettrine l , Ouvrage o,Connection cn)   {
         try {
@@ -362,6 +365,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * @see LinkToDb
      * @see Lettrine
      * @see Tag
+     * @return true : si la requete a été effectuée, false sinon
      */
     public boolean tager(Lettrine l , Tag t,Connection cn) {
         try {
@@ -378,35 +382,95 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
     /**
      * permet de caracteriser une lettrine en ajoutant une métadonnée
      * @param meta Métadonnée à ajouter à la lettrine
+     * @param l Lettrine a laquelle la métadonnée doit etre ajoutée
      * @param cn La connection à la base de donnée
      * @see LinkToDb
      * @see Metadonnee
      */
-    public boolean ajouterMeta(Metadonnee meta,Connection cn) {
-
+    public boolean ajouterMeta(Metadonnee meta, Lettrine l, Connection cn) {
+        try {
+            Statement stmt = cn.createStatement();
+            String sql = "UPDATE metadonnee SET idLettrine=" + l.getId() + "WHERE idMeta=" + meta.getId();
+            stmt.executeQuery(sql);
+            return true;
+        }
+        catch (SQLException e) {
+            return false;
+        }
     }
+
+
     /**
      * permet de décaracteriser une lettrine en supprimant une métadonnée
      * @param meta Métadonnée à supprimer à la lettrine
-     * @param cn La connection à la base de donnée
+     * @param cn La connection à la base de données
      * @see LinkToDb
      * @see Metadonnee
+     * @return true : si la requete a été effectuée, false sinon
      */
-
-
-    public void supprimerMeta(Metadonnee meta,Connection cn) {
-
+    public boolean supprimerMeta(Metadonnee meta, Connection cn) {
+        try {
+            Statement stmt = cn.createStatement();
+            String sql = "DELETE FROM metadonnees WHERE idMeta=" + meta.getId();
+            stmt.executeQuery(sql);
+            return true;
+        }
+        catch (SQLException e) {
+            return false;
+        }
     }
+
+
     /**
      * Met à jour la base de donnée avec les nouvelles valeurs de la métadonnée
      * @param meta La métadonnée dont l'on souhaite que la partie code correspond avec la partie base de donnée
      * @param cn La connection à la base de donnée
      * @see LinkToDb
      * @see Metadonnee
+     * @return true : si la requete a été effectuée, false sinon
      */
+    public boolean modifierMeta(Metadonnee meta,Connection cn) {
+        StringBuilder req = new StringBuilder();
+        String sqlNom = "";
+        if(meta.getNom() != null) {
+            sqlNom = "nom=" + meta.getNom();
+            req.append(sqlNom);
+        }
 
-    public void modifierMeta(Metadonnee meta,Connection cn) {
 
+        String sqlEntree = "";
+        if(meta.getEntree() != null) {
+            sqlEntree = ", valeur=" + meta.getEntree();
+            req.append(sqlEntree);
+        }
+
+
+        String sqlUnite = "";
+        if(meta.getUnite() != null) {
+            sqlUnite = ", unite=" + meta.getUnite();
+            req.append(sqlUnite);
+        }
+
+        String sqlDesc = "";
+        if(meta.getDescription() != null) {
+            sqlDesc = "description=" + meta.getDescription();
+            req.append(sqlDesc);
+        }
+
+        if(req.isEmpty()) {
+            return true;
+        }
+        else {
+            try {
+                Statement stmt = cn.createStatement();
+                String sql = "UPDATE metadonnee SET " + req;
+                stmt.executeQuery(sql);
+                return true;
+            }
+            catch (SQLException e) {
+                return false;
+            }
+        }
     }
 
     /**
