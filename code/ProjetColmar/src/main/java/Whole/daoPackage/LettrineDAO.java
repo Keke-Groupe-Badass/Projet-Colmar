@@ -129,11 +129,11 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
             ArrayList<Integer> idMeta = new ArrayList<Integer>();
             for (Metadonnee met : donne.getMetadonnees())
                 idMeta.add(met.getId());
-            String metaSQL = CreateTabSqlMeta(donne, cn, idMeta);
+            String metaSQL = createTabSqlMeta(donne, cn, idMeta);
             req.append(metaSQL);
         }
         else {
-            String metaSQL = CreateTabSqlMeta(donne, cn, null);
+            String metaSQL = createTabSqlMeta(donne, cn, null);
             req.append(metaSQL);
         }
 
@@ -142,11 +142,11 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
             for (Tag tag : donne.getTags()) {
                 idTags.add(tag.getId());
             }
-            String tagSQL = tabSqlTags(donne, cn, idTags);
+            String tagSQL = createTabSqlTags(donne, cn, idTags);
             req.append(tagSQL);
         }
         else {
-            String tagSQL = tabSqlTags(donne, cn, null);
+            String tagSQL = createTabSqlTags(donne, cn, null);
             req.append(tagSQL);
         }
 
@@ -184,7 +184,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * @return String resSql : String contenant le bout de requete permettant d'obtenir les métadonnées
      * cherchées
      */
-    private static String CreateTabSqlMeta(Lettrine donne, Connection cn, ArrayList<Integer> idMeta) {
+    private static String createTabSqlMeta(Lettrine donne, Connection cn, ArrayList<Integer> idMeta) {
         ArrayList<Metadonnee> meta = new ArrayList<>();
         if(idMeta != null) {
             try {
@@ -265,7 +265,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * de donne.
      * @return resSql : String contenant le morceau de requete correspondant a la recherche des tags
      */
-    private static String tabSqlTags(Lettrine donne, Connection cn, ArrayList<Integer> idTags) {
+    private static String createTabSqlTags(Lettrine donne, Connection cn, ArrayList<Integer> idTags) {
         ArrayList<Tag> tags = new ArrayList<>();
         if (idTags != null) {
             try {
