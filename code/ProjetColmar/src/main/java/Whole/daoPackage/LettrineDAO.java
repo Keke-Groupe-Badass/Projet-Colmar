@@ -87,27 +87,31 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * un ArrayList. Si aucune métadonnée n'est passée en attribut de la lettrine
      * (donne.getMetadonnees == null) alors on récupère toutes les métadonnées de la base. On commence par
      * récuperer chaque id de chacune des métadonnées récupérées par la requete, puis on utilice cet
-     * id pour créer un bout de requete sql, finalement on stocke de bout de requete (String) dans
-     * un ArrayList.
+     * id pour créer un bout de requete sql, finalement on stocke ce bout de requete (String) dans
+     * un StringBuilder, qui sera converti en un String contenant la partie de requete correspondante a la
+     * recherche des métadonnées, String qui sera retourné.
      * @param donne Lettrine :  lettrine contenant les attributs sur lesquels effectuer la recherche
      * @param cn Connection : connexion
-     * @return ArrayList<String> tab : ArrayList contenant les sql de chaque tags
+     * @param idMeta : ArrayList d'entiers contenant les id des métadonnées contenues dans l'attribut métadonnée
+     * de donne.
+     * @return String resSql : String contenant le bout de requete permettant d'obtenir les métadonnées
+     * cherchées
      */
-    private static ArrayList<String> tabSqlMeta(Lettrine donne, Connection cn) {
+    private static String createTabSqlMeta(Lettrine donne, Connection cn, ArrayList<Integer> idMeta) {
         return null;
     }
 
 
     /**
-     * recherche sur les tags: meme principe que pour les métadonnées. On récupère une liste de morceaux
-     * de requêtes SQL, un morceau de requete par tag (idTag= id du tag de l'ArrayList contenant les tags
-     * obtenues lors de la requete permettant des les obtenirs en fonction de leur présence dans les
-     * attributs de la lettrine de recherche).
+     * recherche sur les tags: meme principe que pour les métadonnées. On récupère String contenant la
+     * requête SQL de recherche des tags.
      * @param donne Lettrine :  lettrine contenant les attributs sur lesquels effectuer la recherche
      * @param cn Connection : connexion
-     * @return ArrayList<String> tab : ArrayList contenant les sql de chaque tags
+     * @param idTags : ArrayList d'entiers contenant les id des métadonnées contenues dans l'attribut tag
+     * de donne.
+     * @return resSql : String contenant le morceau de requete correspondant a la recherche des tags
      */
-    private static ArrayList<String> tabSqlTags(Lettrine donne, Connection cn) {
+    private static String createTabSqlTags(Lettrine donne, Connection cn, ArrayList<Integer> idTags) {
         return null;
     }
 
