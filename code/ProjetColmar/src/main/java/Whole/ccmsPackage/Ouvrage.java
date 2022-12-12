@@ -7,7 +7,7 @@ import java.util.*;
 /**
  * Classe représentant les ouvrages
  */
-public class Ouvrage implements CCMS {
+public class Ouvrage implements CCMS<Ouvrage> {
     private String titre;
 
     private ArrayList<Auteur> auteurs;
@@ -75,7 +75,7 @@ public class Ouvrage implements CCMS {
      */
     public Ouvrage(String titre, ArrayList<Auteur> auteurs, String editeur, String imprimeur, String lieuEdition, int dateEdition, int nbPage, String lien, int id, String format, String resolution, String creditResolution, boolean reechantillonage, String copyright) {
         this.titre = titre;
-        this.auteurs = auteurs;
+        this.auteurs = new ArrayList<>();
         this.editeur = editeur;
         this.imprimeur = imprimeur;
         this.lieuEdition = lieuEdition;
@@ -88,7 +88,12 @@ public class Ouvrage implements CCMS {
         this.creditResolution = creditResolution;
         this.reechantillonage = reechantillonage;
         this.copyright = copyright;
+        for(Auteur a: auteurs){
+            this.auteurs.add(a);
+        }
+
     }
+
 
     public void setId(int id) {
         this.id = id;
@@ -314,45 +319,8 @@ public class Ouvrage implements CCMS {
         this.lien = lien;
     }
 
-    /**
-     * Modifie un Ouvrage, appel la méthode modifier d'un objet de type AbstractDAO
-     *
-     * @see Whole.daoPackage.OuvrageDAO
-     */
-    @Override
-    public void modifier() {
 
-    }
 
-    /**
-     * Cherche un Ouvrage, appel la méthode chercher d'un objet de type AbstractDAO
-     *
-     * @see Whole.daoPackage.OuvrageDAO
-     */
-    @Override
-    public void chercher() {
-
-    }
-
-    /**
-     * Créer un Ouvrage, appel la méthode créer d'un objet de type AbstractDAO
-     *
-     * @see Whole.daoPackage.OuvrageDAO
-     */
-    @Override
-    public void creer() {
-
-    }
-
-    /**
-     * Supprime un Ouvrage, appel la méthode supprimer d'un objet de type AbstractDAO
-     *
-     * @see Whole.daoPackage.OuvrageDAO
-     */
-    @Override
-    public void supprimer() {
-
-    }
 
     /**
      * Ajoute à la liste des Auteurs un auteur
@@ -373,5 +341,60 @@ public class Ouvrage implements CCMS {
         if(a!=null){
             auteurs.remove(a);
         }
+    }
+
+    /**
+     * Permet de verifier si 2 objets sont exactement similaires
+     *
+     * @param objet l'objet à comparer
+     * @return renvoie true si les deux objets sont similaires, false sinons
+     */
+    @Override
+    public Boolean estCLone(Ouvrage objet) {
+        if(objet!=null){
+            return false;
+        }
+        if(!objet.getLien().equals(this.getLien())){
+            return false;
+        }
+        if(!objet.getCopyright().equals(this.getCopyright())){
+            return false;
+        }
+        if(!objet.getEditeur().equals(this.getEditeur())){
+            return false;
+        }
+        if(!objet.getFormat().equals(this.format)){
+            return false;
+        }
+        if(!objet.getCreditResolution().equals(this.creditResolution)){
+            return false;
+        }
+        if(!objet.getTitre().equals(this.titre)){
+            return false;
+        }
+        if(!objet.getImprimeur().equals(this.imprimeur)){
+            return false;
+        }
+        if(!objet.getLieuEdition().equals(this.lieuEdition)){
+            return false;
+        }
+        if(!objet.getResolution().equals(this.resolution)){
+            return false;
+        }
+        if(objet.getNbPage()!=this.getNbPage()){
+            return false;
+        }
+        if(objet.getId()!=this.id){
+            return false;
+        }
+        if(objet.getDateEdition()!=this.dateEdition){
+            return false;
+        }
+        for(Auteur auteur: this.auteurs){
+            if(!objet.getAuteurs().contains(auteur)){
+                return false;
+            }
+        }
+        return true;
     }
 }

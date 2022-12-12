@@ -157,78 +157,62 @@ public class Lettrine implements CCMS<Lettrine> {
     }
 
     /**
-     * Cette methode permet d'ajouter la métadonnée passée en paramètre à la lettrine.
-     *Elle affecte la liste de métadonnées metadonnees en y ajoutant la métadonnée passée en paramètre.
-     * @param meta Metadonnee : metadonnée à ajouter
+     * Cette methode permet d'ajouter la mï¿½tadonnï¿½e passï¿½e en paramï¿½tre ï¿½ la lettrine.
+     *Elle affecte la liste de mï¿½tadonnï¿½es metadonnees en y ajoutant la mï¿½tadonnï¿½e passï¿½e en paramï¿½tre.
+     * @param meta Metadonnee : metadonnï¿½e ï¿½ ajouter
      * @see Metadonnee
      */
     public void AjouterMetadonnees(Metadonnee meta) {
-        if(metadonnees.contains(meta)==false) {
-            metadonnees.add(meta);
+        if(meta!=null){
+            if(metadonnees.contains(meta)==false) {
+                metadonnees.add(meta);
             }
-        
-
+        }
     }
 
     /**
-     * Cette méthode permet de supprimer la métadonnée passée en paramètre à la lettrine.
-     * Elle affecte la liste de métadonnées metadonnees en en retirant la métadonnée passée en paramètre.
-     * @param meta : métadonnée à supprimer
+     * Cette mï¿½thode permet de supprimer la mï¿½tadonnï¿½e passï¿½e en paramï¿½tre ï¿½ la lettrine.
+     * Elle affecte la liste de mï¿½tadonnï¿½es metadonnees en en retirant la mï¿½tadonnï¿½e passï¿½e en paramï¿½tre.
+     * @param meta : mï¿½tadonnï¿½e ï¿½ supprimer
      * @see Metadonnee
      */
     public void SupprimerMetadonnees(Metadonnee meta) {
-        if(metadonnees.contains(meta)==true) {
-            metadonnees.remove(metadonnees.indexOf(meta));
+        metadonnees.remove(meta);
+    }
+
+    /**
+     * Permet de verifier si 2 objets sont exactement similaires
+     *
+     * @param objet l'objet Ã  comparer
+     * @return renvoie true si les deux objets sont similaires, false sinons
+     */
+    @Override
+    public Boolean estCLone(Lettrine objet) {
+        if(objet==null){
+            return false;
+        }
+        if(!objet.getLien().equals(this.getLien())){
+            return false;
+        }
+        if(!objet.getOuvrage().equals(this.getOuvrage())){
+            return false;
+        }
+        if(objet.getId()!=this.getId()){
+            return false;
+        }
+        if(objet.getNbPage()!=this.getNbPage()){
+            return false;
+        }
+        for(Tag tag: this.tags){
+            if(!objet.getTags().contains(tag)){
+                return false;
             }
-    }
-
-
-    /**
-     * Modifie une Lettrine, appel la mÃ©thode modifier d'un objet de type AbstractDAO
-     *
-     * @see Whole.daoPackage.LettrineDAO
-     */
-    @Override
-    public void modifier(Lettrine objet) {
-
-    }
-
-    /**
-     * Cherche une Lettrine, appel la mÃ©thode chercher d'un objet de type AbstractDAO
-     *
-     * @see Whole.daoPackage.LettrineDAO
-     */
-    @Override
-    public void chercher(Lettrine objet) {
-
-    }
-
-    /**
-     * CrÃ©er une Lettrine, appel la mÃ©thode crÃ©er d'un objet de type AbstractDAO
-     *
-     * @see Whole.daoPackage.LettrineDAO
-     */
-    @Override
-    public void creer(Lettrine objet) {
-
-    }
-
-    /**
-     * Supprime une Lettrine, appel la mÃ©thode supprimer d'un objet de type AbstractDAO
-     *
-     * @see Whole.daoPackage.LettrineDAO
-     */
-    @Override
-    public void supprimer(Lettrine objet) {
-
-    }
-
-    /**
-     * Renvoie l'image d'une lettrine sur un serveur distant, si non-trouvable alors envoyÃ© image par dÃ©faut
-     * @return L'image issue du lien
-     * @see BufferedImage
-     */
-    public BufferedImage loadImage(){
-        return null;
+        }
+        for(Metadonnee meta: metadonnees){
+            if(!objet.getMetadonnees().contains(meta)){
+                return false;
+            }
+        }
+        return true;
     }
 }

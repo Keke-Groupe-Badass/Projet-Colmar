@@ -240,7 +240,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * de recherche, on commence par récupérer tous les id de ces métadonnées, puis on les stockes dans
      * un ArrayList. Si aucune métadonnée n'est passée en attribut de la lettrine
      * (donne.getMetadonnees == null) alors on récupère toutes les métadonnées de la base. On commence par
-     * récuperer chaque id de chacune des métadonnées récupérées par la requete, puis on utilice cet
+     * récuperer chaque id de chacune des métadonnées récupérées par la requete, puis on utilise cet
      * id pour créer un bout de requete sql, finalement on stocke ce bout de requete (String) dans
      * un StringBuilder, qui sera converti en un String contenant la partie de requete correspondante a la
      * recherche des métadonnées, String qui sera retourné.

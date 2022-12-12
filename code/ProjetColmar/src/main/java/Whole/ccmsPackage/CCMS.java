@@ -1,29 +1,15 @@
 package Whole.ccmsPackage;
 
-import Whole.daoPackage.AbstractDAO;
 
 /**
- * Interface implémentant les méthodes Créer Chercher Modifier Supprimer
+ * Interface permettant la généralisation dans la classe AbstractDAO
+ * @see Whole.daoPackage.AbstractDAO
  */
 public interface CCMS <CCMS>{
     /**
-     * Modifie un CCMS, appel une méthode d'un objet de type AbstractDAO
-     * @see AbstractDAO
+     * Permet de verifier si 2 objets sont exactement similaires
+     * @param objet l'objet à comparer
+     * @return renvoie true si les deux objets sont similaires, false sinons
      */
-    void modifier(CCMS objet);
-    /**
-     * Cherche un CCMS, appel une méthode d'un objet de type AbstractDAO
-     * @see AbstractDAO
-     */
-    void chercher(CCMS objet);
-    /**
-     * Créer un CCMS, appel une méthode d'un objet de type AbstractDAO
-     * @see AbstractDAO
-     */
-    void creer(CCMS objet);
-    /**
-     * Supprime un CCMS, appel une méthode d'un objet de type AbstractDAO
-     * @see AbstractDAO
-     */
-    void supprimer(CCMS objet);
+    Boolean estCLone(CCMS objet);
 }
