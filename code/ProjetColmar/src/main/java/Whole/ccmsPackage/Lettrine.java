@@ -157,29 +157,27 @@ public class Lettrine implements CCMS<Lettrine> {
     }
 
     /**
-     * Cette methode permet d'ajouter la métadonnée passée en paramètre à la lettrine.
-     *Elle affecte la liste de métadonnées metadonnees en y ajoutant la métadonnée passée en paramètre.
-     * @param meta Metadonnee : metadonnée à ajouter
+     * Cette methode permet d'ajouter la mï¿½tadonnï¿½e passï¿½e en paramï¿½tre ï¿½ la lettrine.
+     *Elle affecte la liste de mï¿½tadonnï¿½es metadonnees en y ajoutant la mï¿½tadonnï¿½e passï¿½e en paramï¿½tre.
+     * @param meta Metadonnee : metadonnï¿½e ï¿½ ajouter
      * @see Metadonnee
      */
     public void AjouterMetadonnees(Metadonnee meta) {
-        if(metadonnees.contains(meta)==false) {
-            metadonnees.add(meta);
+        if(meta!=null){
+            if(metadonnees.contains(meta)==false) {
+                metadonnees.add(meta);
             }
-        
-
+        }
     }
 
     /**
-     * Cette méthode permet de supprimer la métadonnée passée en paramètre à la lettrine.
-     * Elle affecte la liste de métadonnées metadonnees en en retirant la métadonnée passée en paramètre.
-     * @param meta : métadonnée à supprimer
+     * Cette mï¿½thode permet de supprimer la mï¿½tadonnï¿½e passï¿½e en paramï¿½tre ï¿½ la lettrine.
+     * Elle affecte la liste de mï¿½tadonnï¿½es metadonnees en en retirant la mï¿½tadonnï¿½e passï¿½e en paramï¿½tre.
+     * @param meta : mï¿½tadonnï¿½e ï¿½ supprimer
      * @see Metadonnee
      */
     public void SupprimerMetadonnees(Metadonnee meta) {
-        if(metadonnees.contains(meta)==true) {
-            metadonnees.remove(metadonnees.indexOf(meta));
-            }
+        metadonnees.remove(meta);
     }
 
 

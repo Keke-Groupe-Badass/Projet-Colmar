@@ -6,7 +6,6 @@
 package Whole.daoPackage;
 
 import Whole.LinkToDb;
-import Whole.exportPackage.ExportSQL;
 import Whole.exportPackage.ExportTypeInterface;
 
 import java.io.BufferedWriter;
