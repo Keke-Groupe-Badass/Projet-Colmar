@@ -15,7 +15,7 @@ import java.util.*;
 /**
  * Classe représentant les lettrines
  */
-public class Lettrine implements CCMS {
+public class Lettrine implements CCMS<Lettrine> {
 
     private Ouvrage ouvrage;
 
@@ -174,7 +174,7 @@ public class Lettrine implements CCMS {
      * @see Whole.daoPackage.LettrineDAO
      */
     @Override
-    public void modifier() {
+    public void modifier(Lettrine objet) {
 
     }
 
@@ -184,7 +184,7 @@ public class Lettrine implements CCMS {
      * @see Whole.daoPackage.LettrineDAO
      */
     @Override
-    public void chercher() {
+    public void chercher(Lettrine objet) {
 
     }
 
@@ -194,7 +194,7 @@ public class Lettrine implements CCMS {
      * @see Whole.daoPackage.LettrineDAO
      */
     @Override
-    public void creer() {
+    public void creer(Lettrine objet) {
 
     }
 
@@ -204,7 +204,7 @@ public class Lettrine implements CCMS {
      * @see Whole.daoPackage.LettrineDAO
      */
     @Override
-    public void supprimer() {
+    public void supprimer(Lettrine objet) {
 
     }
 

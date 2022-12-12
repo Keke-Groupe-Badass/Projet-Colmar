@@ -10,7 +10,7 @@ import Whole.daoPackage.AbstractDAO;
 /**
  * Classe représentant les tags
  */
-public class Tag implements CCMS {
+public class Tag implements CCMS<Tag> {
 
     private int id;
 
@@ -85,7 +85,7 @@ public class Tag implements CCMS {
      * @see Whole.daoPackage.TagDAO
      */
     @Override
-    public void modifier() {
+    public void modifier(Tag objet) {
 
     }
 
@@ -95,7 +95,7 @@ public class Tag implements CCMS {
      * @see Whole.daoPackage.TagDAO
      */
     @Override
-    public void chercher() {
+    public void chercher(Tag objet) {
 
     }
 
@@ -105,7 +105,7 @@ public class Tag implements CCMS {
      * @see Whole.daoPackage.TagDAO
      */
     @Override
-    public void creer() {
+    public void creer(Tag objet) {
 
     }
 
@@ -115,7 +115,7 @@ public class Tag implements CCMS {
      * @see Whole.daoPackage.TagDAO
      */
     @Override
-    public void supprimer() {
+    public void supprimer(Tag objet) {
 
     }
 

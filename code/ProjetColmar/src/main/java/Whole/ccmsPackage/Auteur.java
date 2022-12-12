@@ -6,7 +6,7 @@ import Whole.daoPackage.AuteurDAO;
 /**
  * Classe représentant les auteurs
  */
-public class Auteur implements CCMS {
+public class Auteur implements CCMS<Auteur> {
 
     private int id;
 
@@ -94,7 +94,7 @@ public class Auteur implements CCMS {
      * @see AuteurDAO
      */
     @Override
-    public void modifier() {
+    public void modifier(Auteur objet) {
 
     }
 
@@ -104,7 +104,7 @@ public class Auteur implements CCMS {
      * @see AuteurDAO
      */
     @Override
-    public void chercher() {
+    public void chercher(Auteur objet) {
 
     }
 
@@ -114,7 +114,7 @@ public class Auteur implements CCMS {
      * @see AuteurDAO
      */
     @Override
-    public void creer() {
+    public void creer(Auteur objet) {
 
     }
 
@@ -124,7 +124,7 @@ public class Auteur implements CCMS {
      * @see AuteurDAO
      */
     @Override
-    public void supprimer() {
+    public void supprimer(Auteur objet) {
 
     }
 }
