@@ -113,7 +113,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
             sqlOuvrage = "idOuvrage=" + idOuvrage;
         }
 
-        ArrayList<String> metaSQL = tabSqlMeta(donne, cn);
+        StringBuilder metaSQL = CreateTabSql(donne, cn);
 
         /*
         recherche sur le numéro de la page. S'il existe, on inclue le numero de la page dans la requete
@@ -131,9 +131,6 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
          */
         Lettrine let = new Lettrine();
         try {
-            for(String sqlTag : tagSQL) {
-
-            }
             Statement stmt = cn.createStatement();
             String sql = "SELECT * FROM lettrine WHERE " + sqlOuvrage + " AND " + sqlNumPage + " AND " +
                     "";
@@ -143,8 +140,6 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
             e.printStackTrace();
         }
     }
-
-
 
     /**
      * recherche sur les métadonnées, si des métadonnées sont passées en attribut de la lettrine
@@ -158,7 +153,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * @param cn Connection : connexion
      * @return ArrayList<String> tab : ArrayList contenant les sql de chaque tags
      */
-    private static ArrayList<String> tabSqlMeta(Lettrine donne, Connection cn) {
+    private static StringBuilder CreateTabSql(Lettrine donne, Connection cn) {
         ArrayList<Metadonnee> meta = new ArrayList<>();
 
         if(donne.getMetadonnees() != null) {
@@ -190,10 +185,15 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
             String sqlMeta = "";
             ArrayList<String> tab = new ArrayList<>();
             for(Metadonnee idmeta : meta) {
-                sqlMeta = "idMeta=" + idmeta;
+                sqlMeta = "AND idMeta=" + idmeta + " ";
                 tab.add(sqlMeta);
+
             }
-            return tab;
+            StringBuilder resSql = new StringBuilder();
+            for(String str : tab) {
+                resSql.append(str);
+            }
+            return resSql;
         }
 
         else {
@@ -220,10 +220,14 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
             String sqlMeta = "";
             ArrayList<String> tab = new ArrayList<>();
             for(Metadonnee idmeta : meta) {
-                sqlMeta = "idMeta=" + idmeta;
+                sqlMeta = "AND idMeta=" + idmeta + " ";
                 tab.add(sqlMeta);
             }
-            return tab;
+            StringBuilder resSql = new StringBuilder();
+            for(String str : tab) {
+                resSql.append(str);
+            }
+            return resSql;
         }
     }
 
