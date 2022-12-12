@@ -1,13 +1,14 @@
 package Whole;
 
 import java.io.File;
-import java.net.URI;
+
 
 public class Main {
     /**
      * Permet de démarrer l'application
      * @param args String[]
      */
+
     public static void main(String[] args) {
         /**
         try {
@@ -38,8 +39,7 @@ public class Main {
 
 
 
-
-        executeScriptPB();
+        //executeScriptPB();
     }
     public static void executeScriptPB(){
         try{

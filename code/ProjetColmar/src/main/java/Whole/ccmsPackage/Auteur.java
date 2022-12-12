@@ -1,11 +1,12 @@
 package Whole.ccmsPackage;
 
 import Whole.daoPackage.AbstractDAO;
+import Whole.daoPackage.AuteurDAO;
 
 /**
  * Classe représentant les auteurs
  */
-public class Auteur implements CCMS {
+public class Auteur implements CCMS<Auteur> {
 
     private int id;
 
@@ -79,7 +80,7 @@ public class Auteur implements CCMS {
     }
 
     /**
-     * change le prenom de l'auteur par le prenom passé en param
+     * change le prenom de l'auteur par le prénom passé en param
      * @param prenom String
      */
     private void setPrenom(String prenom) {
@@ -88,42 +89,42 @@ public class Auteur implements CCMS {
 
 
     /**
-     * Modifie un CCMS, appel une méthode d'un objet de type AbstractDAO
+     * Modifie un Auteur, appel la méthode modifier d'un objet de type AbstractDAO
      *
-     * @see AbstractDAO
+     * @see AuteurDAO
      */
     @Override
-    public void modifier() {
+    public void modifier(Auteur objet) {
 
     }
 
     /**
-     * Cherche un CCMS, appel une méthode d'un objet de type AbstractDAO
+     * Cherche un Auteur, appel la méthode chercher d'un objet de type AbstractDAO
      *
-     * @see AbstractDAO
+     * @see AuteurDAO
      */
     @Override
-    public void chercher() {
+    public void chercher(Auteur objet) {
 
     }
 
     /**
-     * Créer un CCMS, appel une méthode d'un objet de type AbstractDAO
+     * Créer un Auteur, appel la méthode créer d'un objet de type AbstractDAO
      *
-     * @see AbstractDAO
+     * @see AuteurDAO
      */
     @Override
-    public void creer() {
+    public void creer(Auteur objet) {
 
     }
 
     /**
-     * Supprime un CCMS, appel une méthode d'un objet de type AbstractDAO
+     * Supprime un Auteur, appel la méthode supprimer d'un objet de type AbstractDAO
      *
-     * @see AbstractDAO
+     * @see AuteurDAO
      */
     @Override
-    public void supprimer() {
+    public void supprimer(Auteur objet) {
 
     }
 }

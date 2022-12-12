@@ -5,6 +5,8 @@
 */
 package Whole;
 
+import Whole.daoPackage.OuvrageDAO;
+
 import java.sql.Connection;
 
 /**
@@ -80,4 +82,8 @@ public class Controleur {
     public Boolean ChnagePWD(String name, String oldPwd, String newPwd, String confirm) {
         return true;
     }
+    public static Boolean init(){
+        return false;
+    }
+
 }

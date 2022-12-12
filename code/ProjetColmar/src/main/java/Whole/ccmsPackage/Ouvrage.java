@@ -315,9 +315,9 @@ public class Ouvrage implements CCMS {
     }
 
     /**
-     * Modifie un CCMS, appel une méthode d'un objet de type AbstractDAO
+     * Modifie un Ouvrage, appel la méthode modifier d'un objet de type AbstractDAO
      *
-     * @see AbstractDAO
+     * @see Whole.daoPackage.OuvrageDAO
      */
     @Override
     public void modifier() {
@@ -325,9 +325,9 @@ public class Ouvrage implements CCMS {
     }
 
     /**
-     * Cherche un CCMS, appel une méthode d'un objet de type AbstractDAO
+     * Cherche un Ouvrage, appel la méthode chercher d'un objet de type AbstractDAO
      *
-     * @see AbstractDAO
+     * @see Whole.daoPackage.OuvrageDAO
      */
     @Override
     public void chercher() {
@@ -335,9 +335,9 @@ public class Ouvrage implements CCMS {
     }
 
     /**
-     * Créer un CCMS, appel une méthode d'un objet de type AbstractDAO
+     * Créer un Ouvrage, appel la méthode créer d'un objet de type AbstractDAO
      *
-     * @see AbstractDAO
+     * @see Whole.daoPackage.OuvrageDAO
      */
     @Override
     public void creer() {
@@ -345,9 +345,9 @@ public class Ouvrage implements CCMS {
     }
 
     /**
-     * Supprime un CCMS, appel une méthode d'un objet de type AbstractDAO
+     * Supprime un Ouvrage, appel la méthode supprimer d'un objet de type AbstractDAO
      *
-     * @see AbstractDAO
+     * @see Whole.daoPackage.OuvrageDAO
      */
     @Override
     public void supprimer() {
