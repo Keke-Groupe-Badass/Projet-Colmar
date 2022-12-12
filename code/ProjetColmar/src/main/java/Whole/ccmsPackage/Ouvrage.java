@@ -90,6 +90,10 @@ public class Ouvrage implements CCMS {
         this.copyright = copyright;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     /**
      * getter de l'attribut format
      * @return format
