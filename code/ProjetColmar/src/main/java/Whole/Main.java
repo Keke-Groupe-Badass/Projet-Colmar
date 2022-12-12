@@ -9,6 +9,7 @@ public class Main {
      * @param args String[]
      */
     public static void main(String[] args) {
+        /**
         try {
 
             // Two absolute paths
@@ -33,17 +34,29 @@ public class Main {
         } catch (Exception e) {
             e.getStackTrace();
         }
+        */
 
 
 
-        /**
+
+        executeScriptPB();
+    }
+    public static void executeScriptPB(){
         try{
             System.out.println("hi");
-            String[] cmd = { "sh", "MyFile.sh", "athOfTheFile"};
+            System.out.println(new File("C:/Users/andre/Projet-Colmar/Projet-Colmar/code/ProjetColmar/src/main/shell/exportSQL.sh").getAbsoluteFile());
+            System.out.println(new File("src/main/shell/exportSQL.sh").getAbsoluteFile());
+            String os = System.getProperty("os.name");
+            String type="sh";
+            if(os.contains("Windows")){
+                type="cmd.exe";
+            }
+            String[] cmd = { type, "exportSQL.sh", "src/main/shell/exportSQL.sh"};
             Runtime.getRuntime().exec(cmd);
 
         }catch (Exception e){
             e.printStackTrace();
-        }**/
+        }
+
     }
 }

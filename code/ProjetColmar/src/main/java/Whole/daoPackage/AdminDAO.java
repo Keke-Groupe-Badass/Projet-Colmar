@@ -6,6 +6,7 @@
 package Whole.daoPackage;
 
 import Whole.LinkToDb;
+import Whole.exportPackage.ExportSQL;
 import Whole.exportPackage.ExportTypeInterface;
 
 import java.io.BufferedWriter;
@@ -38,15 +39,25 @@ public class AdminDAO {
      */
 
 
-    public Boolean exportDonee(File file,Connection cn, String methode, String path) {
+    public Boolean exportDonee(File file,Connection cn, String methode, String path)  {
         for(ExportTypeInterface e:listeMethode){
             if(e.getName().equals(methode)){
                 if(e.getName().equals("SQL")){
-
+                    String os = System.getProperty("os.name");
+                    String type="sh";
+                    if(os.contains("Windows")){
+                        type="cmd.exe";
+                    }
+                    String[] cmd = { type, "exportSQL.sh", "src/main/shell/exportSQL.sh"};
+                    try {
+                        Runtime.getRuntime().exec(cmd);
+                    } catch (IOException ex) {
+                        return false;
+                    }
                 }
                 else{
                     Boolean b = true;
-                    ArrayList<ArrayList<String>> list =new ArrayList<ArrayList<String>>();
+                    ArrayList<ArrayList<String>> list;
                     for(String st:listeTable){
                         list=getTableList(st);
                         File f = new File(path+"/"+st);
