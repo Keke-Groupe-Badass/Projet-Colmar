@@ -89,8 +89,8 @@ public class AdminDAO {
             for(int i=0;i<size;i++){
                 list.get(0).add(md.getColumnName(i));
             }
+            int row=1;
             while(rs.next()){
-                int row=1;
                 for(int j=0;j<row;j++){
                     for(int i=0;i<size;i++){
                         list.get(j).add(md.getColumnName(i));
