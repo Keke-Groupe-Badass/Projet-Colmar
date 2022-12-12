@@ -157,11 +157,43 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
         recherche des lettrines correspondants aux critères récupérés au dessus.
          */
         try {
+            ArrayList<Tag> tagList = new ArrayList<>();
+            ArrayList<Metadonnee> metaList = new ArrayList<>();
             Statement stmt = cn.createStatement();
             String sql = "SELECT * FROM lettrine WHERE " + req;
             ResultSet res = stmt.executeQuery(sql);
             while(res.next()) {
                 Lettrine let = new Lettrine();
+
+                //recuperation des tags de chaque lettrine
+                Statement stmtTag = cn.createStatement();
+                String sqlTag = "SELECT * FROM tags INNER JOIN lettrine_tags ON tags.idTag = lettrine_tags.idTag " +
+                        "INNER JOIN lettrines ON lettrines_tags.idLettrine = lettrines.idLettrine " +
+                        "WHERE lettrines_tags.idLettrine=" + res.getInt(1);
+                ResultSet resTags = stmtTag.executeQuery(sqlTag);
+                while (resTags.next()) {
+                    Tag t = new Tag(resTags.getInt(1), resTags.getString(3), resTags.getString(2));
+                    tagList.add(t);
+                }
+
+                //recuperation des metadonnees de chaque lettrine
+                Statement stmtMeta = cn.createStatement();
+                String sqlMeta = "SELECT * FROM metadonnees WHERE idLettrine=" + res.getInt(1);
+                ResultSet resMeta = stmtMeta.executeQuery(sqlMeta);
+                while(resMeta.next()) {
+                    Metadonnee m = new Metadonnee();
+                    m.setNom(resMeta.getString(3));
+                    m.setId(resMeta.getInt(1));
+                    m.setEntree(resMeta.getString(4));
+                    m.setUnite(resMeta.getString(5));
+                    m.setDescription(resMeta.getString(2));
+                    metaList.add(m);
+                }
+
+                let.setId(1);
+                let.setNbPage(res.getInt(2));
+
+
             }
         }
         catch (SQLException e) {
