@@ -31,7 +31,45 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
 
     @Override
     public boolean modifier(Lettrine objet, Lettrine changement, Connection cn) {
-        return false;
+        StringBuilder str = new StringBuilder();
+        if(changement.getNbPage() != -1) {
+            str.append("nbPage=" + changement.getNbPage());
+        }
+
+        if(changement.getLien() != null) {
+            str.append(", lien=" + changement.getLien());
+        }
+
+        if(changement.getOuvrage() != null) {
+            str.append(", idOuvrage=" + changement.getOuvrage().getId());
+        }
+
+        if(changement.getMetadonnees() != null) {
+            for(Metadonnee meta : changement.getMetadonnees()) {
+                try {
+                    Statement stmtMeta = cn.createStatement();
+                    String sqlMeta = "UPDATE metadonnee SET idLettrine=" + objet.getId() +
+                            " WHERE idMeta=" + meta.getId();
+                    stmtMeta.executeQuery(sqlMeta);
+
+                }
+                catch (SQLException e) {
+                    return false;
+                }
+            }
+        }
+
+        if(changement.getTags() != null) {
+            for(Tag tag : changement.getTags()) {
+                try {
+                    Statement stmtTag = cn.createStatement();
+                    String sqlTag = "UPDATE lettrines_tags SET ";
+                }
+                catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 
     /**
