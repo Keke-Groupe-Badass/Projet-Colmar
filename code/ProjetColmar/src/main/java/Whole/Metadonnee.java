@@ -3,8 +3,6 @@ package Whole;
 import Whole.ccmsPackage.Lettrine;
 
 public class Metadonnee {
-
-    private Lettrine lettrine;
     private String nom;
 
     private int id;
@@ -14,6 +12,18 @@ public class Metadonnee {
     private String unite;
 
     private String description;
+
+    public Metadonnee(String nom, int id, String entree, String unite, String description) {
+        this.nom = nom;
+        this.id = id;
+        this.entree = entree;
+        this.unite = unite;
+        this.description = description;
+    }
+
+    public Metadonnee() {
+
+    }
 
     /**
      * renvoie le nom de la métadonnée
