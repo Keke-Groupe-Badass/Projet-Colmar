@@ -227,11 +227,12 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
                 let.setMetadonnees(metaList);
                 letList.add(let);
             }
-            return letList;
+           
         }
         catch (SQLException e) {
-           return letList;
+           
         }
+        return letList;
     }
 
     /**

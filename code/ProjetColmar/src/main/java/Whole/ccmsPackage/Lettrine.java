@@ -7,6 +7,7 @@ package Whole.ccmsPackage;
 
 import Whole.daoPackage.AbstractDAO;
 import Whole.Metadonnee;
+import Whole.daoPackage.LettrineDAO;
 
 import java.awt.image.BufferedImage;
 import java.util.*;
@@ -14,7 +15,7 @@ import java.util.*;
 /**
  * Classe repr√©sentant les lettrines
  */
-public class Lettrine implements CCMS {
+public class Lettrine implements CCMS<Lettrine> {
 
     private Ouvrage ouvrage;
 
@@ -156,63 +157,69 @@ public class Lettrine implements CCMS {
     }
 
     /**
-     * Cette methode permet d'ajouter la m√©tadonn√©e pass√©e en param√®tre √† la lettrine.
-     * Elle affecte la liste de m√©tadonn√©es metadonnees en y ajoutant la m√©tadonn√©e pass√©e en param√®tre.
-     * @param meta Metadonnee : metadonn√©e √† ajouter
+     * Cette methode permet d'ajouter la mÈtadonnÈe passÈe en paramËtre ‡ la lettrine.
+     *Elle affecte la liste de mÈtadonnÈes metadonnees en y ajoutant la mÈtadonnÈe passÈe en paramËtre.
+     * @param meta Metadonnee : metadonnÈe ‡ ajouter
      * @see Metadonnee
      */
     public void AjouterMetadonnees(Metadonnee meta) {
+        if(metadonnees.contains(meta)==false) {
+            metadonnees.add(meta);
+            }
+        
 
     }
 
     /**
-     * Cette m√©thode permet de supprimer la m√©tadonn√©e pass√©e en param√®tre √† la lettrine.
-     * Elle affecte la liste de m√©tadonn√©es metadonnees en en retirant la m√©tadonn√©e pass√©e en param√®tre.
-     * @param meta : m√©tadonn√©e √† supprimer
+     * Cette mÈthode permet de supprimer la mÈtadonnÈe passÈe en paramËtre ‡ la lettrine.
+     * Elle affecte la liste de mÈtadonnÈes metadonnees en en retirant la mÈtadonnÈe passÈe en paramËtre.
+     * @param meta : mÈtadonnÈe ‡ supprimer
      * @see Metadonnee
      */
     public void SupprimerMetadonnees(Metadonnee meta) {
-
+        if(metadonnees.contains(meta)==true) {
+            metadonnees.remove(metadonnees.indexOf(meta));
+            }
     }
 
 
     /**
-     * Modifie un CCMS, appel une m√©thode d'un objet de type AbstractDAO
+     * Modifie une Lettrine, appel la m√©thode modifier d'un objet de type AbstractDAO
      *
-     * @see AbstractDAO
+     * @see Whole.daoPackage.LettrineDAO
      */
     @Override
-    public void modifier() {
+    public void modifier(Lettrine objet) {
 
     }
 
     /**
-     * Cherche un CCMS, appel une m√©thode d'un objet de type AbstractDAO
+     * Cherche une Lettrine, appel la m√©thode chercher d'un objet de type AbstractDAO
      *
-     * @see AbstractDAO
+     * @see Whole.daoPackage.LettrineDAO
      */
     @Override
-    public void chercher() {
+    public void chercher(Lettrine objet) {
 
     }
 
     /**
-     * Cr√©er un CCMS, appel une m√©thode d'un objet de type AbstractDAO
+     * Cr√©er une Lettrine, appel la m√©thode cr√©er d'un objet de type AbstractDAO
      *
-     * @see AbstractDAO
+     * @see Whole.daoPackage.LettrineDAO
      */
     @Override
-    public void creer() {
+    public void creer(Lettrine objet) {
 
     }
 
     /**
-     * Supprime un CCMS, appel une m√©thode d'un objet de type AbstractDAO
+     * Supprime une Lettrine, appel la m√©thode supprimer d'un objet de type AbstractDAO
      *
-     * @see AbstractDAO
+     * @see Whole.daoPackage.LettrineDAO
      */
     @Override
-    public void supprimer() {
+    public void supprimer(Lettrine objet) {
 
     }
 

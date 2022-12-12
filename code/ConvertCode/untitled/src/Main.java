@@ -8,7 +8,8 @@ public class Main {
             ArrayList<StructAuteur> l = getAutorNameOnly("SELECT distinct t.Auteur FROM t_ouvrages t left join t_personne a on t.Auteur=a.nom_prenom where Num_personne is Null ORDER BY `a`.`Num_personne` ASC");
             //ArrayList<StructAuteur> l = getAutor("SELECT `Num_personne`,`nom_prenom` FROM `t_personne`");
             //uploadAutor(l);
-            uploadAutorNoId(l);
+            //uploadAutorNoId(l);
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
