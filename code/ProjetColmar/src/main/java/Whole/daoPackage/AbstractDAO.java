@@ -16,8 +16,8 @@ public abstract class AbstractDAO <CCMS>{
 
     /**
      * Met à jour la BD
-    * @param objet CCMS à changer
-    * @param changement CCMS de changement (les paramètres null ne sont pas à changer)
+     * @param objet CCMS à changer
+     * @param changement CCMS de changement (les paramètres null ne sont pas à changer)
      * @param cn La connection à la base de donnée
      * @see CCMS
      * @see Whole.LinkToDb
@@ -36,17 +36,17 @@ public abstract class AbstractDAO <CCMS>{
 
     /**
      * Ajoute à la base de donnée un CCMS
-    * @param donne le CCMS à ajouter
-     *@param cn La connection à la base de donnée
+     * @param donne le CCMS à ajouter
+     * @param cn La connection à la base de donnée
      * @see CCMS
      * @see Whole.LinkToDb
     */
     public abstract boolean creer(CCMS donne,Connection cn);
 
     /**
-     *Cherche un CCMS dans la base
-    * @param donne CCMS avec tout les paramètres nuls sauf ceux à chercher
-     *@param cn La connection à la base de donnée
+     * Cherche un CCMS dans la base
+     * @param donne CCMS avec tout les paramètres nuls sauf ceux à chercher
+     * @param cn La connection à la base de donnée
      * @return la Liste des des CCMS correspondant aux critères
      * @see CCMS
      * @see Whole.LinkToDb
