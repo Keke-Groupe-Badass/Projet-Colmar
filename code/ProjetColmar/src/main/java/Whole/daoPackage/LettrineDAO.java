@@ -33,10 +33,11 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * @param cn         La connection à la base de donnée
      * @see Lettrine
      * @see LinkToDb
+     * @return true : si la requete a été effectuée, false sinon
      */
     @Override
-    public void modifier(Lettrine actuelle, Lettrine changement, Connection cn) {
-
+    public boolean modifier(Lettrine actuelle, Lettrine changement, Connection cn) {
+        return false;
     }
 
     /**
@@ -46,10 +47,11 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * @param cn    La connection à la base de donnée
      * @see Lettrine
      * @see LinkToDb
+     * @return true : si la requete a été effectuée, false sinon
      */
     @Override
-    public void supprimer(Lettrine objet, Connection cn) {
-
+    public boolean supprimer(Lettrine objet, Connection cn) {
+        return false;
     }
 
     /**
@@ -59,10 +61,11 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * @param cn    La connection à la base de donnée
      * @see Lettrine
      * @see LinkToDb
+     * @return true : si la requete a été effectuée, false sinon
      */
     @Override
-    public void creer(Lettrine donne, Connection cn) {
-
+    public boolean creer(Lettrine donne, Connection cn) {
+        return false;
     }
 
     /**
@@ -123,11 +126,12 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * @see LinkToDb
      * @see Ouvrage
      * @see Lettrine
-     *
+     * @return true : si la requete a été effectuée, false sinon
      */
-    public void provient(Lettrine l , Ouvrage o,Connection cn)   {
-
+    public boolean provient(Lettrine l , Ouvrage o,Connection cn)   {
+        return false;
     }
+
     /**
      *Permet de lier dans la base de donnée une lettrine à un tag
      * @param l La lettrine dont on souhaite ajouter un tag
@@ -136,12 +140,12 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * @see LinkToDb
      * @see Lettrine
      * @see Tag
+     * @return true : si la requete a été effectuée, false sinon
      */
-
-
-    public void tager(Lettrine l , Tag t,Connection cn) {
-
+    public boolean tager(Lettrine l , Tag t,Connection cn) {
+        return false;
     }
+
     /**
      * permet de caracteriser une lettrine en ajoutant une métadonnée
      * @param l la Lettrine à décrire.
@@ -149,34 +153,34 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * @param cn La connection à la base de donnée
      * @see LinkToDb
      * @see Metadonnee
+     * @return true : si la requete a été effectuée, false sinon
      */
-
-
-    public void ajouterMeta(Lettrine l,Metadonnee meta,Connection cn) {
-
+    public boolean ajouterMeta(Lettrine l,Metadonnee meta,Connection cn) {
+        return false;
     }
+
     /**
      * permet de décaracteriser une lettrine en supprimant une métadonnée
      * @param meta Métadonnée à supprimer à la lettrine
      * @param cn La connection à la base de donnée
      * @see LinkToDb
      * @see Metadonnee
+     * @return true : si la requete a été effectuée, false sinon
      */
-
-
-    public void supprimerMeta(Metadonnee meta,Connection cn) {
-
+    public boolean supprimerMeta(Metadonnee meta,Connection cn) {
+        return false;
     }
+
     /**
      * Met à jour la base de donnée avec les nouvelles valeurs de la métadonnée
      * @param meta La métadonnée dont l'on souhaite que la partie code correspond avec la partie base de donnée
      * @param cn La connection à la base de donnée
      * @see LinkToDb
      * @see Metadonnee
+     * @return true : si la requete a été effectuée, false sinon
      */
-
-    public void modifierMeta(Metadonnee meta,Connection cn) {
-
+    public boolean modifierMeta(Metadonnee meta,Connection cn) {
+        return false;
     }
 
     /**
