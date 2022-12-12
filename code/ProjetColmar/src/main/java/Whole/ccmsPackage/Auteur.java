@@ -1,6 +1,5 @@
 package Whole.ccmsPackage;
 
-import Whole.daoPackage.AbstractDAO;
 import Whole.daoPackage.AuteurDAO;
 
 /**
@@ -76,6 +75,7 @@ public class Auteur implements CCMS<Auteur> {
      * @param nom String
      */
     private void setNom(String nom) {
+
         this.nom = nom;
     }
 
@@ -87,44 +87,34 @@ public class Auteur implements CCMS<Auteur> {
         this.prenom = prenom;
     }
 
+    /**
+     * Permet de verifier si 2 objets sont exactement similaires
+     *
+     * @param objet l'objet à comparer
+     * @return renvoie true si les deux objets sont similaires, false sinons
+     */
+    @Override
+    public Boolean estCLone(Auteur objet) {
+        if(objet==null){
+            return false;
+        }
+        if(!objet.getNom().equals(this.nom)){
+            return false;
+        }
+        if(objet.getId()!=this.getId()){
+            return false;
+        }
+        if(!objet.getPrenom().equals(this.prenom)){
+            return false;
+        }
+        return true;
+    }
+
 
     /**
      * Modifie un Auteur, appel la méthode modifier d'un objet de type AbstractDAO
      *
      * @see AuteurDAO
      */
-    @Override
-    public void modifier(Auteur objet) {
 
-    }
-
-    /**
-     * Cherche un Auteur, appel la méthode chercher d'un objet de type AbstractDAO
-     *
-     * @see AuteurDAO
-     */
-    @Override
-    public void chercher(Auteur objet) {
-
-    }
-
-    /**
-     * Créer un Auteur, appel la méthode créer d'un objet de type AbstractDAO
-     *
-     * @see AuteurDAO
-     */
-    @Override
-    public void creer(Auteur objet) {
-
-    }
-
-    /**
-     * Supprime un Auteur, appel la méthode supprimer d'un objet de type AbstractDAO
-     *
-     * @see AuteurDAO
-     */
-    @Override
-    public void supprimer() {
-
-    }
 }

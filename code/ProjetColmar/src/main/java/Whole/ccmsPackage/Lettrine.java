@@ -180,53 +180,39 @@ public class Lettrine implements CCMS<Lettrine> {
         metadonnees.remove(meta);
     }
 
-
     /**
-     * Modifie une Lettrine, appel la méthode modifier d'un objet de type AbstractDAO
+     * Permet de verifier si 2 objets sont exactement similaires
      *
-     * @see Whole.daoPackage.LettrineDAO
+     * @param objet l'objet à comparer
+     * @return renvoie true si les deux objets sont similaires, false sinons
      */
     @Override
-    public void modifier(Lettrine objet) {
-
-    }
-
-    /**
-     * Cherche une Lettrine, appel la méthode chercher d'un objet de type AbstractDAO
-     *
-     * @see Whole.daoPackage.LettrineDAO
-     */
-    @Override
-    public void chercher(Lettrine objet) {
-
-    }
-
-    /**
-     * Créer une Lettrine, appel la méthode créer d'un objet de type AbstractDAO
-     *
-     * @see Whole.daoPackage.LettrineDAO
-     */
-    @Override
-    public void creer(Lettrine objet) {
-
-    }
-
-    /**
-     * Supprime une Lettrine, appel la méthode supprimer d'un objet de type AbstractDAO
-     *
-     * @see Whole.daoPackage.LettrineDAO
-     */
-    @Override
-    public void supprimer() {
-
-    }
-
-    /**
-     * Renvoie l'image d'une lettrine sur un serveur distant, si non-trouvable alors envoyé image par défaut
-     * @return L'image issue du lien
-     * @see BufferedImage
-     */
-    public BufferedImage loadImage(){
-        return null;
+    public Boolean estCLone(Lettrine objet) {
+        if(objet==null){
+            return false;
+        }
+        if(!objet.getLien().equals(this.getLien())){
+            return false;
+        }
+        if(!objet.getOuvrage().equals(this.getOuvrage())){
+            return false;
+        }
+        if(objet.getId()!=this.getId()){
+            return false;
+        }
+        if(objet.getNbPage()!=this.getNbPage()){
+            return false;
+        }
+        for(Tag tag: this.tags){
+            if(!objet.getTags().contains(tag)){
+                return false;
+            }
+        }
+        for(Metadonnee meta: metadonnees){
+            if(!objet.getMetadonnees().contains(meta)){
+                return false;
+            }
+        }
+        return true;
     }
 }

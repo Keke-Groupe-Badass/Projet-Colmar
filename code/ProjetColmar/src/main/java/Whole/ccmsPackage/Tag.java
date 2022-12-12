@@ -88,44 +88,27 @@ public class Tag implements CCMS<Tag> {
         this.description = description;
     }
 
-    /**
-     * Modifie un Tag, appel la méthode modifier d'un objet de type AbstractDAO
-     *
-     * @see Whole.daoPackage.TagDAO
-     */
-    @Override
-    public void modifier(Tag objet) {
-
-    }
 
     /**
-     * Cherche un Tag, appel la méthode chercher d'un objet de type AbstractDAO
+     * Permet de verifier si 2 objets sont exactement similaires
      *
-     * @see Whole.daoPackage.TagDAO
+     * @param objet l'objet à comparer
+     * @return renvoie true si les deux objets sont similaires, false sinons
      */
     @Override
-    public void chercher(Tag objet) {
-
+    public Boolean estCLone(Tag objet) {
+        if(objet!=null){
+            return false;
+        }
+        if(this.getId()!=objet.getId()){
+            return false;
+        }
+        if(!this.nom.equals(objet.getNom())){
+            return false;
+        }
+        if(!this.description.equals(objet.getDescription())){
+            return false;
+        }
+        return true;
     }
-
-    /**
-     * Créer un Tag, appel la méthode créer d'un objet de type AbstractDAO
-     *
-     * @see Whole.daoPackage.TagDAO
-     */
-    @Override
-    public void creer(Tag objet) {
-
-    }
-
-    /**
-     * Supprime un Tag, appel la méthode supprimer d'un objet de type AbstractDAO
-     *
-     * @see Whole.daoPackage.TagDAO
-     */
-    @Override
-    public void supprimer() {
-
-    }
-
 }

@@ -69,7 +69,7 @@ public class Controleur {
      * @return true si l'utilisateur a pu être aouté, false sino,
     */
     public Boolean AddUser(String name, String pwd, String confirm) {
-        return true; //en attendant de coder la fonction
+        return false; //en attendant de coder la fonction
     }
      /**
      * Permet le changement de mot de passe en en remplacent l'ancien demander par un nouveau tout en le confirmant 
@@ -80,7 +80,7 @@ public class Controleur {
       * @return true si le mot de passe à pu être changé, false sinon
     */
     public Boolean ChnagePWD(String name, String oldPwd, String newPwd, String confirm) {
-        return true;
+        return false;
     }
     public static Boolean init(){
         return false;
