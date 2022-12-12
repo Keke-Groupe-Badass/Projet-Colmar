@@ -34,8 +34,8 @@ public class OuvrageDAO<objet extends Ouvrage> extends AbstractDAO<objet> {
      * @see LinkToDb
      */
     @Override
-    public void creer(Ouvrage donne, Connection cn) {
-
+    public boolean creer(Ouvrage donne, Connection cn) {
+        return false;
     }
 
 
@@ -64,8 +64,8 @@ public class OuvrageDAO<objet extends Ouvrage> extends AbstractDAO<objet> {
      * @param cn La connection à la base de donnée
      * @see LinkToDb
      */
-    public void modifier(Ouvrage objet, Ouvrage changement,Connection cn) {
-    	
+    public boolean modifier(Ouvrage objet, Ouvrage changement,Connection cn) {
+    	return false;
     }
     
     /**
@@ -77,8 +77,8 @@ public class OuvrageDAO<objet extends Ouvrage> extends AbstractDAO<objet> {
      * @param cn La connection à la base de donnée
      * @see LinkToDb
      */
-    public void supprimer(Ouvrage objet,Connection cn) {
-
+    public boolean supprimer(Ouvrage objet,Connection cn) {
+        return false;
     }
     
     /**
