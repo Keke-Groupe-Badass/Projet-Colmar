@@ -168,9 +168,9 @@ public class Lettrine implements CCMS {
 
 
     /**
-     * Modifie un CCMS, appel une méthode d'un objet de type AbstractDAO
+     * Modifie une Lettrine, appel la méthode modifier d'un objet de type AbstractDAO
      *
-     * @see AbstractDAO
+     * @see Whole.daoPackage.LettrineDAO
      */
     @Override
     public void modifier() {
@@ -178,9 +178,9 @@ public class Lettrine implements CCMS {
     }
 
     /**
-     * Cherche un CCMS, appel une méthode d'un objet de type AbstractDAO
+     * Cherche une Lettrine, appel la méthode chercher d'un objet de type AbstractDAO
      *
-     * @see AbstractDAO
+     * @see Whole.daoPackage.LettrineDAO
      */
     @Override
     public void chercher() {
@@ -188,9 +188,9 @@ public class Lettrine implements CCMS {
     }
 
     /**
-     * Créer un CCMS, appel une méthode d'un objet de type AbstractDAO
+     * Créer une Lettrine, appel la méthode créer d'un objet de type AbstractDAO
      *
-     * @see AbstractDAO
+     * @see Whole.daoPackage.LettrineDAO
      */
     @Override
     public void creer() {
@@ -198,9 +198,9 @@ public class Lettrine implements CCMS {
     }
 
     /**
-     * Supprime un CCMS, appel une méthode d'un objet de type AbstractDAO
+     * Supprime une Lettrine, appel la méthode supprimer d'un objet de type AbstractDAO
      *
-     * @see AbstractDAO
+     * @see Whole.daoPackage.LettrineDAO
      */
     @Override
     public void supprimer() {

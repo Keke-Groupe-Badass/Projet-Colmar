@@ -80,9 +80,9 @@ public class Tag implements CCMS {
     }
 
     /**
-     * Modifie un CCMS, appel une méthode d'un objet de type AbstractDAO
+     * Modifie un Tag, appel la méthode modifier d'un objet de type AbstractDAO
      *
-     * @see AbstractDAO
+     * @see Whole.daoPackage.TagDAO
      */
     @Override
     public void modifier() {
@@ -90,9 +90,9 @@ public class Tag implements CCMS {
     }
 
     /**
-     * Cherche un CCMS, appel une méthode d'un objet de type AbstractDAO
+     * Cherche un Tag, appel la méthode chercher d'un objet de type AbstractDAO
      *
-     * @see AbstractDAO
+     * @see Whole.daoPackage.TagDAO
      */
     @Override
     public void chercher() {
@@ -100,9 +100,9 @@ public class Tag implements CCMS {
     }
 
     /**
-     * Créer un CCMS, appel une méthode d'un objet de type AbstractDAO
+     * Créer un Tag, appel la méthode créer d'un objet de type AbstractDAO
      *
-     * @see AbstractDAO
+     * @see Whole.daoPackage.TagDAO
      */
     @Override
     public void creer() {
@@ -110,9 +110,9 @@ public class Tag implements CCMS {
     }
 
     /**
-     * Supprime un CCMS, appel une méthode d'un objet de type AbstractDAO
+     * Supprime un Tag, appel la méthode supprimer d'un objet de type AbstractDAO
      *
-     * @see AbstractDAO
+     * @see Whole.daoPackage.TagDAO
      */
     @Override
     public void supprimer() {
