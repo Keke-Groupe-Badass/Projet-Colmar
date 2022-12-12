@@ -26,8 +26,8 @@ public class AdminDAO {
     private static String dbName;
 
 
-    private ArrayList<ExportTypeInterface> listeMethode;
-    private ArrayList<String> listeTable;
+    private static ArrayList<ExportTypeInterface> listeMethode;
+    private static ArrayList<String> listeTable;
     /**
      * Constructeur de la classe
      */
@@ -44,7 +44,7 @@ public class AdminDAO {
      */
 
 
-    public Boolean exportDonee(File file,Connection cn, String methode, String path)  {
+    public static Boolean exportDonee(File file,Connection cn, String methode, String path)  {
         for(ExportTypeInterface e:listeMethode){
             if(e.getName().equals(methode)){
                 if(e.getName().equals("SQL")){
@@ -83,7 +83,7 @@ public class AdminDAO {
      * @param cn la connection
      * @return true si tout c'est bien passé, false sinon
      */
-    public ArrayList<ArrayList<String>> getTableList(String table,Connection cn){
+    public static ArrayList<ArrayList<String>> getTableList(String table,Connection cn){
         ArrayList<ArrayList<String>> list= new ArrayList<>();
         try {
             Statement stmt = cn.createStatement();
@@ -118,7 +118,7 @@ public class AdminDAO {
      */
 
 
-    public Boolean exportLog(File file,Connection cn)  {
+    public static Boolean exportLog(File file,Connection cn)  {
         try {
             Statement stmt = cn.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT `text`,`date`,`userLogin` FROM `log`");
@@ -149,7 +149,7 @@ public class AdminDAO {
      * @see LinkToDb
      *
      */
-    public Boolean deleteLog(Connection cn) {
+    public static Boolean deleteLog(Connection cn) {
         Statement stm = null;
         try {
             stm = cn.createStatement();
@@ -169,7 +169,7 @@ public class AdminDAO {
      * @return true si l'insertion peut se faire, false sinon
      * @see LinkToDb
      */
-    public Boolean writeLog(String txt, String user,Connection cn){
+    public static Boolean writeLog(String txt, String user,Connection cn){
         try {
             Statement st = cn.createStatement();
             st.execute("INSERT INTO `log`( `text`, `date`, `userLogin`) VALUES('"+txt+"','"+new Date( System.currentTimeMillis())+"','"+user+"'");
