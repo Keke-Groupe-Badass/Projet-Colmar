@@ -104,6 +104,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      */
     @Override
     public ArrayList<Lettrine> chercher(Lettrine donne, Connection cn) {
+        StringBuilder req = new StringBuilder();
         /*
         recherche sur l'ouvrage, si non null, on inclue l'id de l'ouvrage dans la requete
         */
@@ -111,9 +112,8 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
         if(donne.getOuvrage() != null) {
             int idOuvrage = donne.getOuvrage().getId();
             sqlOuvrage = "idOuvrage=" + idOuvrage;
+            req.append(sqlOuvrage);
         }
-
-        StringBuilder metaSQL = CreateTabSql(donne, cn);
 
         /*
         recherche sur le numéro de la page. S'il existe, on inclue le numero de la page dans la requete
@@ -122,18 +122,45 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
         if(donne.getNbPage() != -1) {
             int numPage = donne.getNbPage();
             sqlNumPage = "nbPage=" + numPage;
+            req.append(sqlNumPage);
         }
 
-        ArrayList<String> tagSQL = tabSqlTags(donne, cn);
+        if(donne.getMetadonnees() != null) {
+            ArrayList<Integer> idMeta = new ArrayList<Integer>();
+            for (Metadonnee met : donne.getMetadonnees())
+                idMeta.add(met.getId());
+            String metaSQL = CreateTabSqlMeta(donne, cn, idMeta);
+            req.append(metaSQL);
+        }
+        else {
+            String metaSQL = CreateTabSqlMeta(donne, cn, null);
+            req.append(metaSQL);
+        }
+
+        if(donne.getTags() != null) {
+            ArrayList<Integer> idTags = new ArrayList<>();
+            for (Tag tag : donne.getTags()) {
+                idTags.add(tag.getId());
+            }
+            String tagSQL = tabSqlTags(donne, cn, idTags);
+            req.append(tagSQL);
+        }
+        else {
+            String tagSQL = tabSqlTags(donne, cn, null);
+            req.append(tagSQL);
+        }
 
         /*
         recherche des lettrines correspondants aux critères récupérés au dessus.
          */
-        Lettrine let = new Lettrine();
         try {
             Statement stmt = cn.createStatement();
-            String sql = "SELECT * FROM lettrine WHERE " + sqlOuvrage + " AND " + sqlNumPage + " AND " +
-                    "";
+            String sql = "SELECT * FROM lettrine WHERE " + req;
+            ResultSet res = stmt.executeQuery(sql);
+            while(res.next()) {
+                Lettrine let = new Lettrine();
+                
+            }
         }
         catch (SQLException e) {
             System.err.println("Erreur de requete");
@@ -153,16 +180,11 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * @param cn Connection : connexion
      * @return ArrayList<String> tab : ArrayList contenant les sql de chaque tags
      */
-    private static StringBuilder CreateTabSql(Lettrine donne, Connection cn) {
+    private static String CreateTabSqlMeta(Lettrine donne, Connection cn, ArrayList<Integer> idMeta) {
         ArrayList<Metadonnee> meta = new ArrayList<>();
-
-        if(donne.getMetadonnees() != null) {
-            ArrayList<Integer> idMeta = new ArrayList<Integer>();
-            for (Metadonnee met : donne.getMetadonnees())
-                idMeta.add(met.getId());
-
+        if(idMeta != null) {
             try {
-                for(int id : idMeta) {
+                for (int id : idMeta) {
                     Statement stmtMeta = cn.createStatement();
                     String sqlMeta = "SELECT * FROM metadonnees WHERE idMeta=" + id;
                     ResultSet resMeta = stmtMeta.executeQuery(sqlMeta);
@@ -177,23 +199,22 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
                         meta.add(m);
                     }
                 }
-            }
-            catch (SQLException e) {
+            } catch (SQLException e) {
                 System.err.println("Erreur récuperation des métadonnées");
                 e.printStackTrace();
             }
             String sqlMeta = "";
             ArrayList<String> tab = new ArrayList<>();
-            for(Metadonnee idmeta : meta) {
+            for (Metadonnee idmeta : meta) {
                 sqlMeta = "AND idMeta=" + idmeta + " ";
                 tab.add(sqlMeta);
 
             }
             StringBuilder resSql = new StringBuilder();
-            for(String str : tab) {
+            for (String str : tab) {
                 resSql.append(str);
             }
-            return resSql;
+            return resSql.toString();
         }
 
         else {
@@ -227,7 +248,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
             for(String str : tab) {
                 resSql.append(str);
             }
-            return resSql;
+            return resSql.toString();
         }
     }
 
@@ -240,41 +261,40 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * @param cn Connection : connexion
      * @return ArrayList<String> tab : ArrayList contenant les sql de chaque tags
      */
-    private static ArrayList<String> tabSqlTags(Lettrine donne, Connection cn) {
+    private static String tabSqlTags(Lettrine donne, Connection cn, ArrayList<Integer> idTags) {
         ArrayList<Tag> tags = new ArrayList<>();
-        if(donne.getTags() != null) {
-            ArrayList<Integer> idTags = new ArrayList<>();
-            for(Tag tag : donne.getTags()) {
-                idTags.add(tag.getId());
-
-                try {
-                    for(int id : idTags) {
-                        Statement stmtTag = cn.createStatement();
-                        String sqlTag = "SELECT * FROM tags WHERE idTag=" + id;
-                        ResultSet resTag = stmtTag.executeQuery(sqlTag);
-                        if(resTag.next()) {
-                            Tag t = new Tag();
-                            t.setId(resTag.getInt(1));
-                            t.setDescription(resTag.getString(2));
-                            t.setNom(resTag.getString(3));
-                            tags.add(t);
-                        }
+        if (idTags != null) {
+            try {
+                for (int id : idTags) {
+                    Statement stmtTag = cn.createStatement();
+                    String sqlTag = "SELECT * FROM tags WHERE idTag=" + id;
+                    ResultSet resTag = stmtTag.executeQuery(sqlTag);
+                    if (resTag.next()) {
+                        Tag t = new Tag();
+                        t.setId(resTag.getInt(1));
+                        t.setDescription(resTag.getString(2));
+                        t.setNom(resTag.getString(3));
+                        tags.add(t);
                     }
                 }
-                catch (SQLException e) {
-                    System.err.println("Erreur récuperation des tags");
-                    e.printStackTrace();
-                }
+            } catch (SQLException e) {
+                System.err.println("Erreur récuperation des tags");
+                e.printStackTrace();
             }
-            String sqlTag = "";
-            ArrayList<String> tab = new ArrayList<>();
-            for(Tag idtag : tags) {
-                sqlTag = "idTag=" + idtag;
-                tab.add(sqlTag);
-            }
-            return tab;
-        }
 
+        String sqlTag = "";
+        ArrayList<String> tab = new ArrayList<>();
+        for (Tag idtag : tags) {
+            sqlTag = "idTag=" + idtag;
+            tab.add(sqlTag);
+        }
+        StringBuilder resSql = new StringBuilder();
+        for (String str : tab) {
+            resSql.append(str);
+        }
+        return resSql.toString();
+
+    }
         else {
             try {
                 Statement stmtTag = cn.createStatement();
@@ -300,7 +320,11 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
                 sqlTag = "idTag=" + idtag;
                 tab.add(sqlTag);
             }
-            return tab;
+            StringBuilder resSql = new StringBuilder();
+            for (String str : tab) {
+                resSql.append(str);
+            }
+            return resSql.toString();
         }
     }
 
