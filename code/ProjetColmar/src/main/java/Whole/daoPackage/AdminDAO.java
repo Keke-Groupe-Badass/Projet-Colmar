@@ -48,7 +48,7 @@ public class AdminDAO {
                     if(os.contains("Windows")){
                         type="cmd.exe";
                     }
-                    String[] cmd = { type, "exportSQL.sh", "src/main/shell/exportSQL.sh"};
+                    String[] cmd = { type, "exportSQL.sh", "src/main/shell/exportSQL.sh",path};
                     try {
                         Runtime.getRuntime().exec(cmd);
                     } catch (IOException ex) {
