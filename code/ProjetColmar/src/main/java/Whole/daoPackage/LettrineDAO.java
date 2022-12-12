@@ -107,6 +107,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      */
     @Override
     public ArrayList<Lettrine> chercher(Lettrine donne, Connection cn) {
+        ArrayList<Lettrine> letList = new ArrayList<>();
         StringBuilder req = new StringBuilder();
         /*
         recherche sur l'ouvrage, si non null, on inclue l'id de l'ouvrage dans la requete
@@ -190,15 +191,26 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
                     metaList.add(m);
                 }
 
+                Ouvrage o = new Ouvrage();
+                Statement stmtOuvr = cn.createStatement();
+                String sqlOuvr = "SELECT * FROM ouvrages WHERE idOuvrage=" + res.getInt(4);
+                ResultSet resOuvr = stmtOuvr.executeQuery(sqlOuvr);
+                if(resOuvr.next()) {
+                    o.setTitre(resOuvr.getString(7));
+                    o.setId(resOuvr.getInt(1));
+                }
                 let.setId(1);
                 let.setNbPage(res.getInt(2));
-
-
+                let.setOuvrage(o);
+                let.setLien(res.getString(3));
+                let.setTags(tagList);
+                let.setMetadonnees(metaList);
+                letList.add(let);
             }
+            return letList;
         }
         catch (SQLException e) {
-            System.err.println("Erreur de requete");
-            e.printStackTrace();
+           return letList;
         }
     }
 
