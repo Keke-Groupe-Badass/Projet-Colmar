@@ -6,25 +6,24 @@
 package Whole.exportPackage;
 
 import java.io.File;
-import java.sql.ResultSet;
+import java.util.ArrayList;
 
-import Whole.daoPackage.AbstractDAO;
 
 /**
  * Implémentation de ExportTypeIntetface pour le SQL
  * @see ExportTypeInterface
  */
 public class ExportCSV implements ExportTypeInterface {
+    String name = "CSV";
 
+    @Override
     /**
-     *  Implémante en CSV la sauvegarde de la base de donnée dans un fichier
+     *  Implémante en SQL la sauvegarde de la base de donnée dans un fichier
      * @param f Fichier de sauvegarde
      * @return true si la base peut être exportée, false sinon
-     *
-     * @see Whole.daoPackage.AbstractDAO
+     * @see whole.AdminDao.exportDonee
      */
-    @Override
-    public Boolean export(File f, ResultSet rs) {
+    public Boolean export(File f, ArrayList<ArrayList<String>> list) {
         return true;
     }
 

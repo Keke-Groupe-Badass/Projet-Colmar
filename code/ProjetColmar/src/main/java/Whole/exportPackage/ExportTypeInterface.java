@@ -8,23 +8,27 @@ package Whole.exportPackage;
 import java.io.File;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 /**
  * Interface qui permet d'ajouter facilement des nouvelles méthodes d'export
  */
 public interface ExportTypeInterface {
 
+    String name="null";
     /**
      *  Implémante d'une manière à définir la sauvegarde de la base de donnée dans un fichier
      * @param f Fichier de sauvegarde
      * @param rs L'intégralité d'une base
      * @return true si la base peut être exportée, false sinon
-     * @see Whole.daoPackage.AdminDAO#exportDonee(File, Connection, ExportTypeInterface)
+     * @see Whole.daoPackage.AdminDAO#exportDonee
      * @see File
      * @see ResultSet
      */
-    Boolean export(File f, ResultSet rs);
-
+    Boolean export(File f, ArrayList<ArrayList<String>> list);
+    default String getName(){
+        return name;
+    }
     // ----------- << method.annotations@AAAAAAGEzpbIUAevq+k= >>
     // ----------- >>
 

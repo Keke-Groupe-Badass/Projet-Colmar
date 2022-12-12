@@ -6,25 +6,26 @@
 package Whole.daoPackage;
 
 import Whole.LinkToDb;
+import Whole.exportPackage.ExportSQL;
 import Whole.exportPackage.ExportTypeInterface;
 
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.ArrayList;
 
 /**
  * Classe permettant à l'administrateur de gérer la base de donnée
  */
-public class AdminDAO<E extends ExportTypeInterface> {
+public class AdminDAO {
 
     /**
      * Constructeur de la classe
      */
+    private ArrayList<ExportTypeInterface> listeMethode;
+    private ArrayList<String> listeTable;
     public AdminDAO() {
     }
 
@@ -38,9 +39,72 @@ public class AdminDAO<E extends ExportTypeInterface> {
      */
 
 
-    public Boolean exportDonee(File file,Connection cn, E e) {
-        return e.export(file);
+    public Boolean exportDonee(File file,Connection cn, String methode, String path)  {
+        for(ExportTypeInterface e:listeMethode){
+            if(e.getName().equals(methode)){
+                if(e.getName().equals("SQL")){
+                    String os = System.getProperty("os.name");
+                    String type="sh";
+                    if(os.contains("Windows")){
+                        type="cmd.exe";
+                    }
+                    String[] cmd = { type, "exportSQL.sh", "src/main/shell/exportSQL.sh"};
+                    try {
+                        Runtime.getRuntime().exec(cmd);
+                    } catch (IOException ex) {
+                        return false;
+                    }
+                }
+                else{
+                    Boolean b = true;
+                    ArrayList<ArrayList<String>> list;
+                    for(String st:listeTable){
+                        list=getTableList(st,cn);
+                        File f = new File(path+"/"+st);
+                        b = b && e.export(f,list );
+                    }
+                    return b;
+
+                }
+            }
+        }
+        return false;
     }
+
+    /**
+     * Permet de transformer une table en une liste de liste, le premier niveau de liste représentant les lignes
+     * et le second niveau les colones, la première ligne est le nom des colones.
+     * @param table la table que l'on souhaite exporter
+     * @param cn la connection
+     * @return true si tout c'est bien passé, false sinon
+     */
+    public ArrayList<ArrayList<String>> getTableList(String table,Connection cn){
+        ArrayList<ArrayList<String>> list= new ArrayList<>();
+        try {
+            Statement stmt = cn.createStatement();
+
+            ResultSet rs= stmt.executeQuery("SELECT * FROM "+table);
+            ResultSetMetaData md =  rs.getMetaData();
+            int size =md.getColumnCount();
+            for(int i=0;i<size;i++){
+                list.get(0).add(md.getColumnName(i));
+            }
+            while(rs.next()){
+                int row=1;
+                for(int j=0;j<row;j++){
+                    for(int i=0;i<size;i++){
+                        list.get(j).add(md.getColumnName(i));
+                    }
+                }
+                row++;
+            }
+        } catch (SQLException e) {
+
+        }
+        return list;
+    }
+
+
     /**
      * Permet de stocker dans un fichier les logs
      * @param cn La connection à la base de donnée
@@ -56,10 +120,11 @@ public class AdminDAO<E extends ExportTypeInterface> {
             String str = "Hello";
             BufferedWriter bw = new BufferedWriter(new FileWriter(file));
             bw.write("Log exporté le "+System.currentTimeMillis());
+
             while(rs.next()){
+                bw.newLine();
                 str=rs.getString(2)+" par "+rs.getString(3)+": "+rs.getString(1);
                 bw.write(str);
-                bw.newLine();
 
             }
             bw.close();
@@ -79,8 +144,16 @@ public class AdminDAO<E extends ExportTypeInterface> {
      * @see LinkToDb
      *
      */
-    public void deleteLog(Connection cn) {
-
+    public Boolean deleteLog(Connection cn) {
+        Statement stm = null;
+        try {
+            stm = cn.createStatement();
+            stm.execute("DELETE FROM `log`");
+            return true;
+        } catch (SQLException e) {
+            System.err.println("something went wrong with the database link");
+        }
+        return false;
     }
 
     /**
@@ -88,9 +161,18 @@ public class AdminDAO<E extends ExportTypeInterface> {
      * @param txt Le message à enregistrer
      * @param user L'utilisateur qui a provoqué une action
      * @param cn La connection à la base de donnée
+     * @return true si l'insertion peut se faire, false sinon
      * @see LinkToDb
      */
-    public void writeLog(String txt, String user,Connection cn){
+    public Boolean writeLog(String txt, String user,Connection cn){
+        try {
+            Statement st = cn.createStatement();
+            st.execute("INSERT INTO `log`( `text`, `date`, `userLogin`) VALUES('"+txt+"','"+new Date( System.currentTimeMillis())+"','"+user+"'");
+            return true;
+        } catch (SQLException e) {
+
+        }
+        return false;
 
     }
 
