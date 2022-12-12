@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * Classe servant à lié à la base de donnée les méthodes d'Auteurs
  * @see Auteur
  */
-public class AuteurDAO<objet extends Auteur> extends AbstractDAO<objet> {
+public class AuteurDAO extends AbstractDAO<Auteur> {
 
     /**
      * Constructeur d'AdminDAO
@@ -24,33 +24,42 @@ public class AuteurDAO<objet extends Auteur> extends AbstractDAO<objet> {
 
     /**
      * Met à jour la BD
-     * @param objet Auteur à changer
+     *
+     * @param objet      Auteur à changer
      * @param changement Auteur de changement (les paramètres null ne sont pas à changer)
-     * @param cn La connection à la base de donnée
+     * @param cn         La connection à la base de donnée
+     * @return
      * @see LinkToDb
      */
-    public void modifier(Auteur objet , Auteur changement,Connection cn) {
+    public boolean modifier(Auteur objet , Auteur changement, Connection cn) {
 
+        return false;
     }
     /**
      * Supprime de la db un Auteur
+     *
      * @param objet un Auteur d'un type à déterminer dans chaque implémentation
-     * @param cn La connection à la base de donnée
+     * @param cn    La connection à la base de donnée
+     * @return
      * @see Auteur
      * @see LinkToDb
      */
-    public void supprimer(Auteur objet,Connection cn) {
+    public boolean supprimer(Auteur objet, Connection cn) {
 
+        return false;
     }
     /**
      * Ajoute à la base de donnée un Auteur
+     *
      * @param donne l'Auteur à ajouter
-     * @param cn La connection à la base de donnée
+     * @param cn    La connection à la base de donnée
+     * @return
      * @see Auteur
      * @see LinkToDb
      */
-    public void creer(Auteur donne,Connection cn) {
+    public boolean creer(Auteur donne, Connection cn) {
 
+        return false;
     }
     /**
      *Cherche un Auteur dans la base

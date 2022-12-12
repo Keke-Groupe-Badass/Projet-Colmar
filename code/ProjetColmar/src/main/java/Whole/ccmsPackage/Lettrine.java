@@ -109,6 +109,10 @@ public class Lettrine implements CCMS {
         return tags;
     }
 
+    /**
+     * renvoie le lien de la métadonnée
+     * @return lien String : lien  de la métadonnée
+     */
     public String getLien() {
         return lien;
     }
@@ -130,10 +134,11 @@ public class Lettrine implements CCMS {
         this.nbPage = nbPage;
     }
 
-    public void setLien(String lien) {
-        this.lien = lien;
-    }
 
+    /**
+     * Remplace la valeur actuelle de metadonnees par la valeur passée en paramètre
+     * @param metadonnees : ArrayList de métadonnées qui vient remplacer la valeur actuelle
+     */
     public void setMetadonnees(ArrayList<Metadonnee> metadonnees) {
         this.metadonnees = metadonnees;
     }
@@ -146,9 +151,13 @@ public class Lettrine implements CCMS {
         this.tags = tags;
     }
 
+    public void setLien(String lien) {
+        this.lien = lien;
+    }
+
     /**
      * Cette methode permet d'ajouter la métadonnée passée en paramètre à la lettrine.
-     *Elle affecte la liste de métadonnées metadonnees en y ajoutant la métadonnée passée en paramètre.
+     * Elle affecte la liste de métadonnées metadonnees en y ajoutant la métadonnée passée en paramètre.
      * @param meta Metadonnee : metadonnée à ajouter
      * @see Metadonnee
      */

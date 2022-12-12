@@ -9,7 +9,7 @@ import java.util.*;
  * Classe abstraite servant à factoriser à lié à la base de donnée les méthodes
  * modifier, creer, chercher et supprimer des CCMS
  */
-public abstract class AbstractDAO <CCMS>{
+public abstract class AbstractDAO<CCMS>{
 
     public AbstractDAO() {
     }
@@ -23,7 +23,6 @@ public abstract class AbstractDAO <CCMS>{
      * @see Whole.LinkToDb
     */
     public abstract boolean modifier(CCMS objet , CCMS changement ,Connection cn);
-
 
     /**
      * Supprime de la db un CCMS
@@ -44,13 +43,14 @@ public abstract class AbstractDAO <CCMS>{
     public abstract boolean creer(CCMS donne,Connection cn);
 
     /**
-     * Cherche un CCMS dans la base
+     *Cherche un CCMS dans la base
      * @param donne CCMS avec tout les paramètres nuls sauf ceux à chercher
-     * @param cn La connection à la base de donnée
+     *@param cn La connection à la base de donnée
      * @return la Liste des des CCMS correspondant aux critères
      * @see CCMS
      * @see Whole.LinkToDb
-    */
+     */
+
     public abstract ArrayList<CCMS> chercher(CCMS donne,Connection cn);
 
 }
