@@ -39,6 +39,8 @@ public class Lettrine implements CCMS {
      */
     private ArrayList<Tag> tags;
 
+    private String lien;
+
     /**
      * Constructeur de la classe Lettrine
      * @param ouvrage Ouvrage
@@ -47,12 +49,13 @@ public class Lettrine implements CCMS {
      * @param id int
      * @param tags ArrayList<Tag>
      */
-    public Lettrine(Ouvrage ouvrage, ArrayList<Metadonnee> metadonnees, int nbPage, int id, ArrayList<Tag> tags) {
+    public Lettrine(Ouvrage ouvrage, ArrayList<Metadonnee> metadonnees, int nbPage, int id, ArrayList<Tag> tags, String lien) {
         this.ouvrage = ouvrage;
         this.metadonnees = metadonnees;
         this.nbPage = nbPage;
         this.id = id;
         this.tags = tags;
+        this.lien = lien;
     }
     /**
      * Constructeur à utiliser pour les instances de changement
@@ -62,6 +65,7 @@ public class Lettrine implements CCMS {
         this.metadonnees = null;
         this.nbPage = -2;
         this.id = -2;
+        this.lien = null;
     }
     /**
      * Renvoie un objet de type Ouvrage
@@ -105,6 +109,10 @@ public class Lettrine implements CCMS {
         return tags;
     }
 
+    public String getLien() {
+        return lien;
+    }
+
     /**
      * permet de modifier la valeur de l'ouvrage par l'objet en paramètre
      * @param ouvrage Ouvrage : nouvelle valeur de ouvrage
@@ -120,6 +128,22 @@ public class Lettrine implements CCMS {
      */
     public void setNbPage(int nbPage) {
         this.nbPage = nbPage;
+    }
+
+    public void setLien(String lien) {
+        this.lien = lien;
+    }
+
+    public void setMetadonnees(ArrayList<Metadonnee> metadonnees) {
+        this.metadonnees = metadonnees;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setTags(ArrayList<Tag> tags) {
+        this.tags = tags;
     }
 
     /**
