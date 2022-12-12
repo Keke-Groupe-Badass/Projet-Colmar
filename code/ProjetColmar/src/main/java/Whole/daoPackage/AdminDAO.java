@@ -59,7 +59,7 @@ public class AdminDAO {
                     Boolean b = true;
                     ArrayList<ArrayList<String>> list;
                     for(String st:listeTable){
-                        list=getTableList(st);
+                        list=getTableList(st,cn);
                         File f = new File(path+"/"+st);
                         b = b && e.export(f,list );
                     }
@@ -70,8 +70,38 @@ public class AdminDAO {
         }
         return false;
     }
-    public ArrayList<ArrayList<String>> getTableList(String table){
-        return null;
+
+    /**
+     * Permet de transformer une table en une liste de liste, le premier niveau de liste représentant les lignes
+     * et le second niveau les colones, la première ligne est le nom des colones.
+     * @param table la table que l'on souhaite exporter
+     * @param cn la connection
+     * @return true si tout c'est bien passé, false sinon
+     */
+    public ArrayList<ArrayList<String>> getTableList(String table,Connection cn){
+        ArrayList<ArrayList<String>> list= new ArrayList<>();
+        try {
+            Statement stmt = cn.createStatement();
+
+            ResultSet rs= stmt.executeQuery("SELECT * FROM "+table);
+            ResultSetMetaData md =  rs.getMetaData();
+            int size =md.getColumnCount();
+            for(int i=0;i<size;i++){
+                list.get(0).add(md.getColumnName(i));
+            }
+            while(rs.next()){
+                int row=1;
+                for(int j=0;j<row;j++){
+                    for(int i=0;i<size;i++){
+                        list.get(j).add(md.getColumnName(i));
+                    }
+                }
+                row++;
+            }
+        } catch (SQLException e) {
+
+        }
+        return list;
     }
 
 
@@ -131,9 +161,18 @@ public class AdminDAO {
      * @param txt Le message à enregistrer
      * @param user L'utilisateur qui a provoqué une action
      * @param cn La connection à la base de donnée
+     * @return true si l'insertion peut se faire, false sinon
      * @see LinkToDb
      */
-    public void writeLog(String txt, String user,Connection cn){
+    public Boolean writeLog(String txt, String user,Connection cn){
+        try {
+            Statement st = cn.createStatement();
+            st.execute("INSERT INTO `log`( `text`, `date`, `userLogin`) VALUES('"+txt+"','"+new Date( System.currentTimeMillis())+"','"+user+"'");
+            return true;
+        } catch (SQLException e) {
+
+        }
+        return false;
 
     }
 
