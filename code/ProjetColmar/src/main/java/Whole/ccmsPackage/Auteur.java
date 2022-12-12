@@ -124,7 +124,7 @@ public class Auteur implements CCMS<Auteur> {
      * @see AuteurDAO
      */
     @Override
-    public void supprimer(Auteur objet) {
+    public void supprimer() {
 
     }
 }

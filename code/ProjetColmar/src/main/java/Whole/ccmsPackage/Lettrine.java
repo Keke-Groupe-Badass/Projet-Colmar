@@ -213,7 +213,7 @@ public class Lettrine implements CCMS<Lettrine> {
      * @see Whole.daoPackage.LettrineDAO
      */
     @Override
-    public void supprimer(Lettrine objet) {
+    public void supprimer() {
 
     }
 

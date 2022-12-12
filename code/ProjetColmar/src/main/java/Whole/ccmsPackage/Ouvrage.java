@@ -7,7 +7,7 @@ import java.util.*;
 /**
  * Classe représentant les ouvrages
  */
-public class Ouvrage implements CCMS {
+public class Ouvrage implements CCMS<Ouvrage> {
     private String titre;
 
     private ArrayList<Auteur> auteurs;
@@ -320,7 +320,7 @@ public class Ouvrage implements CCMS {
      * @see Whole.daoPackage.OuvrageDAO
      */
     @Override
-    public void modifier() {
+    public void modifier(Ouvrage objet) {
 
     }
 
@@ -330,7 +330,7 @@ public class Ouvrage implements CCMS {
      * @see Whole.daoPackage.OuvrageDAO
      */
     @Override
-    public void chercher() {
+    public void chercher(Ouvrage objet) {
 
     }
 
@@ -340,13 +340,13 @@ public class Ouvrage implements CCMS {
      * @see Whole.daoPackage.OuvrageDAO
      */
     @Override
-    public void creer() {
+    public void creer(Ouvrage objet) {
 
     }
 
     /**
      * Supprime un Ouvrage, appel la méthode supprimer d'un objet de type AbstractDAO
-     *
+     * @param objet l'ouvrage dans le
      * @see Whole.daoPackage.OuvrageDAO
      */
     @Override

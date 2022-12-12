@@ -25,5 +25,5 @@ public interface CCMS <CCMS>{
      * Supprime un CCMS, appel une méthode d'un objet de type AbstractDAO
      * @see AbstractDAO
      */
-    void supprimer(CCMS objet);
+    void supprimer();
 }

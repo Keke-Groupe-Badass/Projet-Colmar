@@ -124,7 +124,7 @@ public class Tag implements CCMS<Tag> {
      * @see Whole.daoPackage.TagDAO
      */
     @Override
-    public void supprimer(Tag objet) {
+    public void supprimer() {
 
     }
 
