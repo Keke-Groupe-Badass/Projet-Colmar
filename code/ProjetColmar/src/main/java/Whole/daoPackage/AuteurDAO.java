@@ -11,13 +11,12 @@ import java.util.ArrayList;
  * @see Auteur
  */
 public class AuteurDAO extends AbstractDAO<Auteur> {
-
     /**
      * Constructeur d'AdminDAO
      * @see SingleConnection
      */
-    public AuteurDAO() {
-        super();
+    public AuteurDAO(String url, String login, String password) {
+        super(url, login, password);
     }
 
 

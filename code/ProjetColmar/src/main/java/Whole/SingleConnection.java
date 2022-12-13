@@ -41,7 +41,7 @@ public class SingleConnection {
      *              la base de donnees
      * @return renvoie l'objet Connection cn
      */
-    public Connection connection(String url, String login, String pwd) {
+    public static Connection getInstance(String url, String login, String pwd) {
         try {
             SingleConnection(url, login, pwd);
             return cn;

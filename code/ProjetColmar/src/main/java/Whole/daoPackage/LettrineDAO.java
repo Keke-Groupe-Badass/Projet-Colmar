@@ -25,8 +25,8 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * Constructeur de LettrineDAO
      * @see SingleConnection
      */
-    public LettrineDAO() {
-        super();
+    public LettrineDAO(String url, String login, String password) {
+        super(url, login, password);
     }
 
     @Override

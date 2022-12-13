@@ -21,8 +21,8 @@ public class OuvrageDAO<objet extends Ouvrage> extends AbstractDAO<objet> {
      * @see SingleConnection
      */
 
-    public OuvrageDAO() {
-        super();
+    public OuvrageDAO(String url, String login, String password) {
+        super(url, login, password);
     }
 
     /**

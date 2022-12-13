@@ -10,8 +10,9 @@ import java.util.*;
  * modifier, creer, chercher et supprimer des CCMS
  */
 public abstract class AbstractDAO<CCMS>{
-
-    public AbstractDAO() {
+    private Connection cn;
+    public AbstractDAO(String url, String login, String password) {
+        this.cn=SingleConnection.getInstance(url,login,password);
     }
 
     /**
