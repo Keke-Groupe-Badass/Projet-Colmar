@@ -1,6 +1,8 @@
 package Whole;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 
 /**
@@ -8,12 +10,20 @@ import java.sql.Connection;
  */
 public class SingleConnection {
     private static Connection cn;
+    private static SingleConnection instance = new SingleConnection();
 
     /**
      * Constructeur de la classe SingleConnection.
      */
-    public SingleConnection() {
 
+    private static void SingleConnection(String url, String login, String pwd) throws ClassNotFoundException, SQLException{
+        Class.forName("com.mysql.jdbc.Driver");
+
+        try {
+            cn= DriverManager.getConnection(url,login,pwd);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     /**
@@ -32,6 +42,13 @@ public class SingleConnection {
      * @return renvoie l'objet Connection cn
      */
     public Connection connection(String url, String login, String pwd) {
-        return null;
+        try {
+            SingleConnection(url, login, pwd);
+            return cn;
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
