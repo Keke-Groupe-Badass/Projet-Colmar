@@ -5,7 +5,7 @@
 */
 package Whole.daoPackage;
 
-import Whole.LinkToDb;
+import Whole.SingleConnection;
 import Whole.ccmsPackage.Tag;
 
 import java.sql.Connection;
@@ -18,7 +18,7 @@ public class TagDAO<objet extends Tag> extends AbstractDAO<objet>{
 
     /**
      * Constructeur de la classe OuvrageDAO.
-     * @see LinkToDb
+     * @see SingleConnection
      */
     public TagDAO() {
         super();
@@ -32,7 +32,7 @@ public class TagDAO<objet extends Tag> extends AbstractDAO<objet>{
      * @param changement Tag de changement (les paramètres null ne sont pas à changer)
      * @param cn         La connection à la base de donnée
      * @return
-     * @see LinkToDb
+     * @see SingleConnection
      */
 
 
@@ -47,7 +47,7 @@ public class TagDAO<objet extends Tag> extends AbstractDAO<objet>{
      * @param objet un Tag d'un type à déterminer dans chaque implémentation
      * @param cn    La connection à la base de donnée
      * @return
-     * @see LinkToDb
+     * @see SingleConnection
      * @see Tag
      */
     @Override
@@ -62,7 +62,7 @@ public class TagDAO<objet extends Tag> extends AbstractDAO<objet>{
      * @param objet le Tag à ajouter
      * @param cn    La connection à la base de donnée
      * @return
-     * @see LinkToDb
+     * @see SingleConnection
      * @see Tag
      */
     @Override
@@ -76,13 +76,13 @@ public class TagDAO<objet extends Tag> extends AbstractDAO<objet>{
      * @param objet Tag avec tous les paramètres nuls sauf ceux à chercher
      * @param cn La connection à la base de donnée
      * @return La liste des tags qui correspond auc paramètres donnés
-     * @see LinkToDb
+     * @see SingleConnection
      * @see Tag
      *
      */
     @Override
 
-    public ArrayList<Tag> chercher(Tag objet,Connection cn) {
+    public ArrayList<objet> chercher(Tag objet,Connection cn) {
         return null;
     }
 }

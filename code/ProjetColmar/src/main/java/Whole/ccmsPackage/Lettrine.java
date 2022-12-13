@@ -226,4 +226,7 @@ public class Lettrine implements CCMS<Lettrine> {
         }
         return true;
     }
+    public boolean equals(Lettrine objet){
+        return this.estCLone(objet);
+    }
 }

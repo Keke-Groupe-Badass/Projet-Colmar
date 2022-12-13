@@ -1,6 +1,6 @@
 package Whole.daoPackage;
 
-import Whole.LinkToDb;
+import Whole.SingleConnection;
 import Whole.ccmsPackage.Auteur;
 import Whole.ccmsPackage.Ouvrage;
 import java.sql.Connection;
@@ -18,7 +18,7 @@ public class OuvrageDAO<objet extends Ouvrage> extends AbstractDAO<objet> {
      * Constructeur de la classe OuvrageDAO.
      *
      * @see Connection
-     * @see LinkToDb
+     * @see SingleConnection
      */
 
     public OuvrageDAO() {
@@ -31,7 +31,7 @@ public class OuvrageDAO<objet extends Ouvrage> extends AbstractDAO<objet> {
      * @param donne l'ouvrage à ajouter
      * @param cn    La connection à la base de donnée
      * @see Ouvrage
-     * @see LinkToDb
+     * @see SingleConnection
      */
     @Override
     public boolean creer(Ouvrage donne, Connection cn) {
@@ -48,7 +48,7 @@ public class OuvrageDAO<objet extends Ouvrage> extends AbstractDAO<objet> {
     * @param a Auteur auteur de l'ouvrage
     * @param objet Ouvrage ouvrage qu'on souhaite inserer
      * @param cn La connection à la base de donnée
-     * @see LinkToDb
+     * @see SingleConnection
     */
     public void ecrit(Auteur a, Ouvrage objet,Connection cn) {
     	
@@ -62,7 +62,7 @@ public class OuvrageDAO<objet extends Ouvrage> extends AbstractDAO<objet> {
      * @param objet l'ouvrage cible qu'on souhaite modifier
      * @param changement l'ouvrage par lequel on souhaite remplacer l'ancien
      * @param cn La connection à la base de donnée
-     * @see LinkToDb
+     * @see SingleConnection
      */
     public boolean modifier(Ouvrage objet, Ouvrage changement,Connection cn) {
     	return false;
@@ -75,7 +75,7 @@ public class OuvrageDAO<objet extends Ouvrage> extends AbstractDAO<objet> {
      * 
      * @param objet l'ouvrage cible qu'on souhaite supprimer
      * @param cn La connection à la base de donnée
-     * @see LinkToDb
+     * @see SingleConnection
      */
     public boolean supprimer(Ouvrage objet,Connection cn) {
         return false;
@@ -89,9 +89,9 @@ public class OuvrageDAO<objet extends Ouvrage> extends AbstractDAO<objet> {
      * @return renvoie une liste des ouvrages qui correspondent aux critères
      * de recherche
      * @param cn La connection à la base de donnée
-     * @see LinkToDb
+     * @see SingleConnection
      */
-    public ArrayList<Ouvrage> chercher(Ouvrage objet,Connection cn) {
+    public ArrayList<objet> chercher(Ouvrage objet,Connection cn) {
         return null;
     }
 }

@@ -1,6 +1,6 @@
 package Whole.daoPackage;
 
-import Whole.LinkToDb;
+import Whole.SingleConnection;
 import Whole.exportPackage.ExportTypeInterface;
 
 import java.io.BufferedWriter;
@@ -32,7 +32,7 @@ public class AdminDAO {
      * Permet de stocker dans un fichier la bd
      * @param file le fichier où sera exporter les données
      * @param cn La connection à la base de donnée
-     * @see LinkToDb
+     * @see SingleConnection
      * @see Whole.exportPackage.ExportTypeInterface
      *
      */
@@ -108,7 +108,7 @@ public class AdminDAO {
      * Permet de stocker dans un fichier les logs
      * @param cn La connection à la base de donnée
      * @param file le fichier où sera exporter les log
-     * @see LinkToDb
+     * @see SingleConnection
      */
 
 
@@ -140,7 +140,7 @@ public class AdminDAO {
     /**
      * Supprime les logs de la bd
      * @param cn La connection à la base de donnée
-     * @see LinkToDb
+     * @see SingleConnection
      *
      */
     public Boolean deleteLog(Connection cn) {
@@ -161,7 +161,7 @@ public class AdminDAO {
      * @param user L'utilisateur qui a provoqué une action
      * @param cn La connection à la base de donnée
      * @return true si l'insertion peut se faire, false sinon
-     * @see LinkToDb
+     * @see SingleConnection
      */
     public Boolean writeLog(String txt, String user,Connection cn){
         try {
