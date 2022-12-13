@@ -5,11 +5,8 @@
 */
 package Whole.ccmsPackage;
 
-import Whole.daoPackage.AbstractDAO;
 import Whole.Metadonnee;
-import Whole.daoPackage.LettrineDAO;
 
-import java.awt.image.BufferedImage;
 import java.util.*;
 //
 /**

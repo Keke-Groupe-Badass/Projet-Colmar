@@ -5,8 +5,6 @@
 */
 package Whole;
 
-import Whole.daoPackage.OuvrageDAO;
-
 import java.sql.Connection;
 
 /**

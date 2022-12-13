@@ -7,9 +7,6 @@ package Whole.fenetrePackage;
 
 import javafx.scene.Scene;
 
-import java.awt.image.BufferedImage;
-import java.io.File;
-
 /**
  * Interface permettant de changer simplement d'Interface utilisateur
  */

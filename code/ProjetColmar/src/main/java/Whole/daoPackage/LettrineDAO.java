@@ -67,9 +67,11 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
                 }
                 catch (SQLException e) {
                     e.printStackTrace();
+                    return false;
                 }
             }
         }
+        return true;
     }
 
     /**
