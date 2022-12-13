@@ -398,4 +398,7 @@ public class Ouvrage implements CCMS<Ouvrage> {
         }
         return true;
     }
+    public boolean equals(Ouvrage objet){
+        return this.estCLone(objet);
+    }
 }

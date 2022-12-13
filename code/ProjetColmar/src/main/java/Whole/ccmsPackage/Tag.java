@@ -111,4 +111,7 @@ public class Tag implements CCMS<Tag> {
         }
         return true;
     }
+    public boolean equals(Tag objet){
+        return this.estCLone(objet);
+    }
 }

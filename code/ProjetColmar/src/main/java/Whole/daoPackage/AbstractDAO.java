@@ -1,5 +1,7 @@
 package Whole.daoPackage;
 
+import Whole.SingleConnection;
+
 import java.sql.Connection;
 import java.util.*;
 
@@ -18,7 +20,7 @@ public abstract class AbstractDAO<CCMS>{
      * @param changement CCMS de changement (les paramètres null ne sont pas à changer)
      * @param cn La connection à la base de donnée
      * @see CCMS
-     * @see Whole.LinkToDb
+     * @see SingleConnection
     */
     public abstract boolean modifier(CCMS objet , CCMS changement ,Connection cn);
 
@@ -27,7 +29,7 @@ public abstract class AbstractDAO<CCMS>{
      * @param objet un CCMS d'un type à déterminer dans chaque implémentation
      * @param cn La connection à la base de donnée
      * @see CCMS
-     * @see Whole.LinkToDb
+     * @see SingleConnection
     */
     public abstract boolean supprimer(CCMS objet ,Connection cn);
 
@@ -36,7 +38,7 @@ public abstract class AbstractDAO<CCMS>{
      * @param donne le CCMS à ajouter
      * @param cn La connection à la base de donnée
      * @see CCMS
-     * @see Whole.LinkToDb
+     * @see SingleConnection
     */
     public abstract boolean creer(CCMS donne,Connection cn);
 
@@ -46,7 +48,7 @@ public abstract class AbstractDAO<CCMS>{
      *@param cn La connection à la base de donnée
      * @return la Liste des des CCMS correspondant aux critères
      * @see CCMS
-     * @see Whole.LinkToDb
+     * @see SingleConnection
      */
 
     public abstract ArrayList<CCMS> chercher(CCMS donne,Connection cn);

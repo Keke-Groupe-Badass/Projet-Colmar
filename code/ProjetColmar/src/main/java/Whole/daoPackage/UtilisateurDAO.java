@@ -1,6 +1,6 @@
 package Whole.daoPackage;
 
-import Whole.LinkToDb;
+import Whole.SingleConnection;
 
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
@@ -15,7 +15,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
-* Cette classe est appelée pour créer un lien entre l'application et la base de données
+* Cette classe est appelï¿½e pour crï¿½er un lien entre l'application et la base de donnï¿½es
 * pour tout ce qui concerne les interactions et les modifications de l'utilisateur.
 * @see AbstractDAO
 */
@@ -29,16 +29,16 @@ public class UtilisateurDAO {
 	}
 
 	/**
-	 * Permet à un utilisateur de se connecter sur l'application. On donne le login
-	 * et le mot de passe de l'utilisateur, puis on fait une requête à la base de
-	 * données pour s'assurer que l'utilisateur existe et que le mot de passe est
+	 * Permet ï¿½ un utilisateur de se connecter sur l'application. On donne le login
+	 * et le mot de passe de l'utilisateur, puis on fait une requï¿½te ï¿½ la base de
+	 * donnï¿½es pour s'assurer que l'utilisateur existe et que le mot de passe est
 	 * le bon.
-	 * @param login Le nom d'utilisateur pour se connecter à la base de donnée
-	 * @param mdp Le mot de passe de la base de donnée
-	 * @param cn La connection à la base de donnée
+	 * @param login Le nom d'utilisateur pour se connecter ï¿½ la base de donnï¿½e
+	 * @param mdp Le mot de passe de la base de donnï¿½e
+	 * @param cn La connection ï¿½ la base de donnï¿½e
 	 * @return renvoie le login sous forme de String si la connexion s'est correctement
-	 * effectuée, sinon elle renvoie null.
-	 * @see LinkToDb
+	 * effectuï¿½e, sinon elle renvoie null.
+	 * @see SingleConnection
 	 */
 	public String connexion(String login, String mdp,Connection cn) {
 		if (!mdpValide(mdp))
@@ -48,7 +48,7 @@ public class UtilisateurDAO {
 		try {
 			Statement stmt=cn.createStatement();
 			ResultSet rs=stmt.executeQuery(sql);
-			if (rs.next()) //Si l'utilisateur est trouvé
+			if (rs.next()) //Si l'utilisateur est trouvï¿½
 				return login;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -59,13 +59,13 @@ public class UtilisateurDAO {
     /**
     * Permet de changer le mot de passe de l'utilisateur. On donne le login et le
     * nouveau mot de passe souhaite, puis on retrouve l'utilisateur dans la base de
-    * donnees à l'aide du login. Le nouveau mot de passe est encrypté puis stocké
-    * dans la base à la place de l'ancien.
+    * donnees ï¿½ l'aide du login. Le nouveau mot de passe est encryptï¿½ puis stockï¿½
+    * dans la base ï¿½ la place de l'ancien.
     * @param login login de l'utilisateur, permet de l'identifier dans la BDD
     * @param mdp nouveau mot de passe qui doit venir remplacer l'ancien
-	* @param cn La connection à la base de données
-	* @return renvoie true si la modification s'est correctement effectuée, false sinon
-	* @see LinkToDb
+	* @param cn La connection ï¿½ la base de donnï¿½es
+	* @return renvoie true si la modification s'est correctement effectuï¿½e, false sinon
+	* @see SingleConnection
     */
     public boolean changeMDP(String login, String mdp, Connection cn) {
     	boolean fonctionne=false; 
@@ -88,14 +88,14 @@ public class UtilisateurDAO {
     }
 
     /**
-    * Permet de supprimer un utilisateur de la base de données à partir de son login.
-    * Le login est recherché dans la base de donnees, puis si trouve l'utilisateur
-    * correspondant est alors supprimé.
+    * Permet de supprimer un utilisateur de la base de donnï¿½es ï¿½ partir de son login.
+    * Le login est recherchï¿½ dans la base de donnees, puis si trouve l'utilisateur
+    * correspondant est alors supprimï¿½.
     * 
     * @param login login de l'utilisateur
-	* @param cn La connection à la base de données
-	* @return true si la suppression s'est correctement passée, false sinon
-	* @see LinkToDb
+	* @param cn La connection ï¿½ la base de donnï¿½es
+	* @return true si la suppression s'est correctement passï¿½e, false sinon
+	* @see SingleConnection
     */
     public boolean supprimerUtilisateur(String login, Connection cn) {
     	boolean fonctionne=false; 
@@ -114,23 +114,23 @@ public class UtilisateurDAO {
     }
 
     /**
-    * Permet de créer un nouvel utilisateur dans la base de donnees.
-    * Si le login n'existe pas déjà, on encrypte le mot de passe et on
-    * effectue une requête d'insertion avec le login et le mot de passe
+    * Permet de crï¿½er un nouvel utilisateur dans la base de donnees.
+    * Si le login n'existe pas dï¿½jï¿½, on encrypte le mot de passe et on
+    * effectue une requï¿½te d'insertion avec le login et le mot de passe
     * de l'utilisateur qu'on souhaite ajouter.
     *
-    * @param login login de l'utilisateur à ajouter = mail
-    * @param mdp mot de passe de l'utilisateur à ajouter
+    * @param login login de l'utilisateur ï¿½ ajouter = mail
+    * @param mdp mot de passe de l'utilisateur ï¿½ ajouter
     * @param statut statut de l'utilisateur
-	* @param cn La connection à la base de données
-	* @return renvoie true si l'insertion s'est correctement passée, false
+	* @param cn La connection ï¿½ la base de donnï¿½es
+	* @return renvoie true si l'insertion s'est correctement passï¿½e, false
 	* sinon
-	* @see LinkToDb
+	* @see SingleConnection
     */
     public boolean creerUtilisateur(String login, String mdp, String statut, Connection cn) {
     	boolean loginValide=false;
     	boolean statutValide=false;
-    	//On vérifie que rien n'est null, puis on vérifie le format du login et du statut
+    	//On vï¿½rifie que rien n'est null, puis on vï¿½rifie le format du login et du statut
     	if (login != null && mdp != null && statut!=null) {
     		String regex="^[a-zA-Z.]+@([a-zA-Z-]+.)+[a-zA-Z-]{2,4}$";
         	Pattern p = Pattern.compile(regex);
@@ -166,9 +166,9 @@ public class UtilisateurDAO {
     }
     
     /**
-     * Permet de vérifier que le mot de passe correspond au format
-     * attendu. C'est à dire : 6 caractères minimum, des majuscules et
-     * des minuscules, des caractères spéciaux sauf " et '
+     * Permet de vï¿½rifier que le mot de passe correspond au format
+     * attendu. C'est ï¿½ dire : 6 caractï¿½res minimum, des majuscules et
+     * des minuscules, des caractï¿½res spï¿½ciaux sauf " et '
      * 
      * @param mdp mot de passe qu'on souhaite verifier
      * @return renvoie true si le mdp correspond aux conditions,
@@ -184,7 +184,7 @@ public class UtilisateurDAO {
     
     /**
      * Permet d'encrypter le mot de passe pour qu'il n'apparaisse
-     * pas tel quel dans la base de données.
+     * pas tel quel dans la base de donnï¿½es.
      * 
      * @param mdp mot de passe qu'on souhaite encrypter
      * @return renvoie le mot de passe encrypte
