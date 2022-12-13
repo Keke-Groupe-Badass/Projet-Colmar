@@ -20,8 +20,8 @@ public class TagDAO<objet extends Tag> extends AbstractDAO<objet>{
      * Constructeur de la classe OuvrageDAO.
      * @see SingleConnection
      */
-    public TagDAO() {
-        super();
+    public TagDAO(String url, String login, String password) {
+        super(url, login, password);
     }
 
 
