@@ -110,11 +110,4 @@ public class Auteur implements CCMS<Auteur> {
         return true;
     }
 
-
-    /**
-     * Modifie un Auteur, appel la méthode modifier d'un objet de type AbstractDAO
-     *
-     * @see AuteurDAO
-     */
-
 }

@@ -8,12 +8,14 @@ package Whole.ccmsPackage;
 import Whole.Metadonnee;
 
 import java.util.*;
-//
+
 /**
  * Classe représentant les lettrines
  */
 public class Lettrine implements CCMS<Lettrine> {
-
+    /**
+     * L'ouvrage dans lequel se trouve la lettrine
+     */
     private Ouvrage ouvrage;
 
     /**
@@ -36,7 +38,9 @@ public class Lettrine implements CCMS<Lettrine> {
      * Liste des tags associés à la lettrine
      */
     private ArrayList<Tag> tags;
-
+    /**
+     * Le lien web de la lettrine
+     */
     private String lien;
 
     /**
@@ -138,15 +142,25 @@ public class Lettrine implements CCMS<Lettrine> {
      * @param metadonnees : ArrayList de métadonnées qui vient remplacer la valeur actuelle
      */
     public void setMetadonnees(ArrayList<Metadonnee> metadonnees) {
-        this.metadonnees = metadonnees;
+        this.metadonnees = new ArrayList<>();
+        for(Metadonnee meta : metadonnees){
+            this.metadonnees.add(meta);
+        }
     }
 
+    /**
+     * Change la valeur de l'id
+     * @param id Le nouvel identifiant de la lettrine
+     */
     public void setId(int id) {
         this.id = id;
     }
 
     public void setTags(ArrayList<Tag> tags) {
-        this.tags = tags;
+        this.tags = new ArrayList<>();
+        for(Tag tag : tags){
+            this.tags.add(tag);
+        }
     }
 
     public void setLien(String lien) {

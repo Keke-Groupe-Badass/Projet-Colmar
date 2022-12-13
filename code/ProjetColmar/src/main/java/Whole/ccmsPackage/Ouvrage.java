@@ -259,7 +259,10 @@ public class Ouvrage implements CCMS<Ouvrage> {
      * @param auteurs String
      */
     public void setAuteurs(ArrayList<Auteur> auteurs) {
-        this.auteurs = auteurs;
+        this.auteurs = new ArrayList<>();
+        for(Auteur auteur: auteurs){
+            this.auteurs.add(auteur);
+        }
     }
 
     /**
