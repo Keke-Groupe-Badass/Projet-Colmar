@@ -14,7 +14,7 @@ import java.util.ArrayList;
  * Classe servant à lié à la base de donnée les méthodes de Tag
  * @see Tag
  */
-public class TagDAO<objet extends Tag> extends AbstractDAO<objet>{
+public class TagDAO extends AbstractDAO<Tag>{
 
     /**
      * Constructeur de la classe OuvrageDAO.
@@ -71,6 +71,7 @@ public class TagDAO<objet extends Tag> extends AbstractDAO<objet>{
 
         return false;
     }
+
     /**
      *Cherche un Tag dans la base
      * @param objet Tag avec tous les paramètres nuls sauf ceux à chercher

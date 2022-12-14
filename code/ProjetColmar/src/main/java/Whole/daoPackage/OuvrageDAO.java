@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * pour tout ce qui concerne les interactions et les modifications d'un ouvrage
  * @see AbstractDAO
  */
-public class OuvrageDAO<objet extends Ouvrage> extends AbstractDAO<objet> {
+public class OuvrageDAO extends AbstractDAO<Ouvrage> {
 
     private Connection cn;
     /**
