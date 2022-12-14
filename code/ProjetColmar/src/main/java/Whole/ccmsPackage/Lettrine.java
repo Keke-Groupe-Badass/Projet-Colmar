@@ -173,7 +173,7 @@ public class Lettrine implements CCMS<Lettrine> {
      * @param meta Metadonnee : metadonn�e � ajouter
      * @see Metadonnee
      */
-    public void AjouterMetadonnees(Metadonnee meta) {
+    public void ajouterMetadonnees(Metadonnee meta) {
         if(meta!=null){
             if(metadonnees.contains(meta)==false) {
                 metadonnees.add(meta);
@@ -187,8 +187,8 @@ public class Lettrine implements CCMS<Lettrine> {
      * @param meta : m�tadonn�e � supprimer
      * @see Metadonnee
      */
-    public void SupprimerMetadonnees(Metadonnee meta) {
-        metadonnees.remove(meta);
+    public void supprimerMetadonnees(Metadonnee meta) {
+            metadonnees.remove(meta);
     }
 
     /**

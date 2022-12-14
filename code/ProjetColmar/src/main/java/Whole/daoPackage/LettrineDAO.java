@@ -21,6 +21,7 @@ import java.util.ArrayList;
  * @see Lettrine
  */
 public class LettrineDAO extends AbstractDAO<Lettrine> {
+
     /**
      * Constructeur de LettrineDAO
      * @see SingleConnection
@@ -413,13 +414,17 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * @return true : si la requete a été effectuée, false sinon
      */
     public boolean provient(Lettrine l , Ouvrage o,Connection cn)   {
-        try {
-            Statement stmt = cn.createStatement();
-            String sql = "UPDATE lettrine SET idOuvrage=" + o.getId() + " WHERE id=" + l.getId();
-            stmt.executeQuery(sql);
-            return true;
+        if(l.getOuvrage().getId() != o.getId()) {
+            try {
+                Statement stmt = cn.createStatement();
+                String sql = "UPDATE lettrine SET idOuvrage=" + o.getId() + " WHERE id=" + l.getId();
+                stmt.executeQuery(sql);
+                return true;
+            } catch (SQLException e) {
+                return false;
+            }
         }
-        catch (SQLException e) {
+        else {
             return false;
         }
     }

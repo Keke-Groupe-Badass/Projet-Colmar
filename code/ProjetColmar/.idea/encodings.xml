@@ -2,7 +2,11 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
+<<<<<<< HEAD
+    <file url="file://$PROJECT_DIR$/src/main/java/Whole/LinkToDb.java" charset="windows-1252" />
+=======
     <file url="file://$PROJECT_DIR$/src/main/java/Whole/SingleConnection.java" charset="UTF-8" />
+>>>>>>> fd11eb40015dbe157a736e75cca3dd7f4f231dff
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
   </component>
 </project>
