@@ -5,8 +5,6 @@
 */
 package Whole;
 
-import Whole.daoPackage.OuvrageDAO;
-
 import java.sql.Connection;
 
 /**
@@ -56,7 +54,7 @@ public class Controleur {
     * @param name nom d'utilisateur
     * @param pwd mot de passe
      * @return True si l'utilisateur est connecté, false sinon
-    * @see LinkToDb
+    * @see SingleConnection
     */
     public Boolean Login( String name,  String pwd) {
         return true;

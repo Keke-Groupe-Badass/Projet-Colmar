@@ -9,7 +9,8 @@ public interface CCMS <CCMS>{
     /**
      * Permet de verifier si 2 objets sont exactement similaires
      * @param objet l'objet à comparer
-     * @return renvoie true si les deux objets sont similaires, false sinons
+     * @return renvoie true si les deux objets sont similaires, false sinon
      */
     Boolean estCLone(CCMS objet);
+
 }

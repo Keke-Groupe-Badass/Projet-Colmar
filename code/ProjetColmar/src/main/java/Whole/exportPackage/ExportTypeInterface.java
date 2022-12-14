@@ -6,7 +6,6 @@
 package Whole.exportPackage;
 
 import java.io.File;
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
@@ -19,7 +18,7 @@ public interface ExportTypeInterface {
     /**
      *  Implémante d'une manière à définir la sauvegarde de la base de donnée dans un fichier
      * @param f Fichier de sauvegarde
-     * @param rs L'intégralité d'une base
+     * @param list L'intégralité d'une table
      * @return true si la base peut être exportée, false sinon
      * @see Whole.daoPackage.AdminDAO#exportDonee
      * @see File
@@ -29,7 +28,6 @@ public interface ExportTypeInterface {
     default String getName(){
         return name;
     }
-    // ----------- << method.annotations@AAAAAAGEzpbIUAevq+k= >>
-    // ----------- >>
+
 
 }

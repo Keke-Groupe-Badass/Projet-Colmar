@@ -1,7 +1,7 @@
 package Whole.daoPackage;
 
 
-import Whole.LinkToDb;
+import Whole.SingleConnection;
 import Whole.Metadonnee;
 import Whole.ccmsPackage.CCMS;
 import Whole.ccmsPackage.Lettrine;
@@ -24,10 +24,10 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
 
     /**
      * Constructeur de LettrineDAO
-     * @see LinkToDb
+     * @see SingleConnection
      */
-    public LettrineDAO() {
-        super();
+    public LettrineDAO(String url, String login, String password) {
+        super(url, login, password);
     }
 
     @Override
@@ -68,9 +68,11 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
                 }
                 catch (SQLException e) {
                     e.printStackTrace();
+                    return false;
                 }
             }
         }
+        return true;
     }
 
     /**
@@ -79,7 +81,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * @param lettrine La lettrine à supprimer
      * @param cn    La connection à la base de donnée
      * @see Lettrine
-     * @see LinkToDb
+     * @see SingleConnection
      * @return true : si la requete a été effectuée, false sinon
      */
     @Override
@@ -101,7 +103,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * @param donne la lettrine à ajouter
      * @param cn    La connection à la base de donnée
      * @see Lettrine
-     * @see LinkToDb
+     * @see SingleConnection
      * @return true : si la requete a été effectuée, false sinon
      */
     @Override
@@ -124,7 +126,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * @param cn    La connection à la base de donnée
      * @return la Liste des des CCMS correspondant aux critères
      * @see CCMS
-     * @see LinkToDb
+     * @see SingleConnection
      */
     @Override
     public ArrayList<Lettrine> chercher(Lettrine donne, Connection cn) {
@@ -406,7 +408,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * @param l la lettrine à lier à l'ouvrage
      * @param o l'ouvrage d'origine
      * @param cn La connection à la base de donnée
-     * @see LinkToDb
+     * @see SingleConnection
      * @see Ouvrage
      * @see Lettrine
      * @return true : si la requete a été effectuée, false sinon
@@ -432,7 +434,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * @param l La lettrine dont on souhaite ajouter un tag
      * @param t Le tag à ajouter à la lettrine
      * @param cn La connection à la base de donnée
-     * @see LinkToDb
+     * @see SingleConnection
      * @see Lettrine
      * @see Tag
      * @return true : si la requete a été effectuée, false sinon
@@ -455,7 +457,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * @param meta Métadonnée à ajouter à la lettrine
      * @param l Lettrine a laquelle la métadonnée doit etre ajoutée
      * @param cn La connection à la base de donnée
-     * @see LinkToDb
+     * @see SingleConnection
      * @see Metadonnee
      * @return true : si la requete a été effectuée, false sinon
      */
@@ -487,7 +489,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * Met à jour la base de donnée avec les nouvelles valeurs de la métadonnée
      * @param meta La métadonnée dont l'on souhaite que la partie code correspond avec la partie base de donnée
      * @param cn La connection à la base de donnée
-     * @see LinkToDb
+     * @see SingleConnection
      * @see Metadonnee
      * @return true : si la requete a été effectuée, false sinon
      */
@@ -539,7 +541,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * Met en ligne une image stockée sur disque et renvoie son URL
      * @param img le fichier où se trouve l'image dans le disque
      * @param cn La connection à la base de donnée
-     * @see LinkToDb
+     * @see SingleConnection
      * @see BufferedImage
      * @return String: le lien vers l'image en ligne
      */

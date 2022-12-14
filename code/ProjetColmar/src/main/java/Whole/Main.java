@@ -1,5 +1,7 @@
 package Whole;
 
+import Whole.ccmsPackage.Lettrine;
+
 import java.io.File;
 
 
@@ -36,7 +38,13 @@ public class Main {
             e.getStackTrace();
         }
         */
-
+        Lettrine l1 = new Lettrine();
+        l1.setLien("louis");
+        l1.setNbPage(12);
+        Lettrine l2 = new Lettrine();
+        l2.setLien("louis");
+        l2.setNbPage(12);
+        System.out.println(l1.equals(l2));
 
 
         //executeScriptPB();

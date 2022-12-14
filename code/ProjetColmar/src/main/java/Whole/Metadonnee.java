@@ -1,7 +1,5 @@
 package Whole;
 
-import Whole.ccmsPackage.Lettrine;
-
 public class Metadonnee {
     private String nom;
 
@@ -21,7 +19,7 @@ public class Metadonnee {
      * @param id          int : id de la metadonnee
      * @param entree      String : valeur de la métadonnee
      * @param unite       String : unité de la métadonnée
-     * @param description String : desctiption de la métadonnee
+     * @param description String : description de la métadonnee
      */
 
     public Metadonnee(String nom, int id, String entree, String unite, String description) {

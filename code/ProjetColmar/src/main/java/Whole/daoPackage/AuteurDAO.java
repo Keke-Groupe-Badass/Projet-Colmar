@@ -1,6 +1,6 @@
 package Whole.daoPackage;
 
-import Whole.LinkToDb;
+import Whole.SingleConnection;
 import Whole.ccmsPackage.Auteur;
 
 import java.sql.Connection;
@@ -11,13 +11,12 @@ import java.util.ArrayList;
  * @see Auteur
  */
 public class AuteurDAO extends AbstractDAO<Auteur> {
-
     /**
      * Constructeur d'AdminDAO
-     * @see LinkToDb
+     * @see SingleConnection
      */
-    public AuteurDAO() {
-        super();
+    public AuteurDAO(String url, String login, String password) {
+        super(url, login, password);
     }
 
 
@@ -29,7 +28,7 @@ public class AuteurDAO extends AbstractDAO<Auteur> {
      * @param changement Auteur de changement (les paramètres null ne sont pas à changer)
      * @param cn         La connection à la base de donnée
      * @return
-     * @see LinkToDb
+     * @see SingleConnection
      */
     public boolean modifier(Auteur objet , Auteur changement, Connection cn) {
 
@@ -43,7 +42,7 @@ public class AuteurDAO extends AbstractDAO<Auteur> {
      * @param cn    La connection à la base de donnée
      * @return
      * @see Auteur
-     * @see LinkToDb
+     * @see SingleConnection
      */
     public boolean supprimer(Auteur objet, Connection cn) {
 
@@ -56,7 +55,7 @@ public class AuteurDAO extends AbstractDAO<Auteur> {
      * @param cn    La connection à la base de donnée
      * @return
      * @see Auteur
-     * @see LinkToDb
+     * @see SingleConnection
      */
     public boolean creer(Auteur donne, Connection cn) {
 
@@ -68,7 +67,7 @@ public class AuteurDAO extends AbstractDAO<Auteur> {
      * @param cn La connection à la base de donnée
      * @return la Liste des auteurs correspondant aux critères
      * @see Auteur
-     * @see LinkToDb
+     * @see SingleConnection
      */
     public ArrayList<Auteur> chercher(Auteur donne,Connection cn) {
         return null;

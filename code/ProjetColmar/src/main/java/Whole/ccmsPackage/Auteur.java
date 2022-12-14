@@ -1,7 +1,5 @@
 package Whole.ccmsPackage;
 
-import Whole.daoPackage.AuteurDAO;
-
 /**
  * Classe représentant les auteurs
  */
@@ -109,12 +107,7 @@ public class Auteur implements CCMS<Auteur> {
         }
         return true;
     }
-
-
-    /**
-     * Modifie un Auteur, appel la méthode modifier d'un objet de type AbstractDAO
-     *
-     * @see AuteurDAO
-     */
-
+    public boolean equals(Auteur objet){
+        return this.estCLone(objet);
+    }
 }
