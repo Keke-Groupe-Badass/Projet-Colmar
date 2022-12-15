@@ -597,12 +597,45 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
     /**
      * Met en ligne une image stockée sur disque et renvoie son URL
      * @param img le fichier où se trouve l'image dans le disque
-     * @param cn La connection à la base de donnée
      * @see SingleConnection
      * @see BufferedImage
      * @return String: le lien vers l'image en ligne
      */
-    private String upload(BufferedImage img,Connection cn) {
+    private String upload(BufferedImage img) {
         return null;
     }
+
+    /**
+     * Créer un nouveau groupe d'élément identiques
+     * @param description la description du groupe
+     * @return l'identifiant du groupe, en cas d'erreur -1
+     */
+    public int nouveauGroupe(String description){
+        Statement stmt = null;
+        try {
+            stmt = cn.createStatement();
+            String sql = "INSERT INTO `identiques`( `note`) VALUES ('"+description+"')";
+            sql+="\n"+"SELECT LAST_INSERT_ID()";
+            ResultSet rs=stmt.executeQuery(sql);
+            int id=-1;
+            if(rs.next()){
+                id=rs.getInt(1);
+            }
+            return id;
+        } catch (SQLException e) {
+        }
+        return -1;
+    }
+    public boolean changeDescription(int id, String description){
+        Statement stmt = null;
+        try {
+            stmt = cn.createStatement();
+            String sql = "UPDATE `identiques` SET `note`='"+description+"'WHERE `idIdentique`=" + id;
+            stmt.execute(sql);
+            return true;
+        } catch (SQLException e) {
+        }
+        return false;
+    }
+
 }
