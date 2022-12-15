@@ -3,8 +3,6 @@ package Whole.daoPackage;
 import Whole.SingleConnection;
 import Whole.ccmsPackage.Personne;
 
-import java.sql.Connection;
-
 import java.util.ArrayList;
 /**
  * Classe servant à lié à la base de donnée les méthodes d'Auteurs

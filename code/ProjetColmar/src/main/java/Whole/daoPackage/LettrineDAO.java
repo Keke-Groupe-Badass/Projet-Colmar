@@ -9,11 +9,12 @@ import Whole.ccmsPackage.Ouvrage;
 import Whole.ccmsPackage.Tag;
 
 import java.sql.Connection;
-
-import java.awt.image.BufferedImage;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import java.awt.image.BufferedImage;
+
 import java.util.ArrayList;
 
 /**
@@ -632,4 +633,13 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
         return false;
     }
 
+    /**
+     * Permet de retirer la liaison entre un tag et une lettrine
+     * @param l la lettrine en question
+     * @param t le tag à retirer
+     * @return true si la liaison a pu etre retiré ou qu'il n' a jamais eu de lien, false en cas d'erreur
+     */
+    public Boolean detager(Lettrine l, Tag t){
+        return null;
+    }
 }

@@ -25,19 +25,19 @@ public class Controleur {
      *getter de bd
      *
      */
-    private Connection getBd() {
+    public Connection getBd() {
         return bd;
     }
     /**
      *getter de PressePapier
      */
-    private Object getPressePapier() {
+    public Object getPressePapier() {
         return pressePapier;
     }
     /**
      *setter de bd 
      */
-    private void setBd(Connection bd) {
+    public void setBd(Connection bd) {
         this.bd = bd;
     }
 
@@ -45,7 +45,7 @@ public class Controleur {
      * Permet de sauvegarder n'importe quel type dans le but d'un copier coller
      * @param objet, objet à copier
      */
-    private void setPressePapier(Object objet) {
+    public void setPressePapier(Object objet) {
         this.pressePapier = pressePapier;
     }
 
@@ -69,17 +69,7 @@ public class Controleur {
     public Boolean AddUser(String name, String pwd, String confirm) {
         return false; //en attendant de coder la fonction
     }
-     /**
-     * Permet le changement de mot de passe en en remplacent l'ancien demander par un nouveau tout en le confirmant 
-    * @param name String 
-    * @param oldPwd String 
-    * @param newPwd String 
-    * @param confirm String
-      * @return true si le mot de passe à pu être changé, false sinon
-    */
-    public Boolean ChnagePWD(String name, String oldPwd, String newPwd, String confirm) {
-        return false;
-    }
+
     public static Boolean init(){
         return false;
     }
