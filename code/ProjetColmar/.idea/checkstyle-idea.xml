@@ -10,6 +10,7 @@
       <list>
         <ConfigurationLocation id="bundled-sun-checks" type="BUNDLED" scope="All" description="Sun Checks">(bundled)</ConfigurationLocation>
         <ConfigurationLocation id="bundled-google-checks" type="BUNDLED" scope="All" description="Google Checks">(bundled)</ConfigurationLocation>
+        <ConfigurationLocation id="e9d45db8-a1a6-48fb-8599-d9fb2a1f9753" type="LOCAL_FILE" scope="All" description="Projet Colmar">$USER_HOME$/OneDrive/Documents/devoir/fac/projet colmar/convention/ColmarConvention1.xml</ConfigurationLocation>
       </list>
     </option>
   </component>
