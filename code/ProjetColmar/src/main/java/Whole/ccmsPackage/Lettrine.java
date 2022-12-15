@@ -44,6 +44,17 @@ public class Lettrine implements CCMS<Lettrine> {
     private String lien;
 
     /**
+     * La personne qui a créé la lettrine
+     */
+    private Personne createur;
+
+    /**
+     * L'identifiant du groupe de lettrine identique
+     */
+    private int identique;
+
+
+    /**
      * Constructeur de la classe Lettrine
      * @param ouvrage Ouvrage
      * @param metadonnees ArrayList<Metadonnee>
@@ -156,6 +167,10 @@ public class Lettrine implements CCMS<Lettrine> {
         this.id = id;
     }
 
+    /**
+     * Permet de donner une nouvelle liste comme tags sans lier la liste donnée en paramètre à la liste de la lettrine
+     * @param tags la liste des tags lié à la lettrine
+     */
     public void setTags(ArrayList<Tag> tags) {
         this.tags = new ArrayList<>();
         for(Tag tag : tags){
@@ -165,6 +180,22 @@ public class Lettrine implements CCMS<Lettrine> {
 
     public void setLien(String lien) {
         this.lien = lien;
+    }
+
+    public Personne getCreateur() {
+        return createur;
+    }
+
+    public void setCreateur(Personne createur) {
+        this.createur = createur;
+    }
+
+    public int getIdentique() {
+        return identique;
+    }
+
+    public void setIdentique(int identique) {
+        this.identique = identique;
     }
 
     /**
