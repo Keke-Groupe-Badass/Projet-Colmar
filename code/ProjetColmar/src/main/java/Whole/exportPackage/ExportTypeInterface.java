@@ -6,7 +6,7 @@
 package Whole.exportPackage;
 
 import java.io.File;
-import java.sql.ResultSet;
+
 import java.util.ArrayList;
 
 /**
@@ -22,7 +22,6 @@ public interface ExportTypeInterface {
      * @return true si la base peut être exportée, false sinon
      * @see Whole.daoPackage.AdminDAO#exportDonee
      * @see File
-     * @see ResultSet
      */
     Boolean export(File f, ArrayList<ArrayList<String>> list);
     default String getName(){

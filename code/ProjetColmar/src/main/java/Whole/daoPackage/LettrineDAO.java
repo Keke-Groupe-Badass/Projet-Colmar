@@ -9,11 +9,12 @@ import Whole.ccmsPackage.Ouvrage;
 import Whole.ccmsPackage.Tag;
 
 import java.sql.Connection;
-
-import java.awt.image.BufferedImage;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import java.awt.image.BufferedImage;
+
 import java.util.ArrayList;
 
 /**
