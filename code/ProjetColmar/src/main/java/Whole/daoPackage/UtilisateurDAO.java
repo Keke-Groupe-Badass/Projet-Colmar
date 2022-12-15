@@ -25,11 +25,12 @@ import java.util.regex.Pattern;
 */
 
 public class UtilisateurDAO {
-
+	private static Connection cn;
     /**
 	 * Constructeur de la classe UtilisateurDAO.
 	 */
 	public UtilisateurDAO() {
+
 	}
 
 	/**
@@ -39,12 +40,11 @@ public class UtilisateurDAO {
 	 * le bon.
 	 * @param login Le nom d'utilisateur pour se connecter � la base de donn�e
 	 * @param mdp Le mot de passe de la base de donn�e
-	 * @param cn La connection � la base de donn�e
 	 * @return renvoie le login sous forme de String si la connexion s'est correctement
 	 * effectu�e, sinon elle renvoie null.
 	 * @see SingleConnection
 	 */
-	public String connexion(String login, String mdp,Connection cn) {
+	public String connexion(String login, String mdp) {
 		if (!mdpValide(mdp))
 			return null;
 		final String mdpEncrypte=encrypte(mdp);
@@ -178,7 +178,7 @@ public class UtilisateurDAO {
      * @return renvoie true si le mdp correspond aux conditions,
      * false sinon
      */
-    public boolean mdpValide(String mdp) {
+    private boolean mdpValide(String mdp) {
 		String regex="^[A-Za-z0-9_!?=-]{6,}$";
 		Pattern p = Pattern.compile(regex);
 		Matcher m = p.matcher(mdp);
@@ -193,7 +193,7 @@ public class UtilisateurDAO {
      * @param mdp mot de passe qu'on souhaite encrypter
      * @return renvoie le mot de passe encrypte
      */
-    public String encrypte(String mdp) {
+    private String encrypte(String mdp) {
     	String mdpEncrypte=null;
     	
 		try {
