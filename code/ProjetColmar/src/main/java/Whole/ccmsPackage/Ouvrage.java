@@ -10,9 +10,9 @@ public class Ouvrage implements CCMS<Ouvrage> {
 
     private ArrayList<Personne> personnes;
 
-    private String editeur;
+    private Personne editeur;
 
-    private String imprimeur;
+    private Personne imprimeur;
 
 
     private String lieuEdition;
@@ -21,7 +21,6 @@ public class Ouvrage implements CCMS<Ouvrage> {
 
     private int nbPage;
 
-    private String lien;
 
     private int id;
 
@@ -58,12 +57,11 @@ public class Ouvrage implements CCMS<Ouvrage> {
      * Constructeur à utilisé pour les copies uniquements
      * @param titre String
      * @param personnes ArrayList<String>
-     * @param editeur String
-     * @param imprimeur String
+     * @param editeur Personne
+     * @param imprimeur Personne
      * @param lieuEdition String
      * @param dateEdition String
      * @param nbPage int
-     * @param lien String
      * @param id int
      * @param format String
      * @param resolution String
@@ -71,7 +69,7 @@ public class Ouvrage implements CCMS<Ouvrage> {
      * @param reechantillonage boolean
      * @param copyright String
      */
-    public Ouvrage(String titre, ArrayList<Personne> personnes, String editeur, String imprimeur, String lieuEdition, int dateEdition, int nbPage, String lien, int id, String format, String resolution, String creditResolution, boolean reechantillonage, String copyright) {
+    public Ouvrage(String titre, ArrayList<Personne> personnes, Personne editeur, Personne imprimeur, String lieuEdition, int dateEdition, int nbPage, int id, String format, String resolution, String creditResolution, boolean reechantillonage, String copyright) {
         this.titre = titre;
         this.personnes = new ArrayList<>();
         this.editeur = editeur;
@@ -79,7 +77,6 @@ public class Ouvrage implements CCMS<Ouvrage> {
         this.lieuEdition = lieuEdition;
         this.dateEdition = dateEdition;
         this.nbPage = nbPage;
-        this.lien = lien;
         this.id = id;
         this.format = format;
         this.resolution = resolution;
@@ -193,21 +190,6 @@ public class Ouvrage implements CCMS<Ouvrage> {
         return personnes;
     }
 
-    /**
-     * renvoie l'editeur de l'ouvrage
-     * @return editeur String
-     */
-    public String getEditeur() {
-        return editeur;
-    }
-
-    /**
-     * renvoie l'imprimeur de l'ouvrage
-     * @return imprimeur String
-     */
-    public String getImprimeur() {
-        return imprimeur;
-    }
 
     /**
      * renvoie le lieu où l'ouvrage a été imprimé
@@ -234,9 +216,6 @@ public class Ouvrage implements CCMS<Ouvrage> {
     }
 
 
-    public String getLien() {
-        return lien;
-    }
 
     /**
      * renvoie l'id de l'ouvrage dans la base
@@ -265,21 +244,6 @@ public class Ouvrage implements CCMS<Ouvrage> {
         }
     }
 
-    /**
-     * change l'éditeur de l'ouvrage par l'éditeur passé en paramètre
-     * @param editeur String
-     */
-    public void setEditeur(String editeur) {
-        this.editeur = editeur;
-    }
-
-    /**
-     * change l'imprimeur de l'ouvrage par l'imprimeur passé en paramètre
-     * @param imprimeur String
-     */
-    public void setImprimeur(String imprimeur) {
-        this.imprimeur = imprimeur;
-    }
 
     /**
      * Change le lieu d'édition de l'ouvrage par le lieu d'édition passé en paramètre
@@ -294,7 +258,7 @@ public class Ouvrage implements CCMS<Ouvrage> {
      * @return la copie exacte d'un ouvrage
      */
     public Ouvrage copie(){
-        return new Ouvrage( titre, personnes,  editeur,  imprimeur,  lieuEdition,  dateEdition,  nbPage,  lien,  id,  format,  resolution,  creditResolution,  reechantillonage, copyright);
+        return new Ouvrage( titre, (ArrayList<Personne>) personnes.clone(),  editeur,  imprimeur,  lieuEdition,  dateEdition,  nbPage,    id,  format,  resolution,  creditResolution,  reechantillonage, copyright);
     }
     /**
      * Change la date d'édition de l'ouvrage par la date passée en paramètre
@@ -316,10 +280,6 @@ public class Ouvrage implements CCMS<Ouvrage> {
      * change le lien de l'ouvrage par le lien passé en paramètre
      * @param lien String
      */
-    public void setLien(String lien) {
-        this.lien = lien;
-    }
-
 
 
 
@@ -355,15 +315,11 @@ public class Ouvrage implements CCMS<Ouvrage> {
         if(objet!=null){
             return false;
         }
-        if(!objet.getLien().equals(this.getLien())){
-            return false;
-        }
+
         if(!objet.getCopyright().equals(this.getCopyright())){
             return false;
         }
-        if(!objet.getEditeur().equals(this.getEditeur())){
-            return false;
-        }
+
         if(!objet.getFormat().equals(this.format)){
             return false;
         }
@@ -373,9 +329,7 @@ public class Ouvrage implements CCMS<Ouvrage> {
         if(!objet.getTitre().equals(this.titre)){
             return false;
         }
-        if(!objet.getImprimeur().equals(this.imprimeur)){
-            return false;
-        }
+
         if(!objet.getLieuEdition().equals(this.lieuEdition)){
             return false;
         }
