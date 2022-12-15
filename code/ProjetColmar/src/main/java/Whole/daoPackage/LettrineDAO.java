@@ -30,6 +30,16 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
         super(url, login, password);
     }
 
+    /**
+     * Permet de modifier les attributs de la lettrine ojet par ceux non null de la lettrinve changemment
+     * dans la base. Cette methode renverra true si la requette a bien pu être effectuée, false dans les autres cas.
+     * Cette méthode renverra notamment false si les lettrines objet ou changement sont vides, ou que tous leurs
+     * attributs sont null. Elle renverra false également si l'id de la lettrine objet est <= 0
+     * @param objet CCMS à changer
+     * @param changement CCMS de changement (les paramètres null ne sont pas à changer)
+     * @param cn La connection à la base de donnée
+     * @return true si la requete a abouttie, false sinon
+     */
     @Override
     public boolean modifier(Lettrine objet, Lettrine changement, Connection cn) {
         StringBuilder str = new StringBuilder();
@@ -76,7 +86,9 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
     }
 
     /**
-     * Supprime une lettrine de la db
+     * Permet de supprimer la lettrine lettrine de l base de données. Renvoie true si la requete s'est
+     * effectuée, false sinon. Renvoi false également si l'id de la lettrine passée en param est <= 0
+     * <= 0.
      *
      * @param lettrine La lettrine à supprimer
      * @param cn    La connection à la base de donnée
@@ -86,6 +98,9 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      */
     @Override
     public boolean supprimer(Lettrine lettrine, Connection cn) {
+        if(lettrine.getId() <= 0) {
+            return false;
+        }
         try {
             Statement stmt = cn.createStatement();
             String sql = "DELETE FROM lettrine WHERE id=" + lettrine.getId();
@@ -98,7 +113,9 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
     }
 
     /**
-     * Ajoute à la base de donnée d'une lettrine
+     * Ajoute la lettrine donne à la base de données. Renvoie true si l'insertion s'est bien passée, false
+     * sinon. Renvoie false également si l'id et le lien de la lettrine donnee s0nt respectivement
+     * <= 0 et null.
      *
      * @param donne la lettrine à ajouter
      * @param cn    La connection à la base de donnée
@@ -108,23 +125,33 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      */
     @Override
     public boolean creer(Lettrine donne, Connection cn) {
+        if(donne.getId() <= 0 || donne.getLien() == null) {
+            return false;
+        }
+        StringBuilder str = new StringBuilder();
+        //écrire code permettant de condtruire la requete
         try {
             Statement stmt = cn.createStatement();
-            String sql = "INSERT INTO lettrine VALUES (" + donne.getId() + ", ";
+            String sql = "INSERT INTO lettrine VALUES (" + str + ")";
             stmt.executeQuery(sql);
             return true;
         }
         catch (SQLException e) {
             return false;
         }
+        /*
+        appel des methodes tager et ajouterMeta pour ajouter les métdonnées et les tags a la lettrine
+        crée
+        */
     }
 
     /**
-     * Cherche un CCMS dans la base
+     * Cherche des lettrines dans la base. La méthode renvoie une ArrayList de lettrines, en fonction
+     * des attributs non null de la lettrine donne passée en param.
      *
-     * @param donne CCMS avec tout les paramètres nuls sauf ceux à chercher
+     * @param donne CCMS avec tous les paramètres nuls sauf ceux à chercher
      * @param cn    La connection à la base de donnée
-     * @return la Liste des des CCMS correspondant aux critères
+     * @return la Liste des lettrines correspondant aux critères
      * @see CCMS
      * @see SingleConnection
      */
@@ -247,7 +274,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * id pour créer un bout de requete sql, finalement on stocke ce bout de requete (String) dans
      * un StringBuilder, qui sera converti en un String contenant la partie de requete correspondante a la
      * recherche des métadonnées, String qui sera retourné.
-     * @param donne Lettrine :  lettrine contenant les attributs sur lesquels effectuer la recherche
+     * @param donne Lettrine : lettrine contenant les attributs sur lesquels effectuer la recherche
      * @param cn Connection : connexion
      * @param idMeta : ArrayList d'entiers contenant les id des métadonnées contenues dans l'attribut métadonnée
      * de donne.
@@ -327,13 +354,13 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
     }
 
     /**
-     * recherche sur les tags: meme principe que pour les métadonnées. On récupère String contenant la
+     * recherche sur les tags : meme principe que pour les métadonnées. On récupère String contenant la
      * requête SQL de recherche des tags.
-     * @param donne Lettrine :  lettrine contenant les attributs sur lesquels effectuer la recherche
+     * @param donne Lettrine : lettrine contenant les attributs sur lesquels effectuer la recherche
      * @param cn Connection : connexion
      * @param idTags : ArrayList d'entiers contenant les id des métadonnées contenues dans l'attribut tag
      * de donne.
-     * @return resSql : String contenant le morceau de requete correspondant a la recherche des tags
+     * @return resSql : String contenant le morceau de requete correspondant à la recherche des tags
      */
     private static String createTabSqlTags(Lettrine donne, Connection cn, ArrayList<Integer> idTags) {
         ArrayList<Tag> tags = new ArrayList<>();
@@ -403,8 +430,10 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
     }
 
     /**
-     *permet de lier dans la base de donnée une lettrine à ouvrage, en effet une lettrine n'est présente
-     * que dans un seul et unique ouvrage.
+     * permet de lier dans la base de donnée une lettrine à ouvrage, en effet une lettrine n'est présente
+     * que dans un seul et unique ouvrage. renvoie true si la requete a été effectuée, false sinon. Renvoie
+     * false également si les id de l et de o sont <= 0
+     *
      * @param l la lettrine à lier à l'ouvrage
      * @param o l'ouvrage d'origine
      * @param cn La connection à la base de donnée
@@ -414,6 +443,9 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * @return true : si la requete a été effectuée, false sinon
      */
     public boolean provient(Lettrine l , Ouvrage o,Connection cn)   {
+        if(l.getId() <= 0 || o.getId() <= 0) {
+            return false;
+        }
         if(l.getOuvrage().getId() != o.getId()) {
             try {
                 Statement stmt = cn.createStatement();
@@ -430,7 +462,9 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
     }
 
     /**
-     *Permet de lier dans la base de donnée une lettrine à un tag
+     * Permet de lier dans la base de donnée une lettrine à un tag. Renvoie true si la requete s'est bien effectuée
+     * false sinon. Renvoie false si les id de l et de t sont <= 0
+     *
      * @param l La lettrine dont on souhaite ajouter un tag
      * @param t Le tag à ajouter à la lettrine
      * @param cn La connection à la base de donnée
@@ -440,9 +474,12 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * @return true : si la requete a été effectuée, false sinon
      */
     public boolean tager(Lettrine l , Tag t,Connection cn) {
+        if(l.getId() <= 0 || t.getId() <= 0) {
+            return false;
+        }
         try {
             Statement stmt = cn.createStatement();
-            String sql = "UPDATE lettrines_tags SET idTags=" + t.getId() + " WHERE idLettrine =" + l.getId();
+            String sql = "INSERT INTO lettrines_tags VALUES (" + t.getId() + ", "+ l.getId() + ")";
             stmt.executeQuery(sql);
             return true;
         }
@@ -452,16 +489,20 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
     }
 
     /**
-     * permet de caracteriser une lettrine en ajoutant une métadonnée
-     * @param l la Lettrine à décrire.
+     * permet de caracteriser une lettrine en ajoutant une métadonnée. Renvoie true si la requete s'est bien
+     * effectuée, false sinon. Renvoie false également si l'id de meta et l'id de l sont <= 0
+
      * @param meta Métadonnée à ajouter à la lettrine
-     * @param l Lettrine a laquelle la métadonnée doit etre ajoutée
+     * @param l Lettrine à laquelle la métadonnée doit etre ajoutée
      * @param cn La connection à la base de donnée
      * @see SingleConnection
      * @see Metadonnee
      * @return true : si la requete a été effectuée, false sinon
      */
     public boolean ajouterMeta(Metadonnee meta, Lettrine l, Connection cn) {
+        if(meta.getId() <= 0 || l.getId() <= 0) {
+            return false;
+        }
         try {
             Statement stmt = cn.createStatement();
             String sql = "UPDATE metadonnee SET idLettrine=" + l.getId() + "WHERE idMeta=" + meta.getId();
@@ -473,7 +514,18 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
         }
     }
 
+    /**
+     * supprimer une métadonnée de la base. Renvoie true si la suppression s'est bien effectuée, false sinon
+     * Renvoie false si l'id de meta est <= 0
+     *
+     * @param meta metadonnée a supprimer
+     * @param cn connexion a la base
+     * @return true si la requete s'est effectuée, false sinon
+     */
     public boolean supprimerMeta(Metadonnee meta, Connection cn) {
+        if(meta.getId() <= 0) {
+            return false;
+        }
         try {
             Statement stmt = cn.createStatement();
             String sql = "DELETE FROM metadonnees WHERE idMeta=" + meta.getId();
@@ -486,7 +538,9 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
     }
 
     /**
-     * Met à jour la base de donnée avec les nouvelles valeurs de la métadonnée
+     * Met à jour la base de donnée avec les nouvelles valeurs de la métadonnée. Renvoie true si la requete
+     * s'est bien effectée, false sinon. Renvoie false si l'id de meta est <= 0
+     *
      * @param meta La métadonnée dont l'on souhaite que la partie code correspond avec la partie base de donnée
      * @param cn La connection à la base de donnée
      * @see SingleConnection
@@ -494,6 +548,9 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * @return true : si la requete a été effectuée, false sinon
      */
     public boolean modifierMeta(Metadonnee meta,Connection cn) {
+        if(meta.getId() <= 0) {
+            return false;
+        }
         StringBuilder req = new StringBuilder();
         String sqlNom = "";
         if(meta.getNom() != null) {
