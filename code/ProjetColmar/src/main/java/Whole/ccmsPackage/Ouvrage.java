@@ -10,17 +10,15 @@ public class Ouvrage implements CCMS<Ouvrage> {
 
     private ArrayList<Personne> personnes;
 
-    private Personne editeur;
+    private Personne libraire;
 
     private Personne imprimeur;
-
 
     private String lieuEdition;
 
     private int dateEdition;
 
     private int nbPage;
-
 
     private int id;
 
@@ -57,7 +55,7 @@ public class Ouvrage implements CCMS<Ouvrage> {
      * Constructeur à utilisé pour les copies uniquements
      * @param titre String
      * @param personnes ArrayList<String>
-     * @param editeur Personne
+     * @param libraire Personne
      * @param imprimeur Personne
      * @param lieuEdition String
      * @param dateEdition String
@@ -69,10 +67,10 @@ public class Ouvrage implements CCMS<Ouvrage> {
      * @param reechantillonage boolean
      * @param copyright String
      */
-    public Ouvrage(String titre, ArrayList<Personne> personnes, Personne editeur, Personne imprimeur, String lieuEdition, int dateEdition, int nbPage, int id, String format, String resolution, String creditResolution, boolean reechantillonage, String copyright) {
+    public Ouvrage(String titre, ArrayList<Personne> personnes, Personne libraire, Personne imprimeur, String lieuEdition, int dateEdition, int nbPage, int id, String format, String resolution, String creditResolution, boolean reechantillonage, String copyright) {
         this.titre = titre;
         this.personnes = new ArrayList<>();
-        this.editeur = editeur;
+        this.libraire = libraire;
         this.imprimeur = imprimeur;
         this.lieuEdition = lieuEdition;
         this.dateEdition = dateEdition;
@@ -215,7 +213,33 @@ public class Ouvrage implements CCMS<Ouvrage> {
         return nbPage;
     }
 
+    public ArrayList<Personne> getPersonnes() {
+        return personnes;
+    }
 
+    public void setPersonnes(ArrayList<Personne> personnes) {
+        ArrayList<Personne> list = new ArrayList<>();
+        for(Personne p : personnes){
+            list.add(p);
+        }
+        this.personnes = list;
+    }
+
+    public Personne getLibraire() {
+        return libraire;
+    }
+
+    public void setLibraire(Personne libraire) {
+        this.libraire = libraire;
+    }
+
+    public Personne getImprimeur() {
+        return imprimeur;
+    }
+
+    public void setImprimeur(Personne imprimeur) {
+        this.imprimeur = imprimeur;
+    }
 
     /**
      * renvoie l'id de l'ouvrage dans la base
@@ -258,7 +282,7 @@ public class Ouvrage implements CCMS<Ouvrage> {
      * @return la copie exacte d'un ouvrage
      */
     public Ouvrage copie(){
-        return new Ouvrage( titre, (ArrayList<Personne>) personnes.clone(),  editeur,  imprimeur,  lieuEdition,  dateEdition,  nbPage,    id,  format,  resolution,  creditResolution,  reechantillonage, copyright);
+        return new Ouvrage( titre, (ArrayList<Personne>) personnes.clone(), libraire,  imprimeur,  lieuEdition,  dateEdition,  nbPage,    id,  format,  resolution,  creditResolution,  reechantillonage, copyright);
     }
     /**
      * Change la date d'édition de l'ouvrage par la date passée en paramètre
@@ -275,12 +299,6 @@ public class Ouvrage implements CCMS<Ouvrage> {
     public void setNbPage(int nbPage) {
         this.nbPage = nbPage;
     }
-
-    /**
-     * change le lien de l'ouvrage par le lien passé en paramètre
-     * @param lien String
-     */
-
 
 
     /**
