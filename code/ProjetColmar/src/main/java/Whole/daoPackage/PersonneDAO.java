@@ -10,12 +10,12 @@ import java.util.ArrayList;
  * Classe servant à lié à la base de donnée les méthodes d'Auteurs
  * @see Personne
  */
-public class AuteurDAO extends AbstractDAO<Personne> {
+public class PersonneDAO extends AbstractDAO<Personne> {
     /**
      * Constructeur d'AdminDAO
      * @see SingleConnection
      */
-    public AuteurDAO(String url, String login, String password) {
+    public PersonneDAO(String url, String login, String password) {
         super(url, login, password);
     }
 
@@ -38,7 +38,7 @@ public class AuteurDAO extends AbstractDAO<Personne> {
     /**
      * Supprime de la db un Personne
      *
-     * @param objet un Personne d'un type à déterminer dans chaque implémentation
+     * @param objet une Personne d'un type à déterminer dans chaque implémentation
      * @param cn    La connection à la base de donnée
      * @return
      * @see Personne
@@ -49,9 +49,9 @@ public class AuteurDAO extends AbstractDAO<Personne> {
         return false;
     }
     /**
-     * Ajoute à la base de donnée un Personne
+     * Ajoute à la base de donnée une Personne
      *
-     * @param donne l'Personne à ajouter
+     * @param donne la Personne à ajouter
      * @param cn    La connection à la base de donnée
      * @return
      * @see Personne
@@ -62,7 +62,7 @@ public class AuteurDAO extends AbstractDAO<Personne> {
         return false;
     }
     /**
-     *Cherche un Personne dans la base
+     *Cherche une Personne dans la base
      * @param donne Personne avec tous les paramètres nuls sauf ceux à chercher
      * @param cn La connection à la base de donnée
      * @return la Liste des auteurs correspondant aux critères
