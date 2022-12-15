@@ -83,7 +83,7 @@ public class TagDAO extends AbstractDAO<Tag>{
      */
     @Override
 
-    public ArrayList<objet> chercher(Tag objet,Connection cn) {
+    public ArrayList<Tag> chercher(Tag objet,Connection cn) {
         return null;
     }
 }

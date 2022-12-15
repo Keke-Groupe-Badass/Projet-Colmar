@@ -13,7 +13,6 @@ import java.util.ArrayList;
  */
 public class OuvrageDAO extends AbstractDAO<Ouvrage> {
 
-    private Connection cn;
     /**
      * Constructeur de la classe OuvrageDAO.
      *
@@ -91,7 +90,7 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
      * @param cn La connection à la base de donnée
      * @see SingleConnection
      */
-    public ArrayList<objet> chercher(Ouvrage objet,Connection cn) {
+    public ArrayList<Ouvrage> chercher(Ouvrage objet,Connection cn) {
         return null;
     }
 }
