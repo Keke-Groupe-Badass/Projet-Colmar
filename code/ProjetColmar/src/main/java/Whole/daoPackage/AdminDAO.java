@@ -12,6 +12,8 @@ import java.sql.*;
 
 import java.util.ArrayList;
 
+import static Whole.daoPackage.AbstractDAO.cn;
+
 /**
  * Classe permettant à l'administrateur de gérer la base de donnée
  */
@@ -33,14 +35,13 @@ public class AdminDAO {
     /**
      * Permet de stocker dans un fichier la bd
      * @param file le fichier où sera exporter les données
-     * @param cn La connection à la base de donnée
      * @see SingleConnection
      * @see Whole.exportPackage.ExportTypeInterface
      *
      */
 
 
-    public Boolean exportDonee(File file,Connection cn, String methode, String path)  {
+    public Boolean exportDonee(File file, String methode, String path)  {
         for(ExportTypeInterface e:listeMethode){
             if(e.getName().equals(methode)){
                 if(e.getName().equals("SQL")){
@@ -60,7 +61,7 @@ public class AdminDAO {
                     Boolean b = true;
                     ArrayList<ArrayList<String>> list;
                     for(String st:listeTable){
-                        list=getTableList(st,cn);
+                        list=getTableList(st);
                         File f = new File(path+"/"+st);
                         b = b && e.export(f,list );
                     }
@@ -76,10 +77,9 @@ public class AdminDAO {
      * Permet de transformer une table en une liste de liste, le premier niveau de liste représentant les lignes
      * et le second niveau les colones, la première ligne est le nom des colones.
      * @param table la table que l'on souhaite exporter
-     * @param cn la connection
      * @return true si tout c'est bien passé, false sinon
      */
-    public ArrayList<ArrayList<String>> getTableList(String table,Connection cn){
+    private ArrayList<ArrayList<String>> getTableList(String table){
         ArrayList<ArrayList<String>> list= new ArrayList<>();
         try {
             Statement stmt = cn.createStatement();
@@ -160,12 +160,10 @@ public class AdminDAO {
     /**
      * Ajoute au log un text
      * @param txt Le message à enregistrer
-     * @param user L'utilisateur qui a provoqué une action
-     * @param cn La connection à la base de donnée
      * @return true si l'insertion peut se faire, false sinon
      * @see SingleConnection
      */
-    public Boolean writeLog(String txt, String user,Connection cn){
+    public Boolean writeLog(String txt){
         try {
             Statement st = cn.createStatement();
             st.execute("INSERT INTO `log`( `text`, `date`, `userLogin`) VALUES('"+txt+"','"+new Date( System.currentTimeMillis())+"','"+user+"'");
