@@ -34,35 +34,35 @@ class LettrineDAOtest {
 		Lettrine l1 = new Lettrine(ouvragetest,listeMetaTest,2,47,listeTagTest,"lien");
 		Lettrine l2 = new Lettrine(ouvragetest2,listeMetaTest2,594,496,listeTagTest2,"lien");
 		LettrineDAO ldao1 = new LettrineDAO("url", "log", "pwd");
-		return ldao1.modifier(l1, l2, cn);
+		return ldao1.modifier(l1, l2);
 	}
 	
 	public boolean modifLettrineTD2() {
 		Lettrine l1 = new Lettrine();
 		Lettrine l2 = new Lettrine(ouvragetest2,listeMetaTest2,594,496,listeTagTest2,"lien");
 		LettrineDAO ldao1 = new LettrineDAO("url", "log", "pwd");
-		return ldao1.modifier(l1, l2, cn);
+		return ldao1.modifier(l1, l2);
 	}
 	
 	public boolean modifLettrineTD3() {
 		Lettrine l1 = new Lettrine(null,null,2,47,null,null);
 		Lettrine l2 = new Lettrine(ouvragetest2,listeMetaTest2,594,496,listeTagTest2,"lien");
 		LettrineDAO ldao1 = new LettrineDAO("url", "log", "pwd");
-		return ldao1.modifier(l1, l2, cn);
+		return ldao1.modifier(l1, l2);
 	}
 	
 	public boolean modifLettrineTD4() {
 		Lettrine l1 = new Lettrine(ouvragetest,listeMetaTest,2,47,listeTagTest,"lien");
 		Lettrine l2 = new Lettrine();
 		LettrineDAO ldao1 = new LettrineDAO("url", "log", "pwd");
-		return ldao1.modifier(l1, l2, cn);
+		return ldao1.modifier(l1, l2);
 	}
 	
 	public boolean modifLettrineTD5() {
 		Lettrine l1 = new Lettrine(ouvragetest,listeMetaTest,2,47,listeTagTest,"lien");
 		Lettrine l2 = new Lettrine(null,null,2,47,null,null);
 		LettrineDAO ldao1 = new LettrineDAO("url", "log", "pwd");
-		return ldao1.modifier(l1, l2, cn);
+		return ldao1.modifier(l1, l2);
 	}
 	
 
@@ -79,18 +79,18 @@ class LettrineDAOtest {
 	public boolean suppLettrineDT1() {
 		Lettrine l1 = new Lettrine(ouvragetest,listeMetaTest,2,47,listeTagTest,"lien");
 		LettrineDAO ldao1 = new LettrineDAO("url", "log", "pwd");
-		return ldao1.supprimer(l1, cn);}
+		return ldao1.supprimer(l1);}
 	
 	public boolean suppLettrineDT2() {
 		Lettrine l1 = new Lettrine();
 		LettrineDAO ldao1 = new LettrineDAO("url", "log", "pwd");
-		return ldao1.supprimer(l1, cn);
+		return ldao1.supprimer(l1);
 		}
 	
 	public boolean suppLettrineDT3() {
 		Lettrine l1 = new Lettrine(null,null,2,47,null,null);
 		LettrineDAO ldao1 = new LettrineDAO("url", "log", "pwd");
-		return ldao1.supprimer(l1, cn);
+		return ldao1.supprimer(l1);
 		}
 	
 	@Test
@@ -103,18 +103,18 @@ class LettrineDAOtest {
 	public boolean creeLettrineDT1() {
 		Lettrine l1 = new Lettrine(ouvragetest,listeMetaTest,2,47,listeTagTest,"lien");
 		LettrineDAO ldao1 = new LettrineDAO("url", "log", "pwd");
-		return ldao1.creer(l1, cn);}
+		return ldao1.creer(l1);}
 	
 	public boolean creeLettrineDT2() {
 		Lettrine l1 = new Lettrine();
 		LettrineDAO ldao1 = new LettrineDAO("url", "log", "pwd");
-		return ldao1.creer(l1, cn);
+		return ldao1.creer(l1);
 		}
 	
 	public boolean creeLettrineDT3() {
 		Lettrine l1 = new Lettrine(null,null,2,47,null,null);
 		LettrineDAO ldao1 = new LettrineDAO("url", "log", "pwd");
-		return ldao1.creer(l1, cn);
+		return ldao1.creer(l1);
 		}
 	
 	@Test

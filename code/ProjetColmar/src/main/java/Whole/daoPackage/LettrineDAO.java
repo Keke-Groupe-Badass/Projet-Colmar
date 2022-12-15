@@ -37,11 +37,10 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * attributs sont null. Elle renverra false également si l'id de la lettrine objet est <= 0
      * @param objet CCMS à changer
      * @param changement CCMS de changement (les paramètres null ne sont pas à changer)
-     * @param cn La connection à la base de donnée
      * @return true si la requete a abouttie, false sinon
      */
     @Override
-    public boolean modifier(Lettrine objet, Lettrine changement, Connection cn) {
+    public boolean modifier(Lettrine objet, Lettrine changement) {
         StringBuilder str = new StringBuilder();
         if(changement.getNbPage() != -1) {
             str.append("nbPage=" + changement.getNbPage());
@@ -58,7 +57,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
         if(changement.getMetadonnees() != null) {
             for(Metadonnee meta : changement.getMetadonnees()) {
                 try {
-                    Statement stmtMeta = cn.createStatement();
+                    Statement stmtMeta = this.cn.createStatement();
                     String sqlMeta = "UPDATE metadonnee SET idLettrine=" + objet.getId() +
                             " WHERE idMeta=" + meta.getId();
                     stmtMeta.executeQuery(sqlMeta);
@@ -86,18 +85,17 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
     }
 
     /**
-     * Permet de supprimer la lettrine lettrine de l base de données. Renvoie true si la requete s'est
+     * Permet de supprimer la lettrine de l base de données. Renvoie true si la requete s'est
      * effectuée, false sinon. Renvoi false également si l'id de la lettrine passée en param est <= 0
      * <= 0.
      *
      * @param lettrine La lettrine à supprimer
-     * @param cn    La connection à la base de donnée
      * @see Lettrine
      * @see SingleConnection
      * @return true : si la requete a été effectuée, false sinon
      */
     @Override
-    public boolean supprimer(Lettrine lettrine, Connection cn) {
+    public boolean supprimer(Lettrine lettrine) {
         if(lettrine.getId() <= 0) {
             return false;
         }
@@ -118,13 +116,12 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * <= 0 et null.
      *
      * @param donne la lettrine à ajouter
-     * @param cn    La connection à la base de donnée
      * @see Lettrine
      * @see SingleConnection
      * @return true : si la requete a été effectuée, false sinon
      */
     @Override
-    public boolean creer(Lettrine donne, Connection cn) {
+    public boolean creer(Lettrine donne) {
         if(donne.getId() <= 0 || donne.getLien() == null) {
             return false;
         }
@@ -150,13 +147,12 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * des attributs non null de la lettrine donne passée en param.
      *
      * @param donne CCMS avec tous les paramètres nuls sauf ceux à chercher
-     * @param cn    La connection à la base de donnée
      * @return la Liste des lettrines correspondant aux critères
      * @see CCMS
      * @see SingleConnection
      */
     @Override
-    public ArrayList<Lettrine> chercher(Lettrine donne, Connection cn) {
+    public ArrayList<Lettrine> chercher(Lettrine donne) {
         ArrayList<Lettrine> letList = new ArrayList<>();
         StringBuilder req = new StringBuilder();
         /*
@@ -183,11 +179,11 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
             ArrayList<Integer> idMeta = new ArrayList<Integer>();
             for (Metadonnee met : donne.getMetadonnees())
                 idMeta.add(met.getId());
-            String metaSQL = createTabSqlMeta(donne, cn, idMeta);
+            String metaSQL = createTabSqlMeta(donne, idMeta);
             req.append(metaSQL);
         }
         else {
-            String metaSQL = createTabSqlMeta(donne, cn, null);
+            String metaSQL = createTabSqlMeta(donne, null);
             req.append(metaSQL);
         }
 
@@ -196,11 +192,11 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
             for (Tag tag : donne.getTags()) {
                 idTags.add(tag.getId());
             }
-            String tagSQL = createTabSqlTags(donne, cn, idTags);
+            String tagSQL = createTabSqlTags(donne, idTags);
             req.append(tagSQL);
         }
         else {
-            String tagSQL = createTabSqlTags(donne, cn, null);
+            String tagSQL = createTabSqlTags(donne, null);
             req.append(tagSQL);
         }
 
@@ -275,13 +271,12 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * un StringBuilder, qui sera converti en un String contenant la partie de requete correspondante a la
      * recherche des métadonnées, String qui sera retourné.
      * @param donne Lettrine : lettrine contenant les attributs sur lesquels effectuer la recherche
-     * @param cn Connection : connexion
      * @param idMeta : ArrayList d'entiers contenant les id des métadonnées contenues dans l'attribut métadonnée
      * de donne.
      * @return String resSql : String contenant le bout de requete permettant d'obtenir les métadonnées
      * cherchées
      */
-    private static String createTabSqlMeta(Lettrine donne, Connection cn, ArrayList<Integer> idMeta) {
+    private static String createTabSqlMeta(Lettrine donne, ArrayList<Integer> idMeta) {
         ArrayList<Metadonnee> meta = new ArrayList<>();
         if(idMeta != null) {
             try {
@@ -357,12 +352,11 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * recherche sur les tags : meme principe que pour les métadonnées. On récupère String contenant la
      * requête SQL de recherche des tags.
      * @param donne Lettrine : lettrine contenant les attributs sur lesquels effectuer la recherche
-     * @param cn Connection : connexion
      * @param idTags : ArrayList d'entiers contenant les id des métadonnées contenues dans l'attribut tag
      * de donne.
      * @return resSql : String contenant le morceau de requete correspondant à la recherche des tags
      */
-    private static String createTabSqlTags(Lettrine donne, Connection cn, ArrayList<Integer> idTags) {
+    private static String createTabSqlTags(Lettrine donne, ArrayList<Integer> idTags) {
         ArrayList<Tag> tags = new ArrayList<>();
         if (idTags != null) {
             try {

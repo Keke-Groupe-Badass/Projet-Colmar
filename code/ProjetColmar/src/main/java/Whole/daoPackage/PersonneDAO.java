@@ -26,11 +26,10 @@ public class PersonneDAO extends AbstractDAO<Personne> {
      *
      * @param objet      Personne à changer
      * @param changement Personne de changement (les paramètres null ne sont pas à changer)
-     * @param cn         La connection à la base de donnée
      * @return
      * @see SingleConnection
      */
-    public boolean modifier(Personne objet , Personne changement, Connection cn) {
+    public boolean modifier(Personne objet , Personne changement) {
 
 
         return false;
@@ -39,12 +38,11 @@ public class PersonneDAO extends AbstractDAO<Personne> {
      * Supprime de la db un Personne
      *
      * @param objet une Personne d'un type à déterminer dans chaque implémentation
-     * @param cn    La connection à la base de donnée
      * @return
      * @see Personne
      * @see SingleConnection
      */
-    public boolean supprimer(Personne objet, Connection cn) {
+    public boolean supprimer(Personne objet) {
 
         return false;
     }
@@ -52,24 +50,22 @@ public class PersonneDAO extends AbstractDAO<Personne> {
      * Ajoute à la base de donnée une Personne
      *
      * @param donne la Personne à ajouter
-     * @param cn    La connection à la base de donnée
      * @return
      * @see Personne
      * @see SingleConnection
      */
-    public boolean creer(Personne donne, Connection cn) {
+    public boolean creer(Personne donne) {
 
         return false;
     }
     /**
      *Cherche une Personne dans la base
      * @param donne Personne avec tous les paramètres nuls sauf ceux à chercher
-     * @param cn La connection à la base de donnée
      * @return la Liste des auteurs correspondant aux critères
      * @see Personne
      * @see SingleConnection
      */
-    public ArrayList<Personne> chercher(Personne donne, Connection cn) {
+    public ArrayList<Personne> chercher(Personne donne) {
         return null;
     }
 }

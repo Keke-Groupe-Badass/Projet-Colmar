@@ -12,7 +12,6 @@ import java.util.ArrayList;
  * @see AbstractDAO
  */
 public class OuvrageDAO extends AbstractDAO<Ouvrage> {
-
     /**
      * Constructeur de la classe OuvrageDAO.
      *
@@ -28,12 +27,11 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
      * Ajoute à la base de donnée un ouvrage
      *
      * @param donne l'ouvrage à ajouter
-     * @param cn    La connection à la base de donnée
      * @see Ouvrage
      * @see SingleConnection
      */
     @Override
-    public boolean creer(Ouvrage donne, Connection cn) {
+    public boolean creer(Ouvrage donne) {
         return false;
     }
 
@@ -46,10 +44,9 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
     *
     * @param a Personne auteur de l'ouvrage
     * @param objet Ouvrage ouvrage qu'on souhaite inserer
-     * @param cn La connection à la base de donnée
      * @see SingleConnection
     */
-    public void ecrit(Personne a, Ouvrage objet, Connection cn) {
+    public void ecrit(Personne a, Ouvrage objet) {
     	
     }
     
@@ -60,10 +57,9 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
      * 
      * @param objet l'ouvrage cible qu'on souhaite modifier
      * @param changement l'ouvrage par lequel on souhaite remplacer l'ancien
-     * @param cn La connection à la base de donnée
      * @see SingleConnection
      */
-    public boolean modifier(Ouvrage objet, Ouvrage changement,Connection cn) {
+    public boolean modifier(Ouvrage objet, Ouvrage changement) {
     	return false;
     }
     
@@ -73,10 +69,9 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
      * si trouve on le supprime.
      * 
      * @param objet l'ouvrage cible qu'on souhaite supprimer
-     * @param cn La connection à la base de donnée
      * @see SingleConnection
      */
-    public boolean supprimer(Ouvrage objet,Connection cn) {
+    public boolean supprimer(Ouvrage objet) {
         return false;
     }
     
@@ -87,10 +82,9 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
      * @param objet ouvrage avec tous les parametres nuls sauf ceux a chercher
      * @return renvoie une liste des ouvrages qui correspondent aux critères
      * de recherche
-     * @param cn La connection à la base de donnée
      * @see SingleConnection
      */
-    public ArrayList<Ouvrage> chercher(Ouvrage objet,Connection cn) {
+    public ArrayList<Ouvrage> chercher(Ouvrage objet) {
         return null;
     }
 }
