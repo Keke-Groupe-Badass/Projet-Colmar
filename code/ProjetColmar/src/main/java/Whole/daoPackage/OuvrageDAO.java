@@ -1,7 +1,7 @@
 package Whole.daoPackage;
 
 import Whole.SingleConnection;
-import Whole.ccmsPackage.Auteur;
+import Whole.ccmsPackage.Personne;
 import Whole.ccmsPackage.Ouvrage;
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -45,12 +45,12 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
     * vérifie que l'auteur passé en paramètre existe bien dans la base de données,
     * puis on effectue une requete d'insertion.
     *
-    * @param a Auteur auteur de l'ouvrage
+    * @param a Personne auteur de l'ouvrage
     * @param objet Ouvrage ouvrage qu'on souhaite inserer
      * @param cn La connection à la base de donnée
      * @see SingleConnection
     */
-    public void ecrit(Auteur a, Ouvrage objet,Connection cn) {
+    public void ecrit(Personne a, Ouvrage objet, Connection cn) {
     	
     }
     

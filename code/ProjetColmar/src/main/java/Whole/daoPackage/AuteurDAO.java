@@ -1,16 +1,16 @@
 package Whole.daoPackage;
 
 import Whole.SingleConnection;
-import Whole.ccmsPackage.Auteur;
+import Whole.ccmsPackage.Personne;
 
 import java.sql.Connection;
 
 import java.util.ArrayList;
 /**
  * Classe servant à lié à la base de donnée les méthodes d'Auteurs
- * @see Auteur
+ * @see Personne
  */
-public class AuteurDAO extends AbstractDAO<Auteur> {
+public class AuteurDAO extends AbstractDAO<Personne> {
     /**
      * Constructeur d'AdminDAO
      * @see SingleConnection
@@ -24,52 +24,52 @@ public class AuteurDAO extends AbstractDAO<Auteur> {
     /**
      * Met à jour la BD
      *
-     * @param objet      Auteur à changer
-     * @param changement Auteur de changement (les paramètres null ne sont pas à changer)
+     * @param objet      Personne à changer
+     * @param changement Personne de changement (les paramètres null ne sont pas à changer)
      * @param cn         La connection à la base de donnée
      * @return
      * @see SingleConnection
      */
-    public boolean modifier(Auteur objet , Auteur changement, Connection cn) {
+    public boolean modifier(Personne objet , Personne changement, Connection cn) {
 
 
         return false;
     }
     /**
-     * Supprime de la db un Auteur
+     * Supprime de la db un Personne
      *
-     * @param objet un Auteur d'un type à déterminer dans chaque implémentation
+     * @param objet un Personne d'un type à déterminer dans chaque implémentation
      * @param cn    La connection à la base de donnée
      * @return
-     * @see Auteur
+     * @see Personne
      * @see SingleConnection
      */
-    public boolean supprimer(Auteur objet, Connection cn) {
+    public boolean supprimer(Personne objet, Connection cn) {
 
         return false;
     }
     /**
-     * Ajoute à la base de donnée un Auteur
+     * Ajoute à la base de donnée un Personne
      *
-     * @param donne l'Auteur à ajouter
+     * @param donne l'Personne à ajouter
      * @param cn    La connection à la base de donnée
      * @return
-     * @see Auteur
+     * @see Personne
      * @see SingleConnection
      */
-    public boolean creer(Auteur donne, Connection cn) {
+    public boolean creer(Personne donne, Connection cn) {
 
         return false;
     }
     /**
-     *Cherche un Auteur dans la base
-     * @param donne Auteur avec tous les paramètres nuls sauf ceux à chercher
+     *Cherche un Personne dans la base
+     * @param donne Personne avec tous les paramètres nuls sauf ceux à chercher
      * @param cn La connection à la base de donnée
      * @return la Liste des auteurs correspondant aux critères
-     * @see Auteur
+     * @see Personne
      * @see SingleConnection
      */
-    public ArrayList<Auteur> chercher(Auteur donne,Connection cn) {
+    public ArrayList<Personne> chercher(Personne donne, Connection cn) {
         return null;
     }
 }

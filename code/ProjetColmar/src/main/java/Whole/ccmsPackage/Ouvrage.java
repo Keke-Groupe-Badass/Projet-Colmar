@@ -8,7 +8,7 @@ import java.util.*;
 public class Ouvrage implements CCMS<Ouvrage> {
     private String titre;
 
-    private ArrayList<Auteur> auteurs;
+    private ArrayList<Personne> personnes;
 
     private String editeur;
 
@@ -57,7 +57,7 @@ public class Ouvrage implements CCMS<Ouvrage> {
     /**
      * Constructeur à utilisé pour les copies uniquements
      * @param titre String
-     * @param auteurs ArrayList<String>
+     * @param personnes ArrayList<String>
      * @param editeur String
      * @param imprimeur String
      * @param lieuEdition String
@@ -71,9 +71,9 @@ public class Ouvrage implements CCMS<Ouvrage> {
      * @param reechantillonage boolean
      * @param copyright String
      */
-    public Ouvrage(String titre, ArrayList<Auteur> auteurs, String editeur, String imprimeur, String lieuEdition, int dateEdition, int nbPage, String lien, int id, String format, String resolution, String creditResolution, boolean reechantillonage, String copyright) {
+    public Ouvrage(String titre, ArrayList<Personne> personnes, String editeur, String imprimeur, String lieuEdition, int dateEdition, int nbPage, String lien, int id, String format, String resolution, String creditResolution, boolean reechantillonage, String copyright) {
         this.titre = titre;
-        this.auteurs = new ArrayList<>();
+        this.personnes = new ArrayList<>();
         this.editeur = editeur;
         this.imprimeur = imprimeur;
         this.lieuEdition = lieuEdition;
@@ -86,8 +86,8 @@ public class Ouvrage implements CCMS<Ouvrage> {
         this.creditResolution = creditResolution;
         this.reechantillonage = reechantillonage;
         this.copyright = copyright;
-        for(Auteur a: auteurs){
-            this.auteurs.add(a);
+        for(Personne a: personnes){
+            this.personnes.add(a);
         }
 
     }
@@ -186,11 +186,11 @@ public class Ouvrage implements CCMS<Ouvrage> {
     }
 
     /**
-     * renvoie les auteurs de l'ouvrage
-     * @return auteurs String
+     * renvoie les personnes de l'ouvrage
+     * @return personnes String
      */
-    public ArrayList<Auteur> getAuteurs() {
-        return auteurs;
+    public ArrayList<Personne> getAuteurs() {
+        return personnes;
     }
 
     /**
@@ -255,13 +255,13 @@ public class Ouvrage implements CCMS<Ouvrage> {
     }
 
     /**
-     * change les auteurs de l'ouvrage par les auteurs passés en paramètre
-     * @param auteurs String
+     * change les personnes de l'ouvrage par les personnes passés en paramètre
+     * @param personnes String
      */
-    public void setAuteurs(ArrayList<Auteur> auteurs) {
-        this.auteurs = new ArrayList<>();
-        for(Auteur auteur: auteurs){
-            this.auteurs.add(auteur);
+    public void setAuteurs(ArrayList<Personne> personnes) {
+        this.personnes = new ArrayList<>();
+        for(Personne personne : personnes){
+            this.personnes.add(personne);
         }
     }
 
@@ -294,7 +294,7 @@ public class Ouvrage implements CCMS<Ouvrage> {
      * @return la copie exacte d'un ouvrage
      */
     public Ouvrage copie(){
-        return new Ouvrage( titre,  auteurs,  editeur,  imprimeur,  lieuEdition,  dateEdition,  nbPage,  lien,  id,  format,  resolution,  creditResolution,  reechantillonage, copyright);
+        return new Ouvrage( titre, personnes,  editeur,  imprimeur,  lieuEdition,  dateEdition,  nbPage,  lien,  id,  format,  resolution,  creditResolution,  reechantillonage, copyright);
     }
     /**
      * Change la date d'édition de l'ouvrage par la date passée en paramètre
@@ -327,10 +327,10 @@ public class Ouvrage implements CCMS<Ouvrage> {
      * Ajoute à la liste des Auteurs un auteur
      * @param a l'auteur à ajouter
      */
-    public void addAuteur(Auteur a){
+    public void addAuteur(Personne a){
         if(a!=null){
-            if(!auteurs.contains(a)){
-                auteurs.add(a);
+            if(!personnes.contains(a)){
+                personnes.add(a);
             }
         }
     }
@@ -338,9 +338,9 @@ public class Ouvrage implements CCMS<Ouvrage> {
      * Supprime à la liste des Auteurs un auteur
      * @param a l'auteur à supprimer
      */
-    public void retirerAuteur(Auteur a){
+    public void retirerAuteur(Personne a){
         if(a!=null){
-            auteurs.remove(a);
+            personnes.remove(a);
         }
     }
 
@@ -391,8 +391,8 @@ public class Ouvrage implements CCMS<Ouvrage> {
         if(objet.getDateEdition()!=this.dateEdition){
             return false;
         }
-        for(Auteur auteur: this.auteurs){
-            if(!objet.getAuteurs().contains(auteur)){
+        for(Personne personne : this.personnes){
+            if(!objet.getAuteurs().contains(personne)){
                 return false;
             }
         }

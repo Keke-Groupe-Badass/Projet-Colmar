@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
-import Whole.ccmsPackage.Auteur;
+import Whole.ccmsPackage.Personne;
 import Whole.ccmsPackage.Ouvrage;
 import org.junit.jupiter.api.Test;
 
@@ -21,7 +21,7 @@ class OuvrageTest {
 	}
 	
 	/**
-	 * Teste que le premier constructeur n'accepte pas un id négatif.
+	 * Teste que le premier constructeur n'accepte pas un id nï¿½gatif.
 	 */
 	@Test
 	void testConstructeurIdNegatif() {
@@ -34,7 +34,7 @@ class OuvrageTest {
 	 */
 	@Test
 	void testConstructeurCopieTitreNull() {
-		Ouvrage ouvrage=new Ouvrage(null, new ArrayList<Auteur>(), "editeur", "imprimeur", "lieuEdition", 0000, 10, "lien", 1, "format", "resolution", "creditResolution", false, "copyright");
+		Ouvrage ouvrage=new Ouvrage(null, new ArrayList<Personne>(), "editeur", "imprimeur", "lieuEdition", 0000, 10, "lien", 1, "format", "resolution", "creditResolution", false, "copyright");
 		assertFalse(ouvrage.getTitre() == null);
 	}
 	
@@ -48,11 +48,11 @@ class OuvrageTest {
 	}
 	
 	/**
-	 * Teste que le constructeur pour les copies n'accepte pas d'éditeur null.
+	 * Teste que le constructeur pour les copies n'accepte pas d'ï¿½diteur null.
 	 */
 	@Test
 	void testConstructeurCopieEditeurNull() {
-		Ouvrage ouvrage=new Ouvrage("titre", new ArrayList<Auteur>(), null, "imprimeur", "lieuEdition", 0000, 10, "lien", 1, "format", "resolution", "creditResolution", false, "copyright");
+		Ouvrage ouvrage=new Ouvrage("titre", new ArrayList<Personne>(), null, "imprimeur", "lieuEdition", 0000, 10, "lien", 1, "format", "resolution", "creditResolution", false, "copyright");
 		assertFalse(ouvrage.getEditeur() == null);
 	}
 	
@@ -61,7 +61,7 @@ class OuvrageTest {
 	 */
 	@Test
 	void testConstructeurCopieImprimeurNull() {
-		Ouvrage ouvrage=new Ouvrage("titre", new ArrayList<Auteur>(), "editeur", null, "lieuEdition", 0000, 10, "lien", 1, "format", "resolution", "creditResolution", false, "copyright");
+		Ouvrage ouvrage=new Ouvrage("titre", new ArrayList<Personne>(), "editeur", null, "lieuEdition", 0000, 10, "lien", 1, "format", "resolution", "creditResolution", false, "copyright");
 		assertFalse(ouvrage.getImprimeur() == null);
 	}
 	
@@ -70,34 +70,34 @@ class OuvrageTest {
 	 */
 	@Test
 	void testConstructeurCopieLieuEditionNull() {
-		Ouvrage ouvrage=new Ouvrage("titre", new ArrayList<Auteur>(), "editeur", "imprimeur", null, 0000, 10, "lien", 1, "format", "resolution", "creditResolution", false, "copyright");
+		Ouvrage ouvrage=new Ouvrage("titre", new ArrayList<Personne>(), "editeur", "imprimeur", null, 0000, 10, "lien", 1, "format", "resolution", "creditResolution", false, "copyright");
 		assertFalse(ouvrage.getLieuEdition() == null);
 	}
 	
 	/**
-	 * Teste que le constructeur pour les copies n'accepte pas de date au-delà de 10000.
+	 * Teste que le constructeur pour les copies n'accepte pas de date au-delï¿½ de 10000.
 	 */
 	@Test
 	void testConstructeurCopieDateEditionImpossible() {
-		Ouvrage ouvrage=new Ouvrage("titre", new ArrayList<Auteur>(), "editeur", "imprimeur", "lieuEdition", 52023, 10, "lien", 1, "format", "resolution", "creditResolution", false, "copyright");
+		Ouvrage ouvrage=new Ouvrage("titre", new ArrayList<Personne>(), "editeur", "imprimeur", "lieuEdition", 52023, 10, "lien", 1, "format", "resolution", "creditResolution", false, "copyright");
 		assertTrue(ouvrage.getDateEdition() < 10000);
 	}
 	
 	/**
-	 * Teste que le constructeur pour les copies n'accepte pas de nombre de pages négatif.
+	 * Teste que le constructeur pour les copies n'accepte pas de nombre de pages nï¿½gatif.
 	 */
 	@Test
 	void testConstructeurCopieNbPageNegatif() {
-		Ouvrage ouvrage=new Ouvrage("titre", new ArrayList<Auteur>(), "editeur", "imprimeur", "lieuEdition", 0000, -5, "lien", 1, "format", "resolution", "creditResolution", false, "copyright");
+		Ouvrage ouvrage=new Ouvrage("titre", new ArrayList<Personne>(), "editeur", "imprimeur", "lieuEdition", 0000, -5, "lien", 1, "format", "resolution", "creditResolution", false, "copyright");
 		assertFalse(ouvrage.getNbPage() < 0);
 	}
 	
 	/**
-	 * Teste que le constructeur pour les copies n'accepte pas d'id négatif.
+	 * Teste que le constructeur pour les copies n'accepte pas d'id nï¿½gatif.
 	 */
 	@Test
 	void testConstructeurCopieIdNegatif() {
-		Ouvrage ouvrage=new Ouvrage("titre", new ArrayList<Auteur>(), "editeur", "imprimeur", "lieuEdition", 0000, 10, "lien", -5, "format", "resolution", "creditResolution", false, "copyright");
+		Ouvrage ouvrage=new Ouvrage("titre", new ArrayList<Personne>(), "editeur", "imprimeur", "lieuEdition", 0000, 10, "lien", -5, "format", "resolution", "creditResolution", false, "copyright");
 		assertFalse(ouvrage.getId() < 0);
 	}
 	
@@ -106,25 +106,25 @@ class OuvrageTest {
 	 */
 	@Test
 	void testConstructeurCopieFormatNull() {
-		Ouvrage ouvrage=new Ouvrage("titre", new ArrayList<Auteur>(), "editeur", "imprimeur", "lieuEdition", 0000, 10, "lien", 1, null, "resolution", "creditResolution", false, "copyright");
+		Ouvrage ouvrage=new Ouvrage("titre", new ArrayList<Personne>(), "editeur", "imprimeur", "lieuEdition", 0000, 10, "lien", 1, null, "resolution", "creditResolution", false, "copyright");
 		assertFalse(ouvrage.getFormat() == null);
 	}
 	
 	/**
-	 * Teste que le constructeur pour les copies n'accepte pas de résolution null.
+	 * Teste que le constructeur pour les copies n'accepte pas de rï¿½solution null.
 	 */
 	@Test
 	void testConstructeurCopieResolutionNull() {
-		Ouvrage ouvrage=new Ouvrage("titre", new ArrayList<Auteur>(), "editeur", "imprimeur", "lieuEdition", 0000, 10, "lien", 1, "format", null, "creditResolution", false, "copyright");
+		Ouvrage ouvrage=new Ouvrage("titre", new ArrayList<Personne>(), "editeur", "imprimeur", "lieuEdition", 0000, 10, "lien", 1, "format", null, "creditResolution", false, "copyright");
 		assertFalse(ouvrage.getResolution() == null);
 	}
 	
 	/**
-	 * Teste que le constructeur pour les copies n'accepte pas de crédit résolution null.
+	 * Teste que le constructeur pour les copies n'accepte pas de crï¿½dit rï¿½solution null.
 	 */
 	@Test
 	void testConstructeurCopieCreditResolutionNull() {
-		Ouvrage ouvrage=new Ouvrage("titre", new ArrayList<Auteur>(), "editeur", "imprimeur", "lieuEdition", 0000, 10, "lien", 1, "format", "resolution", null, false, "copyright");
+		Ouvrage ouvrage=new Ouvrage("titre", new ArrayList<Personne>(), "editeur", "imprimeur", "lieuEdition", 0000, 10, "lien", 1, "format", "resolution", null, false, "copyright");
 		assertFalse(ouvrage.getCreditResolution() == null);
 	}
 	
@@ -133,7 +133,7 @@ class OuvrageTest {
 	 */
 	@Test
 	void testConstructeurCopieCopyrightNull() {
-		Ouvrage ouvrage=new Ouvrage("titre", new ArrayList<Auteur>(), "editeur", "imprimeur", "lieuEdition", 0000, 10, "lien", 1, "format", "resolution", "creditResolution", false, null);
+		Ouvrage ouvrage=new Ouvrage("titre", new ArrayList<Personne>(), "editeur", "imprimeur", "lieuEdition", 0000, 10, "lien", 1, "format", "resolution", "creditResolution", false, null);
 		assertFalse(ouvrage.getCopyright() == null);
 	}
 	
@@ -148,7 +148,7 @@ class OuvrageTest {
 	}
 	
 	/**
-	 * Teste que setResolution n'accepte pas de résolution null.
+	 * Teste que setResolution n'accepte pas de rï¿½solution null.
 	 */
 	@Test
 	void testSetResolutionNull() {
@@ -158,7 +158,7 @@ class OuvrageTest {
 	}
 	
 	/**
-	 * Teste que setCreditFormat n'accepte pas de crédit format null.
+	 * Teste que setCreditFormat n'accepte pas de crï¿½dit format null.
 	 */
 	@Test
 	void testSetCreditResolutionNull() {
@@ -198,7 +198,7 @@ class OuvrageTest {
 	}
 	
 	/**
-	 * Teste que setEditeur n'accepte pas d'éditeur null.
+	 * Teste que setEditeur n'accepte pas d'ï¿½diteur null.
 	 */
 	@Test
 	void testSetEditeurNull() {
@@ -218,7 +218,7 @@ class OuvrageTest {
 	}
 	
 	/**
-	 * Teste que setLieuEdition n'accepte pas de lieu d'édition null.
+	 * Teste que setLieuEdition n'accepte pas de lieu d'ï¿½dition null.
 	 */
 	@Test
 	void testSetLieuEditionNull() {
@@ -228,7 +228,7 @@ class OuvrageTest {
 	}
 	
 	/**
-	 * Teste que setNbPage n'accepte pas de nombre de pages négatif.
+	 * Teste que setNbPage n'accepte pas de nombre de pages nï¿½gatif.
 	 */
 	@Test
 	void testSetNbPageNegatif() {
@@ -253,7 +253,7 @@ class OuvrageTest {
 	@Test
 	void testAddAuteur() {
 		Ouvrage ouvrage=new Ouvrage("titre", 5);
-		Auteur test=new Auteur(1, "Auteur", "Test");
+		Personne test=new Personne(1, "Personne", "Test");
 		ouvrage.addAuteur(test);
 		assertTrue(ouvrage.getAuteurs().contains(test));
 	}
@@ -269,15 +269,15 @@ class OuvrageTest {
 	}
 	
 	/**
-	 * Teste que addAuteur n'ajoute pas de doublons à la liste.
+	 * Teste que addAuteur n'ajoute pas de doublons ï¿½ la liste.
 	 */
 	@Test
 	void testAddAuteurDoublon() {
 		Ouvrage ouvrage=new Ouvrage("titre", 5);
-		Auteur test=new Auteur(1, "Auteur", "Test");
+		Personne test=new Personne(1, "Personne", "Test");
 		ouvrage.addAuteur(test);
 		ouvrage.addAuteur(test);
-		Set<Auteur> set=new HashSet<Auteur>(ouvrage.getAuteurs());
+		Set<Personne> set=new HashSet<Personne>(ouvrage.getAuteurs());
 		assertFalse(set.size() < ouvrage.getAuteurs().size());
 	}
 	
@@ -287,7 +287,7 @@ class OuvrageTest {
 	@Test
 	void testRetirerAuteur() {
 		Ouvrage ouvrage=new Ouvrage("titre", 5);
-		Auteur test=new Auteur(1, "Auteur", "Test");
+		Personne test=new Personne(1, "Personne", "Test");
 		ouvrage.retirerAuteur(test);
 		assertFalse(ouvrage.getAuteurs().contains(test));
 	}

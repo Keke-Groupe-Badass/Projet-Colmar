@@ -3,7 +3,7 @@ package Whole.ccmsPackage;
 /**
  * Classe représentant les auteurs
  */
-public class Auteur implements CCMS<Auteur> {
+public class Personne implements CCMS<Personne> {
 
     private int id;
 
@@ -15,29 +15,29 @@ public class Auteur implements CCMS<Auteur> {
 
 
     /**
-     * Constructeur de la classe Auteur
+     * Constructeur de la classe Personne
      * @param id int
      * @param nom String
      * @param prenom String
      */
-    public Auteur(int id, String nom, String prenom) {
+    public Personne(int id, String nom, String prenom) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
     }
 
     /**
-     * Constructeur de la classe Auteur
+     * Constructeur de la classe Personne
      * @param id int
      */
-    public Auteur(int id) {
+    public Personne(int id) {
         this.id = id;
     }
 
     /**
      * Constructeur à utiliser pour les instances de changement
      */
-    public Auteur(){
+    public Personne(){
         this.id=-2;
         this.nom=null;
         this.prenom=null;
@@ -45,7 +45,7 @@ public class Auteur implements CCMS<Auteur> {
 
 
     /**
-     * renvoie l'id de l'auteur dans la base
+     * renvoie l'id de la personne dans la base
      * @return id int
      */
     private int getId() {
@@ -53,7 +53,7 @@ public class Auteur implements CCMS<Auteur> {
     }
 
     /**
-     * renvoie le nom de l'auteur
+     * renvoie le nom de la personne
      * @return nom String
      */
     private String getNom() {
@@ -61,7 +61,7 @@ public class Auteur implements CCMS<Auteur> {
     }
 
     /**
-     * renvoie le prenom de l'auteur
+     * renvoie le prenom de la personne
      * @return prenom String
      */
     private String getPrenom() {
@@ -69,7 +69,7 @@ public class Auteur implements CCMS<Auteur> {
     }
 
     /**
-     * change le nom de l'auteur par le nom passé en param
+     * change le nom de la personne par le nom passé en param
      * @param nom String
      */
     private void setNom(String nom) {
@@ -78,7 +78,7 @@ public class Auteur implements CCMS<Auteur> {
     }
 
     /**
-     * change le prenom de l'auteur par le prénom passé en param
+     * change le prenom de la personne par le prénom passé en param
      * @param prenom String
      */
     private void setPrenom(String prenom) {
@@ -92,7 +92,7 @@ public class Auteur implements CCMS<Auteur> {
      * @return renvoie true si les deux objets sont similaires, false sinons
      */
     @Override
-    public Boolean estCLone(Auteur objet) {
+    public Boolean estCLone(Personne objet) {
         if(objet==null){
             return false;
         }
@@ -107,7 +107,7 @@ public class Auteur implements CCMS<Auteur> {
         }
         return true;
     }
-    public boolean equals(Auteur objet){
+    public boolean equals(Personne objet){
         return this.estCLone(objet);
     }
 }
