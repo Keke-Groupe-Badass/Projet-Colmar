@@ -49,7 +49,7 @@ public class Lettrine implements CCMS<Lettrine> {
     private int identique;
 
 
-    /**.
+    /**
      * Constructeur de la classe Lettrine
      * @param ouvrage Ouvrage
      * @param metadonnees ArrayList<Metadonnee>
@@ -66,7 +66,7 @@ public class Lettrine implements CCMS<Lettrine> {
         this.tags = tags;
         this.lien = lien;
     }
-    /**.
+    /**
      * Constructeur de la classe Lettrine
      * @param ouvrage Ouvrage
      * @param metadonnees ArrayList<Metadonnee>
