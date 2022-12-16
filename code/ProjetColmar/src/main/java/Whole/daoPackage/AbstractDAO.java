@@ -9,7 +9,7 @@ import java.util.*;
  * Classe abstraite servant à factoriser à lié à la base de donnée les méthodes
  * modifier, creer, chercher et supprimer des CCMS
  */
-public abstract class AbstractDAO<CCMS>{
+public abstract class AbstractDAO<CCMS> extends SuperAbstractDAO{
     static Connection cn;
 
     /**
@@ -20,7 +20,8 @@ public abstract class AbstractDAO<CCMS>{
      * @param password le mot de passe de la base de donnée
      */
     public AbstractDAO(String url, String login, String password) {
-        this.cn=SingleConnection.getInstance(url,login,password);
+        super(url,login,password);
+
     }
 
     /**

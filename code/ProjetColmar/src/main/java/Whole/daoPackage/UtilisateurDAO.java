@@ -24,13 +24,13 @@ import java.util.regex.Pattern;
 * @see AbstractDAO
 */
 
-public class UtilisateurDAO {
+public class UtilisateurDAO extends SuperAbstractDAO{
 	private static Connection cn;
     /**
 	 * Constructeur de la classe UtilisateurDAO.
 	 */
-	public UtilisateurDAO() {
-
+	public UtilisateurDAO(String url, String login, String password) {
+		super(url, login, password);
 	}
 
 	/**
@@ -69,11 +69,10 @@ public class UtilisateurDAO {
 	 * @author Emerance
     * @param login login de l'utilisateur, permet de l'identifier dans la BDD
     * @param mdp nouveau mot de passe qui doit venir remplacer l'ancien
-	* @param cn La connection � la base de donn�es
 	* @return renvoie true si la modification s'est correctement effectu�e, false sinon
 	* @see SingleConnection
     */
-    public boolean changeMDP(String login, String mdp, Connection cn) {
+    public boolean changeMDP(String login, String mdp) {
     	boolean fonctionne=false; 
     	if (mdpValide(mdp)) {
     		String sql="SELECT email FROM utilisateur WHERE email='"+login+"'";
@@ -99,11 +98,10 @@ public class UtilisateurDAO {
     * correspondant est alors supprim�.
     * @author Emerance
     * @param login login de l'utilisateur
-	* @param cn La connection � la base de donn�es
 	* @return true si la suppression s'est correctement pass�e, false sinon
 	* @see SingleConnection
     */
-    public boolean supprimerUtilisateur(String login, Connection cn) {
+    public boolean supprimerUtilisateur(String login) {
     	boolean fonctionne=false; 
     	String sql="SELECT email FROM utilisateur WHERE email='"+login+"'";
     	try {
@@ -128,12 +126,11 @@ public class UtilisateurDAO {
     * @param login login de l'utilisateur � ajouter = mail
     * @param mdp mot de passe de l'utilisateur � ajouter
     * @param statut statut de l'utilisateur
-	* @param cn La connection � la base de donn�es
 	* @return renvoie true si l'insertion s'est correctement pass�e, false
 	* sinon
 	* @see SingleConnection
     */
-    public boolean creerUtilisateur(String login, String mdp, String statut, Connection cn) {
+    public boolean creerUtilisateur(String login, String mdp, String statut) {
     	boolean loginValide=false;
     	boolean statutValide=false;
     	//On v�rifie que rien n'est null, puis on v�rifie le format du login et du statut

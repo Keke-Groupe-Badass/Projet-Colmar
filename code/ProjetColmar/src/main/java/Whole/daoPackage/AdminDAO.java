@@ -17,7 +17,7 @@ import static Whole.daoPackage.AbstractDAO.cn;
 /**
  * Classe permettant à l'administrateur de gérer la base de donnée
  */
-public class AdminDAO {
+public class AdminDAO extends SuperAbstractDAO{
 
     private String user;
     private String mdp;
@@ -29,7 +29,11 @@ public class AdminDAO {
     /**
      * Constructeur de la classe
      */
-    public AdminDAO() {
+    public AdminDAO(String url, String login, String password) {
+        super(url, login, password);
+        this.user = login;
+        this.mdp = password;
+        this.dbName = url;
     }
 
     /**
