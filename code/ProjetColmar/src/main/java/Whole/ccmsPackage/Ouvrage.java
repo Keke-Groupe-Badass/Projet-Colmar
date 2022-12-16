@@ -279,6 +279,7 @@ public class Ouvrage implements CCMS<Ouvrage> {
 
     /**
      * Permet de copier les valeurs d'un ouvrage
+     * @author Andreas
      * @return la copie exacte d'un ouvrage
      */
     public Ouvrage copie(){
@@ -324,7 +325,7 @@ public class Ouvrage implements CCMS<Ouvrage> {
 
     /**
      * Permet de verifier si 2 objets sont exactement similaires
-     *
+     * @author Andreas
      * @param objet l'objet à comparer
      * @return renvoie true si les deux objets sont similaires, false sinons
      */

@@ -87,7 +87,7 @@ public class Personne implements CCMS<Personne> {
 
     /**
      * Permet de verifier si 2 objets sont exactement similaires
-     *
+     * @author Andreas
      * @param objet l'objet à comparer
      * @return renvoie true si les deux objets sont similaires, false sinons
      */

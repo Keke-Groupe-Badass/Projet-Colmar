@@ -38,6 +38,7 @@ public class UtilisateurDAO {
 	 * et le mot de passe de l'utilisateur, puis on fait une requ�te � la base de
 	 * donn�es pour s'assurer que l'utilisateur existe et que le mot de passe est
 	 * le bon.
+	 * @author Emerance
 	 * @param login Le nom d'utilisateur pour se connecter � la base de donn�e
 	 * @param mdp Le mot de passe de la base de donn�e
 	 * @return renvoie le login sous forme de String si la connexion s'est correctement
@@ -65,6 +66,7 @@ public class UtilisateurDAO {
     * nouveau mot de passe souhaite, puis on retrouve l'utilisateur dans la base de
     * donnees � l'aide du login. Le nouveau mot de passe est encrypt� puis stock�
     * dans la base � la place de l'ancien.
+	 * @author Emerance
     * @param login login de l'utilisateur, permet de l'identifier dans la BDD
     * @param mdp nouveau mot de passe qui doit venir remplacer l'ancien
 	* @param cn La connection � la base de donn�es
@@ -95,7 +97,7 @@ public class UtilisateurDAO {
     * Permet de supprimer un utilisateur de la base de donn�es � partir de son login.
     * Le login est recherch� dans la base de donnees, puis si trouve l'utilisateur
     * correspondant est alors supprim�.
-    * 
+    * @author Emerance
     * @param login login de l'utilisateur
 	* @param cn La connection � la base de donn�es
 	* @return true si la suppression s'est correctement pass�e, false sinon
@@ -122,7 +124,7 @@ public class UtilisateurDAO {
     * Si le login n'existe pas d�j�, on encrypte le mot de passe et on
     * effectue une requ�te d'insertion avec le login et le mot de passe
     * de l'utilisateur qu'on souhaite ajouter.
-    *
+    * @author Emerance
     * @param login login de l'utilisateur � ajouter = mail
     * @param mdp mot de passe de l'utilisateur � ajouter
     * @param statut statut de l'utilisateur
@@ -173,7 +175,7 @@ public class UtilisateurDAO {
      * Permet de v�rifier que le mot de passe correspond au format
      * attendu. C'est � dire : 6 caract�res minimum, des majuscules et
      * des minuscules, des caract�res sp�ciaux sauf " et '
-     * 
+     * @author Emerance
      * @param mdp mot de passe qu'on souhaite verifier
      * @return renvoie true si le mdp correspond aux conditions,
      * false sinon
@@ -189,7 +191,7 @@ public class UtilisateurDAO {
     /**
      * Permet d'encrypter le mot de passe pour qu'il n'apparaisse
      * pas tel quel dans la base de donn�es.
-     * 
+     * @author Emerance
      * @param mdp mot de passe qu'on souhaite encrypter
      * @return renvoie le mot de passe encrypte
      */

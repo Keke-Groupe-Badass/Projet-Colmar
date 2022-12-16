@@ -34,6 +34,7 @@ public class AdminDAO {
 
     /**
      * Permet de stocker dans un fichier la bd
+     * @author Andreas
      * @param file le fichier où sera exporter les données
      * @see SingleConnection
      * @see Whole.exportPackage.ExportTypeInterface
@@ -41,29 +42,28 @@ public class AdminDAO {
      */
 
 
-    public Boolean exportDonee(File file, String methode, String path)  {
-        for(ExportTypeInterface e:listeMethode){
-            if(e.getName().equals(methode)){
-                if(e.getName().equals("SQL")){
+    public Boolean exportDonee(File file, String methode, String path) {
+        for (ExportTypeInterface e : listeMethode) {
+            if (e.getName().equals(methode)) {
+                if (e.getName().equals("SQL")) {
                     String os = System.getProperty("os.name");
-                    String type="sh";
-                    if(os.contains("Windows")){
-                        type="cmd.exe";
+                    String type = "sh";
+                    if (os.contains("Windows")) {
+                        type = "cmd.exe";
                     }
-                    String[] cmd = { type, "exportSQL.sh", "src/main/shell/exportSQL.sh",user,mdp,dbName,path};
+                    String[] cmd = {type, "exportSQL.sh", "src/main/shell/exportSQL.sh", user, mdp, dbName, path};
                     try {
                         Runtime.getRuntime().exec(cmd);
                     } catch (IOException ex) {
                         return false;
                     }
-                }
-                else{
+                } else {
                     Boolean b = true;
                     ArrayList<ArrayList<String>> list;
-                    for(String st:listeTable){
-                        list=getTableList(st);
-                        File f = new File(path+"/"+st);
-                        b = b && e.export(f,list );
+                    for (String st : listeTable) {
+                        list = getTableList(st);
+                        File f = new File(path + "/" + st);
+                        b = b && e.export(f, list);
                     }
                     return b;
 
@@ -76,6 +76,7 @@ public class AdminDAO {
     /**
      * Permet de transformer une table en une liste de liste, le premier niveau de liste représentant les lignes
      * et le second niveau les colones, la première ligne est le nom des colones.
+     * @author Andreas
      * @param table la table que l'on souhaite exporter
      * @return true si tout c'est bien passé, false sinon
      */
@@ -108,6 +109,7 @@ public class AdminDAO {
 
     /**
      * Permet de stocker dans un fichier les logs
+     * @author Andreas
      * @param cn La connection à la base de donnée
      * @param file le fichier où sera exporter les log
      * @see SingleConnection
@@ -141,6 +143,7 @@ public class AdminDAO {
 
     /**
      * Supprime les logs de la bd
+     * @author Andreas
      * @param cn La connection à la base de donnée
      * @see SingleConnection
      *
@@ -159,6 +162,7 @@ public class AdminDAO {
 
     /**
      * Ajoute au log un text
+     * @author Andreas
      * @param txt Le message à enregistrer
      * @return true si l'insertion peut se faire, false sinon
      * @see SingleConnection

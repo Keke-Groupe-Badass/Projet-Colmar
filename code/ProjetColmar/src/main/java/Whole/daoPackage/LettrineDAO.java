@@ -36,6 +36,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * dans la base. Cette methode renverra true si la requette a bien pu être effectuée, false dans les autres cas.
      * Cette méthode renverra notamment false si les lettrines objet ou changement sont vides, ou que tous leurs
      * attributs sont null. Elle renverra false également si l'id de la lettrine objet est <= 0
+     * @author Romain
      * @param objet CCMS à changer
      * @param changement CCMS de changement (les paramètres null ne sont pas à changer)
      * @return true si la requete a abouttie, false sinon
@@ -89,7 +90,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * Permet de supprimer la lettrine de l base de données. Renvoie true si la requete s'est
      * effectuée, false sinon. Renvoi false également si l'id de la lettrine passée en param est <= 0
      * <= 0.
-     *
+     * @author Romain
      * @param lettrine La lettrine à supprimer
      * @see Lettrine
      * @see SingleConnection
@@ -115,7 +116,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * Ajoute la lettrine donne à la base de données. Renvoie true si l'insertion s'est bien passée, false
      * sinon. Renvoie false également si l'id et le lien de la lettrine donnee s0nt respectivement
      * <= 0 et null.
-     *
+     * @author Romain
      * @param donne la lettrine à ajouter
      * @see Lettrine
      * @see SingleConnection
@@ -146,7 +147,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
     /**
      * Cherche des lettrines dans la base. La méthode renvoie une ArrayList de lettrines, en fonction
      * des attributs non null de la lettrine donne passée en param.
-     *
+     * @author Romain
      * @param donne CCMS avec tous les paramètres nuls sauf ceux à chercher
      * @return la Liste des lettrines correspondant aux critères
      * @see CCMS
@@ -271,6 +272,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * id pour créer un bout de requete sql, finalement on stocke ce bout de requete (String) dans
      * un StringBuilder, qui sera converti en un String contenant la partie de requete correspondante a la
      * recherche des métadonnées, String qui sera retourné.
+     * @author Romain
      * @param donne Lettrine : lettrine contenant les attributs sur lesquels effectuer la recherche
      * @param idMeta : ArrayList d'entiers contenant les id des métadonnées contenues dans l'attribut métadonnée
      * de donne.
@@ -352,6 +354,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
     /**
      * recherche sur les tags : meme principe que pour les métadonnées. On récupère String contenant la
      * requête SQL de recherche des tags.
+     * @author Romain
      * @param donne Lettrine : lettrine contenant les attributs sur lesquels effectuer la recherche
      * @param idTags : ArrayList d'entiers contenant les id des métadonnées contenues dans l'attribut tag
      * de donne.
@@ -428,7 +431,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * permet de lier dans la base de donnée une lettrine à ouvrage, en effet une lettrine n'est présente
      * que dans un seul et unique ouvrage. renvoie true si la requete a été effectuée, false sinon. Renvoie
      * false également si les id de l et de o sont <= 0
-     *
+     * @author Romain
      * @param l la lettrine à lier à l'ouvrage
      * @param o l'ouvrage d'origine
      * @param cn La connection à la base de donnée
@@ -459,7 +462,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
     /**
      * Permet de lier dans la base de donnée une lettrine à un tag. Renvoie true si la requete s'est bien effectuée
      * false sinon. Renvoie false si les id de l et de t sont <= 0
-     *
+     * @author Romain
      * @param l La lettrine dont on souhaite ajouter un tag
      * @param t Le tag à ajouter à la lettrine
      * @param cn La connection à la base de donnée
@@ -486,7 +489,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
     /**
      * permet de caracteriser une lettrine en ajoutant une métadonnée. Renvoie true si la requete s'est bien
      * effectuée, false sinon. Renvoie false également si l'id de meta et l'id de l sont <= 0
-
+     * @author Romain
      * @param meta Métadonnée à ajouter à la lettrine
      * @param l Lettrine à laquelle la métadonnée doit etre ajoutée
      * @param cn La connection à la base de donnée
@@ -512,7 +515,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
     /**
      * supprimer une métadonnée de la base. Renvoie true si la suppression s'est bien effectuée, false sinon
      * Renvoie false si l'id de meta est <= 0
-     *
+     * @author Romain
      * @param meta metadonnée a supprimer
      * @param cn connexion a la base
      * @return true si la requete s'est effectuée, false sinon
@@ -535,7 +538,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
     /**
      * Met à jour la base de donnée avec les nouvelles valeurs de la métadonnée. Renvoie true si la requete
      * s'est bien effectée, false sinon. Renvoie false si l'id de meta est <= 0
-     *
+     * @author Romain
      * @param meta La métadonnée dont l'on souhaite que la partie code correspond avec la partie base de donnée
      * @param cn La connection à la base de donnée
      * @see SingleConnection
@@ -602,6 +605,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
 
     /**
      * Créer un nouveau groupe d'élément identiques
+     * @author Andreas
      * @param description la description du groupe
      * @return l'identifiant du groupe, en cas d'erreur -1
      */
@@ -621,6 +625,16 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
         }
         return -1;
     }
+
+    /**
+     * Permet de changer dans la base de donnée la description d'un groupe
+     * @author Andreas
+     * @param id l'identifiant du groupe
+     * @param description la description du groupe
+     * @return true si l'opération a pu se faire, false sinon
+     */
+
+
     public boolean changeDescription(int id, String description){
         Statement stmt = null;
         try {

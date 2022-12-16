@@ -2,6 +2,7 @@ package Whole.fenetrePackage;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 
@@ -9,10 +10,10 @@ import javafx.stage.Stage;
  * @see Application
  */
 public class FXInterface extends Application implements FenetreInterface {
-
     public static void main(String[] args) {
         launch(args);
     }
+
 
 
 
@@ -42,6 +43,9 @@ public class FXInterface extends Application implements FenetreInterface {
      */
     @Override
     public void start(Stage stage) throws Exception {
+        StackPane root = new StackPane();
+        stage.setScene(new Scene(root, 300, 250));
+        stage.show();
 
     }
 }

@@ -22,7 +22,6 @@ public class ExportXLS implements ExportTypeInterface {
      * @param f Fichier de sauvegarde
      * @return true si la base peut être exportée, false sinon
      * @see Whole.daoPackage.AdminDAO#exportDonee
-     * @see
      */
     @Override
     public Boolean export(File f, ArrayList<ArrayList<String>> list) {

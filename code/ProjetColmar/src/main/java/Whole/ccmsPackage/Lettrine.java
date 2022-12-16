@@ -92,10 +92,11 @@ public class Lettrine implements CCMS<Lettrine> {
      */
     public Lettrine(){
         this.ouvrage = null;
-        this.metadonnees = null;
+        this.metadonnees = new ArrayList<>();
         this.nbPage = -2;
         this.id = -2;
         this.lien = null;
+        this.tags=new ArrayList<>();
     }
     /**.
      * Renvoie un objet de type Ouvrage
@@ -218,6 +219,7 @@ public class Lettrine implements CCMS<Lettrine> {
     /**
      * Cette methode permet d'ajouter la m�tadonn�e pass�e en param�tre � la lettrine.
      *Elle affecte la liste de m�tadonn�es metadonnees en y ajoutant la m�tadonn�e pass�e en param�tre.
+     * @author Maxime
      * @param meta Metadonnee : metadonn�e � ajouter
      * @see Metadonnee
      */
@@ -232,6 +234,7 @@ public class Lettrine implements CCMS<Lettrine> {
     /**
      * Cette m�thode permet de supprimer la m�tadonn�e pass�e en param�tre � la lettrine.
      * Elle affecte la liste de m�tadonn�es metadonnees en en retirant la m�tadonn�e pass�e en param�tre.
+     * @author Maxime
      * @param meta : m�tadonn�e � supprimer
      * @see Metadonnee
      */
@@ -241,7 +244,7 @@ public class Lettrine implements CCMS<Lettrine> {
 
     /**
      * Permet de verifier si 2 objets sont exactement similaires
-     *
+     * @author Andreas
      * @param objet l'objet à comparer
      * @return renvoie true si les deux objets sont similaires, false sinon
      */
@@ -253,14 +256,18 @@ public class Lettrine implements CCMS<Lettrine> {
         if(!objet.getLien().equals(this.getLien())){
             return false;
         }
-        if(!objet.getOuvrage().equals(this.getOuvrage())){
-            return false;
+        if(objet.getOuvrage()!=null){
+            if(!objet.getOuvrage().equals(this.getOuvrage())){
+                return false;
+            }
         }
         if(objet.getId()!=this.getId()){
             return false;
         }
-        if(!objet.getCreateur().equals(this.createur)){
-            return false;
+        if(objet.getCreateur()!=null){
+            if(!objet.getCreateur().equals(this.createur)){
+                return false;
+            }
         }
         if(objet.getIdentique()!=this.identique){
             return false;

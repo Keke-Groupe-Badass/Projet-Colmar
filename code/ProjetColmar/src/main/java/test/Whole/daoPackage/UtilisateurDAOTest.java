@@ -9,6 +9,9 @@ import java.sql.SQLException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * @author Andreas
+ */
 class UtilisateurDAOTest {
     public static UtilisateurDAO u;
     public static Connection cn;
@@ -26,21 +29,17 @@ class UtilisateurDAOTest {
     }
     @Test
     void connexionNormal() {
-        assertTrue(u.connexion("root","",cn).equals("root"));
+        assertTrue(u.connexion("root","").equals("root"));
     }
     @Test
     void connexionLoginNull() {
-        assertTrue(u.connexion(null,"",cn).equals(null));
+        assertTrue(u.connexion(null,"").equals(null));
     }
     @Test
     void connexionPWDNull() {
-        assertTrue(u.connexion("root",null,cn).equals(null));
+        assertTrue(u.connexion("root",null).equals(null));
     }
-    @Test
 
-    void connexionConnectionNull() {
-        assertTrue(u.connexion("root","",null).equals(null));
-    }
     @Test
     void changeMDPNormal() {
         assertTrue(!u.changeMDP("root","MotDePasseValide1_",cn));
