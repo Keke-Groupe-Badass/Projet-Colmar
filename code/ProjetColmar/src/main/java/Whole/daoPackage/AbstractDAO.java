@@ -11,12 +11,21 @@ import java.util.*;
  */
 public abstract class AbstractDAO<CCMS>{
     static Connection cn;
+
+    /**
+     * Constructeur de la classe single connect
+     * @author Andreas
+     * @param url l'url de la base de donnée
+     * @param login le nom d'utilisateur
+     * @param password le mot de passe de la base de donnée
+     */
     public AbstractDAO(String url, String login, String password) {
         this.cn=SingleConnection.getInstance(url,login,password);
     }
 
     /**
      * Met à jour la BD
+     * @author Andreas
      * @param objet CCMS à changer
      * @param changement CCMS de changement (les paramètres null ne sont pas à changer)
      * @see CCMS
@@ -26,6 +35,7 @@ public abstract class AbstractDAO<CCMS>{
 
     /**
      * Supprime de la db un CCMS
+     * @author Andreas
      * @param objet un CCMS d'un type à déterminer dans chaque implémentation
      * @see CCMS
      * @see SingleConnection
@@ -34,6 +44,7 @@ public abstract class AbstractDAO<CCMS>{
 
     /**
      * Ajoute à la base de donnée un CCMS
+     * @author Andreas
      * @param donne le CCMS à ajouter
      * @see CCMS
      * @see SingleConnection
@@ -41,7 +52,8 @@ public abstract class AbstractDAO<CCMS>{
     public abstract boolean creer(CCMS donne);
 
     /**
-     *Cherche un CCMS dans la base
+     * Cherche un CCMS dans la base
+     * @author Andreas
      * @param donne CCMS avec tout les paramètres nuls sauf ceux à chercher
      * @return la Liste des des CCMS correspondant aux critères
      * @see CCMS

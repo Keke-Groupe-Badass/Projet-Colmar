@@ -1,6 +1,7 @@
 package Whole;
 
 import Whole.ccmsPackage.Lettrine;
+import Whole.fenetrePackage.FXInterface;
 
 import java.io.File;
 
@@ -12,6 +13,7 @@ public class Main {
      */
 
     public static void main(String[] args) {
+        FXInterface f = new FXInterface();
         /**
         try {
 

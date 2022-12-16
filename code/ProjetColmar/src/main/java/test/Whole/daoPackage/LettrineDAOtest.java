@@ -16,6 +16,9 @@ import Whole.ccmsPackage.Tag;
 import Whole.daoPackage.LettrineDAO;
 import Whole.daoPackage.UtilisateurDAO;
 
+/**
+ * @author Maxime
+ */
 class LettrineDAOtest {
 	
 	

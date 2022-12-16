@@ -13,12 +13,12 @@ public class SingleConnection {
     private static SingleConnection instance = new SingleConnection();
 
     /**
+     * @author Andreas
      * Constructeur de la classe SingleConnection.
      */
 
     private static void SingleConnection(String url, String login, String pwd) throws ClassNotFoundException, SQLException{
         Class.forName("com.mysql.jdbc.Driver");
-
         try {
             cn= DriverManager.getConnection(url,login,pwd);
         } catch (SQLException e) {
@@ -33,7 +33,7 @@ public class SingleConnection {
      * connexion et la renvoie. Elle instancie la Connection cn.
      * Sinon, elle renvoie la connexion deja existante.
      * Si echec de connexion, elle leve une exception SQLException.
-     *
+     * @author Emerance
      * @param url   lien vers la base de donnees
      * @param login login de l'utilisateur de la BDD, permet de s'identifier sur la base de donnees
      *              pour y avoir acces
