@@ -59,6 +59,7 @@ public class AdminDAO extends SuperAbstractDAO {
 
     /**
      * Permet d'exporter les données aux formats non-sql
+     * @author Andreas
      * @param path le fichier où sera exporter les données
      * @return true si l'export a pu se faire, false sinon
      */
@@ -75,6 +76,7 @@ public class AdminDAO extends SuperAbstractDAO {
 
     /**
      * Permet d'exporter les données au format SQL
+     * @author Andreas
      * @param path le fichier où sera exporter les données
      * @return true si l'export a pu se faire, false sinon
      */
