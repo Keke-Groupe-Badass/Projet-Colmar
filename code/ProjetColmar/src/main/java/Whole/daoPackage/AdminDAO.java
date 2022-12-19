@@ -12,20 +12,19 @@ import java.sql.*;
 
 import java.util.ArrayList;
 
-import static Whole.daoPackage.AbstractDAO.cn;
 
 /**
  * Classe permettant à l'administrateur de gérer la base de donnée
  */
-public class AdminDAO extends SuperAbstractDAO{
+public class AdminDAO extends SuperAbstractDAO {
 
     private String user;
     private String mdp;
     private String dbName;
 
 
-    private ArrayList<ExportTypeInterface> listeMethode;
     private ArrayList<String> listeTable;
+
     /**
      * Constructeur de la classe
      */
@@ -38,45 +37,62 @@ public class AdminDAO extends SuperAbstractDAO{
 
     /**
      * Permet de stocker dans un fichier la bd
+     *
+     * @param e le nom de la méthode d'export
+     * @param path    le fichier où sera exporter les données
+     * @return true si l'export a pu se faire, false sinon
      * @author Andreas
-     * @param methode le nom de la méthode d'export
-     * @param path le fichier où sera exporter les données
      * @see SingleConnection
      * @see Whole.exportPackage.ExportTypeInterface
-     *
      */
 
 
-    public Boolean exportDonee(String methode, String path) {
-        for (ExportTypeInterface e : listeMethode) {
-            if (e.getName().equals(methode)) {
-                if (e.getName().equals("SQL")) {
-                    String os = System.getProperty("os.name");
-                    String type = "sh";
-                    if (os.contains("Windows")) {
-                        type = "cmd.exe";
-                    }
-                    String[] cmd = {type, "exportSQL.sh", "src/main/shell/exportSQL.sh", user, mdp, dbName, path};
-                    try {
-                        Runtime.getRuntime().exec(cmd);
-                    } catch (IOException ex) {
-                        return false;
-                    }
-                } else {
-                    Boolean b = true;
-                    ArrayList<ArrayList<String>> list;
-                    for (String st : listeTable) {
-                        list = getTableList(st);
-                        File f = new File(path + "/" + st);
-                        b = b && e.export(f, list);
-                    }
-                    return b;
-
-                }
-            }
+    public Boolean exportDonee(ExportTypeInterface e, String path) {
+        if(e==null){
+            return false;
         }
-        return false;
+        if (e.getName().equals("SQL")) {
+            return sqlExport(path);
+        }
+        return exportNonSQL(path, e);
     }
+
+    /**
+     * Permet d'exporter les données aux formats non-sql
+     * @param path le fichier où sera exporter les données
+     * @return true si l'export a pu se faire, false sinon
+     */
+    private boolean exportNonSQL(String path, ExportTypeInterface e) {
+        Boolean b = true;
+        ArrayList<ArrayList<String>> list;
+        for (String st : listeTable) {
+            list = getTableList(st);
+            File f = new File(path + "/" + st);
+            b = b && e.export(f, list);
+        }
+        return b;
+    }
+
+    /**
+     * Permet d'exporter les données au format SQL
+     * @param path le fichier où sera exporter les données
+     * @return true si l'export a pu se faire, false sinon
+     */
+    private boolean sqlExport(String path) {
+        String os = System.getProperty("os.name");
+        String type = "sh";
+        if (os.contains("Windows")) {
+            type = "cmd.exe";
+        }
+        String[] cmd = {type, "exportSQL.sh", "src/main/shell/exportSQL.sh", user, mdp, dbName, path};
+        try {
+            Runtime.getRuntime().exec(cmd);
+            return true;
+        } catch (IOException ex) {
+            return false;
+        }
+    }
+
 
     /**
      * Permet de transformer une table en une liste de liste, le premier niveau de liste représentant les lignes
