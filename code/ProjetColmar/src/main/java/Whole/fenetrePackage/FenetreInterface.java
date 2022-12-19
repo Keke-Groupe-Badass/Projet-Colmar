@@ -24,4 +24,10 @@ public interface FenetreInterface {
      */
     String savePopUp();
 
+    /**
+     * Permet d'afficher à l'utilisateur un message
+     *
+     * @param message le message à afficher à l'utilisateur
+     */
+    void afficherMessage(String message);
 }

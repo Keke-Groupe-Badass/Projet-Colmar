@@ -35,14 +35,15 @@ public class AdminDAO {
     /**
      * Permet de stocker dans un fichier la bd
      * @author Andreas
-     * @param file le fichier où sera exporter les données
+     * @param methode le nom de la méthode d'export
+     * @param path le fichier où sera exporter les données
      * @see SingleConnection
      * @see Whole.exportPackage.ExportTypeInterface
      *
      */
 
 
-    public Boolean exportDonee(File file, String methode, String path) {
+    public Boolean exportDonee(String methode, String path) {
         for (ExportTypeInterface e : listeMethode) {
             if (e.getName().equals(methode)) {
                 if (e.getName().equals("SQL")) {

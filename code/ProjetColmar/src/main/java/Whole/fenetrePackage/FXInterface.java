@@ -36,6 +36,17 @@ public class FXInterface extends Application implements FenetreInterface {
         return null;
     }
 
+    /**
+     * Permet d'afficher à l'utilisateur un message
+     *
+     *
+     * @param message le message à afficher à l'utilisateur
+     */
+    @Override
+    public void afficherMessage(String message) {
+
+    }
+
 
     /**
      * @param stage
