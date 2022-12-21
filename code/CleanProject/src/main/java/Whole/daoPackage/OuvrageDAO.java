@@ -161,6 +161,12 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
             throw new RuntimeException(e);
         }
     }
+
+    /**
+     * Permet d'obtenir la liste des auteurs ayant écrit un ouvrage
+     * @param id l'identifiant de l'ouvrage
+     * @return la liste des auteurs ayant écrie l'ouvrage
+     */
     private ArrayList listeAuteur(int id){
         ArrayList l = new ArrayList();
         try {
@@ -175,13 +181,19 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
         }
         return l;
     }
+
+    /**
+     * Permet d'obtenir une personne grace à son id
+     * @param id l'identifiant de la personne
+     * @return la personne
+     */
     private Personne getPersonne(int id){
         PreparedStatement stmt= null;
-        Personne p =new Personne();
         try {
             stmt = cn.prepareStatement("SELECT * FROM `personnes` WHERE `idOuvrage`=?");
             stmt.setInt(1,id);
             ResultSet rs =stmt.executeQuery();
+            Personne p = new Personne();
             if(rs.next()){
                 p.setNom(rs.getString(2));
                 p.setPrenom(rs.getString(3));
@@ -191,6 +203,6 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return p;
+        return null;
     }
 }

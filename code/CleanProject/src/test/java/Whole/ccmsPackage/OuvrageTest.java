@@ -33,7 +33,7 @@ class OuvrageTest {
 	 */
 	@Test
 	void testConstructeurCopieTitreNull() {
-		Ouvrage ouvrage=new Ouvrage(null, new ArrayList<Personne>(), new Personne(), new Personne(), "lieuEdition", 0000, 10, 1, "format", "resolution", "creditResolution", false, "copyright");
+		Ouvrage ouvrage=new Ouvrage(null, new ArrayList<Personne>(), new Personne(), new Personne(), "lieuEdition", 0000, 10, 1, "format", "resolution", "creditResolution", false, "copyright","lien");
 		assertFalse(ouvrage.getTitre() == null);
 	}
 	
@@ -42,7 +42,7 @@ class OuvrageTest {
 	 */
 	@Test
 	void testConstructeurCopieAuteurNull() {
-		Ouvrage ouvrage=new Ouvrage("titre", null, new Personne(), new Personne(), "lieuEdition", 0000, 10, 1, "format", "resolution", "creditResolution", false, "copyright");
+		Ouvrage ouvrage=new Ouvrage("titre", null, new Personne(), new Personne(), "lieuEdition", 0000, 10, 1, "format", "resolution", "creditResolution", false, "copyright","lien");
 		assertTrue(ouvrage.getAuteurs().isEmpty());
 	}
 	
@@ -51,7 +51,7 @@ class OuvrageTest {
 	 */
 	@Test
 	void testConstructeurCopieEditeurNull() {
-		Ouvrage ouvrage=new Ouvrage("titre", new ArrayList<Personne>(), null, new Personne(), "lieuEdition", 0000, 10,  1, "format", "resolution", "creditResolution", false, "copyright");
+		Ouvrage ouvrage=new Ouvrage("titre", new ArrayList<Personne>(), null, new Personne(), "lieuEdition", 0000, 10,  1, "format", "resolution", "creditResolution", false, "copyright","lien");
 		assertFalse(ouvrage.getLibraire() == null);
 	}
 	
@@ -60,7 +60,7 @@ class OuvrageTest {
 	 */
 	@Test
 	void testConstructeurCopieImprimeurNull() {
-		Ouvrage ouvrage=new Ouvrage("titre", new ArrayList<Personne>(), new Personne(), null, "lieuEdition", 0000, 10, 1, "format", "resolution", "creditResolution", false, "copyright");
+		Ouvrage ouvrage=new Ouvrage("titre", new ArrayList<Personne>(), new Personne(), null, "lieuEdition", 0000, 10, 1, "format", "resolution", "creditResolution", false, "copyright","lien");
 		assertFalse(ouvrage.getImprimeur() == null);
 	}
 	
@@ -69,7 +69,7 @@ class OuvrageTest {
 	 */
 	@Test
 	void testConstructeurCopieLieuEditionNull() {
-		Ouvrage ouvrage=new Ouvrage("titre", new ArrayList<Personne>(), new Personne(), new Personne(), null, 0000, 10, 1, "format", "resolution", "creditResolution", false, "copyright");
+		Ouvrage ouvrage=new Ouvrage("titre", new ArrayList<Personne>(), new Personne(), new Personne(), null, 0000, 10, 1, "format", "resolution", "creditResolution", false, "copyright","lien");
 		assertFalse(ouvrage.getLieuEdition() == null);
 	}
 	
@@ -78,7 +78,7 @@ class OuvrageTest {
 	 */
 	@Test
 	void testConstructeurCopieDateEditionImpossible() {
-		Ouvrage ouvrage=new Ouvrage("titre", new ArrayList<Personne>(), new Personne(), new Personne(), "lieuEdition", 52023, 10, 1, "format", "resolution", "creditResolution", false, "copyright");
+		Ouvrage ouvrage=new Ouvrage("titre", new ArrayList<Personne>(), new Personne(), new Personne(), "lieuEdition", 52023, 10, 1, "format", "resolution", "creditResolution", false, "copyright","lien");
 		assertTrue(ouvrage.getDateEdition() < 10000);
 	}
 	
@@ -87,7 +87,7 @@ class OuvrageTest {
 	 */
 	@Test
 	void testConstructeurCopieNbPageNegatif() {
-		Ouvrage ouvrage=new Ouvrage("titre", new ArrayList<Personne>(), new Personne(), new Personne(), "lieuEdition", 0000, -5, 1, "format", "resolution", "creditResolution", false, "copyright");
+		Ouvrage ouvrage=new Ouvrage("titre", new ArrayList<Personne>(), new Personne(), new Personne(), "lieuEdition", 0000, -5, 1, "format", "resolution", "creditResolution", false, "copyright","lien");
 		assertFalse(ouvrage.getNbPage() < 0);
 	}
 	
@@ -96,7 +96,7 @@ class OuvrageTest {
 	 */
 	@Test
 	void testConstructeurCopieIdNegatif() {
-		Ouvrage ouvrage=new Ouvrage("titre", new ArrayList<Personne>(), new Personne(), new Personne(), "lieuEdition", 0000, 10, -5, "format", "resolution", "creditResolution", false, "copyright");
+		Ouvrage ouvrage=new Ouvrage("titre", new ArrayList<Personne>(), new Personne(), new Personne(), "lieuEdition", 0000, 10, -5, "format", "resolution", "creditResolution", false, "copyright","lien");
 		assertFalse(ouvrage.getId() < 0);
 	}
 	
@@ -105,7 +105,7 @@ class OuvrageTest {
 	 */
 	@Test
 	void testConstructeurCopieFormatNull() {
-		Ouvrage ouvrage=new Ouvrage("titre", new ArrayList<Personne>(), new Personne(), new Personne(), "lieuEdition", 0000, 10, 1, null, "resolution", "creditResolution", false, "copyright");
+		Ouvrage ouvrage=new Ouvrage("titre", new ArrayList<Personne>(), new Personne(), new Personne(), "lieuEdition", 0000, 10, 1, null, "resolution", "creditResolution", false, "copyright","lien");
 		assertFalse(ouvrage.getFormat() == null);
 	}
 	
@@ -114,7 +114,7 @@ class OuvrageTest {
 	 */
 	@Test
 	void testConstructeurCopieResolutionNull() {
-		Ouvrage ouvrage=new Ouvrage("titre", new ArrayList<Personne>(),new Personne(), new Personne(), "lieuEdition", 0000, 10, 1, "format", null, "creditResolution", false, "copyright");
+		Ouvrage ouvrage=new Ouvrage("titre", new ArrayList<Personne>(),new Personne(), new Personne(), "lieuEdition", 0000, 10, 1, "format", null, "creditResolution", false, "copyright","lien");
 		assertFalse(ouvrage.getResolution() == null);
 	}
 	
@@ -123,7 +123,7 @@ class OuvrageTest {
 	 */
 	@Test
 	void testConstructeurCopieCreditResolutionNull() {
-		Ouvrage ouvrage=new Ouvrage("titre", new ArrayList<Personne>(), new Personne(), new Personne(), "lieuEdition", 0000, 10, 1, "format", "resolution", null, false, "copyright");
+		Ouvrage ouvrage=new Ouvrage("titre", new ArrayList<Personne>(), new Personne(), new Personne(), "lieuEdition", 0000, 10, 1, "format", "resolution", null, false, "copyright","lien");
 		assertFalse(ouvrage.getCreditPhoto() == null);
 	}
 	
@@ -132,7 +132,7 @@ class OuvrageTest {
 	 */
 	@Test
 	void testConstructeurCopieCopyrightNull() {
-		Ouvrage ouvrage=new Ouvrage("titre", new ArrayList<Personne>(), new Personne(), new Personne(), "lieuEdition", 0000, 10, 1, "format", "resolution", "creditResolution", false, null);
+		Ouvrage ouvrage=new Ouvrage("titre", new ArrayList<Personne>(), new Personne(), new Personne(), "lieuEdition", 0000, 10, 1, "format", "resolution", "creditResolution", false, null,"lien");
 		assertFalse(ouvrage.getCopyright() == null);
 	}
 	
