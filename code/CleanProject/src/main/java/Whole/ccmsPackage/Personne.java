@@ -11,6 +11,7 @@ public class Personne implements CCMS<Personne> {
 
     private String prenom;
 
+    private String note;
 
 
 
@@ -43,6 +44,17 @@ public class Personne implements CCMS<Personne> {
         this.prenom=null;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
 
     /**
      * renvoie l'id de la personne dans la base

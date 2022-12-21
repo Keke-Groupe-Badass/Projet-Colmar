@@ -32,8 +32,8 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * Cette méthode renverra notamment false si les lettrines objet ou changement sont vides, ou que tous leurs
      * attributs sont null. Elle renverra false également si l'id de la lettrine objet est <= 0
      * @author Romain
-     * @param objet CCMS à changer
-     * @param changement CCMS de changement (les paramètres null ne sont pas à changer)
+     * @param objet lettrine à changer
+     * @param changement lettrine de changement (les paramètres null ne sont pas à changer)
      * @return true si la requete a abouttie, false sinon
      */
     @Override
@@ -655,7 +655,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
         }
         if(l==null){
             return false;
-        }        
+        }
         try {
             PreparedStatement stmt=cn.prepareStatement("DELETE FROM `regroupe` WHERE `idLettrine`=? AND `idTag`=?");
             stmt.setInt(1,l.getId());
