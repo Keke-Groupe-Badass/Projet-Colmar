@@ -9,10 +9,7 @@ import Whole.ccmsPackage.Ouvrage;
 import Whole.ccmsPackage.Tag;
 
 import java.awt.image.BufferedImage;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 
 /**
@@ -35,8 +32,8 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * Cette méthode renverra notamment false si les lettrines objet ou changement sont vides, ou que tous leurs
      * attributs sont null. Elle renverra false également si l'id de la lettrine objet est <= 0
      * @author Romain
-     * @param objet CCMS à changer
-     * @param changement CCMS de changement (les paramètres null ne sont pas à changer)
+     * @param objet lettrine à changer
+     * @param changement lettrine de changement (les paramètres null ne sont pas à changer)
      * @return true si la requete a abouttie, false sinon
      */
     @Override
@@ -122,24 +119,32 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      */
     @Override
     public boolean creer(Lettrine donne) {
-        if(donne.getId() <= 0 || donne.getLien() == null) {
+        if(donne.getId() < 0 || donne.getLien() == null) {
             return false;
         }
-        StringBuilder str = new StringBuilder();
-        //écrire code permettant de condtruire la requete
         try {
-            Statement stmt = cn.createStatement();
-            String sql = "INSERT INTO lettrine VALUES (" + str + ")";
-            stmt.executeQuery(sql);
-            return true;
+            PreparedStatement stmt=cn.prepareStatement("insert into Emp values(?,?,?,?,?)");
+            stmt.setInt(1,donne.getNbPage());
+            stmt.setString(2,donne.getLien());
+            stmt.setInt(3,donne.getOuvrage().getId());
+            stmt.setInt(4,donne.getCreateur().getId());
+            stmt.setInt(5,donne.getIdentique());
+            Boolean verif =stmt.execute();
+            if(!verif){
+                return false;
+            }
+            for(int i=0;i<donne.getMetadonnees().size();i++){
+                ajouterMeta(donne.getMetadonnees().get(i),donne);
+            }
+            for(int i=0;i<donne.getTags().size();i++){
+                tager(donne,donne.getTags().get(i));
+            }
+
+            return verif;
         }
         catch (SQLException e) {
             return false;
         }
-        /*
-        appel des methodes tager et ajouterMeta pour ajouter les métdonnées et les tags a la lettrine
-        crée
-        */
     }
 
     /**
@@ -432,27 +437,24 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * @author Romain
      * @param l la lettrine à lier à l'ouvrage
      * @param o l'ouvrage d'origine
-     * @param cn La connection à la base de donnée
      * @see SingleConnection
      * @see Ouvrage
      * @see Lettrine
      * @return true : si la requete a été effectuée, false sinon
      */
-    public boolean provient(Lettrine l , Ouvrage o,Connection cn)   {
+    public boolean provient(Lettrine l , Ouvrage o)   {
         if(l.getId() <= 0 || o.getId() <= 0) {
             return false;
         }
-        if(l.getOuvrage().getId() != o.getId()) {
-            try {
-                Statement stmt = cn.createStatement();
-                String sql = "UPDATE lettrine SET idOuvrage=" + o.getId() + " WHERE id=" + l.getId();
-                stmt.executeQuery(sql);
-                return true;
-            } catch (SQLException e) {
-                return false;
-            }
+        if(l.getOuvrage().getId() == o.getId()){
+            return false;
         }
-        else {
+        try {
+            Statement stmt = cn.createStatement();
+            String sql = "UPDATE lettrine SET idOuvrage=" + o.getId() + " WHERE id=" + l.getId();
+            stmt.executeQuery(sql);
+            return true;
+        } catch (SQLException e) {
             return false;
         }
     }
@@ -463,13 +465,12 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * @author Romain
      * @param l La lettrine dont on souhaite ajouter un tag
      * @param t Le tag à ajouter à la lettrine
-     * @param cn La connection à la base de donnée
      * @see SingleConnection
      * @see Lettrine
      * @see Tag
      * @return true : si la requete a été effectuée, false sinon
      */
-    public boolean tager(Lettrine l , Tag t,Connection cn) {
+    public boolean tager(Lettrine l , Tag t) {
         if(l.getId() <= 0 || t.getId() <= 0) {
             return false;
         }
@@ -490,12 +491,11 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * @author Romain
      * @param meta Métadonnée à ajouter à la lettrine
      * @param l Lettrine à laquelle la métadonnée doit etre ajoutée
-     * @param cn La connection à la base de donnée
      * @see SingleConnection
      * @see Metadonnee
      * @return true : si la requete a été effectuée, false sinon
      */
-    public boolean ajouterMeta(Metadonnee meta, Lettrine l, Connection cn) {
+    public boolean ajouterMeta(Metadonnee meta, Lettrine l) {
         if(meta.getId() <= 0 || l.getId() <= 0) {
             return false;
         }
@@ -515,10 +515,9 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * Renvoie false si l'id de meta est <= 0
      * @author Romain
      * @param meta metadonnée a supprimer
-     * @param cn connexion a la base
      * @return true si la requete s'est effectuée, false sinon
      */
-    public boolean supprimerMeta(Metadonnee meta, Connection cn) {
+    public boolean supprimerMeta(Metadonnee meta) {
         if(meta.getId() <= 0) {
             return false;
         }
@@ -538,12 +537,11 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * s'est bien effectée, false sinon. Renvoie false si l'id de meta est <= 0
      * @author Romain
      * @param meta La métadonnée dont l'on souhaite que la partie code correspond avec la partie base de donnée
-     * @param cn La connection à la base de donnée
      * @see SingleConnection
      * @see Metadonnee
      * @return true : si la requete a été effectuée, false sinon
      */
-    public boolean modifierMeta(Metadonnee meta,Connection cn) {
+    public boolean modifierMeta(Metadonnee meta) {
         if(meta.getId() <= 0) {
             return false;
         }
@@ -652,6 +650,20 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * @return true si la liaison a pu etre retiré ou qu'il n' a jamais eu de lien, false en cas d'erreur
      */
     public Boolean detager(Lettrine l, Tag t){
-        return null;
+        if(t==null){
+            return false;
+        }
+        if(l==null){
+            return false;
+        }
+        try {
+            PreparedStatement stmt=cn.prepareStatement("DELETE FROM `regroupe` WHERE `idLettrine`=? AND `idTag`=?");
+            stmt.setInt(1,l.getId());
+            stmt.setInt(2,t.getId());
+            return stmt.execute();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }

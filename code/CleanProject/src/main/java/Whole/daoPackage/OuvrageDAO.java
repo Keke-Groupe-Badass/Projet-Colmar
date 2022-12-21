@@ -5,6 +5,9 @@ import Whole.ccmsPackage.Ouvrage;
 import Whole.ccmsPackage.Personne;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -33,7 +36,29 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
      */
     @Override
     public boolean creer(Ouvrage donne) {
-        return false;
+        if(donne.getId() < 0) {
+            return false;
+        }
+        //écrire code permettant de condtruire la requete
+        try {
+            PreparedStatement stmt = cn.prepareStatement("insert into ouvrages values(?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            stmt.setString(1,donne.getTitre());
+            stmt.setInt(2,donne.getDateEdition());
+            stmt.setString(3, donne.getFormat());
+            stmt.setString(4,donne.getLien());
+            stmt.setString(5,donne.getResolution());
+            stmt.setString(6,donne.getCreditPhoto());
+            stmt.setBoolean(7,donne.isReechantillonage());
+            stmt.setString(8,donne.getCopyright());
+            stmt.setInt(9,donne.getNbPage());
+            stmt.setString(10,donne.getLieuEdition());
+            stmt.setInt(11,donne.getImprimeur().getId());
+            stmt.setInt(12,donne.getLibraire().getId());
+            return stmt.execute();
+        }
+        catch (SQLException e) {
+            return false;
+        }
     }
 
 
@@ -43,12 +68,27 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
     * vérifie que l'auteur passé en paramètre existe bien dans la base de données,
     * puis on effectue une requete d'insertion.
     *
-    * @param a Personne auteur de l'ouvrage
+    * @param p Personne l'auteur de l'ouvrage
     * @param objet Ouvrage ouvrage qu'on souhaite inserer
      * @see SingleConnection
     */
-    public void ecrit(Personne a, Ouvrage objet) {
-    	
+    public Boolean ecrit(Personne p, Ouvrage objet) {
+    	if(p==null){
+            return false;
+        }
+        if(objet==null){
+            return false;
+        }
+        try {
+            PreparedStatement stmt = cn.prepareStatement("insert into ecrit values(?,?)");
+            stmt.setInt(1,p.getId());
+            stmt.setInt(2,objet.getId());
+            return stmt.execute();
+        } catch (SQLException e) {
+            System.out.println("something went wrong "+e);
+        }
+        return false;
+
     }
     
     /**
@@ -73,7 +113,13 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
      * @see SingleConnection
      */
     public boolean supprimer(Ouvrage objet) {
-        return false;
+        try {
+            PreparedStatement stmt=cn.prepareStatement("DELETE FROM `ouvrages` WHERE `idOuvrage`=?");
+            stmt.setInt(1,objet.getId());
+            return stmt.execute();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
     
     /**
@@ -86,6 +132,65 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
      * @see SingleConnection
      */
     public ArrayList<Ouvrage> chercher(Ouvrage objet) {
-        return null;
+        PreparedStatement stmt= null;
+        ArrayList list = new ArrayList();
+        try {
+            //TODO IMPLEMENTATION RECHERCHE AUTRE QU'ID
+            stmt = cn.prepareStatement("SELECT * FROM `ouvrages` WHERE `idOuvrage`=?");
+            stmt.setInt(1,objet.getId());
+            ResultSet rs =stmt.executeQuery();
+            while(rs.next()){
+                Ouvrage o2=new Ouvrage();
+                o2.setTitre(rs.getString(2));
+                o2.setLieuEdition(rs.getString(11));
+                o2.setDateEdition(rs.getInt(3));
+                o2.setNbPage(rs.getInt(10));
+                o2.setId(rs.getInt(1));
+                o2.setFormat(rs.getString(4));
+                o2.setResolution(rs.getString(6));
+                o2.setCreditPhoto(rs.getString(7));
+                o2.setCopyright(rs.getString(9));
+                o2.setCopyright(rs.getString(5));
+                o2.setPersonnes(listeAuteur(o2.getId()));
+                o2.setLibraire(getPersonne(rs.getInt(13)));
+                o2.setImprimeur(getPersonne(rs.getInt(12)));
+                list.add(o2);
+            }
+            return list;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    private ArrayList listeAuteur(int id){
+        ArrayList l = new ArrayList();
+        try {
+            PreparedStatement stmt = cn.prepareStatement("SELECT * FROM `personnes` WHERE `idOuvrage`=?");
+            stmt.setInt(1,id);
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()){
+                l.add(getPersonne(rs.getInt(1)));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return l;
+    }
+    private Personne getPersonne(int id){
+        PreparedStatement stmt= null;
+        Personne p =new Personne();
+        try {
+            stmt = cn.prepareStatement("SELECT * FROM `personnes` WHERE `idOuvrage`=?");
+            stmt.setInt(1,id);
+            ResultSet rs =stmt.executeQuery();
+            if(rs.next()){
+                p.setNom(rs.getString(2));
+                p.setPrenom(rs.getString(3));
+                p.setNote(rs.getString(4));
+                p.setId(rs.getInt(1));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return p;
     }
 }

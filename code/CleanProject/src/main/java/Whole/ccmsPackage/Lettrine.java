@@ -87,6 +87,7 @@ public class Lettrine implements CCMS<Lettrine> {
         this.createur=personne;
     }
 
+
     /**.
      * Constructeur à utiliser pour les instances de changement
      */
@@ -98,6 +99,25 @@ public class Lettrine implements CCMS<Lettrine> {
         this.lien = null;
         this.tags=new ArrayList<>();
     }
+
+    /**
+     * Constructeur lors de la création d'une lettrine pour la première fois
+     * @param ouvrage
+     * @param nbPage
+     * @param lien
+     * @param createur
+     * @param identique
+     */
+    public Lettrine(Ouvrage ouvrage, int nbPage, String lien, Personne createur, int identique) {
+        this.ouvrage = ouvrage;
+        this.nbPage = nbPage;
+        this.lien = lien;
+        this.createur = createur;
+        this.identique = identique;
+        this.tags=new ArrayList<>();
+        this.metadonnees=new ArrayList<>();
+    }
+
     /**.
      * Renvoie un objet de type Ouvrage
      * @return ouvrage

@@ -26,11 +26,13 @@ public class Ouvrage implements CCMS<Ouvrage> {
 
     private String resolution;
 
-    private String creditResolution;
+    private String creditPhoto;
 
     private boolean reechantillonage;
 
     private String copyright;
+
+    private String lien;
 
     /**
      * Constructeur à utiliser pour les instances de changement
@@ -63,11 +65,11 @@ public class Ouvrage implements CCMS<Ouvrage> {
      * @param id int
      * @param format String
      * @param resolution String
-     * @param creditResolution String
+     * @param creditPhoto String
      * @param reechantillonage boolean
      * @param copyright String
      */
-    public Ouvrage(String titre, ArrayList<Personne> personnes, Personne libraire, Personne imprimeur, String lieuEdition, int dateEdition, int nbPage, int id, String format, String resolution, String creditResolution, boolean reechantillonage, String copyright) {
+    public Ouvrage(String titre, ArrayList<Personne> personnes, Personne libraire, Personne imprimeur, String lieuEdition, int dateEdition, int nbPage, int id, String format, String resolution, String creditPhoto, boolean reechantillonage, String copyright, String lien) {
         this.titre = titre;
         this.personnes = new ArrayList<>();
         this.libraire = libraire;
@@ -78,9 +80,10 @@ public class Ouvrage implements CCMS<Ouvrage> {
         this.id = id;
         this.format = format;
         this.resolution = resolution;
-        this.creditResolution = creditResolution;
+        this.creditPhoto = creditPhoto;
         this.reechantillonage = reechantillonage;
         this.copyright = copyright;
+        this.lien=lien;
         for(Personne a: personnes){
             this.personnes.add(a);
         }
@@ -128,16 +131,16 @@ public class Ouvrage implements CCMS<Ouvrage> {
      * getter de l'attribut CreditResolution
      * @return ceditResolution
      */
-    public String getCreditResolution() {
-        return creditResolution;
+    public String getCreditPhoto() {
+        return creditPhoto;
     }
 
     /**
      * setter de l'attribut creditResolution
-     * @param creditResolution String
+     * @param creditPhoto String
      */
-    public void setCreditResolution(String creditResolution) {
-        this.creditResolution = creditResolution;
+    public void setCreditPhoto(String creditPhoto) {
+        this.creditPhoto = creditPhoto;
     }
 
     /**
@@ -283,7 +286,7 @@ public class Ouvrage implements CCMS<Ouvrage> {
      * @return la copie exacte d'un ouvrage
      */
     public Ouvrage copie(){
-        return new Ouvrage( titre, (ArrayList<Personne>) personnes.clone(), libraire,  imprimeur,  lieuEdition,  dateEdition,  nbPage,    id,  format,  resolution,  creditResolution,  reechantillonage, copyright);
+        return new Ouvrage( titre, (ArrayList<Personne>) personnes.clone(), libraire,  imprimeur,  lieuEdition,  dateEdition,  nbPage,    id,  format,  resolution, creditPhoto,  reechantillonage, copyright,lien);
     }
     /**
      * Change la date d'édition de l'ouvrage par la date passée en paramètre
@@ -302,10 +305,19 @@ public class Ouvrage implements CCMS<Ouvrage> {
     }
 
 
+    public String getLien() {
+        return lien;
+    }
+
+    public void setLien(String lien) {
+        this.lien = lien;
+    }
+
     /**
      * Ajoute à la liste des Auteurs un auteur
      * @param a l'auteur à ajouter
      */
+
     public void addAuteur(Personne a){
         if(a!=null){
             if(!personnes.contains(a)){
@@ -342,7 +354,7 @@ public class Ouvrage implements CCMS<Ouvrage> {
         if(!objet.getFormat().equals(this.format)){
             return false;
         }
-        if(!objet.getCreditResolution().equals(this.creditResolution)){
+        if(!objet.getCreditPhoto().equals(this.creditPhoto)){
             return false;
         }
         if(!objet.getTitre().equals(this.titre)){

@@ -116,13 +116,13 @@ public class AdminDAO extends SuperAbstractDAO {
             while(rs.next()){
                 for(int j=0;j<row;j++){
                     for(int i=0;i<size;i++){
-                        list.get(j).add(md.getColumnName(i));
+                        list.get(j).add((String) rs.getObject(i));
                     }
                 }
                 row++;
             }
         } catch (SQLException e) {
-
+            System.out.println("something went wrong");
         }
         return list;
     }

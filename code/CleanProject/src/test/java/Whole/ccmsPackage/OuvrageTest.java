@@ -124,7 +124,7 @@ class OuvrageTest {
 	@Test
 	void testConstructeurCopieCreditResolutionNull() {
 		Ouvrage ouvrage=new Ouvrage("titre", new ArrayList<Personne>(), new Personne(), new Personne(), "lieuEdition", 0000, 10, 1, "format", "resolution", null, false, "copyright");
-		assertFalse(ouvrage.getCreditResolution() == null);
+		assertFalse(ouvrage.getCreditPhoto() == null);
 	}
 	
 	/**
@@ -162,8 +162,8 @@ class OuvrageTest {
 	@Test
 	void testSetCreditResolutionNull() {
 		Ouvrage ouvrage=new Ouvrage("titre", 5);
-		ouvrage.setCreditResolution(null);
-		assertFalse(ouvrage.getCreditResolution() == null);
+		ouvrage.setCreditPhoto(null);
+		assertFalse(ouvrage.getCreditPhoto() == null);
 	}
 	
 	/**
