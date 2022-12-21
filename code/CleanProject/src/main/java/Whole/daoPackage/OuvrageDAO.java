@@ -5,6 +5,8 @@ import Whole.ccmsPackage.Ouvrage;
 import Whole.ccmsPackage.Personne;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -33,7 +35,29 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
      */
     @Override
     public boolean creer(Ouvrage donne) {
-        return false;
+        if(donne.getId() < 0) {
+            return false;
+        }
+        //écrire code permettant de condtruire la requete
+        try {
+            PreparedStatement stmt = cn.prepareStatement("insert into ouvrages values(?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            stmt.setString(1,donne.getTitre());
+            stmt.setInt(2,donne.getDateEdition());
+            stmt.setString(3, donne.getFormat());
+            stmt.setString(4,donne.getLien());
+            stmt.setString(5,donne.getResolution());
+            stmt.setString(6,donne.getCreditPhoto());
+            stmt.setBoolean(7,donne.isReechantillonage());
+            stmt.setString(8,donne.getCopyright());
+            stmt.setInt(9,donne.getNbPage());
+            stmt.setString(10,donne.getLieuEdition());
+            stmt.setInt(11,donne.getImprimeur().getId());
+            stmt.setInt(12,donne.getLibraire().getId());
+            return stmt.execute();
+        }
+        catch (SQLException e) {
+            return false;
+        }
     }
 
 
@@ -43,12 +67,27 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
     * vérifie que l'auteur passé en paramètre existe bien dans la base de données,
     * puis on effectue une requete d'insertion.
     *
-    * @param a Personne auteur de l'ouvrage
+    * @param p Personne l'auteur de l'ouvrage
     * @param objet Ouvrage ouvrage qu'on souhaite inserer
      * @see SingleConnection
     */
-    public void ecrit(Personne a, Ouvrage objet) {
-    	
+    public Boolean ecrit(Personne p, Ouvrage objet) {
+    	if(p==null){
+            return false;
+        }
+        if(objet==null){
+            return false;
+        }
+        try {
+            PreparedStatement stmt = cn.prepareStatement("insert into ecrit values(?,?)");
+            stmt.setInt(1,p.getId());
+            stmt.setInt(2,objet.getId());
+            return stmt.execute();
+        } catch (SQLException e) {
+            System.out.println("something went wrong "+e);
+        }
+        return false;
+
     }
     
     /**

@@ -205,7 +205,7 @@ class LettrineDAOtest {
 		Tag t1 = new Tag(2, "test", "ahjkfahjkfafhijkga");
 		Lettrine l1 = new Lettrine(ouvragetest,listeMetaTest,2,47,listeTagTest,"lien");
 		LettrineDAO ldao1 = new LettrineDAO("url", "log", "pwd");
-		return ldao1.tager(l1, t1, cn) ;
+		return ldao1.tager(l1, t1) ;
 	}
 	
 	/**
@@ -216,7 +216,7 @@ class LettrineDAOtest {
 		Tag t1 = new Tag();
 		Lettrine l1 = new Lettrine(ouvragetest,listeMetaTest,2,47,listeTagTest,"lien");
 		LettrineDAO ldao1 = new LettrineDAO("url", "log", "pwd");
-		return ldao1.tager(l1, t1, cn) ;
+		return ldao1.tager(l1, t1) ;
 	}
 	
 	/**
@@ -227,7 +227,7 @@ class LettrineDAOtest {
 		Tag t1 = new Tag(5, null, null);
 		Lettrine l1 = new Lettrine(ouvragetest,listeMetaTest,2,47,listeTagTest,"lien");
 		LettrineDAO ldao1 = new LettrineDAO("url", "log", "pwd");
-		return ldao1.tager(l1, t1, cn) ;
+		return ldao1.tager(l1, t1) ;
 	}
 	
 	/**
@@ -238,7 +238,7 @@ class LettrineDAOtest {
 		Tag t1 = new Tag(2, "test", "ahjkfahjkfafhijkga");
 		Lettrine l1 = new Lettrine();
 		LettrineDAO ldao1 = new LettrineDAO("url", "log", "pwd");
-		return ldao1.tager(l1, t1, cn) ;
+		return ldao1.tager(l1, t1) ;
 	}
 	
 	/**
@@ -249,7 +249,7 @@ class LettrineDAOtest {
 		Tag t1 = new Tag(2, "test", "ahjkfahjkfafhijkga");
 		Lettrine l1 = new Lettrine(null,null,2,47,null,null);
 		LettrineDAO ldao1 = new LettrineDAO("url", "log", "pwd");
-		return ldao1.tager(l1, t1, cn) ;
+		return ldao1.tager(l1, t1) ;
 	}
 	
 	@Test
@@ -270,7 +270,7 @@ class LettrineDAOtest {
 		Metadonnee metatest= new Metadonnee("nom",2,"entree","unite","description");
 		Lettrine l1 = new Lettrine(ouvragetest,listeMetaTest,2,47,listeTagTest,"lien");
 		LettrineDAO ldao1 = new LettrineDAO("url", "log", "pwd");
-		return ldao1.ajouterMeta(metatest, l1, cn);
+		return ldao1.ajouterMeta(metatest, l1);
 	}
 	
 	/**
@@ -281,7 +281,7 @@ class LettrineDAOtest {
 		Metadonnee metatest= new Metadonnee();
 		Lettrine l1 = new Lettrine(ouvragetest,listeMetaTest,2,47,listeTagTest,"lien");
 		LettrineDAO ldao1 = new LettrineDAO("url", "log", "pwd");
-		return ldao1.ajouterMeta(metatest, l1, cn);
+		return ldao1.ajouterMeta(metatest, l1);
 	}
 	
 	/**
@@ -292,7 +292,7 @@ class LettrineDAOtest {
 		Metadonnee metatest= new Metadonnee(null,2,null,null,null);
 		Lettrine l1 = new Lettrine(ouvragetest,listeMetaTest,2,47,listeTagTest,"lien");
 		LettrineDAO ldao1 = new LettrineDAO("url", "log", "pwd");
-		return ldao1.ajouterMeta(metatest, l1, cn);
+		return ldao1.ajouterMeta(metatest, l1);
 	}
 	
 	/**
@@ -303,7 +303,7 @@ class LettrineDAOtest {
 		Metadonnee metatest= new Metadonnee("nom",2,"entree","unite","description");
 		Lettrine l1 = new Lettrine();
 		LettrineDAO ldao1 = new LettrineDAO("url", "log", "pwd");
-		return ldao1.ajouterMeta(metatest, l1, cn);
+		return ldao1.ajouterMeta(metatest, l1);
 	}
 	
 	/**
@@ -314,7 +314,7 @@ class LettrineDAOtest {
 		Metadonnee metatest= new Metadonnee("nom",2,"entree","unite","description");
 		Lettrine l1 = new Lettrine(null,null,2,47,null,null);
 		LettrineDAO ldao1 = new LettrineDAO("url", "log", "pwd");
-		return ldao1.ajouterMeta(metatest, l1, cn);
+		return ldao1.ajouterMeta(metatest, l1);
 	}
 	
 	@Test
@@ -333,7 +333,7 @@ class LettrineDAOtest {
 	public boolean suppMetaDT1() {
 		Metadonnee metatest= new Metadonnee("nom",2,"entree","unite","description");
 		LettrineDAO ldao1 = new LettrineDAO("url", "log", "pwd");
-		return ldao1.supprimerMeta(metatest, cn);
+		return ldao1.supprimerMeta(metatest);
 	}
 	
 	/**
@@ -343,7 +343,7 @@ class LettrineDAOtest {
 	public boolean suppMetaDT2() {
 		Metadonnee metatest= new Metadonnee();
 		LettrineDAO ldao1 = new LettrineDAO("url", "log", "pwd");
-		return ldao1.supprimerMeta(metatest, cn);
+		return ldao1.supprimerMeta(metatest);
 	}
 	
 	/**
@@ -353,7 +353,7 @@ class LettrineDAOtest {
 	public boolean suppMetaDT3() {
 		Metadonnee metatest= new Metadonnee(null,2,null,null,null);
 		LettrineDAO ldao1 = new LettrineDAO("url", "log", "pwd");
-		return ldao1.supprimerMeta(metatest, cn);
+		return ldao1.supprimerMeta(metatest);
 	}
 	
 	
@@ -372,7 +372,7 @@ class LettrineDAOtest {
 	public boolean modifierMetaTD1() {
 		Metadonnee metatest= new Metadonnee("nom",2,"entree","unite","description");
 		LettrineDAO ldao1 = new LettrineDAO("url", "log", "pwd");
-		return ldao1.modifierMeta(metatest, cn);
+		return ldao1.modifierMeta(metatest);
 	}
 	
 	/**
@@ -382,7 +382,7 @@ class LettrineDAOtest {
 	public boolean modifierMetaTD2() {
 		Metadonnee metatest= new Metadonnee();
 		LettrineDAO ldao1 = new LettrineDAO("url", "log", "pwd");
-		return ldao1.modifierMeta(metatest, cn);
+		return ldao1.modifierMeta(metatest);
 	}
 	
 	/**
@@ -392,7 +392,7 @@ class LettrineDAOtest {
 	public boolean modifierMetaTD3() {
 		Metadonnee metatest= new Metadonnee(null,2,null,null,null);
 		LettrineDAO ldao1 = new LettrineDAO("url", "log", "pwd");
-		return ldao1.modifierMeta(metatest, cn);
+		return ldao1.modifierMeta(metatest);
 	}
 	
 	@Test

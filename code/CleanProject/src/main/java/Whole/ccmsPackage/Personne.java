@@ -48,7 +48,7 @@ public class Personne implements CCMS<Personne> {
      * renvoie l'id de la personne dans la base
      * @return id int
      */
-    private int getId() {
+    public int getId() {
         return id;
     }
 
@@ -56,7 +56,7 @@ public class Personne implements CCMS<Personne> {
      * renvoie le nom de la personne
      * @return nom String
      */
-    private String getNom() {
+    public String getNom() {
         return nom;
     }
 
@@ -64,7 +64,7 @@ public class Personne implements CCMS<Personne> {
      * renvoie le prenom de la personne
      * @return prenom String
      */
-    private String getPrenom() {
+    public String getPrenom() {
         return prenom;
     }
 
@@ -72,7 +72,7 @@ public class Personne implements CCMS<Personne> {
      * change le nom de la personne par le nom passé en param
      * @param nom String
      */
-    private void setNom(String nom) {
+    public void setNom(String nom) {
 
         this.nom = nom;
     }
@@ -81,7 +81,7 @@ public class Personne implements CCMS<Personne> {
      * change le prenom de la personne par le prénom passé en param
      * @param prenom String
      */
-    private void setPrenom(String prenom) {
+    public void setPrenom(String prenom) {
         this.prenom = prenom;
     }
 
