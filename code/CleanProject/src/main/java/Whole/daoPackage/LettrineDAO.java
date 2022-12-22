@@ -71,6 +71,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
                 try {
                     Statement stmtTag = cn.createStatement();
                     String sqlTag = "UPDATE lettrines_tags SET ";
+                    //return stmtTag.execute(sqlTag);
                 }
                 catch (SQLException e) {
                     e.printStackTrace();
