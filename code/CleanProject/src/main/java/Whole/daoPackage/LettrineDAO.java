@@ -3,13 +3,12 @@ package Whole.daoPackage;
 
 import Whole.Metadonnee;
 import Whole.SingleConnection;
-import Whole.ccmsPackage.CCMS;
-import Whole.ccmsPackage.Lettrine;
-import Whole.ccmsPackage.Ouvrage;
-import Whole.ccmsPackage.Tag;
+import Whole.ccmsPackage.*;
 
 import java.awt.image.BufferedImage;
+
 import java.sql.*;
+
 import java.util.ArrayList;
 
 /**
@@ -98,6 +97,12 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
             return false;
         }
         try {
+            for(Metadonnee meta: lettrine.getMetadonnees()){
+                supprimerMeta(meta);
+            }
+            for(Tag tag : lettrine.getTags()){
+                detager(lettrine,tag);
+            }
             Statement stmt = cn.createStatement();
             String sql = "DELETE FROM lettrine WHERE id=" + lettrine.getId();
             stmt.executeQuery(sql);

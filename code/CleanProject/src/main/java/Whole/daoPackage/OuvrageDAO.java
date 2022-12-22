@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import java.util.ArrayList;
 
 /**
@@ -113,7 +114,10 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
      */
     public boolean supprimer(Ouvrage objet) {
         try {
-            PreparedStatement stmt=cn.prepareStatement("DELETE FROM `ouvrages` WHERE `idOuvrage`=?");
+            PreparedStatement stmt = cn.prepareStatement("DELETE FROM `ecrit` WHERE `idOuvrage`=?");
+            stmt.setInt(1,objet.getId());
+            stmt.execute();
+            stmt=cn.prepareStatement("DELETE FROM `ouvrages` WHERE `idOuvrage`=?");
             stmt.setInt(1,objet.getId());
             return stmt.execute();
         } catch (SQLException e) {
