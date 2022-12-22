@@ -39,7 +39,6 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
         if(donne.getId() < 0) {
             return false;
         }
-        //écrire code permettant de condtruire la requete
         try {
             PreparedStatement stmt = cn.prepareStatement("insert into ouvrages values(?,?,?,?,?,?,?,?,?,?,?,?,?)");
             stmt.setString(1,donne.getTitre());
