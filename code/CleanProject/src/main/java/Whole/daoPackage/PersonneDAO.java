@@ -3,6 +3,8 @@ package Whole.daoPackage;
 import Whole.SingleConnection;
 import Whole.ccmsPackage.Personne;
 
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 /**
  * Classe servant à lié à la base de donnée les méthodes d'Auteurs
@@ -42,7 +44,18 @@ public class PersonneDAO extends AbstractDAO<Personne> {
      */
     public boolean supprimer(Personne objet) {
 
-        return false;
+        if(objet.getId() <= 0) {
+            return false;
+        }
+        try {
+            Statement stmt = cn.createStatement();
+            String sql = "DELETE FROM lettrine WHERE id=" + objet.getId();
+            stmt.executeQuery(sql);
+            return true;
+        }
+        catch (SQLException e) {
+            return false;
+        }
     }
     /**
      * Ajoute à la base de donnée une Personne

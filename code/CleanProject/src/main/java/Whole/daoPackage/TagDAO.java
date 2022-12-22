@@ -6,7 +6,7 @@ import Whole.ccmsPackage.Tag;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+
 import java.util.ArrayList;
 /**
  * Classe servant à lié à la base de donnée les méthodes de Tag
