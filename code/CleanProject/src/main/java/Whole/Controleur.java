@@ -5,28 +5,25 @@
 */
 package Whole;
 
-import Whole.daoPackage.AdminDAO;
 import Whole.daoPackage.UtilisateurDAO;
-import Whole.fenetrePackage.FXInterface;
 
-import java.sql.Connection;
 
 /**
 * Coeur de l'application, doit avant tout lancer ConnectionUniqueBD
 */
 public  class Controleur {
     static String lienDB;
-	 static UtilisateurDAO utilisateurDAO;
+    static UtilisateurDAO utilisateurDAO;
     private static String login;
     /**
     * Permet de sauvegarder des métadonnés (ou autre) dans le but d'un copier coller
     */
-    private Object pressePapier;
+    private static Object pressePapier;
 
     /**
      *getter de PressePapier
      */
-    public Object getPressePapier() {
+    public static Object getPressePapier() {
         return pressePapier;
     }
 
@@ -34,8 +31,8 @@ public  class Controleur {
      * Permet de sauvegarder n'importe quel type dans le but d'un copier coller
      * @param objet, objet à copier
      */
-    public void setPressePapier(Object objet) {
-        this.pressePapier = pressePapier;
+    public static void setPressePapier(Object objet) {
+        pressePapier = pressePapier;
     }
 
     /**
