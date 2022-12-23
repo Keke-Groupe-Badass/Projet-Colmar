@@ -5,12 +5,14 @@
 */
 package Whole;
 
+import Whole.fenetrePackage.FXInterface;
+
 import java.sql.Connection;
 
 /**
 * Coeur de l'application, doit avant tout lancer ConnectionUniqueBD
 */
-public class Controleur {
+public  class Controleur {
 	
 	 /**
 	 *connection a la base de donn�e
@@ -74,4 +76,6 @@ public class Controleur {
         return false;
     }
 
-}
+
+
+    }

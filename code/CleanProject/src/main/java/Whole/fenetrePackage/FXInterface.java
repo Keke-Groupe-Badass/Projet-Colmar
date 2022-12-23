@@ -1,5 +1,6 @@
 package Whole.fenetrePackage;
 
+import Whole.Controleur;
 import Whole.ccmsPackage.Lettrine;
 import Whole.ccmsPackage.Ouvrage;
 import Whole.ccmsPackage.Personne;
@@ -28,7 +29,7 @@ public class FXInterface extends Application implements FenetreInterface {
     @Override
     public void start(Stage stage) throws IOException {
         mainStage=stage;
-        Parent root = FXMLLoader.load(getClass().getResource("/FXInterface/FxInterfaceMain.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/FXInterface/FxInterfaceLogin.fxml"));
         Scene scene = new Scene(root);
 
         stage.setTitle("Hello!");
@@ -64,7 +65,7 @@ public class FXInterface extends Application implements FenetreInterface {
     private static void setPageOuvrage(Ouvrage o){
 
     }
-    public static void main(String[] args) {
+    public void init(String[] args) {
         launch();
     }
 
@@ -112,6 +113,15 @@ public class FXInterface extends Application implements FenetreInterface {
         alert.show();
 
     }
+    @FXML
+    protected void handleConnection(ActionEvent event) {
+        try {
+            changeScene("FxInterfaceMain");
+        } catch (IOException e) {
+            afficherMessage(new String[] {"Erreur lors de la connection","Impossible de se connecter"});
+        }
+    }
+
     @FXML
     protected void handleModifierOuvrageAction(ActionEvent event) {
         try {
