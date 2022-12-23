@@ -27,7 +27,7 @@ public interface FenetreInterface {
     /**
      * Permet d'afficher à l'utilisateur un message
      *
-     * @param message le message à afficher à l'utilisateur
+     * @param contentAlert tableau de deux elements, le premier étant le titre et le second le message à afficher à l'utilisateur
      */
-    void afficherMessage(String message);
+    void afficherMessage(String[] contentAlert);
 }

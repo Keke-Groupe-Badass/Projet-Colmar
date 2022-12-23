@@ -97,12 +97,8 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
             return false;
         }
         try {
-            for(Metadonnee meta: lettrine.getMetadonnees()){
-                supprimerMeta(meta);
-            }
-            for(Tag tag : lettrine.getTags()){
-                detager(lettrine,tag);
-            }
+            lettrine.getMetadonnees().stream().forEach(m->supprimerMeta(m));
+            lettrine.getTags().stream().forEach(t->detager(lettrine,t));
             Statement stmt = cn.createStatement();
             String sql = "DELETE FROM lettrine WHERE id=" + lettrine.getId();
             stmt.executeQuery(sql);
@@ -139,12 +135,8 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
             if(!verif){
                 return false;
             }
-            for(int i=0;i<donne.getMetadonnees().size();i++){
-                ajouterMeta(donne.getMetadonnees().get(i),donne);
-            }
-            for(int i=0;i<donne.getTags().size();i++){
-                tager(donne,donne.getTags().get(i));
-            }
+            donne.getMetadonnees().stream().forEach(m->ajouterMeta(m,donne));
+            donne.getTags().stream().forEach(t->tager(donne,t));
 
             return verif;
         }
