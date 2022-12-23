@@ -113,14 +113,7 @@ public class FXInterface extends Application implements FenetreInterface {
         alert.show();
 
     }
-    @FXML
-    protected void handleConnection(ActionEvent event) {
-        try {
-            changeScene("FxInterfaceMain");
-        } catch (IOException e) {
-            afficherMessage(new String[] {"Erreur lors de la connection","Impossible de se connecter"});
-        }
-    }
+
 
     @FXML
     protected void handleModifierOuvrageAction(ActionEvent event) {

@@ -5,6 +5,8 @@
 */
 package Whole;
 
+import Whole.daoPackage.AdminDAO;
+import Whole.daoPackage.UtilisateurDAO;
 import Whole.fenetrePackage.FXInterface;
 
 import java.sql.Connection;
@@ -13,34 +15,19 @@ import java.sql.Connection;
 * Coeur de l'application, doit avant tout lancer ConnectionUniqueBD
 */
 public  class Controleur {
-	
-	 /**
-	 *connection a la base de donn�e
-	 */
-    private Connection bd;
-
+    static String lienDB;
+	 static UtilisateurDAO utilisateurDAO;
+    private static String login;
     /**
     * Permet de sauvegarder des métadonnés (ou autre) dans le but d'un copier coller
     */
     private Object pressePapier;
-    /**
-     *getter de bd
-     *
-     */
-    public Connection getBd() {
-        return bd;
-    }
+
     /**
      *getter de PressePapier
      */
     public Object getPressePapier() {
         return pressePapier;
-    }
-    /**
-     *setter de bd 
-     */
-    public void setBd(Connection bd) {
-        this.bd = bd;
     }
 
     /**
@@ -58,8 +45,11 @@ public  class Controleur {
      * @return True si l'utilisateur est connecté, false sinon
     * @see SingleConnection
     */
-    public Boolean Login( String name,  String pwd) {
-        return true;
+    public static Boolean Login( String name,  String pwd) {
+        utilisateurDAO = new UtilisateurDAO(lienDB,"connection","");
+        login = utilisateurDAO.connexion(name, pwd);
+        return login!=null;
+
     }
     /**
      * Demande a utilisateurDAO de creer un utilisateur
@@ -76,6 +66,8 @@ public  class Controleur {
         return false;
     }
 
-
+    public Controleur() {
+        this.pressePapier=new Object();
 
     }
+}
