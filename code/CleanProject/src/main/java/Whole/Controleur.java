@@ -7,12 +7,19 @@ package Whole;
 
 import Whole.daoPackage.UtilisateurDAO;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.Buffer;
+import java.util.ArrayList;
+
 
 /**
 * Coeur de l'application, doit avant tout lancer ConnectionUniqueBD
 */
 public  class Controleur {
-    static String lienDB;
+    static String[] configList;
     static UtilisateurDAO utilisateurDAO;
     private static String login;
     /**
@@ -43,7 +50,8 @@ public  class Controleur {
     * @see SingleConnection
     */
     public static Boolean Login( String name,  String pwd) {
-        utilisateurDAO = new UtilisateurDAO(lienDB,"connection","");
+
+        utilisateurDAO = new UtilisateurDAO(configList[0],"connection","");
         login = utilisateurDAO.connexion(name, pwd);
         return login!=null;
 
@@ -66,5 +74,14 @@ public  class Controleur {
     public Controleur() {
         this.pressePapier=new Object();
 
+    }
+    public void lireConfigFile() throws IOException {
+        BufferedReader br = new BufferedReader(new FileReader("src/main/ressources/configfile.txt"));
+        String line;
+        int i = 0;
+        while ((line=br.readLine())!=null){
+            configList[i] = line;
+            i++;
+        }
     }
 }
