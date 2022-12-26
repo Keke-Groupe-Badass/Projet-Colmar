@@ -8,10 +8,8 @@ package Whole;
 import Whole.daoPackage.UtilisateurDAO;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.Buffer;
 import java.util.ArrayList;
 
 
@@ -19,7 +17,7 @@ import java.util.ArrayList;
 * Coeur de l'application, doit avant tout lancer ConnectionUniqueBD
 */
 public  class Controleur {
-    static String[] configList;
+    static ArrayList<String> configList;
     static UtilisateurDAO utilisateurDAO;
     private static String login;
     /**
@@ -51,7 +49,6 @@ public  class Controleur {
     */
     public static Boolean Login( String name,  String pwd) {
 
-        utilisateurDAO = new UtilisateurDAO(configList[0],"connection","");
         login = utilisateurDAO.connexion(name, pwd);
         return login!=null;
 
@@ -61,10 +58,14 @@ public  class Controleur {
     * @param  name nom d'utilisateur
     * @param  pwd mot de passe
     * @param  confirm confirmation du mot de passe
+     * @param statut le statut d'utilisateur
      * @return true si l'utilisateur a pu être aouté, false sino,
     */
-    public Boolean AddUser(String name, String pwd, String confirm) {
-        return false; //en attendant de coder la fonction
+    public Boolean AddUser(String name, String pwd, String confirm,String statut) {
+        if(!pwd.equals(confirm)){
+            return false;
+        }
+        return utilisateurDAO.creerUtilisateur(name,pwd,statut); //en attendant de coder la fonction
     }
 
     public static Boolean init(){
@@ -72,15 +73,26 @@ public  class Controleur {
     }
 
     public Controleur() {
-        this.pressePapier=new Object();
+        try {
+            configList = new ArrayList<>();
+            lireConfigFile();
+            System.out.println(configList);
+            utilisateurDAO = new UtilisateurDAO(configList.get(0),"connection","");
+            this.pressePapier=new Object();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
 
     }
     public void lireConfigFile() throws IOException {
-        BufferedReader br = new BufferedReader(new FileReader("src/main/ressources/configfile.txt"));
+        BufferedReader br = new BufferedReader(new FileReader("src/configfile.txt"));
         String line;
         int i = 0;
         while ((line=br.readLine())!=null){
-            configList[i] = line;
+            line=line.split(";")[1];
+            configList.add(line);
+
             i++;
         }
     }

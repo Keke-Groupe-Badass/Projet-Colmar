@@ -53,6 +53,18 @@
                   <MenuItem mnemonicParsing="false" text="Exporter Données" />
           </items>
         </Menu>
+            <Menu mnemonicParsing="false" text="Utilisateur">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Creer Utilisateur" />
+                  <MenuItem mnemonicParsing="false" text="Supprmer Utilisateur" />
+                  <MenuItem mnemonicParsing="false" text="Modifier mot de passe" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Theme">
+              <items>
+                <MenuItem mnemonicParsing="false" text="mode 1" />
+              </items>
+            </Menu>
       </menus>
     </MenuBar>
       <GridPane>

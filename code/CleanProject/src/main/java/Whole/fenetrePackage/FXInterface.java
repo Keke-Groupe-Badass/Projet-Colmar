@@ -26,6 +26,7 @@ import java.io.IOException;
 public class FXInterface extends Application implements FenetreInterface {
     private static Stage mainStage;
 
+
     @Override
     public void start(Stage stage) throws IOException {
         mainStage=stage;
