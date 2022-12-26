@@ -6,33 +6,19 @@ import java.util.ArrayList;
  * Classe représentant les ouvrages
  */
 public class Ouvrage implements CCMS<Ouvrage> {
+	private int id;
+	private String editeur;
+	private String imprimeur;
+	private String lieuImpression;
+	private int dateEdition;
+	private String table_s;
+	private int nbPage;
+	private String copyright;
+	private String creditPhoto;
+	private String resolution;
+	private String format;
     private String titre;
-
-    private ArrayList<Personne> personnes;
-
-    private Personne libraire;
-
-    private Personne imprimeur;
-
-    private String lieuEdition;
-
-    private int dateEdition;
-
-    private int nbPage;
-
-    private int id;
-
-    private String format;
-
-    private String resolution;
-
-    private String creditPhoto;
-
-    private boolean reechantillonage;
-
-    private String copyright;
-
-    private String lien;
+    private ArrayList<Personne> auteurs;
 
     /**
      * Constructeur à utiliser pour les instances de changement
@@ -40,7 +26,6 @@ public class Ouvrage implements CCMS<Ouvrage> {
     public Ouvrage() {
         this.id = -2;
         this.nbPage = -2;
-
     }
 
     /**
@@ -54,336 +39,330 @@ public class Ouvrage implements CCMS<Ouvrage> {
     }
 
     /**
-     * Constructeur à utilisé pour les copies uniquements
-     * @param titre String
-     * @param personnes ArrayList<String>
-     * @param libraire Personne
-     * @param imprimeur Personne
-     * @param lieuEdition String
-     * @param dateEdition String
-     * @param nbPage int
+     * Constructeur à utiliser pour les copies uniquement
      * @param id int
-     * @param format String
-     * @param resolution String
-     * @param creditPhoto String
-     * @param reechantillonage boolean
+     * @param editeur Personne
+     * @param imprimeur Personne
+     * @param lieuImpression String
+     * @param dateEdition int
+     * @param table_s String
+     * @param nbPage int
      * @param copyright String
-     */
-    public Ouvrage(String titre, ArrayList<Personne> personnes, Personne libraire, Personne imprimeur, String lieuEdition, int dateEdition, int nbPage, int id, String format, String resolution, String creditPhoto, boolean reechantillonage, String copyright, String lien) {
-        this.titre = titre;
-        this.personnes = new ArrayList<>();
-        this.libraire = libraire;
-        this.imprimeur = imprimeur;
-        this.lieuEdition = lieuEdition;
-        this.dateEdition = dateEdition;
-        this.nbPage = nbPage;
-        this.id = id;
-        this.format = format;
-        this.resolution = resolution;
-        this.creditPhoto = creditPhoto;
-        this.reechantillonage = reechantillonage;
-        this.copyright = copyright;
-        this.lien=lien;
-        for(Personne a: personnes){
-            this.personnes.add(a);
-        }
-
-    }
-
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    /**
-     * getter de l'attribut format
-     * @return format
-     */
-    public String getFormat() {
-        return format;
-    }
-
-    /**
-     * setter de l'attribut format
-     * @param format String
-     */
-    public void setFormat(String format) {
-        this.format = format;
-    }
-
-    /**
-     * getter de l'attribut résolution
-     * @return resolution
-     */
-    public String getResolution() {
-        return resolution;
-    }
-
-    /**
-     * setter de l'attribut résolution
-     * @param resolution String
-     */
-    public void setResolution(String resolution) {
-        this.resolution = resolution;
-    }
-
-    /**
-     * getter de l'attribut CreditResolution
-     * @return ceditResolution
-     */
-    public String getCreditPhoto() {
-        return creditPhoto;
-    }
-
-    /**
-     * setter de l'attribut creditResolution
      * @param creditPhoto String
+     * @param resolution String
+     * @param format String
+     * @param titre String
+     * @param auteurs ArrayList<Personne>
      */
-    public void setCreditPhoto(String creditPhoto) {
-        this.creditPhoto = creditPhoto;
-    }
-
-    /**
-     * equivalent getter de l'attribut reechantillonage
-     * @return reechantillonage
-     */
-    public boolean isReechantillonage() {
-        return reechantillonage;
-    }
-
-    /**
-     * setter de l'attribut reechantillonage
-     * @param reechantillonage boolean
-     */
-    public void setReechantillonage(boolean reechantillonage) {
-        this.reechantillonage = reechantillonage;
-    }
-
-    /**
-     * getter de l'attribut copyright
-     * @return copytight
-     */
-    public String getCopyright() {
-        return copyright;
-    }
-
-    /**
-     * setter de l'attribut copyright
-     * @param copyright String
-     */
-    public void setCopyright(String copyright) {
-        this.copyright = copyright;
-    }
-
-    /**
-     * renvoie le titre de l'ouvrage
-     * @return titre String
-     */
-    public String getTitre() {
-        return titre;
-    }
-
-    /**
-     * renvoie les personnes de l'ouvrage
-     * @return personnes String
-     */
-    public ArrayList<Personne> getAuteurs() {
-        return personnes;
-    }
-
-
-    /**
-     * renvoie le lieu où l'ouvrage a été imprimé
-     * @return lieuEdition String
-     */
-    public String getLieuEdition() {
-        return lieuEdition;
-    }
-
-    /**
-     * renvoie la date d'édition de l'ouvrage
-     * @return dateEdition String
-     */
-    public int getDateEdition() {
-        return dateEdition;
-    }
-
-    /**
-     * renvoie le nombre de pages de l'ouvrage
-     * @return nbPages int
-     */
-    public int getNbPage() {
-        return nbPage;
-    }
-
-    public ArrayList<Personne> getPersonnes() {
-        return personnes;
-    }
-
-    public void setPersonnes(ArrayList<Personne> personnes) {
-        ArrayList<Personne> list = new ArrayList<>();
-        for(Personne p : personnes){
-            list.add(p);
+    public Ouvrage(int id, String editeur, String imprimeur, String lieuImpression, int dateEdition, String table_s,
+			int nbPage, String copyright, String creditPhoto, String resolution, String format, String titre,
+			ArrayList<Personne> personnes) {
+		this.id = id;
+		this.editeur = editeur;
+		this.imprimeur = imprimeur;
+		this.lieuImpression = lieuImpression;
+		this.dateEdition = dateEdition;
+		this.table_s = table_s;
+		this.nbPage = nbPage;
+		this.copyright = copyright;
+		this.creditPhoto = creditPhoto;
+		this.resolution = resolution;
+		this.format = format;
+		this.titre = titre;
+		for(Personne a: auteurs){
+            this.auteurs.add(a);
         }
-        this.personnes = list;
-    }
-
-    public Personne getLibraire() {
-        return libraire;
-    }
-
-    public void setLibraire(Personne libraire) {
-        this.libraire = libraire;
-    }
-
-    public Personne getImprimeur() {
-        return imprimeur;
-    }
-
-    public void setImprimeur(Personne imprimeur) {
-        this.imprimeur = imprimeur;
-    }
+	}
 
     /**
-     * renvoie l'id de l'ouvrage dans la base
+     * Renvoie l'id de l'ouvrage dans la base.
      * @return id int
      */
-    public int getId() {
-        return id;
-    }
+	public int getId() {
+		return id;
+	}
 
-    /**
-     * change le titre de l'ouvrage par le titre passé en paramètre
-     * @param titre String
+	/**
+	 * Change l'id de l'ouvrage par l'id passé en paramètre.
+	 * @param id id de l'ouvrage
+	 */
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	/**
+	 * Renvoie l'éditeur de l'ouvrage.
+	 * @return editeur
+	 */
+	public String getEditeur() {
+		return editeur;
+	}
+
+	/**
+	 * Change l'éditeur de l'ouvrage par l'éditeur passé en paramètre.
+	 * @param editeur éditeur de l'ouvrage
+	 */
+	public void setEditeur(String editeur) {
+		this.editeur = editeur;
+	}
+
+	/**
+	 * Renvoie l'imprimeur de l'ouvrage.
+	 * @return imprimeur
+	 */
+	public String getImprimeur() {
+		return imprimeur;
+	}
+
+	/**
+	 * Change l'imprimeur de l'ouvrage par l'imprimeur passé en paramètre.
+	 * @param imprimeur imprimeur de l'ouvrage
+	 */
+	public void setImprimeur(String imprimeur) {
+		this.imprimeur = imprimeur;
+	}
+
+	/**
+	 * Renvoie le lieu d'impression de l'ouvrage.
+	 * @return
+	 */
+	public String getLieuImpression() {
+		return lieuImpression;
+	}
+
+	/**
+     * Change le lieu d'impression de l'ouvrage par le lieu d'impression passé en paramètre.
+     * @param lieuImpression String
      */
-    public void setTitre(String titre) {
-        this.titre = titre;
-    }
+	public void setLieuImpression(String lieuImpression) {
+		this.lieuImpression = lieuImpression;
+	}
 
-    /**
-     * change les personnes de l'ouvrage par les personnes passés en paramètre
-     * @param personnes String
-     */
-    public void setAuteurs(ArrayList<Personne> personnes) {
-        this.personnes = new ArrayList<>();
-        for(Personne personne : personnes){
-            this.personnes.add(personne);
-        }
-    }
+	/**
+	 * Renvoie la date d'édition de l'ouvrage
+	 * @return
+	 */
+	public int getDateEdition() {
+		return dateEdition;
+	}
 
-
-    /**
-     * Change le lieu d'édition de l'ouvrage par le lieu d'édition passé en paramètre
-     * @param lieuEdition String
-     */
-    public void setLieuEdition(String lieuEdition) {
-        this.lieuEdition = lieuEdition;
-    }
-
-    /**
-     * Permet de copier les valeurs d'un ouvrage
-     * @author Andreas
-     * @return la copie exacte d'un ouvrage
-     */
-    public Ouvrage copie(){
-        return new Ouvrage( titre, (ArrayList<Personne>) personnes.clone(), libraire,  imprimeur,  lieuEdition,  dateEdition,  nbPage,    id,  format,  resolution, creditPhoto,  reechantillonage, copyright,lien);
-    }
-    /**
+	/**
      * Change la date d'édition de l'ouvrage par la date passée en paramètre
      * @param dateEdition String
      */
-    public void setDateEdition(int dateEdition) {
-        this.dateEdition = dateEdition;
-    }
+	public void setDateEdition(int dateEdition) {
+		this.dateEdition = dateEdition;
+	}
 
-    /**
-     * change le nombre de pages de l'ouvrage par le nombre de pages passé en paramètres
+	/**
+	 * Renvoie table_s.
+	 * @return table_s
+	 */
+	public String getTable_s() {
+		return table_s;
+	}
+
+	/**
+	 * Change le table_s de l'ouvrage par le table_s passé en paramètre.
+	 * @param table_s
+	 */
+	public void setTable_s(String table_s) {
+		this.table_s = table_s;
+	}
+
+	/**
+	 * Renvoie le nombre de pages de l'ouvrage.
+	 * @return nbPage
+	 */
+	public int getNbPage() {
+		return nbPage;
+	}
+
+	/**
+     * Change le nombre de pages de l'ouvrage par le nombre de pages passé en paramètres.
      * @param nbPage int
      */
-    public void setNbPage(int nbPage) {
-        this.nbPage = nbPage;
-    }
+	public void setNbPage(int nbPage) {
+		this.nbPage = nbPage;
+	}
 
+	/**
+	 * Renvoie le copyright de l'ouvrage.
+	 * @return copyright
+	 */
+	public String getCopyright() {
+		return copyright;
+	}
 
-    public String getLien() {
-        return lien;
-    }
+	/**
+	 * Change le copyright de l'ouvrage par le copyright passé en paramètres.
+	 * @param copyright
+	 */
+	public void setCopyright(String copyright) {
+		this.copyright = copyright;
+	}
 
-    public void setLien(String lien) {
-        this.lien = lien;
-    }
+	/**
+	 * Renvoie le crédit de la photo de l'ouvrage.
+	 * @return creditPhoto
+	 */
+	public String getCreditPhoto() {
+		return creditPhoto;
+	}
 
-    /**
-     * Ajoute à la liste des Auteurs un auteur
+	/**
+	 * Change le crédit de la photo de l'ouvrage par le crédit photo passé en paramètres.
+	 * @param creditPhoto
+	 */
+	public void setCreditPhoto(String creditPhoto) {
+		this.creditPhoto = creditPhoto;
+	}
+
+	/**
+	 * Renvoie la résolution de l'ouvrage.
+	 * @return resolution
+	 */
+	public String getResolution() {
+		return resolution;
+	}
+
+	/**
+	 * Change la résolution de l'ouvrage par la résolution passée en paramètres.
+	 * @param resolution
+	 */
+	public void setResolution(String resolution) {
+		this.resolution = resolution;
+	}
+
+	/**
+	 * Renvoie le format de l'ouvrage.
+	 * @return format
+	 */
+	public String getFormat() {
+		return format;
+	}
+
+	/**
+	 * Change le format de l'ouvrage par le format passé en paramètres.
+	 * @param format
+	 */
+	public void setFormat(String format) {
+		this.format = format;
+	}
+
+	/**
+	 * Renvoie le titre de l'ouvrage.
+	 * @return titre
+	 */
+	public String getTitre() {
+		return titre;
+	}
+
+	/**
+     * Change le titre de l'ouvrage par le titre passé en paramètre.
+     * @param titre String
+     */
+	public void setTitre(String titre) {
+		this.titre = titre;
+	}
+
+	/**
+	 * Renvoie la liste d'auteurs de l'ouvrage.
+	 * @return auteurs
+	 */
+	public ArrayList<Personne> getAuteurs() {
+		return auteurs;
+	}
+
+	/**
+     * Change les auteurs de l'ouvrage par les auteurs passés en paramètre.
+     * @param auteurs String
+     */
+	public void setAuteurs(ArrayList<Personne> auteurs) {
+		ArrayList<Personne> list = new ArrayList<>();
+        for(Personne auteur : auteurs){
+           	list.add(auteur);
+        }
+        this.auteurs = list;
+	}
+
+	/**
+     * Ajoute à la liste des auteurs un auteur.
      * @param a l'auteur à ajouter
      */
 
-    public void addAuteur(Personne a){
+    public void ajouterAuteur(Personne a){
         if(a!=null){
-            if(!personnes.contains(a)){
-                personnes.add(a);
+            if(!auteurs.contains(a)){
+                auteurs.add(a);
             }
         }
     }
-    /**
-     * Supprime à la liste des Auteurs un auteur
+	
+	/**
+     * Supprime de la liste des auteurs un auteur.
      * @param a l'auteur à supprimer
      */
     public void retirerAuteur(Personne a){
         if(a!=null){
-            personnes.remove(a);
+            auteurs.remove(a);
         }
     }
-
-    /**
-     * Permet de verifier si 2 objets sont exactement similaires
-     * @author Andreas
-     * @param objet l'objet à comparer
-     * @return renvoie true si les deux objets sont similaires, false sinons
+	
+	/**
+     * Permet de copier les valeurs d'un ouvrage.
+     * @return la copie exacte d'un ouvrage
      */
-    @Override
-    public Boolean estCLone(Ouvrage objet) {
-        if(objet!=null){
+    public Ouvrage copie(){
+        return new Ouvrage(id, editeur, imprimeur, lieuImpression, dateEdition, table_s, nbPage, copyright, creditPhoto, resolution, format, titre, (ArrayList<Personne>) auteurs.clone());
+    }
+    
+    /**
+     * Permet de verifier si 2 objets sont exactement similaires.
+     * @param objet l'objet à comparer
+     * @return renvoie true si les deux objets sont similaires, false sinon
+     */
+	@Override
+	public Boolean estCLone(Ouvrage objet) {
+		if (objet==null)
             return false;
-        }
-
-        if(!objet.getCopyright().equals(this.getCopyright())){
-            return false;
-        }
-
-        if(!objet.getFormat().equals(this.format)){
-            return false;
-        }
-        if(!objet.getCreditPhoto().equals(this.creditPhoto)){
-            return false;
-        }
-        if(!objet.getTitre().equals(this.titre)){
-            return false;
-        }
-
-        if(!objet.getLieuEdition().equals(this.lieuEdition)){
-            return false;
-        }
-        if(!objet.getResolution().equals(this.resolution)){
-            return false;
-        }
-        if(objet.getNbPage()!=this.getNbPage()){
-            return false;
-        }
-        if(objet.getId()!=this.id){
-            return false;
-        }
-        if(objet.getDateEdition()!=this.dateEdition){
-            return false;
-        }
-        for(Personne personne : this.personnes){
-            if(!objet.getAuteurs().contains(personne)){
+        if (!objet.getEditeur().equals(editeur))
+        	return false;
+        if (!objet.getImprimeur().equals(imprimeur))
+        	return false;
+        if (!objet.getLieuImpression().equals(lieuImpression))
+        	return false;
+        if (objet.getDateEdition() != dateEdition)
+        	return false;
+        if (!objet.getTable_s().equals(table_s))
+        	return false;
+        if (objet.getNbPage() != nbPage)
+        	return false;
+        if (!objet.getCopyright().equals(copyright))
+        	return false;
+        if (!objet.getCreditPhoto().equals(creditPhoto))
+        	return false;
+        if (!objet.getResolution().equals(resolution))
+        	return false;
+        if (!objet.getFormat().equals(format))
+        	return false;
+        if (!objet.getTitre().equals(titre))
+        	return false;
+        for(Personne auteur : this.auteurs){
+            if(!objet.getAuteurs().contains(auteur)){
                 return false;
             }
         }
         return true;
-    }
-    public boolean equals(Ouvrage objet){
+	}
+	
+	/**
+     * Permet de verifier si 2 objets sont exactement similaires.
+     * @param objet l'objet à comparer
+     * @return renvoie true si les deux objets sont similaires, false sinon
+     * @see #estCLone
+     */
+	public boolean equals(Ouvrage objet){
         return this.estCLone(objet);
     }
 }
