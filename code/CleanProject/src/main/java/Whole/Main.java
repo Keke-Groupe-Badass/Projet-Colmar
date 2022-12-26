@@ -13,7 +13,10 @@ public class Main {
      */
 
     public static void main(String[] args) {
-        FXInterface f = new FXInterface();
+        Controleur c =new Controleur();
+        c.AddUser("testUser","motdepasseSafe101_","motdepasseSafe101_","admin");
+
+
         /**
         try {
 
@@ -40,6 +43,7 @@ public class Main {
             e.getStackTrace();
         }
         */
+        /**
         Lettrine l1 = new Lettrine();
         l1.setLien("louis");
         l1.setNbPage(12);
@@ -49,7 +53,7 @@ public class Main {
         System.out.println(l1.equals(l2));
 
 
-        //executeScriptPB();
+        //executeScriptPB();**/
     }
     public static void executeScriptPB(){
         try{
