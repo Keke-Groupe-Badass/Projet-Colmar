@@ -16,7 +16,7 @@ CREATE TABLE ouvrages(
         table_s        Varchar (256) NOT NULL ,
         nbPage         Int NOT NULL ,
         copyright      Varchar (50) NOT NULL ,
-        credit_photo   Varchar (50) NOT NULL ,
+        creditPhoto    Varchar (50) NOT NULL ,
         resolution     Varchar (50) NOT NULL ,
         format         Varchar (50) NOT NULL ,
         titre          Varchar (50) NOT NULL
