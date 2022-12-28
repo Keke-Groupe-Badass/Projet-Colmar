@@ -89,7 +89,7 @@ public class Tag implements CCMS<Tag> {
      * @return renvoie true si les deux objets sont similaires, false sinons
      */
     @Override
-    public Boolean estCLone(Tag objet) {
+    public Boolean estClone(Tag objet) {
         if(objet!=null){
             return false;
         }
@@ -105,6 +105,6 @@ public class Tag implements CCMS<Tag> {
         return true;
     }
     public boolean equals(Tag objet){
-        return this.estCLone(objet);
+        return this.estClone(objet);
     }
 }
