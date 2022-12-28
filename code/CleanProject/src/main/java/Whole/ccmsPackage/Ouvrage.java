@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 public class Ouvrage implements CCMS<Ouvrage> {
 	private int id;
-	private Personne editeur;
+	private Personne libraire;
 	private Personne imprimeur;
 	private String lieuImpression;
 	private int dateEdition;
@@ -41,7 +41,7 @@ public class Ouvrage implements CCMS<Ouvrage> {
     /**
      * Constructeur à utiliser pour les copies uniquement
      * @param id int
-     * @param editeur Personne
+     * @param libraire Personne
      * @param imprimeur Personne
      * @param lieuImpression String
      * @param dateEdition int
@@ -54,11 +54,11 @@ public class Ouvrage implements CCMS<Ouvrage> {
      * @param titre String
      * @param auteurs ArrayList<Personne>
      */
-    public Ouvrage(int id, Personne editeur, Personne imprimeur, String lieuImpression, int dateEdition, String lien,
+    public Ouvrage(int id, Personne libraire, Personne imprimeur, String lieuImpression, int dateEdition, String lien,
 			int nbPage, String copyright, String creditPhoto, String resolution, String format, String titre,
 			ArrayList<Personne> personnes) {
 		this.id = id;
-		this.editeur = editeur;
+		this.libraire = libraire;
 		this.imprimeur = imprimeur;
 		this.lieuImpression = lieuImpression;
 		this.dateEdition = dateEdition;
@@ -92,18 +92,18 @@ public class Ouvrage implements CCMS<Ouvrage> {
 
 	/**
 	 * Renvoie l'éditeur de l'ouvrage.
-	 * @return editeur
+	 * @return libraire
 	 */
-	public Personne getEditeur() {
-		return editeur;
+	public Personne getLibraire() {
+		return libraire;
 	}
 
 	/**
 	 * Change l'éditeur de l'ouvrage par l'éditeur passé en paramètre.
-	 * @param editeur éditeur de l'ouvrage
+	 * @param libraire éditeur de l'ouvrage
 	 */
-	public void setEditeur(Personne editeur) {
-		this.editeur = editeur;
+	public void setLibraire(Personne libraire) {
+		this.libraire = libraire;
 	}
 
 	/**
@@ -314,7 +314,7 @@ public class Ouvrage implements CCMS<Ouvrage> {
      * @return la copie exacte d'un ouvrage
      */
     public Ouvrage copie(){
-        return new Ouvrage(id, editeur, imprimeur, lieuImpression, dateEdition, lien, nbPage, copyright, creditPhoto, resolution, format, titre, (ArrayList<Personne>) auteurs.clone());
+        return new Ouvrage(id, libraire, imprimeur, lieuImpression, dateEdition, lien, nbPage, copyright, creditPhoto, resolution, format, titre, (ArrayList<Personne>) auteurs.clone());
     }
     
     /**
@@ -326,7 +326,7 @@ public class Ouvrage implements CCMS<Ouvrage> {
 	public Boolean estClone(Ouvrage objet) {
 		if (objet==null)
             return false;
-        if (!objet.getEditeur().equals(editeur))
+        if (!objet.getLibraire().equals(libraire))
         	return false;
         if (!objet.getImprimeur().equals(imprimeur))
         	return false;

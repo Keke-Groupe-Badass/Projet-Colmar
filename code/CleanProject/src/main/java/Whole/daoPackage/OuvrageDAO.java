@@ -8,7 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
@@ -29,7 +29,7 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
     }
 
     /**
-     * Ajoute à la base de donnée un ouvrage
+     * Ajoute à la base de données un ouvrage.
      *
      * @param donne l'ouvrage à ajouter
      * @see Ouvrage
@@ -41,19 +41,21 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
             return false;
         }
         try {
-            PreparedStatement stmt = cn.prepareStatement("insert into ouvrages values(?,?,?,?,?,?,?,?,?,?,?,?,?)");
-            stmt.setString(1,donne.getTitre());
-            stmt.setInt(2,donne.getDateEdition());
-            stmt.setString(3, donne.getFormat());
-            stmt.setString(4,donne.getLien());
-            stmt.setString(5,donne.getResolution());
-            stmt.setString(6,donne.getCreditPhoto());
-            stmt.setBoolean(7,donne.isReechantillonage());
-            stmt.setString(8,donne.getCopyright());
-            stmt.setInt(9,donne.getNbPage());
-            stmt.setString(10,donne.getLieuEdition());
-            stmt.setInt(11,donne.getImprimeur().getId());
-            stmt.setInt(12,donne.getLibraire().getId());
+        	PreparedStatement stmt = cn.prepareStatement("INSERT INTO ouvrages(libraire, "
+            		+ "imprimeur, lieuImpression, dateEdition, lien, nbPage, copyright, "
+            		+ "creditPhoto, resolution, format, titre) "
+            		+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            stmt.setInt(1, donne.getLibraire().getId());
+            stmt.setInt(2, donne.getImprimeur().getId());
+            stmt.setString(3, donne.getLieuImpression());
+            stmt.setInt(4, donne.getDateEdition());
+            stmt.setString(5, donne.getLien());
+            stmt.setInt(6, donne.getNbPage());
+            stmt.setString(7, donne.getCopyright());
+            stmt.setString(8, donne.getCreditPhoto());
+            stmt.setString(9, donne.getResolution());
+            stmt.setString(10, donne.getFormat());
+            stmt.setString(11, donne.getTitre());
             return stmt.execute();
         }
         catch (SQLException e) {
@@ -63,10 +65,8 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
 
 
     /**
-    * Permet d'ajouter un ouvrage dans la base de donnees. L'auteur peut être NULL,
-    * on ne connait pas forcement l'auteur d'un ouvrage. Si il n'est pas NULL, on
-    * vérifie que l'auteur passé en paramètre existe bien dans la base de données,
-    * puis on effectue une requete d'insertion.
+    * Permet de faire une insertion dans la table "ecrit". On vérifie que
+    * ni l'auteur, ni l'ouvrage est NULL, puis on fait une requête d'insertion.
     *
     * @param p Personne l'auteur de l'ouvrage
     * @param objet Ouvrage ouvrage qu'on souhaite inserer
@@ -101,7 +101,35 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
      * @see SingleConnection
      */
     public boolean modifier(Ouvrage objet, Ouvrage changement) {
-    	return false;
+    	boolean fonctionne=false;
+    	String sql="SELECT * FROM ouvrages WHERE idOuvrage="+objet.getId();
+    	try {
+			Statement stmt=cn.createStatement();
+			ResultSet rs=stmt.executeQuery(sql);
+			if (rs.next()) { //Si l'ouvrage existe bien
+				sql="UPDATE ouvrages SET libraire=?, imprimeur=?, lieuImpression=?, "
+						+ "dateEdition=?, lien=?, nbPage=?, copyright=?, creditPhoto=?, "
+						+ "resolution=?, format=?, titre=? "
+					+"'WHERE idOuvrage=?";
+				PreparedStatement pstmt=cn.prepareStatement(sql);
+				pstmt.setInt(1, changement.getLibraire().getId());
+				pstmt.setInt(2, changement.getImprimeur().getId());
+				pstmt.setString(3, changement.getLieuImpression());
+				pstmt.setInt(4, changement.getDateEdition());
+				pstmt.setString(5, changement.getLien());
+				pstmt.setInt(6, changement.getNbPage());
+				pstmt.setString(7, changement.getCopyright());
+				pstmt.setString(8, changement.getCreditPhoto());
+				pstmt.setString(9, changement.getResolution());
+				pstmt.setString(10, changement.getFormat());
+				pstmt.setString(11, changement.getTitre());
+				pstmt.setInt(12, objet.getId());
+				fonctionne=stmt.execute(sql);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+    	return fonctionne;
     }
     
     /**
@@ -137,26 +165,94 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
     public ArrayList<Ouvrage> chercher(Ouvrage objet) {
         PreparedStatement stmt= null;
         ArrayList list = new ArrayList();
+        boolean premier=true; //Permet d'ajouter les AND dans la requête si ce n'est pas la première condition
+        String sql="SELECT * FROM ouvrages WHERE";
+    	if (objet.getLibraire() != null) {
+    		sql+=" libraire='"+objet.getLibraire()+"'";
+    		premier=false;
+    	}	
+    	if (objet.getImprimeur() != null) {
+    		if (!premier)
+    			sql+=" AND";
+    		sql+=" imprimeur='"+objet.getImprimeur()+"'";
+    		premier=false;
+    	}    		
+    	if (objet.getLieuImpression() != null) {
+    		if (!premier)
+    			sql+=" AND";
+    		sql+=" lieuImpression='"+objet.getLieuImpression()+"'";
+    		premier=false;
+    	}
+    	if (objet.getDateEdition() != -1) {
+    		if (!premier)
+    			sql+=" AND";
+    		sql+=" dateEdition="+objet.getDateEdition();
+    		premier=false;
+    	}
+    	if (objet.getLien() != null) {
+    		if (!premier)
+    			sql+=" AND";
+    		sql+=" lien='"+objet.getLien()+"'";
+    		premier=false;
+    	}
+    	if (objet.getNbPage() != -1) {
+    		if (!premier)
+    			sql+=" AND";
+    		sql+=" nbPage="+objet.getNbPage();
+    		premier=false;
+    	}
+    	if (objet.getCopyright() != null) {
+    		if (!premier)
+    			sql+=" AND";
+    		sql+=" copyright='"+objet.getCopyright()+"'";
+    		premier=false;
+    	}
+    	if (objet.getCreditPhoto() != null) {
+    		if (!premier)
+    			sql+=" AND";
+    		sql+=" creditPhoto='"+objet.getCopyright()+"'";
+    		premier=false;
+    	}
+    	if (objet.getResolution() != null) {
+    		if (!premier)
+    			sql+=" AND";
+    		sql+=" resolution='"+objet.getResolution()+"'";
+    		premier=false;
+    	}
+    	if (objet.getFormat() != null) {
+    		if (!premier)
+    			sql+=" AND";
+    		sql+=" format='"+objet.getFormat()+"'";
+    		premier=false;
+    	}
+    	if (objet.getTitre() != null) {
+    		if (!premier)
+    			sql+=" AND";
+    		sql+=" titre='"+objet.getTitre()+"'";
+    		premier=false;
+    	}
+    	
+    	if (premier) //Si aucune condition de recherche n'a été donnée
+    		sql="SELECT * FROM ouvrages";
+    	
         try {
-            //TODO IMPLEMENTATION RECHERCHE AUTRE QU'ID
-            stmt = cn.prepareStatement("SELECT * FROM `ouvrages` WHERE `idOuvrage`=?");
-            stmt.setInt(1,objet.getId());
-            ResultSet rs =stmt.executeQuery();
+            stmt = cn.prepareStatement(sql);
+            ResultSet rs=stmt.executeQuery();
             while(rs.next()){
                 Ouvrage o2=new Ouvrage();
-                o2.setTitre(rs.getString(2));
-                o2.setLieuEdition(rs.getString(11));
-                o2.setDateEdition(rs.getInt(3));
-                o2.setNbPage(rs.getInt(10));
-                o2.setId(rs.getInt(1));
-                o2.setFormat(rs.getString(4));
-                o2.setResolution(rs.getString(6));
-                o2.setCreditPhoto(rs.getString(7));
-                o2.setCopyright(rs.getString(9));
-                o2.setCopyright(rs.getString(5));
-                o2.setPersonnes(listeAuteur(o2.getId()));
-                o2.setLibraire(getPersonne(rs.getInt(13)));
-                o2.setImprimeur(getPersonne(rs.getInt(12)));
+                o2.setId(rs.getInt("idOuvrage"));
+                o2.setLibraire(getPersonne(rs.getInt("libraire")));
+                o2.setImprimeur(getPersonne(rs.getInt("imprimeur")));
+                o2.setLieuImpression(rs.getString("lieuImpression"));
+                o2.setDateEdition(rs.getInt("dateEdition"));
+                o2.setLien(rs.getString("lien"));
+                o2.setNbPage(rs.getInt("nbPage"));
+                o2.setCopyright(rs.getString("copyright"));
+                o2.setCreditPhoto(rs.getString("creditPhoto"));
+                o2.setResolution(rs.getString("resolution"));
+                o2.setFormat(rs.getString("format"));
+                o2.setTitre(rs.getString("titre"));
+                o2.setAuteurs(listeAuteur(o2.getId()));
                 list.add(o2);
             }
             return list;
