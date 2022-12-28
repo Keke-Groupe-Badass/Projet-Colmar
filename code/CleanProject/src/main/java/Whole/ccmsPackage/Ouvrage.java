@@ -19,6 +19,7 @@ public class Ouvrage implements CCMS<Ouvrage> {
 	private String format;
     private String titre;
     private ArrayList<Personne> auteurs;
+	private boolean reechantillonage;
 
     /**
      * Constructeur à utiliser pour les instances de changement
@@ -54,6 +55,7 @@ public class Ouvrage implements CCMS<Ouvrage> {
      * @param titre String
      * @param auteurs ArrayList<Personne>
      */
+
     public Ouvrage(int id, Personne libraire, Personne imprimeur, String lieuImpression, int dateEdition, String lien,
 			int nbPage, String copyright, String creditPhoto, String resolution, String format, String titre,
 			ArrayList<Personne> personnes) {
@@ -72,6 +74,7 @@ public class Ouvrage implements CCMS<Ouvrage> {
 		for(Personne a: auteurs){
             this.auteurs.add(a);
         }
+		this.reechantillonage=reechantillonage;
 	}
 
     /**
@@ -104,6 +107,15 @@ public class Ouvrage implements CCMS<Ouvrage> {
 	 */
 	public void setLibraire(Personne libraire) {
 		this.libraire = libraire;
+	}
+
+	public boolean isReechantillonage() {
+		return reechantillonage;
+	}
+
+	public void setReechantillonage(boolean reechantillonage) {
+		this.reechantillonage = reechantillonage;
+
 	}
 
 	/**
@@ -314,7 +326,8 @@ public class Ouvrage implements CCMS<Ouvrage> {
      * @return la copie exacte d'un ouvrage
      */
     public Ouvrage copie(){
-        return new Ouvrage(id, libraire, imprimeur, lieuImpression, dateEdition, lien, nbPage, copyright, creditPhoto, resolution, format, titre, (ArrayList<Personne>) auteurs.clone());
+        return new Ouvrage(id, libraire, imprimeur, lieuImpression, dateEdition, lien, nbPage, copyright, creditPhoto, resolution, format, titre, (ArrayList<Personne>) auteurs.clone(),reechantillonage);
+
     }
     
     /**
@@ -348,6 +361,9 @@ public class Ouvrage implements CCMS<Ouvrage> {
         	return false;
         if (!objet.getTitre().equals(titre))
         	return false;
+		if(objet.isReechantillonage()!=this.isReechantillonage()){
+			return false;
+		}
         for(Personne auteur : this.auteurs){
             if(!objet.getAuteurs().contains(auteur)){
                 return false;

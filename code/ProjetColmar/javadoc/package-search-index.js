@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"Whole"},{"l":"Whole.ccmsPackage"},{"l":"Whole.daoPackage"},{"l":"Whole.exportPackage"},{"l":"Whole.fenetrePackage"}];updateSearchResults();

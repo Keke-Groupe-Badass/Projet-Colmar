@@ -41,6 +41,7 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
             return false;
         }
         try {
+
         	PreparedStatement stmt = cn.prepareStatement("INSERT INTO ouvrages(libraire, "
             		+ "imprimeur, lieuImpression, dateEdition, lien, nbPage, copyright, "
             		+ "creditPhoto, resolution, format, titre) "
@@ -240,6 +241,7 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
             ResultSet rs=stmt.executeQuery();
             while(rs.next()){
                 Ouvrage o2=new Ouvrage();
+
                 o2.setId(rs.getInt("idOuvrage"));
                 o2.setLibraire(getPersonne(rs.getInt("libraire")));
                 o2.setImprimeur(getPersonne(rs.getInt("imprimeur")));
