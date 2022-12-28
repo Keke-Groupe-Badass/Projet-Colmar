@@ -45,7 +45,7 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
             stmt.setString(1,donne.getTitre());
             stmt.setInt(2,donne.getDateEdition());
             stmt.setString(3, donne.getFormat());
-            stmt.setString(4,donne.getTable_s());
+            stmt.setString(4,donne.getLien());
             stmt.setString(5,donne.getResolution());
             stmt.setString(6,donne.getCreditPhoto());
             stmt.setBoolean(7,donne.isReechantillonage());

@@ -2,18 +2,25 @@ package Whole.fenetrePackage;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class FXMainControleur {
-    private FXInterface fx;
+public class FXMainControleur extends FxInterfaceAbstract{
     @FXML
-    protected void handleModifierOuvrageAction(ActionEvent event) {
-        try {
-            fx.changeScene("FxInterfaceModifierOuvrage");
-        } catch (IOException e) {
-            fx.afficherMessage(new String[] {"Erreur","Impossible d'accder à cette page"});
-        }
+    Button buttonModifierOuvrage;
+    FXInterface fx;
+
+
+    @FXML
+    protected void handleModifierOuvrageAction(ActionEvent event) throws IOException {
+        System.out.println("hi");
+        origin = buttonModifierOuvrage;
+        super.changeScene("FxInterfaceModifierOuvrage");
     }
     @FXML
     protected void handleModifierTagAction(ActionEvent event) {

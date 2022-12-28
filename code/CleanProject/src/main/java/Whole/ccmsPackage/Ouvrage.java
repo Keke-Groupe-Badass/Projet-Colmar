@@ -55,10 +55,8 @@ public class Ouvrage implements CCMS<Ouvrage> {
      * @param titre String
      * @param auteurs ArrayList<Personne>
      */
-    public Ouvrage(int id, Personne editeur, Personne imprimeur, String lieuImpression, int dateEdition, String lien,
-
-			int nbPage, String copyright, String creditPhoto, String resolution, String format, String titre,
-			ArrayList<Personne> auteurs, boolean reechantillonage) {
+    public Ouvrage(int id, Personne editeur, Personne imprimeur, String lieuImpression, int dateEdition, String lien, int nbPage, String copyright,
+				   String creditPhoto, String resolution, String format, String titre, ArrayList<Personne> auteurs, boolean reechantillonage) {
 		this.id = id;
 		this.libraire = editeur;
 		this.imprimeur = imprimeur;
@@ -325,7 +323,7 @@ public class Ouvrage implements CCMS<Ouvrage> {
      * @return la copie exacte d'un ouvrage
      */
     public Ouvrage copie(){
-        return new Ouvrage(id, editeur, imprimeur, lieuImpression, dateEdition, lien, nbPage, copyright, creditPhoto, resolution, format, titre, (ArrayList<Personne>) auteurs.clone());
+        return new Ouvrage(id, libraire, imprimeur, lieuImpression, dateEdition, lien, nbPage, copyright, creditPhoto, resolution, format, titre, (ArrayList<Personne>) auteurs.clone(),reechantillonage);
     }
     
     /**

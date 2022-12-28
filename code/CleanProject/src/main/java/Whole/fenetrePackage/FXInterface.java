@@ -114,7 +114,6 @@ public class FXInterface extends Application implements FenetreInterface {
         alert.setContentText(message[1]);
         alert.setTitle(message[0]);
         alert.show();
-
     }
 
 
