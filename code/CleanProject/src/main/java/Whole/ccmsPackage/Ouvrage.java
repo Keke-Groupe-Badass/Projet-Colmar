@@ -7,8 +7,8 @@ import java.util.ArrayList;
  */
 public class Ouvrage implements CCMS<Ouvrage> {
 	private int id;
-	private String editeur;
-	private String imprimeur;
+	private Personne editeur;
+	private Personne imprimeur;
 	private String lieuImpression;
 	private int dateEdition;
 	private String lien;
@@ -54,7 +54,7 @@ public class Ouvrage implements CCMS<Ouvrage> {
      * @param titre String
      * @param auteurs ArrayList<Personne>
      */
-    public Ouvrage(int id, String editeur, String imprimeur, String lieuImpression, int dateEdition, String lien,
+    public Ouvrage(int id, Personne editeur, Personne imprimeur, String lieuImpression, int dateEdition, String lien,
 			int nbPage, String copyright, String creditPhoto, String resolution, String format, String titre,
 			ArrayList<Personne> personnes) {
 		this.id = id;
@@ -94,7 +94,7 @@ public class Ouvrage implements CCMS<Ouvrage> {
 	 * Renvoie l'éditeur de l'ouvrage.
 	 * @return editeur
 	 */
-	public String getEditeur() {
+	public Personne getEditeur() {
 		return editeur;
 	}
 
@@ -102,7 +102,7 @@ public class Ouvrage implements CCMS<Ouvrage> {
 	 * Change l'éditeur de l'ouvrage par l'éditeur passé en paramètre.
 	 * @param editeur éditeur de l'ouvrage
 	 */
-	public void setEditeur(String editeur) {
+	public void setEditeur(Personne editeur) {
 		this.editeur = editeur;
 	}
 
@@ -110,7 +110,7 @@ public class Ouvrage implements CCMS<Ouvrage> {
 	 * Renvoie l'imprimeur de l'ouvrage.
 	 * @return imprimeur
 	 */
-	public String getImprimeur() {
+	public Personne getImprimeur() {
 		return imprimeur;
 	}
 
@@ -118,7 +118,7 @@ public class Ouvrage implements CCMS<Ouvrage> {
 	 * Change l'imprimeur de l'ouvrage par l'imprimeur passé en paramètre.
 	 * @param imprimeur imprimeur de l'ouvrage
 	 */
-	public void setImprimeur(String imprimeur) {
+	public void setImprimeur(Personne imprimeur) {
 		this.imprimeur = imprimeur;
 	}
 
