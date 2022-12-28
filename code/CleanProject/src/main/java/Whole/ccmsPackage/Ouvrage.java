@@ -42,7 +42,7 @@ public class Ouvrage implements CCMS<Ouvrage> {
     /**
      * Constructeur à utiliser pour les copies uniquement
      * @param id int
-     * @param editeur Personne
+     * @param libraire Personne
      * @param imprimeur Personne
      * @param lieuImpression String
      * @param dateEdition int
@@ -55,10 +55,12 @@ public class Ouvrage implements CCMS<Ouvrage> {
      * @param titre String
      * @param auteurs ArrayList<Personne>
      */
-    public Ouvrage(int id, Personne editeur, Personne imprimeur, String lieuImpression, int dateEdition, String lien, int nbPage, String copyright,
-				   String creditPhoto, String resolution, String format, String titre, ArrayList<Personne> auteurs, boolean reechantillonage) {
+
+    public Ouvrage(int id, Personne libraire, Personne imprimeur, String lieuImpression, int dateEdition, String lien,
+			int nbPage, String copyright, String creditPhoto, String resolution, String format, String titre,
+			ArrayList<Personne> personnes) {
 		this.id = id;
-		this.libraire = editeur;
+		this.libraire = libraire;
 		this.imprimeur = imprimeur;
 		this.lieuImpression = lieuImpression;
 		this.dateEdition = dateEdition;
@@ -93,7 +95,7 @@ public class Ouvrage implements CCMS<Ouvrage> {
 
 	/**
 	 * Renvoie l'éditeur de l'ouvrage.
-	 * @return editeur
+	 * @return libraire
 	 */
 	public Personne getLibraire() {
 		return libraire;
@@ -113,6 +115,7 @@ public class Ouvrage implements CCMS<Ouvrage> {
 
 	public void setReechantillonage(boolean reechantillonage) {
 		this.reechantillonage = reechantillonage;
+
 	}
 
 	/**
@@ -324,6 +327,7 @@ public class Ouvrage implements CCMS<Ouvrage> {
      */
     public Ouvrage copie(){
         return new Ouvrage(id, libraire, imprimeur, lieuImpression, dateEdition, lien, nbPage, copyright, creditPhoto, resolution, format, titre, (ArrayList<Personne>) auteurs.clone(),reechantillonage);
+
     }
     
     /**

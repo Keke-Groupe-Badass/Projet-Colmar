@@ -8,18 +8,19 @@
 #------------------------------------------------------------
 
 CREATE TABLE ouvrages(
-        idOuvrage      Int  Auto_increment  NOT NULL ,
-        editeur        Varchar (50) NOT NULL ,
-        imprimeur      Varchar (50) NOT NULL ,
-        lieuImpression Varchar (50) NOT NULL ,
-        dateEdition    Int NOT NULL ,
-        lien           Varchar (256) NOT NULL ,
-        nbPage         Int NOT NULL ,
-        copyright      Varchar (50) NOT NULL ,
-        creditPhoto    Varchar (50) NOT NULL ,
-        resolution     Varchar (50) NOT NULL ,
-        format         Varchar (50) NOT NULL ,
-        titre          Varchar (50) NOT NULL
+        idOuvrage        Int  Auto_increment  NOT NULL ,
+        libraire         Int NOT NULL ,
+        imprimeur        Int NOT NULL ,
+        lieuImpression   Varchar (50) NOT NULL ,
+        dateEdition      Int NOT NULL ,
+        lien             Varchar (256) NOT NULL ,
+        nbPage           Int NOT NULL ,
+        copyright        Varchar (50) NOT NULL ,
+        creditPhoto      Varchar (50) NOT NULL ,
+        resolution       Varchar (50) NOT NULL ,
+        format           Varchar (50) NOT NULL ,
+        titre            Varchar (50) NOT NULL ,
+        reechantillonage Bool NOT NULL
 	,CONSTRAINT ouvrages_PK PRIMARY KEY (idOuvrage)
 )ENGINE=InnoDB;
 
