@@ -13,7 +13,7 @@ CREATE TABLE ouvrages(
         imprimeur      Varchar (50) NOT NULL ,
         lieuImpression Varchar (50) NOT NULL ,
         dateEdition    Int NOT NULL ,
-        table_s        Varchar (256) NOT NULL ,
+        lien           Varchar (256) NOT NULL ,
         nbPage         Int NOT NULL ,
         copyright      Varchar (50) NOT NULL ,
         creditPhoto    Varchar (50) NOT NULL ,
