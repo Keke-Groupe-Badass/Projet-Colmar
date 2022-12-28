@@ -269,7 +269,7 @@ public class Lettrine implements CCMS<Lettrine> {
      * @return renvoie true si les deux objets sont similaires, false sinon
      */
     @Override
-    public Boolean estCLone(Lettrine objet) {
+    public Boolean estClone(Lettrine objet) {
         if(objet==null){
             return false;
         }
@@ -308,6 +308,6 @@ public class Lettrine implements CCMS<Lettrine> {
         return true;
     }
     public boolean equals(Lettrine objet){
-        return this.estCLone(objet);
+        return this.estClone(objet);
     }
 }

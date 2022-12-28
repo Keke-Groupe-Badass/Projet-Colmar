@@ -104,7 +104,7 @@ public class Personne implements CCMS<Personne> {
      * @return renvoie true si les deux objets sont similaires, false sinons
      */
     @Override
-    public Boolean estCLone(Personne objet) {
+    public Boolean estClone(Personne objet) {
         if(objet==null){
             return false;
         }
@@ -120,6 +120,6 @@ public class Personne implements CCMS<Personne> {
         return true;
     }
     public boolean equals(Personne objet){
-        return this.estCLone(objet);
+        return this.estClone(objet);
     }
 }

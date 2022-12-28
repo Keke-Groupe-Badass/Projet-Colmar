@@ -11,7 +11,7 @@ public class Ouvrage implements CCMS<Ouvrage> {
 	private String imprimeur;
 	private String lieuImpression;
 	private int dateEdition;
-	private String table_s;
+	private String lien;
 	private int nbPage;
 	private String copyright;
 	private String creditPhoto;
@@ -45,7 +45,7 @@ public class Ouvrage implements CCMS<Ouvrage> {
      * @param imprimeur Personne
      * @param lieuImpression String
      * @param dateEdition int
-     * @param table_s String
+     * @param lien String
      * @param nbPage int
      * @param copyright String
      * @param creditPhoto String
@@ -54,7 +54,7 @@ public class Ouvrage implements CCMS<Ouvrage> {
      * @param titre String
      * @param auteurs ArrayList<Personne>
      */
-    public Ouvrage(int id, String editeur, String imprimeur, String lieuImpression, int dateEdition, String table_s,
+    public Ouvrage(int id, String editeur, String imprimeur, String lieuImpression, int dateEdition, String lien,
 			int nbPage, String copyright, String creditPhoto, String resolution, String format, String titre,
 			ArrayList<Personne> personnes) {
 		this.id = id;
@@ -62,7 +62,7 @@ public class Ouvrage implements CCMS<Ouvrage> {
 		this.imprimeur = imprimeur;
 		this.lieuImpression = lieuImpression;
 		this.dateEdition = dateEdition;
-		this.table_s = table_s;
+		this.lien = lien;
 		this.nbPage = nbPage;
 		this.copyright = copyright;
 		this.creditPhoto = creditPhoto;
@@ -155,19 +155,19 @@ public class Ouvrage implements CCMS<Ouvrage> {
 	}
 
 	/**
-	 * Renvoie table_s.
-	 * @return table_s
+	 * Renvoie lien.
+	 * @return lien
 	 */
-	public String getTable_s() {
-		return table_s;
+	public String getLien() {
+		return lien;
 	}
 
 	/**
-	 * Change le table_s de l'ouvrage par le table_s passé en paramètre.
-	 * @param table_s
+	 * Change le lien de l'ouvrage par le lien passé en paramètre.
+	 * @param lien
 	 */
-	public void setTable_s(String table_s) {
-		this.table_s = table_s;
+	public void setLien(String lien) {
+		this.lien = lien;
 	}
 
 	/**
@@ -314,7 +314,7 @@ public class Ouvrage implements CCMS<Ouvrage> {
      * @return la copie exacte d'un ouvrage
      */
     public Ouvrage copie(){
-        return new Ouvrage(id, editeur, imprimeur, lieuImpression, dateEdition, table_s, nbPage, copyright, creditPhoto, resolution, format, titre, (ArrayList<Personne>) auteurs.clone());
+        return new Ouvrage(id, editeur, imprimeur, lieuImpression, dateEdition, lien, nbPage, copyright, creditPhoto, resolution, format, titre, (ArrayList<Personne>) auteurs.clone());
     }
     
     /**
@@ -323,7 +323,7 @@ public class Ouvrage implements CCMS<Ouvrage> {
      * @return renvoie true si les deux objets sont similaires, false sinon
      */
 	@Override
-	public Boolean estCLone(Ouvrage objet) {
+	public Boolean estClone(Ouvrage objet) {
 		if (objet==null)
             return false;
         if (!objet.getEditeur().equals(editeur))
@@ -334,7 +334,7 @@ public class Ouvrage implements CCMS<Ouvrage> {
         	return false;
         if (objet.getDateEdition() != dateEdition)
         	return false;
-        if (!objet.getTable_s().equals(table_s))
+        if (!objet.getLien().equals(lien))
         	return false;
         if (objet.getNbPage() != nbPage)
         	return false;
@@ -360,9 +360,9 @@ public class Ouvrage implements CCMS<Ouvrage> {
      * Permet de verifier si 2 objets sont exactement similaires.
      * @param objet l'objet à comparer
      * @return renvoie true si les deux objets sont similaires, false sinon
-     * @see #estCLone
+     * @see #estClone
      */
 	public boolean equals(Ouvrage objet){
-        return this.estCLone(objet);
+        return this.estClone(objet);
     }
 }

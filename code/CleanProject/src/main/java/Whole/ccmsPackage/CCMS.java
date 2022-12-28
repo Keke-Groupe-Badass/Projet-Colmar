@@ -13,6 +13,6 @@ public interface CCMS <CCMS>{
      * @param objet l'objet à comparer
      * @return renvoie true si les deux objets sont similaires, false sinon
      */
-    Boolean estCLone(CCMS objet);
+    Boolean estClone(CCMS objet);
 
 }
