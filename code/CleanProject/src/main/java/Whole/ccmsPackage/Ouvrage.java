@@ -18,8 +18,8 @@ public class Ouvrage implements CCMS<Ouvrage> {
 	private String resolution;
 	private String format;
     private String titre;
+    private boolean reechantillonage;
     private ArrayList<Personne> auteurs;
-	private boolean reechantillonage;
 
     /**
      * Constructeur à utiliser pour les instances de changement
@@ -53,12 +53,12 @@ public class Ouvrage implements CCMS<Ouvrage> {
      * @param resolution String
      * @param format String
      * @param titre String
+     * @param reechantillonage boolean
      * @param auteurs ArrayList<Personne>
      */
-
     public Ouvrage(int id, Personne libraire, Personne imprimeur, String lieuImpression, int dateEdition, String lien,
 			int nbPage, String copyright, String creditPhoto, String resolution, String format, String titre,
-			ArrayList<Personne> personnes) {
+			boolean reechantillonage, ArrayList<Personne> personnes) {
 		this.id = id;
 		this.libraire = libraire;
 		this.imprimeur = imprimeur;
@@ -71,10 +71,10 @@ public class Ouvrage implements CCMS<Ouvrage> {
 		this.resolution = resolution;
 		this.format = format;
 		this.titre = titre;
+		this.reechantillonage = reechantillonage;
 		for(Personne a: auteurs){
             this.auteurs.add(a);
         }
-		this.reechantillonage=reechantillonage;
 	}
 
     /**
@@ -107,15 +107,6 @@ public class Ouvrage implements CCMS<Ouvrage> {
 	 */
 	public void setLibraire(Personne libraire) {
 		this.libraire = libraire;
-	}
-
-	public boolean isReechantillonage() {
-		return reechantillonage;
-	}
-
-	public void setReechantillonage(boolean reechantillonage) {
-		this.reechantillonage = reechantillonage;
-
 	}
 
 	/**
@@ -279,6 +270,23 @@ public class Ouvrage implements CCMS<Ouvrage> {
 	}
 
 	/**
+	 * Renvoie la valeur de reechantillonage.
+	 * @return reechantillonage
+	 */
+	public boolean getReechantillonage() {
+		return reechantillonage;
+	}
+
+	/**
+     * Change la valeur de réechantillonage de l'ouvrage par la valeur de
+     * réechantillonage passée en paramètre.
+     * @param reechantillonage boolean
+     */
+	public void setReechantillonage(boolean reechantillonage) {
+		this.reechantillonage = reechantillonage;
+	}
+
+	/**
 	 * Renvoie la liste d'auteurs de l'ouvrage.
 	 * @return auteurs
 	 */
@@ -326,8 +334,9 @@ public class Ouvrage implements CCMS<Ouvrage> {
      * @return la copie exacte d'un ouvrage
      */
     public Ouvrage copie(){
-        return new Ouvrage(id, libraire, imprimeur, lieuImpression, dateEdition, lien, nbPage, copyright, creditPhoto, resolution, format, titre, (ArrayList<Personne>) auteurs.clone(),reechantillonage);
-
+        return new Ouvrage(id, libraire, imprimeur, lieuImpression, dateEdition, 
+        		lien, nbPage, copyright, creditPhoto, resolution, format, titre, 
+        		reechantillonage, (ArrayList<Personne>) auteurs.clone());
     }
     
     /**
@@ -361,9 +370,8 @@ public class Ouvrage implements CCMS<Ouvrage> {
         	return false;
         if (!objet.getTitre().equals(titre))
         	return false;
-		if(objet.isReechantillonage()!=this.isReechantillonage()){
-			return false;
-		}
+        if (objet.getReechantillonage() != reechantillonage)
+        	return false;
         for(Personne auteur : this.auteurs){
             if(!objet.getAuteurs().contains(auteur)){
                 return false;
