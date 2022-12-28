@@ -14,7 +14,7 @@ public class FxInterfaceAbstract {
 
     void changeScene(String fxml) throws IOException {
         Stage window = (Stage) origin.getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("/FXInterface/"+fxml));
+        Parent root = FXMLLoader.load(getClass().getResource("/FXInterface/"+fxml+".fxml"));
         window.setScene(new Scene(root));
 
     }
