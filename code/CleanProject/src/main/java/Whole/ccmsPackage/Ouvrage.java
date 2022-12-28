@@ -7,8 +7,8 @@ import java.util.ArrayList;
  */
 public class Ouvrage implements CCMS<Ouvrage> {
 	private int id;
-	private String editeur;
-	private String imprimeur;
+	private Personne libraire;
+	private Personne imprimeur;
 	private String lieuImpression;
 	private int dateEdition;
 	private String table_s;
@@ -19,6 +19,7 @@ public class Ouvrage implements CCMS<Ouvrage> {
 	private String format;
     private String titre;
     private ArrayList<Personne> auteurs;
+	private boolean reechantillonage;
 
     /**
      * Constructeur à utiliser pour les instances de changement
@@ -54,11 +55,11 @@ public class Ouvrage implements CCMS<Ouvrage> {
      * @param titre String
      * @param auteurs ArrayList<Personne>
      */
-    public Ouvrage(int id, String editeur, String imprimeur, String lieuImpression, int dateEdition, String table_s,
+    public Ouvrage(int id, Personne editeur, Personne imprimeur, String lieuImpression, int dateEdition, String table_s,
 			int nbPage, String copyright, String creditPhoto, String resolution, String format, String titre,
-			ArrayList<Personne> personnes) {
+			ArrayList<Personne> auteurs, boolean reechantillonage) {
 		this.id = id;
-		this.editeur = editeur;
+		this.libraire = editeur;
 		this.imprimeur = imprimeur;
 		this.lieuImpression = lieuImpression;
 		this.dateEdition = dateEdition;
@@ -72,6 +73,7 @@ public class Ouvrage implements CCMS<Ouvrage> {
 		for(Personne a: auteurs){
             this.auteurs.add(a);
         }
+		this.reechantillonage=reechantillonage;
 	}
 
     /**
@@ -94,23 +96,31 @@ public class Ouvrage implements CCMS<Ouvrage> {
 	 * Renvoie l'éditeur de l'ouvrage.
 	 * @return editeur
 	 */
-	public String getEditeur() {
-		return editeur;
+	public Personne getLibraire() {
+		return libraire;
 	}
 
 	/**
 	 * Change l'éditeur de l'ouvrage par l'éditeur passé en paramètre.
-	 * @param editeur éditeur de l'ouvrage
+	 * @param libraire éditeur de l'ouvrage
 	 */
-	public void setEditeur(String editeur) {
-		this.editeur = editeur;
+	public void setLibraire(Personne libraire) {
+		this.libraire = libraire;
+	}
+
+	public boolean isReechantillonage() {
+		return reechantillonage;
+	}
+
+	public void setReechantillonage(boolean reechantillonage) {
+		this.reechantillonage = reechantillonage;
 	}
 
 	/**
 	 * Renvoie l'imprimeur de l'ouvrage.
 	 * @return imprimeur
 	 */
-	public String getImprimeur() {
+	public Personne getImprimeur() {
 		return imprimeur;
 	}
 
@@ -118,7 +128,7 @@ public class Ouvrage implements CCMS<Ouvrage> {
 	 * Change l'imprimeur de l'ouvrage par l'imprimeur passé en paramètre.
 	 * @param imprimeur imprimeur de l'ouvrage
 	 */
-	public void setImprimeur(String imprimeur) {
+	public void setImprimeur(Personne imprimeur) {
 		this.imprimeur = imprimeur;
 	}
 
@@ -314,7 +324,7 @@ public class Ouvrage implements CCMS<Ouvrage> {
      * @return la copie exacte d'un ouvrage
      */
     public Ouvrage copie(){
-        return new Ouvrage(id, editeur, imprimeur, lieuImpression, dateEdition, table_s, nbPage, copyright, creditPhoto, resolution, format, titre, (ArrayList<Personne>) auteurs.clone());
+        return new Ouvrage(id, libraire, imprimeur, lieuImpression, dateEdition, table_s, nbPage, copyright, creditPhoto, resolution, format, titre, (ArrayList<Personne>) auteurs.clone(),reechantillonage);
     }
     
     /**
@@ -326,7 +336,7 @@ public class Ouvrage implements CCMS<Ouvrage> {
 	public Boolean estCLone(Ouvrage objet) {
 		if (objet==null)
             return false;
-        if (!objet.getEditeur().equals(editeur))
+        if (!objet.getLibraire().equals(libraire))
         	return false;
         if (!objet.getImprimeur().equals(imprimeur))
         	return false;
@@ -348,6 +358,9 @@ public class Ouvrage implements CCMS<Ouvrage> {
         	return false;
         if (!objet.getTitre().equals(titre))
         	return false;
+		if(objet.isReechantillonage()!=this.isReechantillonage()){
+			return false;
+		}
         for(Personne auteur : this.auteurs){
             if(!objet.getAuteurs().contains(auteur)){
                 return false;

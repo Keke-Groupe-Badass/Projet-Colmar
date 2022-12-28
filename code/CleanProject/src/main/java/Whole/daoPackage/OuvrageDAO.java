@@ -45,13 +45,13 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
             stmt.setString(1,donne.getTitre());
             stmt.setInt(2,donne.getDateEdition());
             stmt.setString(3, donne.getFormat());
-            stmt.setString(4,donne.getLien());
+            stmt.setString(4,donne.getTable_s());
             stmt.setString(5,donne.getResolution());
             stmt.setString(6,donne.getCreditPhoto());
             stmt.setBoolean(7,donne.isReechantillonage());
             stmt.setString(8,donne.getCopyright());
             stmt.setInt(9,donne.getNbPage());
-            stmt.setString(10,donne.getLieuEdition());
+            stmt.setString(10,donne.getLieuImpression());
             stmt.setInt(11,donne.getImprimeur().getId());
             stmt.setInt(12,donne.getLibraire().getId());
             return stmt.execute();
@@ -145,7 +145,7 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
             while(rs.next()){
                 Ouvrage o2=new Ouvrage();
                 o2.setTitre(rs.getString(2));
-                o2.setLieuEdition(rs.getString(11));
+                o2.setLieuImpression(rs.getString(11));
                 o2.setDateEdition(rs.getInt(3));
                 o2.setNbPage(rs.getInt(10));
                 o2.setId(rs.getInt(1));
@@ -154,7 +154,7 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
                 o2.setCreditPhoto(rs.getString(7));
                 o2.setCopyright(rs.getString(9));
                 o2.setCopyright(rs.getString(5));
-                o2.setPersonnes(listeAuteur(o2.getId()));
+                o2.setAuteurs(listeAuteur(o2.getId()));
                 o2.setLibraire(getPersonne(rs.getInt(13)));
                 o2.setImprimeur(getPersonne(rs.getInt(12)));
                 list.add(o2);

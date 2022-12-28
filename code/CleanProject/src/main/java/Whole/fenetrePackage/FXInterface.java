@@ -30,7 +30,9 @@ public class FXInterface extends Application implements FenetreInterface {
     @Override
     public void start(Stage stage) throws IOException {
         mainStage=stage;
-        Parent root = FXMLLoader.load(getClass().getResource("/FXInterface/FxInterfaceLogin.fxml"));
+        //Parent root = FXMLLoader.load(getClass().getResource("/FXInterface/FxInterfaceLogin.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/FXInterface/FxInterfaceMain.fxml"));
+
         Scene scene = new Scene(root);
 
         stage.setTitle("Hello!");
