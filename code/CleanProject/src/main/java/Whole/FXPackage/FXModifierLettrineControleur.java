@@ -4,13 +4,22 @@ import Whole.Metadonnee;
 import Whole.ccmsPackage.Lettrine;
 import Whole.ccmsPackage.Tag;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+
 
 import java.net.URL;
 
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class FXModifierLettrineControleur implements Initializable {
@@ -59,9 +68,14 @@ public class FXModifierLettrineControleur implements Initializable {
     Boolean tagSupression;
     Boolean metaSupression;
 
+    ArrayList<Tag> newTag = new ArrayList<>();
+    ArrayList<Metadonnee> newMeta = new ArrayList<>();
 
+    ArrayList<Tag> removeTag = new ArrayList<>();
+    ArrayList<Metadonnee> removeMeta = new ArrayList<>();
 
-
+    ObservableList<Tag> listTag = FXCollections.observableArrayList();
+    ObservableList<Metadonnee> listMeta = FXCollections.observableArrayList();
 
     public void valider(ActionEvent event) {
         ControleurFunctions.changeScene(event, "FxInterfaceLettrinesModifierValidation.fxml");
@@ -77,10 +91,58 @@ public class FXModifierLettrineControleur implements Initializable {
         labelModifier.setText("Modification - Lettrine n°"+lettrine.getId());
 
         for(Metadonnee meta:lettrine.getMetadonnees()){
-            metaListView.getItems().add(meta);
+            listMeta.add(meta);
         }
+        metaListView.setItems(listMeta);
         for(Tag tag:lettrine.getTags()){
-            tagListView.getItems().add(tag);
+            listTag.add(tag);
+        }
+        tagListView.setItems(listTag);
+    }
+    @FXML
+    protected void setMetaSupression(ActionEvent event){
+        metaSupression = suppresionMeta.isSelected();
+    }
+    @FXML
+    protected void setTagSupression(ActionEvent event){
+        tagSupression = suppresionTag.isSelected();
+    }
+    @FXML
+    protected void ajouterTag(ActionEvent event){
+        if(tagTextField.getText()!=null){
+            Tag t = new Tag(Integer.parseInt(tagTextField.getText()));
+            newTag.add(t);
+            listTag.add(t);
+            tagListView.refresh();
+        }
+    }
+    @FXML
+    protected void ajouterMeta(ActionEvent event){
+        if(nomMetaTextField.getText()!=null){
+            Metadonnee m = new Metadonnee(nomMetaTextField.getText(),valeurMetaTextField.getText(),uniteValeurMetaTextField.getText(),descriptionMetaTextField.getText());
+            newMeta.add(m);
+            listMeta.add(m);
+            metaListView.refresh();
+        }
+    }
+    @FXML
+    protected void clickListViewTag(ActionEvent event){
+        if(tagSupression){
+            Tag t = tagListView.getSelectionModel().getSelectedItem();
+            newTag.remove(t);
+            listTag.remove(t);
+            removeTag.add(t);
+            tagListView.refresh();
+        }
+    }
+    @FXML
+    protected void clickListViewMeta(ActionEvent event){
+        if(metaSupression){
+            Metadonnee m = metaListView.getSelectionModel().getSelectedItem();
+            newMeta.remove(m);
+            listMeta.remove(m);
+            removeMeta.add(m);
+            metaListView.refresh();
         }
     }
 }
