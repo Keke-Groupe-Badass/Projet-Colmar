@@ -53,7 +53,6 @@ public class Ouvrage implements CCMS<Ouvrage> {
      * @param resolution String
      * @param format String
      * @param titre String
-     * @param personnes ArrayList<Personne>
      * @param reechantillonage boolean
      * @param auteurs ArrayList<Personne>
      */
@@ -338,8 +337,8 @@ public class Ouvrage implements CCMS<Ouvrage> {
      */
     public Ouvrage copie(){
         return new Ouvrage(id, libraire, imprimeur, lieuImpression, dateEdition, 
-        		lien, nbPage, copyright, creditPhoto, resolution, format, titre, 
-        		reechantillonage, (ArrayList<Personne>) auteurs.clone());
+        		lien, nbPage, copyright, creditPhoto, resolution, format, titre,
+				(ArrayList<Personne>) auteurs.clone(),reechantillonage );
     }
     
     /**
