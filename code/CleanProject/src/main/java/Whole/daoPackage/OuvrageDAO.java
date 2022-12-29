@@ -41,11 +41,10 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
             return false;
         }
         try {
-
         	PreparedStatement stmt = cn.prepareStatement("INSERT INTO ouvrages(libraire, "
             		+ "imprimeur, lieuImpression, dateEdition, lien, nbPage, copyright, "
-            		+ "creditPhoto, resolution, format, titre) "
-            		+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            		+ "creditPhoto, resolution, format, titre, reechantillonage) "
+            		+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,)");
             stmt.setInt(1, donne.getLibraire().getId());
             stmt.setInt(2, donne.getImprimeur().getId());
             stmt.setString(3, donne.getLieuImpression());
@@ -57,6 +56,7 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
             stmt.setString(9, donne.getResolution());
             stmt.setString(10, donne.getFormat());
             stmt.setString(11, donne.getTitre());
+            stmt.setBoolean(12, donne.getReechantillonage());
             return stmt.execute();
         }
         catch (SQLException e) {
@@ -81,9 +81,9 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
             return false;
         }
         try {
-            PreparedStatement stmt = cn.prepareStatement("insert into ecrit values(?,?)");
-            stmt.setInt(1,p.getId());
-            stmt.setInt(2,objet.getId());
+            PreparedStatement stmt = cn.prepareStatement("INSERT INTO ecrit VALUES(?,?)");
+            stmt.setInt(1, p.getId());
+            stmt.setInt(2, objet.getId());
             return stmt.execute();
         } catch (SQLException e) {
             System.out.println("something went wrong "+e);
@@ -110,7 +110,7 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
 			if (rs.next()) { //Si l'ouvrage existe bien
 				sql="UPDATE ouvrages SET libraire=?, imprimeur=?, lieuImpression=?, "
 						+ "dateEdition=?, lien=?, nbPage=?, copyright=?, creditPhoto=?, "
-						+ "resolution=?, format=?, titre=? "
+						+ "resolution=?, format=?, titre=?, reechantillonage=? "
 					+"'WHERE idOuvrage=?";
 				PreparedStatement pstmt=cn.prepareStatement(sql);
 				pstmt.setInt(1, changement.getLibraire().getId());
@@ -124,7 +124,8 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
 				pstmt.setString(9, changement.getResolution());
 				pstmt.setString(10, changement.getFormat());
 				pstmt.setString(11, changement.getTitre());
-				pstmt.setInt(12, objet.getId());
+				pstmt.setBoolean(12, changement.getReechantillonage());
+				pstmt.setInt(13, objet.getId());
 				fonctionne=stmt.execute(sql);
 			}
 		} catch (SQLException e) {
@@ -232,16 +233,21 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
     		sql+=" titre='"+objet.getTitre()+"'";
     		premier=false;
     	}
-    	
-    	if (premier) //Si aucune condition de recherche n'a été donnée
-    		sql="SELECT * FROM ouvrages";
+    	int intReechantillonage; //En SQL le boolean est un tinyint égal à 0 ou 1
+    	if(objet.getReechantillonage() == true)
+    		intReechantillonage=1;
+    	else
+    		intReechantillonage=0;
+    	if (!premier)
+			sql+=" AND";
+		sql+=" reechantillonage="+intReechantillonage;
+		premier=false;
     	
         try {
             stmt = cn.prepareStatement(sql);
             ResultSet rs=stmt.executeQuery();
             while(rs.next()){
                 Ouvrage o2=new Ouvrage();
-
                 o2.setId(rs.getInt("idOuvrage"));
                 o2.setLibraire(getPersonne(rs.getInt("libraire")));
                 o2.setImprimeur(getPersonne(rs.getInt("imprimeur")));
@@ -254,6 +260,7 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
                 o2.setResolution(rs.getString("resolution"));
                 o2.setFormat(rs.getString("format"));
                 o2.setTitre(rs.getString("titre"));
+                o2.setReechantillonage(rs.getBoolean("reechantillonage"));
                 o2.setAuteurs(listeAuteur(o2.getId()));
                 list.add(o2);
             }
