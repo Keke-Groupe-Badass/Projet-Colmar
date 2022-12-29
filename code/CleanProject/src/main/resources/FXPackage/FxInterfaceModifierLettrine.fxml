@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Menu?>
@@ -42,19 +43,19 @@
                         <Label text="Ouvrage (numéro)" GridPane.rowIndex="2" />
                         <Label text="Créateur (numéro)" GridPane.rowIndex="3" />
                         <Label text="Groupe de plagiat (numéro)" GridPane.rowIndex="4" />
-                        <TextField GridPane.columnIndex="1" fx:id="pageTextField"/>
-                        <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="lienTextField"/>
-                        <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" fx:id="ouvrageTextField" />
-                        <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" fx:id="createurTextField" />
-                        <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" fx:id="plagiatTextField"/>
+                        <TextField fx:id="pageTextField" GridPane.columnIndex="1" />
+                        <TextField fx:id="lienTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="ouvrageTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField fx:id="createurTextField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <TextField fx:id="plagiatTextField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                      </children>
                   </GridPane>
                </center>
                <bottom>
                   <HBox prefHeight="31.0" prefWidth="876.0" BorderPane.alignment="CENTER">
                       <children>
-                          <Button mnemonicParsing="false" text="Confirmer" />
-                          <Button mnemonicParsing="false" text="Annuler" />
+                          <Button fx:id="confirmerBtn" mnemonicParsing="false" text="Confirmer" />
+                          <Button fx:id="annulerBtn" mnemonicParsing="false" text="Annuler" />
                       </children>
                   </HBox>
                </bottom>
@@ -72,11 +73,12 @@
                                  <children>
                                     <HBox prefHeight="41.0" prefWidth="434.0">
                                        <children>
-                                          <TextField promptText="id" />
-                                          <Button mnemonicParsing="false" text="+" />
+                                          <TextField prefHeight="25.0" prefWidth="110.0" promptText="id" fx:id="tagTextField"/>
+                                          <Button mnemonicParsing="false" text="+" fx:id="ajouterTagBtn"/>
+                                          <CheckBox mnemonicParsing="false" text="Suppression" fx:id="suppresionTag"/>
                                        </children>
                                     </HBox>
-                                    <ListView prefHeight="216.0" prefWidth="434.0" />
+                                    <ListView prefHeight="216.0" prefWidth="434.0" fx:id="tagListView"/>
                                  </children>
                               </VBox>
                            </center>
@@ -90,14 +92,15 @@
                                  <children>
                                     <HBox prefHeight="41.0" prefWidth="434.0">
                                        <children>
-                                          <TextField prefHeight="25.0" prefWidth="117.0" promptText="nom" />
-                                          <TextField promptText="valeur" />
-                                          <TextField layoutX="35.0" layoutY="10.0" prefHeight="25.0" prefWidth="117.0" promptText="unite" />
-                                          <TextField layoutX="152.0" layoutY="10.0" promptText="description" />
-                                          <Button mnemonicParsing="false" text="+" />
+                                          <TextField prefHeight="25.0" prefWidth="117.0" promptText="nom" fx:id="nomMetaTextField"/>
+                                          <TextField prefHeight="25.0" prefWidth="119.0" promptText="valeur" fx:id="valeurMetaTextField"/>
+                                          <TextField fx:id="uniteValeurMetaTextField" layoutX="35.0" layoutY="10.0" prefHeight="25.0" prefWidth="81.0" promptText="unite" />
+                                          <TextField fx:id="descriptionMetaTextField" layoutX="152.0" layoutY="10.0" prefHeight="25.0" prefWidth="168.0" promptText="description" />
+                                          <Button mnemonicParsing="false" text="+" fx:id="ajouterMetaBtn"/>
+                                          <CheckBox mnemonicParsing="false" text="Suppression" fx:id="suppresionMeta"/>
                                        </children>
                                     </HBox>
-                                    <ListView prefHeight="216.0" prefWidth="434.0" />
+                                    <ListView prefHeight="216.0" prefWidth="434.0" fx:id="metaListView"/>
                                  </children>
                               </VBox>
                            </center>
