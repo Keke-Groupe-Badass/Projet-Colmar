@@ -1,14 +1,11 @@
-package Whole.fenetrePackage;
+package Whole.fenetrePackageTest;
 
-import Whole.Controleur;
 import Whole.ccmsPackage.Lettrine;
 import Whole.ccmsPackage.Ouvrage;
 import Whole.ccmsPackage.Personne;
 import Whole.ccmsPackage.Tag;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -31,7 +28,7 @@ public class FXInterface extends Application implements FenetreInterface {
     public void start(Stage stage) throws IOException {
         mainStage=stage;
         //Parent root = FXMLLoader.load(getClass().getResource("/FXInterface/FxInterfaceLogin.fxml"));
-        Parent root = FXMLLoader.load(getClass().getResource("/FXInterface/FxInterfaceMain.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/FXInterfaceTest/FxInterfaceMain.fxml"));
 
         Scene scene = new Scene(root);
 
@@ -99,7 +96,7 @@ public class FXInterface extends Application implements FenetreInterface {
     }
 
     public void changeScene(String fxml) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/FXInterface/"+fxml));
+        Parent root = FXMLLoader.load(getClass().getResource("/FXInterfaceTest/" +fxml));
         mainStage.getScene().setRoot(root);
     }
 

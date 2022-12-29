@@ -1,4 +1,4 @@
-package Whole.fenetrePackage;
+package Whole.fenetrePackageTest;
 
 import Whole.Metadonnee;
 import javafx.collections.FXCollections;

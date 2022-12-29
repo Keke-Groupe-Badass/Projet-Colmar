@@ -1,25 +1,22 @@
-package Whole.fenetrePackage;
+package Whole.fenetrePackageTest;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class FXMainControleur extends FxInterfaceAbstract{
+public class FXMainControleur extends FxControlleurAbstract{
     @FXML
     Button buttonModifierOuvrage;
     FXInterface fx;
-
-
+    @FXML
+    public void initialize() {
+        origin = buttonModifierOuvrage;
+    }
     @FXML
     protected void handleModifierOuvrageAction(ActionEvent event) throws IOException {
         System.out.println("hi");
-        origin = buttonModifierOuvrage;
         super.changeScene("FxInterfaceModifierOuvrage");
     }
     @FXML

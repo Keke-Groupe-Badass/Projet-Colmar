@@ -42,7 +42,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Whole.fenetrePackage.FXMainControleur">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Whole.fenetrePackageTest.FXMainControleur">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -81,7 +81,7 @@
         </rowConstraints>
          <children>
             <Button fx:id="buttonModifierOuvrage" mnemonicParsing="false" onAction="#handleModifierOuvrageAction" text="Modifier" GridPane.rowIndex="1" />
-            <Button mnemonicParsing="false" text="Ajouter" GridPane.rowIndex="2" />
+            <Button fx:id="buttonCreerOuvrage" mnemonicParsing="false" text="Ajouter" GridPane.rowIndex="2" />
             <Button mnemonicParsing="false" text="Modifier" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Button mnemonicParsing="false" text="Ajouter" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Button mnemonicParsing="false" text="Modifier" GridPane.columnIndex="2" GridPane.rowIndex="1" />

@@ -3,7 +3,7 @@
 *
 * Drop us a line or two at feedback@archetypesoftware.com: we would love to hear from you!
 */
-package Whole.fenetrePackage;
+package Whole.fenetrePackageTest;
 
 import javafx.scene.Scene;
 
