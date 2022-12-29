@@ -107,4 +107,8 @@ public class Tag implements CCMS<Tag> {
     public boolean equals(Tag objet){
         return this.estClone(objet);
     }
+
+    public Tag(int id) {
+        this.id = id;
+    }
 }

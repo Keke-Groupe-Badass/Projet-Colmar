@@ -1,9 +1,10 @@
 package Whole.FXPackage;
 
+import Whole.ccmsPackage.Lettrine;
 import javafx.event.ActionEvent;
 
 public class FXPageLettrineControleur {
-
+    Lettrine lettrine;
     public void modifierScene(ActionEvent event) {
         ControleurFunctions.changeScene(event, "FxInterfaceModifierLettrine.fxml");
     }

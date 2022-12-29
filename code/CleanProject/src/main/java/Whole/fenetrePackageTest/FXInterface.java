@@ -41,6 +41,13 @@ public class FXInterface extends Application implements FenetreInterface {
         stage.setScene(scene);
         stage.show();
 
+
+        //demo transferer valeur;
+        Ouvrage ouvrage = new Ouvrage("toki",1);
+        FxModifierOuvrageControleur.ouvrage=ouvrage;
+
+
+
         //Scene mainScene = new Scene(stage);
 
         //POPUP
@@ -57,6 +64,7 @@ public class FXInterface extends Application implements FenetreInterface {
         boxPop.getChildren().add(b1);
         popup.getContent().add(boxPop);
         popup.show(scene.getWindow());
+
 
         /**Scene chercheLettrine = new Scene(root);
         Scene chercheOuvrage = new Scene(root);

@@ -125,7 +125,10 @@ public class Metadonnee {
         this.description = description;
     }
 
-    /**
-     * @param meta Metadonnee : métadonnée à modifier
-     */
+    public Metadonnee(String nom, String entree, String unite, String description) {
+        this.nom = nom;
+        this.entree = entree;
+        this.unite = unite;
+        this.description = description;
+    }
 }

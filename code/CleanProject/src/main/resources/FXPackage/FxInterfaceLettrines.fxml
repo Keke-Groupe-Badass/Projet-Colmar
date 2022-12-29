@@ -66,7 +66,7 @@
             <Button fx:id="rechercher" mnemonicParsing="false" onAction="#lettrinesRechercheFormScene" prefHeight="25.0" prefWidth="120.0" text="Rechercher" />
          </children>
       </GridPane>
-      <Button fx:id="lettrine" layoutX="285.0" layoutY="158.0" mnemonicParsing="false" onAction="#pageLettrineScene" text="tkt je suis une lettrine fréro" />
+      <Button fx:id="lettrineButton" layoutX="285.0" layoutY="158.0" mnemonicParsing="false" onAction="#pageLettrineScene" text="tkt je suis une lettrine fréro" />
       <Label layoutX="95.0" layoutY="162.0" text="on admet que ca c une lettrine -&gt;" />
    </children>
 </Pane>

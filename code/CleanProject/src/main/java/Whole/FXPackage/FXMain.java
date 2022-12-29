@@ -14,7 +14,7 @@ public class FXMain extends Application {
     public void start(Stage stage) throws IOException {
         Parent root = FXMLLoader.load(FXMain.class.getResource("/FxPackage/FxInterfaceLogin.fxml"));
         Scene scene = new Scene(root);
-        stage.setTitle("AppName");
+        stage.setTitle("Lettrine");
         stage.setScene(scene);
         stage.show();
     }
