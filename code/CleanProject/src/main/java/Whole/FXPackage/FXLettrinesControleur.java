@@ -9,7 +9,6 @@ public class FXLettrinesControleur {
     }
 
     public void ouvragesScene(ActionEvent event) {
-
         ControleurFunctions.changeScene(event, "FxInterfaceOuvrages.fxml");
     }
 
@@ -33,4 +32,8 @@ public class FXLettrinesControleur {
     public void pageLettrineScene(ActionEvent event) {
         ControleurFunctions.changeScene(event, "FxInterfacePageLettrine.fxml");
     }
+
+
+
+
 }
