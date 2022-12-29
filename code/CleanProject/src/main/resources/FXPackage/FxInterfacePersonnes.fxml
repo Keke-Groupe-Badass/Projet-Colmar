@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Whole.FXPackage.FXPersonnesControleur">
+   <children>
+      <MenuBar prefHeight="25.0" prefWidth="600.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <GridPane layoutY="25.0" prefHeight="40.0" prefWidth="600.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Button fx:id="lettrinesButton" mnemonicParsing="false" onAction="#lettrinesScene" prefHeight="60.0" prefWidth="150.0" style="-fx-background-color: orange; -fx-border-color: black; -fx-text-fill: white;" text="Lettrines" GridPane.columnIndex="1" />
+            <Button fx:id="ouvragesButton" mnemonicParsing="false" onAction="#ouvragesScene" prefHeight="70.0" prefWidth="150.0" style="-fx-background-color: orange; -fx-border-color: black; -fx-text-fill: white;" text="Ouvrages" GridPane.columnIndex="2" />
+            <Button fx:id="personnesButton" mnemonicParsing="false" prefHeight="111.0" prefWidth="150.0" style="-fx-background-color: white; -fx-border-color: black; -fx-text-fill: orange;" text="Personnes" GridPane.columnIndex="3" />
+            <Button fx:id="tagsButton" mnemonicParsing="false" onAction="#tagsScene" prefHeight="166.0" prefWidth="150.0" style="-fx-background-color: orange; -fx-border-color: black; -fx-text-fill: white;" text="Tags" GridPane.columnIndex="4" />
+            <Button fx:id="accueilButton" mnemonicParsing="false" onAction="#accueilScene" prefHeight="108.0" prefWidth="120.0" style="-fx-background-color: orange; -fx-border-color: black; -fx-text-fill: white;" text="Accueil" />
+         </children>
+      </GridPane>
+      <GridPane layoutY="65.0" prefHeight="25.0" prefWidth="600.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Button fx:id="ajouter" mnemonicParsing="false" onAction="#lettrinesAjoutFormControleur" prefHeight="60.0" prefWidth="150.0" text="Ajouter" GridPane.columnIndex="1" />
+            <Button fx:id="rechercher" mnemonicParsing="false" onAction="#lettrinesRechercheFormScene" prefHeight="25.0" prefWidth="120.0" text="Rechercher" />
+         </children>
+      </GridPane>
+      <Button fx:id="personne" layoutX="306.0" layoutY="164.0" mnemonicParsing="false" onAction="#pagePersonne" text="Michel Polnareff" />
+      <Label layoutX="126.0" layoutY="168.0" text="Ca c la personne evidemment -&gt;" />
+      <Label layoutX="14.0" layoutY="90.0" prefHeight="51.0" prefWidth="573.0" text="Les boutons rechercher et ajouter sont pas set ca sert a r de cliquer dessus" />
+   </children>
+</Pane>

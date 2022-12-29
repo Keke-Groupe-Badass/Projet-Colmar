@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Whole.FXPackage.FXPageLettrineControleur">
+   <children>
+      <Label layoutX="286.0" layoutY="166.0" text="La ya des infos" />
+      <AnchorPane layoutX="14.0" layoutY="59.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;">
+         <children>
+            <Label layoutX="86.0" layoutY="92.0" style="-fx-text-fill: white;" text="La c l'image" />
+         </children>
+      </AnchorPane>
+      <Button fx:id="modifierButton" layoutX="14.0" layoutY="361.0" mnemonicParsing="false" onAction="#modifierScene" text="Modifier" />
+      <MenuBar layoutX="-5.0" prefHeight="25.0" prefWidth="610.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <Button fx:id="retour" layoutY="25.0" mnemonicParsing="false" onAction="#retour" text="Retour" />
+      <Button fx:id="tag1" layoutX="14.0" layoutY="266.0" mnemonicParsing="false" onAction="#afficheLettrinesParTagname" text="Tag1" />
+      <Button layoutX="60.0" layoutY="266.0" mnemonicParsing="false" onAction="#afficheLettrinesParTagname" text="Tag2 ..." />
+      <Button fx:id="personnesButton" layoutX="534.0" layoutY="234.0" mnemonicParsing="false" onAction="#personnePage" text="Personne" />
+   </children>
+</Pane>
