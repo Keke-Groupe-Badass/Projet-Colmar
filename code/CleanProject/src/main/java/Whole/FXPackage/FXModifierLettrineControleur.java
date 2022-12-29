@@ -16,7 +16,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 
-
 import java.net.URL;
 
 import java.util.ArrayList;
@@ -78,6 +77,7 @@ public class FXModifierLettrineControleur implements Initializable {
     ObservableList<Metadonnee> listMeta = FXCollections.observableArrayList();
 
     public void valider(ActionEvent event) {
+
         ControleurFunctions.changeScene(event, "FxInterfaceLettrinesModifierValidation.fxml");
     }
 
