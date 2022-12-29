@@ -1,8 +1,5 @@
 package Whole;
 
-import Whole.ccmsPackage.Lettrine;
-import Whole.fenetrePackage.FXInterface;
-
 import java.io.File;
 
 
