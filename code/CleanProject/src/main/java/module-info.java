@@ -10,8 +10,7 @@ module com.example.cleanproject {
     exports com.example.cleanproject;
     exports Whole.exportPackage;
     opens Whole.exportPackage to javafx.fxml;
-    exports Whole.fenetrePackage;
-    opens Whole.fenetrePackage to javafx.fxml;
     exports Whole.fenetrePackageTest;
+    exports Whole.fenetrePackage;
     opens Whole.fenetrePackageTest to javafx.fxml;
 }

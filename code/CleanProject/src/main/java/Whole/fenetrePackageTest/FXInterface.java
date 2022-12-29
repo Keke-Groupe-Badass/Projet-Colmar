@@ -10,7 +10,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -38,7 +43,20 @@ public class FXInterface extends Application implements FenetreInterface {
 
         //Scene mainScene = new Scene(stage);
 
+        //POPUP
+        Popup popup = new Popup();
+        Label lb = new Label("ceci est un popup");
+        lb.setStyle("-fx-background-color: green;");
+        lb.setMinSize(50,50);
+        popup.getContent().add(lb);
+        VBox boxPop = new VBox(500);
+        popup.setWidth(500);
+        popup.setWidth(500);
 
+        Button b1 = new Button("ouis ");
+        boxPop.getChildren().add(b1);
+        popup.getContent().add(boxPop);
+        popup.show(scene.getWindow());
 
         /**Scene chercheLettrine = new Scene(root);
         Scene chercheOuvrage = new Scene(root);
@@ -96,7 +114,7 @@ public class FXInterface extends Application implements FenetreInterface {
     }
 
     public void changeScene(String fxml) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/FXInterfaceTest/" +fxml));
+        Parent root = FXMLLoader.load(getClass().getResource("/FXInterfaceTestTest/" +fxml));
         mainStage.getScene().setRoot(root);
     }
 
