@@ -42,6 +42,8 @@ public class FXInterface extends Application implements FenetreInterface {
         stage.show();
 
         //Scene mainScene = new Scene(stage);
+
+        //POPUP
         Popup popup = new Popup();
         Label lb = new Label("ceci est un popup");
         lb.setStyle("-fx-background-color: green;");
