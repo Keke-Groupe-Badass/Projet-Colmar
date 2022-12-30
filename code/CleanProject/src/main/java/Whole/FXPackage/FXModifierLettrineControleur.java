@@ -10,11 +10,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
+import javafx.scene.control.*;
 
 import java.net.URL;
 
@@ -23,7 +19,7 @@ import java.util.ResourceBundle;
 
 public class FXModifierLettrineControleur implements Initializable {
 
-    public Lettrine lettrine;
+    public static Lettrine lettrine;
 
     @FXML
     Label labelModifier;
@@ -75,18 +71,30 @@ public class FXModifierLettrineControleur implements Initializable {
 
     ObservableList<Tag> listTag = FXCollections.observableArrayList();
     ObservableList<Metadonnee> listMeta = FXCollections.observableArrayList();
+    @FXML
+    Button supprimerBtn;
 
+    @FXML
     public void valider(ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Lettrine Modifiée");
+        alert.setHeaderText(null);
+        alert.setContentText("La lettrine à été modifiée.");
 
-        ControleurFunctions.changeScene(event, "FxInterfaceLettrinesModifierValidation.fxml");
+        alert.showAndWait();
+        ControleurFunctions.changeScene(event, "FxInterfacePageLettrine.fxml");
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         pageTextField.setText(""+lettrine.getNbPage());
         lienTextField.setText(lettrine.getLien());
-        ouvrageTextField.setText(""+lettrine.getOuvrage().getId());
-        createurTextField.setText(""+lettrine.getCreateur().getId());
+        if(lettrine.getOuvrage()!=null){
+            ouvrageTextField.setText(""+lettrine.getOuvrage().getId());
+        }
+        if(lettrine.getCreateur()!=null){
+            createurTextField.setText(""+lettrine.getCreateur().getId());
+        }
         plagiatTextField.setText(""+lettrine.getIdentique());
         labelModifier.setText("Modification - Lettrine n°"+lettrine.getId());
 
@@ -145,4 +153,5 @@ public class FXModifierLettrineControleur implements Initializable {
             metaListView.refresh();
         }
     }
+
 }

@@ -2,23 +2,22 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Whole.FXPackage.FXPageLettrineControleur">
-   <children>
-      <Label layoutX="286.0" layoutY="166.0" text="La ya des infos" />
-      <AnchorPane layoutX="14.0" layoutY="59.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: grey;">
-         <children>
-            <Label layoutX="86.0" layoutY="92.0" style="-fx-text-fill: white;" text="La c l'image" />
-         </children>
-      </AnchorPane>
-      <Button fx:id="modifierButton" layoutX="14.0" layoutY="361.0" mnemonicParsing="false" onAction="#modifierScene" text="Modifier" />
-      <MenuBar layoutX="-5.0" prefHeight="25.0" prefWidth="610.0">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Whole.FXPackage.FXPageLettrineControleur">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
@@ -37,9 +36,91 @@
           </Menu>
         </menus>
       </MenuBar>
-      <Button fx:id="retour" layoutY="25.0" mnemonicParsing="false" onAction="#retour" text="Retour" />
-      <Button fx:id="tag1" layoutX="14.0" layoutY="266.0" mnemonicParsing="false" onAction="#afficheLettrinesParTagname" text="Tag1" />
-      <Button layoutX="60.0" layoutY="266.0" mnemonicParsing="false" onAction="#afficheLettrinesParTagname" text="Tag2 ..." />
-      <Button fx:id="personnesButton" layoutX="534.0" layoutY="234.0" mnemonicParsing="false" onAction="#personnePage" text="Personne" />
-   </children>
-</Pane>
+   </top>
+   <center>
+      <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" BorderPane.alignment="CENTER">
+         <items>
+            <BorderPane>
+               <bottom>
+                  <HBox prefHeight="31.0" prefWidth="876.0" BorderPane.alignment="CENTER" />
+               </bottom>
+               <center>
+                  <SplitPane dividerPositions="0.5805369127516778" prefHeight="152.0" prefWidth="598.0" BorderPane.alignment="CENTER">
+                     <items>
+                        <GridPane>
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label text="Numéro de page" />
+                              <Label text="Lien" GridPane.rowIndex="1" />
+                              <Label text="Ouvrage " GridPane.rowIndex="2" />
+                              <Label text="Créateur" GridPane.rowIndex="3" />
+                              <Label text="Groupe de plagiat " GridPane.rowIndex="4" />
+                              <Label fx:id="nbPageLabel" text="labelNbPage" GridPane.columnIndex="1" />
+                              <Label fx:id="lienLabel" text="labelLien" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Label fx:id="plagiatLabel" text="labelPlagiat" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <Button mnemonicParsing="false" text="Ouvrage" GridPane.columnIndex="1" GridPane.rowIndex="2" fx:id="ouvrageBtn"/>
+                              <Button mnemonicParsing="false" text="Createur" GridPane.columnIndex="1" GridPane.rowIndex="3" fx:id="createurBtn"/>
+                           </children>
+                        </GridPane>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <HBox prefHeight="151.0" prefWidth="276.0">
+                                 <children>
+                                    <Label fx:id="labelModifier" text="Lettrine n°" />
+                                    <Button fx:id="modifierBtn" mnemonicParsing="false" onAction="#modifierScene" text="Modifier" />
+                                    <Button fx:id="retourBtn" mnemonicParsing="false" text="Retour" />
+                                 </children>
+                              </HBox>
+                              <ImageView fx:id="imageLettrine" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                           </children>
+                        </VBox>
+                     </items>
+                  </SplitPane>
+               </center>
+            </BorderPane>
+            <BorderPane minHeight="0.0" minWidth="0.0" prefHeight="59.0" prefWidth="156.0">
+               <center>
+                  <SplitPane dividerPositions="0.28489702517162474" prefHeight="269.0" prefWidth="876.0">
+                     <items>
+                        <BorderPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                           <top>
+                              <Label text="Tag" BorderPane.alignment="CENTER" />
+                           </top>
+                           <center>
+                              <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <ListView fx:id="tagListView" prefHeight="216.0" prefWidth="434.0" />
+                                 </children>
+                              </VBox>
+                           </center>
+                        </BorderPane>
+                        <BorderPane layoutX="10.0" layoutY="10.0" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                           <top>
+                              <Label text="Metadonnée" BorderPane.alignment="CENTER" />
+                           </top>
+                           <center>
+                              <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <ListView fx:id="metaListView" prefHeight="216.0" prefWidth="434.0" />
+                                 </children>
+                              </VBox>
+                           </center>
+                        </BorderPane>
+                     </items>
+                  </SplitPane>
+               </center>
+            </BorderPane>
+         </items>
+      </SplitPane>
+   </center>
+</BorderPane>

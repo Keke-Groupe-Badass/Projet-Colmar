@@ -54,8 +54,9 @@
                <bottom>
                   <HBox prefHeight="31.0" prefWidth="876.0" BorderPane.alignment="CENTER">
                       <children>
-                          <Button fx:id="confirmerBtn" mnemonicParsing="false" text="Confirmer" />
-                          <Button fx:id="annulerBtn" mnemonicParsing="false" text="Annuler" />
+                          <Button fx:id="confirmerBtn" mnemonicParsing="false" onAction="#valider" text="Confirmer" />
+                          <Button fx:id="annulerBtn" mnemonicParsing="false" text="Annuler" onAction=""/>
+                          <Button mnemonicParsing="false" text="Supprimer" fx:id="supprimerBtn"/>
                       </children>
                   </HBox>
                </bottom>
@@ -73,12 +74,12 @@
                                  <children>
                                     <HBox prefHeight="41.0" prefWidth="434.0">
                                        <children>
-                                          <TextField prefHeight="25.0" prefWidth="110.0" promptText="id" fx:id="tagTextField"/>
-                                          <Button mnemonicParsing="false" text="+" fx:id="ajouterTagBtn"/>
-                                          <CheckBox mnemonicParsing="false" text="Suppression" fx:id="suppresionTag"/>
+                                          <TextField fx:id="tagTextField" prefHeight="25.0" prefWidth="110.0" promptText="id" />
+                                          <Button fx:id="ajouterTagBtn" mnemonicParsing="false" text="+" />
+                                          <CheckBox fx:id="suppresionTag" mnemonicParsing="false" text="Suppression" />
                                        </children>
                                     </HBox>
-                                    <ListView prefHeight="216.0" prefWidth="434.0" fx:id="tagListView"/>
+                                    <ListView fx:id="tagListView" prefHeight="216.0" prefWidth="434.0" />
                                  </children>
                               </VBox>
                            </center>
@@ -92,15 +93,15 @@
                                  <children>
                                     <HBox prefHeight="41.0" prefWidth="434.0">
                                        <children>
-                                          <TextField prefHeight="25.0" prefWidth="117.0" promptText="nom" fx:id="nomMetaTextField"/>
-                                          <TextField prefHeight="25.0" prefWidth="119.0" promptText="valeur" fx:id="valeurMetaTextField"/>
+                                          <TextField fx:id="nomMetaTextField" prefHeight="25.0" prefWidth="117.0" promptText="nom" />
+                                          <TextField fx:id="valeurMetaTextField" prefHeight="25.0" prefWidth="119.0" promptText="valeur" />
                                           <TextField fx:id="uniteValeurMetaTextField" layoutX="35.0" layoutY="10.0" prefHeight="25.0" prefWidth="81.0" promptText="unite" />
                                           <TextField fx:id="descriptionMetaTextField" layoutX="152.0" layoutY="10.0" prefHeight="25.0" prefWidth="168.0" promptText="description" />
-                                          <Button mnemonicParsing="false" text="+" fx:id="ajouterMetaBtn"/>
-                                          <CheckBox mnemonicParsing="false" text="Suppression" fx:id="suppresionMeta"/>
+                                          <Button fx:id="ajouterMetaBtn" mnemonicParsing="false" text="+" />
+                                          <CheckBox fx:id="suppresionMeta" mnemonicParsing="false" text="Suppression" />
                                        </children>
                                     </HBox>
-                                    <ListView prefHeight="216.0" prefWidth="434.0" fx:id="metaListView"/>
+                                    <ListView fx:id="metaListView" prefHeight="216.0" prefWidth="434.0" />
                                  </children>
                               </VBox>
                            </center>
