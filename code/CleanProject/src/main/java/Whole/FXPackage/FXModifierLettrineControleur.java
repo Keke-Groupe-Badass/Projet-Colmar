@@ -10,11 +10,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
+import javafx.scene.control.*;
 
 import java.net.URL;
 
@@ -77,7 +73,12 @@ public class FXModifierLettrineControleur implements Initializable {
     ObservableList<Metadonnee> listMeta = FXCollections.observableArrayList();
 
     public void valider(ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Lettrine Modifiée");
+        alert.setHeaderText(null);
+        alert.setContentText("La lettrine à été modifiée.");
 
+        alert.showAndWait();
         ControleurFunctions.changeScene(event, "FxInterfaceLettrinesModifierValidation.fxml");
     }
 
