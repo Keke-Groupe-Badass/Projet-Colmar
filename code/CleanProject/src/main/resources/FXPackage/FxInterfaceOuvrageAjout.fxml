@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Whole.FXPackage.FXLettrinesAjoutControleur">
+   <top>
+      <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="600.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <top>
+            <Label text="Ajouter Ouvrage" BorderPane.alignment="CENTER" />
+         </top>
+         <center>
+            <GridPane BorderPane.alignment="CENTER">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="295.0" minWidth="10.0" prefWidth="108.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="492.0" minWidth="10.0" prefWidth="492.0" />
+              </columnConstraints>
+              <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="Date" GridPane.rowIndex="8" />
+                  <Label text="Format" GridPane.rowIndex="9" />
+                  <Label text="lien" GridPane.rowIndex="10" />
+                  <Label text="resolution" GridPane.rowIndex="11" />
+                  <TextField fx:id="ouvrageTextField" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                  <TextField fx:id="pageTextField" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                  <TextField fx:id="lienTextField" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                  <TextField fx:id="graveurTextField" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                  <TextField fx:id="identiqueTextField" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                  <Label text="Titre" />
+                  <Label text="Credit Photo" GridPane.rowIndex="1" />
+                  <Label text="Reechantillonage" GridPane.rowIndex="2" />
+                  <Label text="Copyright" GridPane.rowIndex="3" />
+                  <Label text="Nombre de Page" GridPane.rowIndex="4" />
+                  <Label text="Lieu d'Edition" GridPane.rowIndex="5" />
+                  <Label text="Imprimaire (id)" GridPane.rowIndex="6" />
+                  <Label text="Libraire (id)" GridPane.rowIndex="7" />
+                  <CheckBox mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField GridPane.columnIndex="1" />
+               </children>
+            </GridPane>
+         </center>
+         <bottom>
+            <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+              <items>
+                <Button mnemonicParsing="false" text="Annuler" />
+                  <Button fx:id="valider" mnemonicParsing="false" onAction="#confirmationLettrinesScene" text="Valider" />
+              </items>
+            </ToolBar>
+         </bottom>
+      </BorderPane>
+   </center>
+</BorderPane>
