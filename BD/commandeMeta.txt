@@ -1,0 +1,36 @@
+
+INSERT INTO `metadonnees`( `nom`, `valeur`,`idLettrine`)
+SELECT "Lettrine Capital",`Lettrine_Capital`,`IdBois` FROM bdjimenes.`t_bois` WHERE `Type_Ornement`="Lettrine" and `Lettrine_Capital` IS NOT NULL;
+
+INSERT INTO `metadonnees`( `nom`, `valeur`,`idLettrine`)
+SELECT "Fond",`Lettrine_fond`,`IdBois` FROM bdjimenes.`t_bois` WHERE `Type_Ornement`="Lettrine" and `Lettrine_fond` IS NOT NULL;
+
+INSERT INTO `metadonnees`( `nom`, `valeur`,`idLettrine`)
+SELECT "Couleur",`Lettrine_Couleur`,`IdBois` FROM bdjimenes.`t_bois` WHERE `Type_Ornement`="Lettrine" and `Lettrine_Couleur` IS NOT NULL
+;
+INSERT INTO `metadonnees`( `nom`, `valeur`,`idLettrine`) SELECT "Police",`Lettrine_Police`,`IdBois` FROM bdjimenes.`t_bois` WHERE `Type_Ornement`="Lettrine" and `Lettrine_Police` IS NOT NULL
+;
+INSERT INTO `metadonnees`( `nom`, `valeur`,`idLettrine`) SELECT "Alphabet",`Lettrine_Alphabet`,`IdBois` FROM bdjimenes.`t_bois` WHERE `Type_Ornement`="Lettrine" and `Lettrine_Alphabet` IS NOT NULL
+;INSERT INTO `metadonnees`( `nom`, `valeur`,`idLettrine`) SELECT "Filet",`Lettrine_Filet`,`IdBois` FROM bdjimenes.`t_bois` WHERE `Type_Ornement`="Lettrine" and `Lettrine_Filet` IS NOT NULL
+;INSERT INTO `metadonnees`( `nom`, `valeur`,`idLettrine`) SELECT "Devise",`Devise_transcription`,`IdBois` FROM bdjimenes.`t_bois` WHERE `Type_Ornement`="Lettrine" and `Devise_transcription` IS NOT NULL
+;INSERT INTO `metadonnees`( `nom`, `valeur`,`idLettrine`) SELECT "Motif",`MotifMarqueTypo`,`IdBois` FROM bdjimenes.`t_bois` WHERE `Type_Ornement`="Lettrine" and `MotifMarqueTypo` IS NOT NULL
+;INSERT INTO `metadonnees`( `nom`, `valeur`,`idLettrine`) SELECT "Technique",`Technique`,`IdBois` FROM bdjimenes.`t_bois` WHERE `Type_Ornement`="Lettrine" and `Technique` IS NOT NULL
+;INSERT INTO `metadonnees`( `nom`, `valeur`,`idLettrine`) SELECT "Particularites graphiques",`Particularites_graphiques`,`IdBois` FROM bdjimenes.`t_bois` WHERE `Type_Ornement`="Lettrine" and `Particularites_graphiques` IS NOT NULL
+;INSERT INTO `metadonnees`( `nom`, `valeur`,`idLettrine`) SELECT "Ref biblio",`Ref_biblio`,`IdBois` FROM bdjimenes.`t_bois` WHERE `Type_Ornement`="Lettrine" and `Ref_biblio` IS NOT NULL
+;INSERT INTO `metadonnees`( `nom`, `valeur`,`idLettrine`) SELECT "commentaire",`commentaire_bois`,`IdBois` FROM bdjimenes.`t_bois` WHERE `Type_Ornement`="Lettrine" and `commentaire_bois` IS NOT NULL
+;INSERT INTO `metadonnees`( `nom`, `valeur`,`idLettrine`) SELECT "mot clef",`mot_clef_description`,`IdBois` FROM bdjimenes.`t_bois` WHERE `Type_Ornement`="Lettrine" and `mot_clef_description` IS NOT NULL
+;INSERT INTO `metadonnees`( `nom`, `valeur`,`idLettrine`) SELECT "Initiales",`Initiales`,`IdBois` FROM bdjimenes.`t_bois` WHERE `Type_Ornement`="Lettrine" and `Initiales` IS NOT NULL
+;INSERT INTO `metadonnees`( `nom`, `valeur`,`idLettrine`) SELECT "Date",`Date`,`IdBois` FROM bdjimenes.`t_bois` WHERE `Type_Ornement`="Lettrine" and `Date` IS NOT NULL
+;INSERT INTO `metadonnees`( `nom`, `valeur`,`idLettrine`) SELECT "Certitude Attribution",`Certitude_attribution`,`IdBois` FROM bdjimenes.`t_bois` WHERE `Type_Ornement`="Lettrine" and `Certitude_attribution` IS NOT NULL
+;INSERT INTO `metadonnees`( `nom`, `valeur`,`idLettrine`) SELECT "Certitude Mesure",`Certitude_mesure`,`IdBois` FROM bdjimenes.`t_bois` WHERE `Type_Ornement`="Lettrine" and `Certitude_mesure` IS NOT NULL
+;INSERT INTO `metadonnees`( `nom`, `valeur`,`idLettrine`) SELECT "Commentaire Attribution",`Commentaire_attribution`,`IdBois` FROM bdjimenes.`t_bois` WHERE `Type_Ornement`="Lettrine" and `Commentaire_attribution` IS NOT NULL
+;INSERT INTO `metadonnees`( `nom`, `valeur`,`idLettrine`) SELECT "Hauteur",`hauteur`,`IdBois` FROM bdjimenes.`t_bois` WHERE `Type_Ornement`="Lettrine" and `hauteur` IS NOT NULL
+;
+
+
+
+
+
+
+
+
