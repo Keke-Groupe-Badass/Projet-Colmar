@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -14,7 +16,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Whole.FXPackage.FXPageOuvrageControleur">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Whole.FXPackage.FXModifierOuvrageControleur">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
@@ -71,19 +73,19 @@
                               <Label text="Imprimeur (id)" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                               <Label text="Libraire (id)" GridPane.columnIndex="2" GridPane.rowIndex="4" />
                               <Label GridPane.columnIndex="2" GridPane.rowIndex="5" />
-                              <Label text="titreLabel" GridPane.columnIndex="1" />
-                              <Label text="dateLabel" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <Label text="formatLabel" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                              <Label text="resolutionLabel" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                              <Label text="creditPhotoLabel" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                              <Label text="reechantilonageLAbel" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                              <Label text="copyrightLabel" GridPane.columnIndex="3" />
-                              <Label text="pageLabel" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                              <Label text="lieuLabel" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                              <Label text="imprimeurLAbel" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-                              <Label text="libraireLabel" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                              <CheckBox mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                              <TextField GridPane.columnIndex="1" />
+                              <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <TextField GridPane.columnIndex="3" />
+                              <TextField GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                              <TextField GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                              <TextField GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                              <TextField GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                              <TextField GridPane.columnIndex="3" GridPane.rowIndex="5" />
                               <Label text="Lien" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-                              <Label text="lienLabel" GridPane.columnIndex="3" GridPane.rowIndex="5" />
                            </children>
                         </GridPane>
                      </items>
@@ -93,8 +95,9 @@
                   <HBox prefHeight="28.0" prefWidth="598.0" BorderPane.alignment="CENTER">
                      <children>
                         <Label fx:id="labelModifier" text="Ouvrage n°" />
-                        <Button fx:id="modifierBtn" mnemonicParsing="false" onAction="#modifierScene" text="Modifier" />
+                        <Button fx:id="modifierBtn" mnemonicParsing="false" onAction="#modifierScene" text="Confirmer" />
                         <Button fx:id="retourBtn" mnemonicParsing="false" text="Retour" />
+                        <Button mnemonicParsing="false" text="Supprimer" />
                      </children>
                   </HBox>
                </top>
@@ -104,16 +107,27 @@
                   <SplitPane prefHeight="269.0" prefWidth="876.0">
                      <items>
                         <BorderPane layoutX="10.0" layoutY="10.0" minHeight="0.0" minWidth="0.0" prefHeight="154.0" prefWidth="596.0">
-                           <top>
-                              <Label prefHeight="0.0" prefWidth="41.0" text="Auteurs" BorderPane.alignment="CENTER" />
-                           </top>
                            <center>
                               <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                                  <children>
-                                    <ListView fx:id="metaListView" prefHeight="216.0" prefWidth="434.0" />
+                                    <ListView fx:id="metaListView" prefHeight="150.0" prefWidth="596.0" />
                                  </children>
                               </VBox>
                            </center>
+                           <top>
+                              <VBox prefHeight="33.0" prefWidth="596.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <Label prefHeight="0.0" prefWidth="41.0" text="Auteurs" />
+                                    <HBox prefHeight="24.0" prefWidth="596.0">
+                                       <children>
+                                          <CheckBox mnemonicParsing="false" text="Supprimer" />
+                                          <TextField prefHeight="25.0" prefWidth="100.0" text="Auteur (id)" />
+                                          <Button mnemonicParsing="false" text="+" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </top>
                         </BorderPane>
                      </items>
                   </SplitPane>
