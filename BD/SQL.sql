@@ -38,53 +38,53 @@ CREATE TABLE tags(
 
 
 #------------------------------------------------------------
-# Table: personne
+# Table: personnes
 #------------------------------------------------------------
 
-CREATE TABLE personne(
+CREATE TABLE personnes(
         idPersonne Int  Auto_increment  NOT NULL ,
         nom        Varchar (50) NOT NULL ,
         prenom     Varchar (50) NOT NULL ,
         note       Text NOT NULL
-	,CONSTRAINT personne_PK PRIMARY KEY (idPersonne)
+	,CONSTRAINT personnes_PK PRIMARY KEY (idPersonne)
 )ENGINE=InnoDB;
 
 
 #------------------------------------------------------------
-# Table: utilisateur
+# Table: utilisateurs
 #------------------------------------------------------------
 
-CREATE TABLE utilisateur(
+CREATE TABLE utilisateurs(
         email      Varchar (50) NOT NULL ,
         motDePasse Varchar (64) NOT NULL ,
         statut     Varchar (20) NOT NULL
-	,CONSTRAINT utilisateur_PK PRIMARY KEY (email)
+	,CONSTRAINT utilisateurs_PK PRIMARY KEY (email)
 )ENGINE=InnoDB;
 
 
 #------------------------------------------------------------
-# Table: log
+# Table: logs
 #------------------------------------------------------------
 
-CREATE TABLE log(
+CREATE TABLE logs(
         id    Int  Auto_increment  NOT NULL ,
         text  Text NOT NULL ,
         date  Date NOT NULL ,
         email Varchar (50)
-	,CONSTRAINT log_PK PRIMARY KEY (id)
+	,CONSTRAINT logs_PK PRIMARY KEY (id)
 
-	,CONSTRAINT log_utilisateur_FK FOREIGN KEY (email) REFERENCES utilisateur(email)
+	,CONSTRAINT logs_utilisateurs_FK FOREIGN KEY (email) REFERENCES utilisateurs(email)
 )ENGINE=InnoDB;
 
 
 #------------------------------------------------------------
-# Table: identique
+# Table: identiques
 #------------------------------------------------------------
 
-CREATE TABLE identique(
+CREATE TABLE identiques(
         idIdentique Int  Auto_increment  NOT NULL ,
         description Text NOT NULL
-	,CONSTRAINT identique_PK PRIMARY KEY (idIdentique)
+	,CONSTRAINT identiques_PK PRIMARY KEY (idIdentique)
 )ENGINE=InnoDB;
 
 
@@ -102,8 +102,8 @@ CREATE TABLE lettrines(
 	,CONSTRAINT lettrines_PK PRIMARY KEY (idLettrine)
 
 	,CONSTRAINT lettrines_ouvrages_FK FOREIGN KEY (idOuvrage) REFERENCES ouvrages(idOuvrage)
-	,CONSTRAINT lettrines_identique0_FK FOREIGN KEY (idIdentique) REFERENCES identique(idIdentique)
-	,CONSTRAINT lettrines_personne1_FK FOREIGN KEY (idPersonne) REFERENCES personne(idPersonne)
+	,CONSTRAINT lettrines_identiques0_FK FOREIGN KEY (idIdentique) REFERENCES identiques(idIdentique)
+	,CONSTRAINT lettrines_personnes1_FK FOREIGN KEY (idPersonne) REFERENCES personnes(idPersonne)
 )ENGINE=InnoDB;
 
 
@@ -133,7 +133,7 @@ CREATE TABLE ecrit(
         idOuvrage  Int NOT NULL
 	,CONSTRAINT ecrit_PK PRIMARY KEY (idPersonne,idOuvrage)
 
-	,CONSTRAINT ecrit_personne_FK FOREIGN KEY (idPersonne) REFERENCES personne(idPersonne)
+	,CONSTRAINT ecrit_personnes_FK FOREIGN KEY (idPersonne) REFERENCES personnes(idPersonne)
 	,CONSTRAINT ecrit_ouvrages0_FK FOREIGN KEY (idOuvrage) REFERENCES ouvrages(idOuvrage)
 )ENGINE=InnoDB;
 
