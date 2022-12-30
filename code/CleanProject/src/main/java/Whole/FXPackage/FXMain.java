@@ -1,9 +1,12 @@
 package Whole.FXPackage;
 
 import Whole.Controleur;
-import Whole.ccmsPackage.Lettrine;
-import Whole.ccmsPackage.Ouvrage;
-import Whole.daoPackage.*;
+import Whole.daoPackage.AdminDAO;
+import Whole.daoPackage.OuvrageDAO;
+import Whole.daoPackage.LettrineDAO;
+import Whole.daoPackage.TagDAO;
+import Whole.daoPackage.PersonneDAO;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

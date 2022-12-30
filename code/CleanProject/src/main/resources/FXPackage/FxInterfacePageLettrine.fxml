@@ -41,9 +41,6 @@
       <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" BorderPane.alignment="CENTER">
          <items>
             <BorderPane>
-               <bottom>
-                  <HBox prefHeight="31.0" prefWidth="876.0" BorderPane.alignment="CENTER" />
-               </bottom>
                <center>
                   <SplitPane dividerPositions="0.5805369127516778" prefHeight="152.0" prefWidth="598.0" BorderPane.alignment="CENTER">
                      <items>
@@ -68,8 +65,8 @@
                               <Label fx:id="nbPageLabel" text="labelNbPage" GridPane.columnIndex="1" />
                               <Label fx:id="lienLabel" text="labelLien" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                               <Label fx:id="plagiatLabel" text="labelPlagiat" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                              <Button mnemonicParsing="false" text="Ouvrage" GridPane.columnIndex="1" GridPane.rowIndex="2" fx:id="ouvrageBtn"/>
-                              <Button mnemonicParsing="false" text="Createur" GridPane.columnIndex="1" GridPane.rowIndex="3" fx:id="createurBtn"/>
+                              <Button fx:id="ouvrageBtn" mnemonicParsing="false" text="Ouvrage" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Button fx:id="createurBtn" mnemonicParsing="false" text="Createur" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                            </children>
                         </GridPane>
                         <VBox prefHeight="200.0" prefWidth="100.0">
