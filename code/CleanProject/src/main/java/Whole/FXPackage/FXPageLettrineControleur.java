@@ -4,8 +4,9 @@ import Whole.ccmsPackage.Lettrine;
 import javafx.event.ActionEvent;
 
 public class FXPageLettrineControleur {
-    Lettrine lettrine;
+    Lettrine lettrine =new Lettrine();
     public void modifierScene(ActionEvent event) {
+        FXModifierLettrineControleur.lettrine=lettrine;
         ControleurFunctions.changeScene(event, "FxInterfaceModifierLettrine.fxml");
     }
 

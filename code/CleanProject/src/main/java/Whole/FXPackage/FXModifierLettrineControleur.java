@@ -23,7 +23,7 @@ import java.util.ResourceBundle;
 
 public class FXModifierLettrineControleur implements Initializable {
 
-    public Lettrine lettrine;
+    public static Lettrine lettrine;
 
     @FXML
     Label labelModifier;
@@ -85,8 +85,12 @@ public class FXModifierLettrineControleur implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         pageTextField.setText(""+lettrine.getNbPage());
         lienTextField.setText(lettrine.getLien());
-        ouvrageTextField.setText(""+lettrine.getOuvrage().getId());
-        createurTextField.setText(""+lettrine.getCreateur().getId());
+        if(lettrine.getOuvrage()!=null){
+            ouvrageTextField.setText(""+lettrine.getOuvrage().getId());
+        }
+        if(lettrine.getCreateur()!=null){
+            createurTextField.setText(""+lettrine.getCreateur().getId());
+        }
         plagiatTextField.setText(""+lettrine.getIdentique());
         labelModifier.setText("Modification - Lettrine n°"+lettrine.getId());
 

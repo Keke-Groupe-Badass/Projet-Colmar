@@ -23,11 +23,14 @@ public class FXLoginControleur {
     @FXML
     public void changementDeScene(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(FXMain.class.getResource("/FXPackage/FxInterfaceMain.fxml"));
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+            if(FXMain.connect(mailTextField.getText(),passwordTextField.getText())){
+                Parent root = FXMLLoader.load(FXMain.class.getResource("/FXPackage/FxInterfaceMain.fxml"));
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            }
+            //TODO MESSAGE MAUVAIS DE MOT DE PASSE
         }
         catch (IOException e) {
             e.printStackTrace();
