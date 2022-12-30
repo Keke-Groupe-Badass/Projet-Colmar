@@ -28,9 +28,9 @@ public class FXPageLettrineControleur implements Initializable {
     @FXML
     Label lienLabel;
     @FXML
-    Label ouvrageLabel;
+    Button ouvrageBtn;
     @FXML
-    Label createurLabel;
+    Button createurBtn;
     @FXML
     Label plagiatLabel;
     @FXML
@@ -66,10 +66,10 @@ public class FXPageLettrineControleur implements Initializable {
         nbPageLabel.setText(""+lettrine.getNbPage());
         lienLabel.setText(lettrine.getLien());
         if(lettrine.getOuvrage()!=null){
-            ouvrageLabel.setText(""+lettrine.getOuvrage().toString());
+            ouvrageBtn.setText(""+lettrine.getOuvrage().toString());
         }
         if(lettrine.getCreateur()!=null){
-            createurLabel.setText(""+lettrine.getCreateur().toString());
+            createurBtn.setText(""+lettrine.getCreateur().toString());
         }
         plagiatLabel.setText(""+lettrine.getIdentique());
         labelModifier.setText("Lettrine n°"+lettrine.getId());

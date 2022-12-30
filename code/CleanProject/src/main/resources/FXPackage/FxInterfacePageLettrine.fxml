@@ -67,9 +67,9 @@
                               <Label text="Groupe de plagiat " GridPane.rowIndex="4" />
                               <Label fx:id="nbPageLabel" text="labelNbPage" GridPane.columnIndex="1" />
                               <Label fx:id="lienLabel" text="labelLien" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <Label fx:id="ouvrageLabel" text="labelOuvrage" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                              <Label fx:id="createurLabel" text="labelCreateur" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                               <Label fx:id="plagiatLabel" text="labelPlagiat" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <Button mnemonicParsing="false" text="Ouvrage" GridPane.columnIndex="1" GridPane.rowIndex="2" fx:id="ouvrageBtn"/>
+                              <Button mnemonicParsing="false" text="Createur" GridPane.columnIndex="1" GridPane.rowIndex="3" fx:id="createurBtn"/>
                            </children>
                         </GridPane>
                         <VBox prefHeight="200.0" prefWidth="100.0">
@@ -81,7 +81,7 @@
                                     <Button fx:id="retourBtn" mnemonicParsing="false" text="Retour" />
                                  </children>
                               </HBox>
-                              <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" fx:id="imageLettrine"/>
+                              <ImageView fx:id="imageLettrine" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                            </children>
                         </VBox>
                      </items>

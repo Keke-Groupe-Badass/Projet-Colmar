@@ -71,7 +71,10 @@ public class FXModifierLettrineControleur implements Initializable {
 
     ObservableList<Tag> listTag = FXCollections.observableArrayList();
     ObservableList<Metadonnee> listMeta = FXCollections.observableArrayList();
+    @FXML
+    Button supprimerBtn;
 
+    @FXML
     public void valider(ActionEvent event) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Lettrine Modifiée");
@@ -79,7 +82,7 @@ public class FXModifierLettrineControleur implements Initializable {
         alert.setContentText("La lettrine à été modifiée.");
 
         alert.showAndWait();
-        ControleurFunctions.changeScene(event, "FxInterfaceLettrinesModifierValidation.fxml");
+        ControleurFunctions.changeScene(event, "FxInterfacePageLettrine.fxml");
     }
 
     @Override
@@ -150,4 +153,5 @@ public class FXModifierLettrineControleur implements Initializable {
             metaListView.refresh();
         }
     }
+
 }
