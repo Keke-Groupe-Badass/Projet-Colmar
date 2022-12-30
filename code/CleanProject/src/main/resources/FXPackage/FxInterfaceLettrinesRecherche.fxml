@@ -53,8 +53,8 @@
                      <center>
                         <GridPane BorderPane.alignment="CENTER">
                           <columnConstraints>
-                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="294.0" minWidth="10.0" prefWidth="115.0" />
-                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="483.0" minWidth="10.0" prefWidth="483.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="294.0" minWidth="10.0" prefWidth="101.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="501.0" minWidth="10.0" prefWidth="497.0" />
                           </columnConstraints>
                           <rowConstraints>
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />

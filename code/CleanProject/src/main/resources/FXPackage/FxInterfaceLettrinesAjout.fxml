@@ -6,6 +6,7 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -35,17 +36,14 @@
    </top>
    <center>
       <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <bottom>
-            <Button fx:id="valider" mnemonicParsing="false" onAction="#confirmationLettrinesScene" text="Valider" BorderPane.alignment="CENTER" />
-         </bottom>
          <top>
             <Label text="Ajouter Lettrine" BorderPane.alignment="CENTER" />
          </top>
          <center>
             <GridPane BorderPane.alignment="CENTER">
               <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="295.0" minWidth="10.0" prefWidth="169.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="468.0" minWidth="10.0" prefWidth="431.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="295.0" minWidth="10.0" prefWidth="108.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="492.0" minWidth="10.0" prefWidth="492.0" />
               </columnConstraints>
               <rowConstraints>
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -60,14 +58,22 @@
                   <Label text="Lien" GridPane.rowIndex="2" />
                   <Label text="Graveur (id)" GridPane.rowIndex="3" />
                   <Label text="Groupe de Copie" GridPane.rowIndex="4" />
-                  <TextField GridPane.columnIndex="1" fx:id="ouvrageTextField"/>
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="pageTextField"/>
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" fx:id="lienTextField"/>
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" fx:id="graveurTextField"/>
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" fx:id="identiqueTextField"/>
+                  <TextField fx:id="ouvrageTextField" GridPane.columnIndex="1" />
+                  <TextField fx:id="pageTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="lienTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField fx:id="graveurTextField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <TextField fx:id="identiqueTextField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                </children>
             </GridPane>
          </center>
+         <bottom>
+            <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+              <items>
+                <Button mnemonicParsing="false" text="Annuler" />
+                  <Button fx:id="valider" mnemonicParsing="false" onAction="#confirmationLettrinesScene" text="Valider" />
+              </items>
+            </ToolBar>
+         </bottom>
       </BorderPane>
    </center>
 </BorderPane>
