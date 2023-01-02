@@ -84,8 +84,8 @@
             <Button fx:id="validerButton" mnemonicParsing="false" onAction="#changementDeScene" prefHeight="25.0" prefWidth="205.0" text="Valider" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <AnchorPane layoutX="210.0" layoutY="104.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
-                  <PasswordField fx:id="passwordTextField1" layoutY="63.0" prefHeight="25.0" prefWidth="200.0" />
-                  <Label fx:id="passwordField1" layoutX="14.0" layoutY="46.0" text="Base de donnée:" />
+                  <PasswordField fx:id="dbTextField" layoutY="63.0" prefHeight="25.0" prefWidth="200.0" />
+                  <Label layoutX="14.0" layoutY="46.0" text="Base de donnée:" />
                </children>
             </AnchorPane>
          </children>
