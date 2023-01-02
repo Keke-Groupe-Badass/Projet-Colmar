@@ -4,9 +4,9 @@ Google Doc: https://docs.google.com/document/d/1JgzV98xt5jfDupsE5H75ThKHllgZ1y3J
 
 # Convention de codage
 https://github.com/Keke-Groupe-Badass/Convention-de-Codage
-
+https://github.com/Keke-Groupe-Badass/Projet-Colmar.git
 # notation
 -2 à override
 -1 pas de valeur
 
-# DeadLine 6 janvier
+# DeadLine 6 janvier a 18!
