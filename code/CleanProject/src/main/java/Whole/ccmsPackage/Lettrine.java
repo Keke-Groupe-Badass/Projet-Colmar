@@ -343,6 +343,13 @@ public class Lettrine implements CCMS<Lettrine> {
         }
         return img;
     }
+
+    /**
+     * Permet de lire une image en locale
+     * @param path le lien vers l'image
+     * @return l'image si le fichier est trouvé et est une image sinon null
+     * @deprecated 
+     */
     public BufferedImage loadImageFromFile(String path){
         try {
             return ImageIO.read(new File(path));
