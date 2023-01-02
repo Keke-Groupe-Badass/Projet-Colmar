@@ -30,7 +30,10 @@ public class FXMain extends Application {
         stage.setTitle("Lettrine");
         stage.setScene(scene);
         stage.show();
-
+        if(controleur==null){
+            controleur = new Controleur();
+        }
+        FXLoginControleur.dbName=Controleur.getConfigList().get(0);
 
 
     }

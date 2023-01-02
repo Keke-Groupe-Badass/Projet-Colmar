@@ -97,4 +97,11 @@ public  class Controleur {
         }
     }
 
+    public static ArrayList<String> getConfigList() {
+        return configList;
+    }
+
+    public static String getLogin() {
+        return login;
+    }
 }
