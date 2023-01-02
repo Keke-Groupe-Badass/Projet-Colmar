@@ -1,5 +1,6 @@
 package Whole.FXPackage;
 
+import Whole.Controleur;
 import javafx.event.ActionEvent;
 
 import javafx.fxml.FXML;
@@ -30,12 +31,14 @@ public class FXLoginControleur implements Initializable {
     @FXML
     public void changementDeScene(ActionEvent event) {
         try {
+            Controleur.getConfigList().set(0,dbTextField.getText());
             if(FXMain.connect(mailTextField.getText(),passwordTextField.getText())){
                 Parent root = FXMLLoader.load(FXMain.class.getResource("/FXPackage/FxInterfaceMain.fxml"));
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 Scene scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
+
             }
             else{
 
