@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -19,7 +20,11 @@ public class ControleurFunctions {
             stage.show();
         }
         catch (IOException e) {
-            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Une erreur est survenue");
+            alert.setHeaderText("Erreur lors du chargement de la page");
+            alert.setContentText(e.getMessage());
+            alert.show();
         }
     }
 }
