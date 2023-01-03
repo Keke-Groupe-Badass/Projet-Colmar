@@ -1,6 +1,5 @@
 package Whole.daoPackage;
 
-
 import Whole.Metadonnee;
 import Whole.SingleConnection;
 import Whole.ccmsPackage.*;

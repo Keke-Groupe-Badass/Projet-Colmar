@@ -10,10 +10,6 @@ import java.util.ArrayList;
  * @param <CCMS> objet CCMS
  */
 public abstract class AbstractDAO<CCMS> extends SuperAbstractDAO{
-    /**
-     * Objet connection pour se connecter à la BDD.
-     */
-    protected static Connection cn;
 
     /**
      * Constructeur de la classe single connect.
