@@ -53,6 +53,8 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
             str.append(", idOuvrage=" + changement.getOuvrage().getId());
         }
 
+        if changement.get
+
         if(changement.getMetadonnees() != null) {
             for(Metadonnee meta : changement.getMetadonnees()) {
                 try {
@@ -950,8 +952,6 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * @return false si nb = 0, true sinon
      */
     public static boolean setReechantillonage(int nb) {
-        if(nb == 0)
-            return false;
-        return true;
+        return nb != 0;
     }
 }
