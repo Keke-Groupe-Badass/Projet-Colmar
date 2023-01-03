@@ -1,1 +1,2 @@
-adresse bd;mysql://localhost:3306/fprojectcolmar
+adresse bd;jdbc:mysql://localhost:3306/fprojectcolmar?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+

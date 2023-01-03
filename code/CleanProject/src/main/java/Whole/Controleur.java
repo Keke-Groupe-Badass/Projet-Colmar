@@ -77,7 +77,7 @@ public  class Controleur {
             configList = new ArrayList<>();
             lireConfigFile();
             System.out.println(configList);
-            utilisateurDAO = new UtilisateurDAO(configList.get(0),"connection","");
+            utilisateurDAO = new UtilisateurDAO(configList.get(0),"utilisateurSeulement","");
             this.pressePapier=new Object();
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -90,9 +90,10 @@ public  class Controleur {
         String line;
         int i = 0;
         while ((line=br.readLine())!=null){
-            line=line.split(";")[1];
-            configList.add(line);
-
+            if(!line.isBlank()){
+                line=line.split(";")[1];
+                configList.add(line);
+            }
             i++;
         }
     }
