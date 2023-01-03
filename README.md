@@ -9,4 +9,4 @@ https://github.com/Keke-Groupe-Badass/Projet-Colmar.git
 -2 à override
 -1 pas de valeur
 
-# DeadLine 6 janvier a 18!
+# Deadline le 9🎉 Janvier à 18h! 

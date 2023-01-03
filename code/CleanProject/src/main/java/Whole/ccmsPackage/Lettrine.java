@@ -2,6 +2,19 @@ package Whole.ccmsPackage;
 
 import Whole.Metadonnee;
 
+import javafx.scene.image.Image;
+
+import javax.imageio.ImageIO;
+
+
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+import java.net.URL;
+
 import java.util.ArrayList;
 
 /**
@@ -309,5 +322,34 @@ public class Lettrine implements CCMS<Lettrine> {
     }
     public boolean equals(Lettrine objet){
         return this.estClone(objet);
+    }
+
+    /**
+     * Permet d'obtenir l'image d'une Lettrine
+     * @return L'image si le lien est valide, sinon une lettrine par défaut et si problème
+     * il y avec l'image alors null.
+     */
+    public Image getImage(){
+        return loadImageFromWeb();
+    }
+    public Image loadImageFromWeb(){
+        Image img;
+        try {
+             img = new Image(new FileInputStream(lien));
+        } catch (IOException e) {
+            try {
+                img = new Image(new FileInputStream("src/lettrine.png"));
+            } catch (FileNotFoundException ex) {
+                img = null;
+            }
+        }
+        return img;
+    }
+    public BufferedImage loadImageFromFile(String path){
+        try {
+            return ImageIO.read(new File(path));
+        } catch (IOException e) {
+            return null;
+        }
     }
 }

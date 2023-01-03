@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 /**
- * Classe servant à lié à la base de donnée les méthodes d'Auteurs
+ * Classe servant à lier à la base de données les méthodes de Personnes
  * @see Personne
  */
 public class PersonneDAO extends AbstractDAO<Personne> {
@@ -21,17 +21,16 @@ public class PersonneDAO extends AbstractDAO<Personne> {
         super(url, login, password);
     }
 
-
-
     /**
-     * Met à jour la BD
+     * Met à jour la BDD
      *
-     * @param objet      Personne à changer
+     * @param objet Personne à changer
      * @param changement Personne de changement (les paramètres null ne sont pas à changer)
-     * @return
+     * @return true si le changement s'est correctement effectué, false sinon
      * @see SingleConnection
      */
     public boolean modifier(Personne objet , Personne changement) {
+
     	
     	StringBuilder str = new StringBuilder();
         if(changement.getNom() != null) {
@@ -60,15 +59,14 @@ public class PersonneDAO extends AbstractDAO<Personne> {
 
     }
     /**
-     * Supprime de la db un Personne
+     * Supprime de la BDD une Personne
      *
      * @param objet une Personne d'un type à déterminer dans chaque implémentation
-     * @return
+     * @return true si la suppression s'est correctement effectuée, false sinon
      * @see Personne
      * @see SingleConnection
      */
     public boolean supprimer(Personne objet) {
-
         if(objet.getId() <= 0) {
             return false;
         }
@@ -82,15 +80,17 @@ public class PersonneDAO extends AbstractDAO<Personne> {
             return false;
         }
     }
+
     /**
-     * Ajoute à la base de donnée une Personne
+     * Ajoute à la base de données une Personne
      *
      * @param donne la Personne à ajouter
-     * @return
+     * @return true si l'ajout s'est correctement effectué, false sinon
      * @see Personne
      * @see SingleConnection
      */
     public boolean creer(Personne donne) {
+
     	try {
             PreparedStatement stmt = cn.prepareStatement("insert into personnes values(?,?,?)");
             stmt.setString(1,donne.getNom());
@@ -103,6 +103,8 @@ public class PersonneDAO extends AbstractDAO<Personne> {
         }
     }
     	
+
+
     /**
      *Cherche une Personne dans la base
      * @param donne Personne avec tous les paramètres nuls sauf ceux à chercher
@@ -111,6 +113,7 @@ public class PersonneDAO extends AbstractDAO<Personne> {
      * @see SingleConnection
      */
     public ArrayList<Personne> chercher(Personne donne) {
+
         PreparedStatement stmt= null;
         ArrayList listPers = new ArrayList();
         boolean premier=true;
@@ -147,5 +150,6 @@ public class PersonneDAO extends AbstractDAO<Personne> {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+
     }
 }
