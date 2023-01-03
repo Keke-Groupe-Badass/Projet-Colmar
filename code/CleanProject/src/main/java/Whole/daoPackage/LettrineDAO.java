@@ -5,7 +5,6 @@ import Whole.Metadonnee;
 import Whole.SingleConnection;
 import Whole.ccmsPackage.*;
 
-import javax.swing.plaf.nimbus.State;
 import java.awt.image.BufferedImage;
 
 import java.sql.*;
@@ -15,7 +14,7 @@ import java.util.Set;
 import java.util.TreeSet;
 
 /**
- * Classe héritant d'AbstractDAO, permettant de lier une Lettrine à la base de donnée
+ * Classe héritant d'AbstractDAO, permettant de lier une Lettrine à la base de données
  * @see Lettrine
  */
 public class LettrineDAO extends AbstractDAO<Lettrine> {
@@ -29,14 +28,14 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
     }
 
     /**
-     * Permet de modifier les attributs de la lettrine ojet par ceux non null de la lettrinve changemment
-     * dans la base. Cette methode renverra true si la requette a bien pu être effectuée, false dans les autres cas.
+     * Permet de modifier les attributs de la lettrine objet par ceux non null de la lettrine changement
+     * dans la base. Cette methode renverra true si la requête a bien pu être effectuée, false dans les autres cas.
      * Cette méthode renverra notamment false si les lettrines objet ou changement sont vides, ou que tous leurs
      * attributs sont null. Elle renverra false également si l'id de la lettrine objet est <= 0
      * @author Romain
      * @param objet lettrine à changer
      * @param changement lettrine de changement (les paramètres null ne sont pas à changer)
-     * @return true si la requete a abouttie, false sinon
+     * @return true si la requête a abouti, false sinon
      */
     @Override
     public boolean modifier(Lettrine objet, Lettrine changement) {
@@ -69,7 +68,6 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
                 }
             }
         }
-
             try {
                 Statement stmt = cn.createStatement();
                 String sql = "UPDATE lettrines SET " + str + " WHERE idLettrine=" + objet.getId();
@@ -82,14 +80,14 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
     }
 
     /**
-     * Permet de supprimer la lettrine de l base de données. Renvoie true si la requete s'est
-     * effectuée, false sinon. Renvoi false également si l'id de la lettrine passée en param est <= 0
-     * <= 0.
+     * Permet de supprimer la lettrine de la base de données. Renvoie true si la requête s'est
+     * effectuée, false sinon. Renvoie false également si l'id de la lettrine passée en paramètres
+     * est <= 0.
      * @author Romain
      * @param lettrine La lettrine à supprimer
      * @see Lettrine
      * @see SingleConnection
-     * @return true : si la requete a été effectuée, false sinon
+     * @return true : si la requête a été effectuée, false sinon
      */
     @Override
     public boolean supprimer(Lettrine lettrine) {
@@ -98,7 +96,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
         }
         try {
             lettrine.getMetadonnees().stream().forEach(m->supprimerMeta(m));
-            lettrine.getTags().stream().forEach(t->detager(lettrine,t));
+            lettrine.getTags().stream().forEach(t-> detaguer(lettrine,t));
             Statement stmt = cn.createStatement();
             String sql = "DELETE FROM lettrine WHERE id=" + lettrine.getId();
             stmt.executeQuery(sql);
@@ -111,13 +109,13 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
 
     /**
      * Ajoute la lettrine donne à la base de données. Renvoie true si l'insertion s'est bien passée, false
-     * sinon. Renvoie false également si l'id et le lien de la lettrine donnee s0nt respectivement
+     * sinon. Renvoie false également si l'id et le lien de la lettrine donnee sont respectivement
      * <= 0 et null.
      * @author Romain
      * @param donne la lettrine à ajouter
      * @see Lettrine
      * @see SingleConnection
-     * @return true : si la requete a été effectuée, false sinon
+     * @return true : si la requête a été effectuée, false sinon
      */
     @Override
     public boolean creer(Lettrine donne) {
@@ -136,7 +134,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
                 return false;
             }
             donne.getMetadonnees().stream().forEach(m->ajouterMeta(m,donne));
-            donne.getTags().stream().forEach(t->tager(donne,t));
+            donne.getTags().stream().forEach(t-> taguer(donne,t));
 
             return verif;
         }
@@ -147,7 +145,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
 
     /**
      * Cherche des lettrines dans la base. La méthode renvoie une ArrayList de lettrines, en fonction
-     * des attributs non null de la lettrine donne passée en param.
+     * des attributs non null de la lettrine donne passée en paramètres.
      * @author Romain
      * @param donne CCMS avec tous les paramètres nuls sauf ceux à chercher
      * @return la Liste des lettrines correspondant aux critères
@@ -158,7 +156,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
         ArrayList<Lettrine> letList = new ArrayList<>();
         StringBuilder req = new StringBuilder();
         /*
-        recherche sur l'ouvrage, si non null, on inclue l'id de l'ouvrage dans la requete
+        recherche sur l'ouvrage, si non null, on inclut l'id de l'ouvrage dans la requête
         */
         String sqlOuvrage = "";
         if(donne.getOuvrage() != null) {
@@ -168,7 +166,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
         }
 
         /*
-        recherche sur le numéro de la page. S'il existe, on inclue le numero de la page dans la requete
+        recherche sur le numéro de la page. S'il existe, on inclut le numéro de la page dans la requête
          */
         String sqlNumPage = "";
         if(donne.getNbPage() != -1) {
@@ -203,7 +201,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
         }
 
         /*
-        recherche des lettrines correspondants aux critères récupérés au dessus.
+        recherche des lettrines correspondant aux critères récupérés au-dessus.
          */
         try {
             ArrayList<Tag> tagList = new ArrayList<>();
@@ -214,7 +212,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
             while(res.next()) {
                 Lettrine let = new Lettrine();
 
-                //recuperation des tags de chaque lettrine
+                //récupération des tags de chaque lettrine
                 Statement stmtTag = cn.createStatement();
                 String sqlTag = "SELECT * FROM tags INNER JOIN lettrine_tags ON tags.idTag = lettrine_tags.idTag " +
                         "INNER JOIN lettrines ON lettrines_tags.idLettrine = lettrines.idLettrine " +
@@ -225,7 +223,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
                     tagList.add(t);
                 }
 
-                //recuperation des metadonnees de chaque lettrine
+                //récupération des métadonnées de chaque lettrine
                 Statement stmtMeta = cn.createStatement();
                 String sqlMeta = "SELECT * FROM metadonnees WHERE idLettrine=" + res.getInt(1);
                 ResultSet resMeta = stmtMeta.executeQuery(sqlMeta);
@@ -238,7 +236,6 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
                     m.setDescription(resMeta.getString(2));
                     metaList.add(m);
                 }
-
                 Ouvrage o = new Ouvrage();
                 Statement stmtOuvr = cn.createStatement();
                 String sqlOuvr = "SELECT * FROM ouvrages WHERE idOuvrage=" + res.getInt(4);
@@ -264,19 +261,19 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
     }
 
     /**
-     * recherche sur les métadonnées, si des métadonnées sont passées en attribut de la lettrine
-     * de recherche, on commence par récupérer tous les id de ces métadonnées, puis on les stockes dans
+     * Recherche sur les métadonnées. Si des métadonnées sont passées en attribut de la lettrine
+     * de recherche, on commence par récupérer tous les id de ces métadonnées, puis on les stocke dans
      * un ArrayList. Si aucune métadonnée n'est passée en attribut de la lettrine
      * (donne.getMetadonnees == null) alors on récupère toutes les métadonnées de la base. On commence par
-     * récuperer chaque id de chacune des métadonnées récupérées par la requete, puis on utilise cet
-     * id pour créer un bout de requete sql, finalement on stocke ce bout de requete (String) dans
-     * un StringBuilder, qui sera converti en un String contenant la partie de requete correspondante a la
+     * récupérer chaque id de chacune des métadonnées récupérées par la requête, puis on utilise cet
+     * id pour créer un bout de requête sql, finalement on stocke ce bout de requête (String) dans
+     * un StringBuilder, qui sera converti en un String contenant la partie de requête correspondante a la
      * recherche des métadonnées, String qui sera retourné.
      * @author Romain
      * @param donne Lettrine : lettrine contenant les attributs sur lesquels effectuer la recherche
      * @param idMeta : ArrayList d'entiers contenant les id des métadonnées contenues dans l'attribut métadonnée
      * de donne.
-     * @return String resSql : String contenant le bout de requete permettant d'obtenir les métadonnées
+     * @return String resSql : String contenant le bout de requête permettant d'obtenir les métadonnées
      * cherchées
      */
     private static String createTabSqlMeta(Lettrine donne, ArrayList<Integer> idMeta) {
@@ -352,13 +349,13 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
     }
 
     /**
-     * recherche sur les tags : meme principe que pour les métadonnées. On récupère String contenant la
+     * Recherche sur les tags : même principe que pour les métadonnées. On récupère String contenant la
      * requête SQL de recherche des tags.
      * @author Romain
      * @param donne Lettrine : lettrine contenant les attributs sur lesquels effectuer la recherche
      * @param idTags : ArrayList d'entiers contenant les id des métadonnées contenues dans l'attribut tag
      * de donne.
-     * @return resSql : String contenant le morceau de requete correspondant à la recherche des tags
+     * @return resSql : String contenant le morceau de requête correspondant à la recherche des tags
      */
     private static String createTabSqlTags(Lettrine donne, ArrayList<Integer> idTags) {
         ArrayList<Tag> tags = new ArrayList<>();
@@ -428,8 +425,8 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
     }
 
     /**
-     * permet de lier dans la base de donnée une lettrine à ouvrage, en effet une lettrine n'est présente
-     * que dans un seul et unique ouvrage. renvoie true si la requete a été effectuée, false sinon. Renvoie
+     * Permet de lier dans la base de données une lettrine à ouvrage, en effet une lettrine n'est présente
+     * que dans un seul et unique ouvrage. Renvoie true si la requête a été effectuée, false sinon. Renvoie
      * false également si les id de l et de o sont <= 0
      * @author Romain
      * @param l la lettrine à lier à l'ouvrage
@@ -437,7 +434,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * @see SingleConnection
      * @see Ouvrage
      * @see Lettrine
-     * @return true : si la requete a été effectuée, false sinon
+     * @return true : si la requête a été effectuée, false sinon
      */
     public boolean provient(Lettrine l , Ouvrage o)   {
         if(l.getId() <= 0 || o.getId() <= 0) {
@@ -457,7 +454,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
     }
 
     /**
-     * Permet de lier dans la base de donnée une lettrine à un tag. Renvoie true si la requete s'est bien effectuée
+     * Permet de lier dans la base de données une lettrine à un tag. Renvoie true si la requête s'est bien effectuée
      * false sinon. Renvoie false si les id de l et de t sont <= 0
      * @author Romain
      * @param l La lettrine dont on souhaite ajouter un tag
@@ -465,9 +462,9 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * @see SingleConnection
      * @see Lettrine
      * @see Tag
-     * @return true : si la requete a été effectuée, false sinon
+     * @return true : si la requête a été effectuée, false sinon
      */
-    public boolean tager(Lettrine l , Tag t) {
+    public boolean taguer(Lettrine l , Tag t) {
         if(l.getId() <= 0 || t.getId() <= 0) {
             return false;
         }
@@ -483,14 +480,14 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
     }
 
     /**
-     * permet de caracteriser une lettrine en ajoutant une métadonnée. Renvoie true si la requete s'est bien
+     * Permet de caractériser une lettrine en ajoutant une métadonnée. Renvoie true si la requête s'est bien
      * effectuée, false sinon. Renvoie false également si l'id de meta et l'id de l sont <= 0
      * @author Romain
      * @param meta Métadonnée à ajouter à la lettrine
-     * @param l Lettrine à laquelle la métadonnée doit etre ajoutée
+     * @param l Lettrine à laquelle la métadonnée doit être ajoutée
      * @see SingleConnection
      * @see Metadonnee
-     * @return true : si la requete a été effectuée, false sinon
+     * @return true : si la requête a été effectuée, false sinon
      */
     public boolean ajouterMeta(Metadonnee meta, Lettrine l) {
         if(meta.getId() <= 0 || l.getId() <= 0) {
@@ -508,11 +505,11 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
     }
 
     /**
-     * supprimer une métadonnée de la base. Renvoie true si la suppression s'est bien effectuée, false sinon
+     * Supprimer une métadonnée de la base. Renvoie true si la suppression s'est bien effectuée, false sinon
      * Renvoie false si l'id de meta est <= 0
      * @author Romain
-     * @param meta metadonnée a supprimer
-     * @return true si la requete s'est effectuée, false sinon
+     * @param meta métadonnée à supprimer
+     * @return true si la requête s'est effectuée, false sinon
      */
     public boolean supprimerMeta(Metadonnee meta) {
         if(meta.getId() <= 0) {
@@ -530,13 +527,13 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
     }
 
     /**
-     * Met à jour la base de donnée avec les nouvelles valeurs de la métadonnée. Renvoie true si la requete
-     * s'est bien effectée, false sinon. Renvoie false si l'id de meta est <= 0
+     * Met à jour la base de données avec les nouvelles valeurs de la métadonnée. Renvoie true si la requête
+     * s'est bien effectuée, false sinon. Renvoie false si l'id de meta est <= 0
      * @author Romain
-     * @param meta La métadonnée dont l'on souhaite que la partie code correspond avec la partie base de donnée
+     * @param meta La métadonnée dont la partie code doit correspondre avec la partie base de données
      * @see SingleConnection
      * @see Metadonnee
-     * @return true : si la requete a été effectuée, false sinon
+     * @return true : si la requête a été effectuée, false sinon
      */
     public boolean modifierMeta(Metadonnee meta) {
         if(meta.getId() <= 0) {
@@ -549,13 +546,11 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
             req.append(sqlNom);
         }
 
-
         String sqlEntree = "";
         if(meta.getEntree() != null) {
             sqlEntree = ", valeur=" + meta.getEntree();
             req.append(sqlEntree);
         }
-
 
         String sqlUnite = "";
         if(meta.getUnite() != null) {
@@ -597,7 +592,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
     }
 
     /**
-     * Créer un nouveau groupe d'élément identiques
+     * Crée un nouveau groupe d'éléments identiques
      * @author Andreas
      * @param description la description du groupe
      * @return l'identifiant du groupe, en cas d'erreur -1
@@ -620,7 +615,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
     }
 
     /**
-     * Permet de changer dans la base de donnée la description d'un groupe
+     * Permet de changer dans la base de données la description d'un groupe
      * @author Andreas
      * @param id l'identifiant du groupe
      * @param description la description du groupe
@@ -642,9 +637,9 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * Permet de retirer la liaison entre un tag et une lettrine
      * @param l la lettrine en question
      * @param t le tag à retirer
-     * @return true si la liaison a pu etre retiré ou qu'il n' a jamais eu de lien, false en cas d'erreur
+     * @return true si la liaison a pu être retirée ou s'il n'y a jamais eu de lien, false en cas d'erreur
      */
-    public Boolean detager(Lettrine l, Tag t){
+    public Boolean detaguer(Lettrine l, Tag t){
         if(t==null){
             return false;
         }
@@ -659,12 +654,11 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
 
     /**
      * Cherche des lettrines dans la base. La méthode renvoie une ArrayList de lettrines, en fonction
-     * des attributs non null de la lettrine donne passée en param.
+     * des attributs non null de la lettrine donne passée en paramètres.
      * @author Romain
      * @param donne CCMS avec tous les paramètres nuls sauf ceux à chercher
      * @return la Liste des lettrines correspondant aux critères
@@ -692,7 +686,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
             }
         }
 
-        // recherche des lettrines associées au num de page
+        // Recherche des lettrines associées au num de page
         ArrayList<Integer> idRechercheNumPage = new ArrayList<>();
         if(donne.getNbPage() > 0) {
             try {
@@ -805,7 +799,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
     }
 
     /**
-     * permet de récuperer les id des lettrines qui nous interessent parmis des listes d'id de lettrines
+     * Permet de récupérer les id des lettrines qui nous intéressent parmi des listes d'id de lettrines
      * dont certaines peuvent ne pas correspondre à la recherche
      * @param array arraylist contenant les arraylists des id des lettrines à trier
      * @return res, arraylist contenant les id des lettrines correspondantes à la recherche
@@ -822,7 +816,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
     }
 
     /**
-     * factorisation de code
+     * Factorisation de code
      * @param array arraylist contenant des id de lettrines
      * @param set set à remplir par des id de lettrine
      * @param id id d'une lettrine
@@ -835,8 +829,8 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
     }
 
     /**
-     * permet de recuperer les métadonnées associées à la lettrine dont l'id est passé en param
-     * @param id id de la lettrine dont on veut recuperer les métadonnées
+     * Permet de récupérer les métadonnées associées à la lettrine dont l'id est passé en paramètre
+     * @param id id de la lettrine dont on veut récupérer les métadonnées
      * @return meta : arraylist contenant les métadonnées récupérées
      * @see #chercher
      */
@@ -863,7 +857,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
     }
 
     /**
-     * permet de construire un objet de type Ouvrage en passant son id en parametre
+     * Permet de construire un objet de type Ouvrage en passant son id en paramètre
      * @param id : id de l'ouvrage dans la base de données
      * @return o : Ouvrage
      * @see #chercher
@@ -898,7 +892,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
     }
 
     /**
-     * permet de créer un objet de type Personne à partir de son id passé en paramètre
+     * Permet de créer un objet de type Personne à partir de son id passé en paramètre
      * @param id : id de la personne dans la base de données
      * @return p : Personne
      */
@@ -922,7 +916,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
     }
 
     /**
-     * permet de récupérer les auteurs ayant écrit un ouvrage
+     * Permet de récupérer les auteurs ayant écrit un ouvrage
      * @param id : id de l'ouvrage
      * @return personnes : Arraylist contenant le (ou les) auteur(s) ayant écrit l'ouvrage
      */
@@ -947,7 +941,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
     }
 
     /**
-     * permet de transformer en booléens les 0 et 1 de l'attribut reechantillonage de labase
+     * Permet de transformer en booléens les 0 et 1 de l'attribut reechantillonage de la base
      * @param nb : 0 ou 1 pour false ou true
      * @return false si nb = 0, true sinon
      */

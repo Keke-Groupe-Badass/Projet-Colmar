@@ -18,10 +18,9 @@ import java.util.ArrayList;
  */
 public class AdminDAO extends SuperAbstractDAO {
 
-    private String user;
+    private String utilisateur;
     private String mdp;
-    private String dbName;
-
+    private String bdd;
 
     private ArrayList<String> listeTable;
 
@@ -30,24 +29,22 @@ public class AdminDAO extends SuperAbstractDAO {
      */
     public AdminDAO(String url, String login, String password) {
         super(url, login, password);
-        this.user = login;
+        this.utilisateur = login;
         this.mdp = password;
-        this.dbName = url;
+        this.bdd = url;
     }
 
     /**
-     * Permet de stocker dans un fichier la bd
+     * Permet de stocker dans un fichier la BDD
      *
      * @param e le nom de la méthode d'export
-     * @param path    le fichier où sera exporter les données
+     * @param path le fichier où seront exportées les données
      * @return true si l'export a pu se faire, false sinon
      * @author Andreas
      * @see SingleConnection
      * @see ExportTypeInterface
      */
-
-
-    public Boolean exportDonee(ExportTypeInterface e, String path) {
+    public Boolean exportDonnee(ExportTypeInterface e, String path) {
         if(e==null){
             return false;
         }
@@ -60,11 +57,11 @@ public class AdminDAO extends SuperAbstractDAO {
     /**
      * Permet d'exporter les données aux formats non-sql
      * @author Andreas
-     * @param path le fichier où sera exporter les données
+     * @param path le fichier où seront exportées les données
      * @return true si l'export a pu se faire, false sinon
      */
     private boolean exportNonSQL(String path, ExportTypeInterface e) {
-        Boolean b = true;
+        boolean b = true;
         ArrayList<ArrayList<String>> list;
         for (String st : listeTable) {
             list = getTableList(st);
@@ -77,7 +74,7 @@ public class AdminDAO extends SuperAbstractDAO {
     /**
      * Permet d'exporter les données au format SQL
      * @author Andreas
-     * @param path le fichier où sera exporter les données
+     * @param path le fichier où seront exportées les données
      * @return true si l'export a pu se faire, false sinon
      */
     private boolean sqlExport(String path) {
@@ -86,7 +83,7 @@ public class AdminDAO extends SuperAbstractDAO {
         if (os.contains("Windows")) {
             type = "cmd.exe";
         }
-        String[] cmd = {type, "exportSQL.sh", "src/main/shell/exportSQL.sh", user, mdp, dbName, path};
+        String[] cmd = {type, "exportSQL.sh", "src/main/shell/exportSQL.sh", utilisateur, mdp, bdd, path};
         try {
             Runtime.getRuntime().exec(cmd);
             return true;
@@ -95,10 +92,9 @@ public class AdminDAO extends SuperAbstractDAO {
         }
     }
 
-
     /**
      * Permet de transformer une table en une liste de liste, le premier niveau de liste représentant les lignes
-     * et le second niveau les colones, la première ligne est le nom des colones.
+     * et le second niveau les colonnes, la première ligne est le nom des colonnes.
      * @author Andreas
      * @param table la table que l'on souhaite exporter
      * @return true si tout c'est bien passé, false sinon
@@ -129,17 +125,14 @@ public class AdminDAO extends SuperAbstractDAO {
         return list;
     }
 
-
     /**
      * Permet de stocker dans un fichier les logs
      * @author Andreas
-     * @param cn La connection à la base de donnée
-     * @param file le fichier où sera exporter les log
+     * @param cn La connection à la base de données
+     * @param file le fichier où seront exportés les logs
      * @see SingleConnection
      */
-
-
-    public Boolean exportLog(File file,Connection cn)  {
+    public boolean exportLog(File file,Connection cn)  {
         try {
             Statement stmt = cn.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT `text`,`date`,`userLogin` FROM `log`");
@@ -159,17 +152,15 @@ public class AdminDAO extends SuperAbstractDAO {
             System.err.println("something went wrong with the database link");
         } catch (IOException e) {
             System.err.println("something went wrong with the writing of the file");
-
         }
         return false;
     }
 
     /**
-     * Supprime les logs de la bd
+     * Supprime les logs de la BDD
      * @author Andreas
-     * @param cn La connection à la base de donnée
+     * @param cn La connection à la base de données
      * @see SingleConnection
-     *
      */
     public Boolean deleteLog(Connection cn) {
         Statement stm = null;
@@ -193,13 +184,11 @@ public class AdminDAO extends SuperAbstractDAO {
     public Boolean writeLog(String txt){
         try {
             Statement st = cn.createStatement();
-            st.execute("INSERT INTO `log`( `text`, `date`, `userLogin`) VALUES('"+txt+"','"+new Date( System.currentTimeMillis())+"','"+user+"'");
+            st.execute("INSERT INTO `log`( `text`, `date`, `userLogin`) VALUES('"+txt+"','"+new Date( System.currentTimeMillis())+"','"+ utilisateur +"'");
             return true;
         } catch (SQLException e) {
-
+            System.err.println("something went wrong with the database link");
         }
         return false;
-
     }
-
 }

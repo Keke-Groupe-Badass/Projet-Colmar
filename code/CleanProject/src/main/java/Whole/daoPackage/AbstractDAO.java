@@ -7,8 +7,8 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 /**
- * Classe abstraite servant à factoriser à lié à la base de donnée les méthodes
- * modifier, creer, chercher et supprimer des CCMS
+ * Classe abstraite servant à factoriser et à lier les méthodes modifier,
+ * creer, chercher et supprimer des CCMS à la base de données
  */
 public abstract class AbstractDAO<CCMS> extends SuperAbstractDAO{
     static Connection cn;
@@ -16,17 +16,16 @@ public abstract class AbstractDAO<CCMS> extends SuperAbstractDAO{
     /**
      * Constructeur de la classe single connect
      * @author Andreas
-     * @param url l'url de la base de donnée
+     * @param url l'url de la base de données
      * @param login le nom d'utilisateur
-     * @param password le mot de passe de la base de donnée
+     * @param password le mot de passe de la base de données
      */
     public AbstractDAO(String url, String login, String password) {
         super(url,login,password);
-
     }
 
     /**
-     * Met à jour la BD
+     * Met à jour la BDD
      * @author Andreas
      * @param objet CCMS à changer
      * @param changement CCMS de changement (les paramètres null ne sont pas à changer)
@@ -36,7 +35,7 @@ public abstract class AbstractDAO<CCMS> extends SuperAbstractDAO{
     public abstract boolean modifier(CCMS objet , CCMS changement);
 
     /**
-     * Supprime de la db un CCMS
+     * Supprime de la BDD un CCMS
      * @author Andreas
      * @param objet un CCMS d'un type à déterminer dans chaque implémentation
      * @see CCMS
@@ -56,8 +55,8 @@ public abstract class AbstractDAO<CCMS> extends SuperAbstractDAO{
     /**
      * Cherche un CCMS dans la base
      * @author Andreas
-     * @param donne CCMS avec tout les paramètres nuls sauf ceux à chercher
-     * @return la Liste des des CCMS correspondant aux critères
+     * @param donne CCMS avec tous les paramètres null sauf ceux à chercher
+     * @return la Liste des CCMS correspondant aux critères
      * @see CCMS
      * @see SingleConnection
      */
