@@ -52,8 +52,6 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
             str.append(", idOuvrage=" + changement.getOuvrage().getId());
         }
 
-        if changement.get
-
         if(changement.getMetadonnees() != null) {
             for(Metadonnee meta : changement.getMetadonnees()) {
                 try {
@@ -757,6 +755,22 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
             }
         }
 
+        //recherche des lettrines associées aux plagiat
+        ArrayList<Integer> idRecherchePlagiat = new ArrayList<>();
+        if(donne.getIdentique() != -1) {
+            try{
+                Statement stmtPlagiat = cn.createStatement();
+                String sqlPlagiat = "SELECT idLettrine FROM lettrines WHERE idIdentique=" + donne.getIdentique();
+                ResultSet resPlagiat = stmtPlagiat.executeQuery(sqlPlagiat);
+                if(resPlagiat.next()) {
+                    idRecherchePlagiat.add(resPlagiat.getInt(1));
+                }
+            }
+            catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
         ArrayList<Integer> idRechercheMeta = new ArrayList<>(idRechercheMetaSet);
         taille.add(idRechercheMeta);
 
@@ -771,6 +785,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
            rechercheID(idRechercheMeta, idSet, id);
            rechercheID(idRechercheTag, idSet, id);
            rechercheID(idRecherchePersonne, idSet, id);
+           rechercheID(idRecherchePlagiat, idSet, id);
         }
 
         ArrayList<Lettrine> let = new ArrayList<>();
