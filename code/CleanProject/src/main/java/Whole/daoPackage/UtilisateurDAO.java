@@ -19,8 +19,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
-* Cette classe est appel�e pour cr�er un lien entre l'application et la base de donn�es
-* pour tout ce qui concerne les interactions et les modifications de l'utilisateur.
+* Cette classe est appelée pour créer un lien entre l'application et la base de données
+* pour tout ce qui concerne les intéractions et les modifications de l'utilisateur.
 * @see AbstractDAO
 */
 
@@ -34,15 +34,15 @@ public class UtilisateurDAO extends SuperAbstractDAO{
 	}
 
 	/**
-	 * Permet � un utilisateur de se connecter sur l'application. On donne le login
-	 * et le mot de passe de l'utilisateur, puis on fait une requ�te � la base de
-	 * donn�es pour s'assurer que l'utilisateur existe et que le mot de passe est
+	 * Permet à un utilisateur de se connecter sur l'application. On donne le login
+	 * et le mot de passe de l'utilisateur, puis on fait une requête à la base de
+	 * données pour s'assurer que l'utilisateur existe et que le mot de passe est
 	 * le bon.
 	 * @author Emerance
-	 * @param login Le nom d'utilisateur pour se connecter � la base de donn�e
-	 * @param mdp Le mot de passe de la base de donn�e
+	 * @param login Le nom d'utilisateur pour se connecter à la base de données
+	 * @param mdp Le mot de passe de la base de données
 	 * @return renvoie le login sous forme de String si la connexion s'est correctement
-	 * effectu�e, sinon elle renvoie null.
+	 * effectuée, sinon elle renvoie null.
 	 * @see SingleConnection
 	 */
 	public String connexion(String login, String mdp) {
@@ -53,7 +53,7 @@ public class UtilisateurDAO extends SuperAbstractDAO{
 		try {
 			Statement stmt=cn.createStatement();
 			ResultSet rs=stmt.executeQuery(sql);
-			if (rs.next()) //Si l'utilisateur est trouv�
+			if (rs.next()) //Si l'utilisateur est trouvé
 				return login;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -63,13 +63,13 @@ public class UtilisateurDAO extends SuperAbstractDAO{
 	
     /**
     * Permet de changer le mot de passe de l'utilisateur. On donne le login et le
-    * nouveau mot de passe souhaite, puis on retrouve l'utilisateur dans la base de
-    * donnees � l'aide du login. Le nouveau mot de passe est encrypt� puis stock�
-    * dans la base � la place de l'ancien.
+    * nouveau mot de passe souhaité, puis on retrouve l'utilisateur dans la base de
+    * données à l'aide du login. Le nouveau mot de passe est encrypté puis stocké
+    * dans la base à la place de l'ancien.
 	 * @author Emerance
     * @param login login de l'utilisateur, permet de l'identifier dans la BDD
     * @param mdp nouveau mot de passe qui doit venir remplacer l'ancien
-	* @return renvoie true si la modification s'est correctement effectu�e, false sinon
+	* @return renvoie true si la modification s'est correctement effectuée, false sinon
 	* @see SingleConnection
     */
     public boolean changeMDP(String login, String mdp) {
@@ -93,12 +93,12 @@ public class UtilisateurDAO extends SuperAbstractDAO{
     }
 
     /**
-    * Permet de supprimer un utilisateur de la base de donn�es � partir de son login.
-    * Le login est recherch� dans la base de donnees, puis si trouve l'utilisateur
-    * correspondant est alors supprim�.
+    * Permet de supprimer un utilisateur de la base de données à partir de son login.
+    * Le login est recherché dans la base de données, puis si trouvé l'utilisateur
+    * correspondant est alors supprimé.
     * @author Emerance
     * @param login login de l'utilisateur
-	* @return true si la suppression s'est correctement pass�e, false sinon
+	* @return true si la suppression s'est correctement passée, false sinon
 	* @see SingleConnection
     */
     public boolean supprimerUtilisateur(String login) {
@@ -118,22 +118,22 @@ public class UtilisateurDAO extends SuperAbstractDAO{
     }
 
     /**
-    * Permet de cr�er un nouvel utilisateur dans la base de donnees.
-    * Si le login n'existe pas d�j�, on encrypte le mot de passe et on
-    * effectue une requ�te d'insertion avec le login et le mot de passe
+    * Permet de créer un nouvel utilisateur dans la base de données.
+    * Si le login n'existe pas déjà, on encrypte le mot de passe et on
+    * effectue une requête d'insertion avec le login et le mot de passe
     * de l'utilisateur qu'on souhaite ajouter.
     * @author Emerance
-    * @param login login de l'utilisateur � ajouter = mail
-    * @param mdp mot de passe de l'utilisateur � ajouter
+    * @param login login de l'utilisateur à ajouter = mail
+    * @param mdp mot de passe de l'utilisateur à ajouter
     * @param statut statut de l'utilisateur
-	* @return renvoie true si l'insertion s'est correctement pass�e, false
+	* @return renvoie true si l'insertion s'est correctement passée, false
 	* sinon
 	* @see SingleConnection
     */
     public boolean creerUtilisateur(String login, String mdp, String statut) {
     	boolean loginValide=false;
     	boolean statutValide=false;
-    	//On v�rifie que rien n'est null, puis on v�rifie le format du login et du statut
+    	//On vérifie que rien n'est null, puis on vérifie le format du login et du statut
     	if (login != null && mdp != null && statut!=null) {
     		String regex="^[a-zA-Z.]+@([a-zA-Z-]+.)+[a-zA-Z-]{2,4}$";
         	Pattern p = Pattern.compile(regex);
@@ -151,7 +151,7 @@ public class UtilisateurDAO extends SuperAbstractDAO{
         	try {
     			Statement stmt=cn.createStatement();
     			ResultSet rs=stmt.executeQuery(sql);
-    			if (rs.next() == false) { //Si le login n'est pas deja utilise
+    			if (!rs.next()) { //Si le login n'est pas déjà utilisé
     				final String mdpEncrypte=encrypte(mdp);
     				sql="INSERT INTO utilisateur VALUES(?, ?, ?)";
     				PreparedStatement pstmt=cn.prepareStatement(sql);
@@ -169,11 +169,11 @@ public class UtilisateurDAO extends SuperAbstractDAO{
     }
     
     /**
-     * Permet de v�rifier que le mot de passe correspond au format
-     * attendu. C'est � dire : 6 caract�res minimum, des majuscules et
-     * des minuscules, des caract�res sp�ciaux sauf " et '
+     * Permet de vérifier que le mot de passe correspond au format
+     * attendu. C'est à dire : 6 caractères minimum, des majuscules et
+     * des minuscules, des caractères spéciaux sauf " et '
      * @author Emerance
-     * @param mdp mot de passe qu'on souhaite verifier
+     * @param mdp mot de passe qu'on souhaite vérifier
      * @return renvoie true si le mdp correspond aux conditions,
      * false sinon
      */
@@ -187,7 +187,7 @@ public class UtilisateurDAO extends SuperAbstractDAO{
     
     /**
      * Permet d'encrypter le mot de passe pour qu'il n'apparaisse
-     * pas tel quel dans la base de donn�es.
+     * pas tel quel dans la base de données.
      * @author Emerance
      * @param mdp mot de passe qu'on souhaite encrypter
      * @return renvoie le mot de passe encrypte

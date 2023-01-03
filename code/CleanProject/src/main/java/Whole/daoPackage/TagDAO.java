@@ -9,11 +9,10 @@ import java.sql.SQLException;
 
 import java.util.ArrayList;
 /**
- * Classe servant à lié à la base de donnée les méthodes de Tag
+ * Classe servant à lier à la base de données les méthodes de Tag
  * @see Tag
  */
 public class TagDAO extends AbstractDAO<Tag>{
-
     /**
      * Constructeur de la classe OuvrageDAO.
      * @see SingleConnection
@@ -22,17 +21,14 @@ public class TagDAO extends AbstractDAO<Tag>{
         super(url, login, password);
     }
 
-
     /**
-     * Met à jour la BD
+     * Met à jour la BDD
      *
-     * @param objet      Tag à changer
+     * @param objet Tag à changer
      * @param changement Tag de changement (les paramètres null ne sont pas à changer)
-     * @return
+     * @return true si la modification s'est correctement effectuée, false sinon
      * @see SingleConnection
      */
-
-
     @Override
     public boolean modifier(Tag objet , Tag changement) {
         if(changement==null){
@@ -54,17 +50,15 @@ public class TagDAO extends AbstractDAO<Tag>{
         }
     }
     /**
-     * Supprime de la db un Tag
+     * Supprime de la BDD un Tag
      *
      * @param objet un Tag d'un type à déterminer dans chaque implémentation
-     * @return
+     * @return true si la suppression s'est correctement effectuée, false sinon
      * @see SingleConnection
      * @see Tag
      */
     @Override
-
     public boolean supprimer(Tag objet ) {
-
         if(objet.getId() <= 0) {
             return false;
         }
@@ -80,16 +74,16 @@ public class TagDAO extends AbstractDAO<Tag>{
         catch (SQLException e) {
             return false;
         }    }
+
     /**
      * Ajoute à la base de donnée un Tag
      *
      * @param objet le Tag à ajouter
-     * @return
+     * @return true si l'ajout s'est correctement effectué, false sinon
      * @see SingleConnection
      * @see Tag
      */
     @Override
-
     public boolean creer(Tag objet) {
         try {
             PreparedStatement stmt = cn.prepareStatement("insert into tags values(?,?)");
@@ -104,7 +98,7 @@ public class TagDAO extends AbstractDAO<Tag>{
     /**
      *Cherche un Tag dans la base
      * @param objet Tag avec tous les paramètres nuls sauf ceux à chercher
-     * @return La liste des tags qui correspond auc paramètres donnés
+     * @return La liste des tags qui correspond aux paramètres donnés
      * @see SingleConnection
      * @see Tag
      *

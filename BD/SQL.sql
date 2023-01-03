@@ -14,12 +14,12 @@ CREATE TABLE ouvrages(
         lieuImpression   Varchar (50) NOT NULL ,
         dateEdition      Int NOT NULL ,
         lien             Varchar (256) NOT NULL ,
-        nbPage           Int NOT NULL ,
-        copyright        Varchar (50) NOT NULL ,
-        creditPhoto      Varchar (50) NOT NULL ,
-        resolution       Varchar (50) NOT NULL ,
-        format           Varchar (50) NOT NULL ,
-        titre            Varchar (50) NOT NULL ,
+        nbPage           Smallint NOT NULL ,
+        copyright        Varchar (100) NOT NULL ,
+        creditPhoto      Varchar (200) NOT NULL ,
+        resolution       Varchar (20) NOT NULL ,
+        format           Varchar (20) NOT NULL ,
+        titre            Varchar (200) NOT NULL ,
         reechantillonage Bool NOT NULL
 	,CONSTRAINT ouvrages_PK PRIMARY KEY (idOuvrage)
 )ENGINE=InnoDB;
@@ -67,11 +67,11 @@ CREATE TABLE utilisateurs(
 #------------------------------------------------------------
 
 CREATE TABLE logs(
-        id    Int  Auto_increment  NOT NULL ,
+        idLog Int  Auto_increment  NOT NULL ,
         text  Text NOT NULL ,
         date  Date NOT NULL ,
         email Varchar (50)
-	,CONSTRAINT logs_PK PRIMARY KEY (id)
+	,CONSTRAINT logs_PK PRIMARY KEY (idLog)
 
 	,CONSTRAINT logs_utilisateurs_FK FOREIGN KEY (email) REFERENCES utilisateurs(email)
 )ENGINE=InnoDB;
