@@ -30,17 +30,15 @@ public class PersonneDAO extends AbstractDAO<Personne> {
      * @see SingleConnection
      */
     public boolean modifier(Personne objet , Personne changement) {
-
-    	
-    	StringBuilder str = new StringBuilder();
+        StringBuilder str = new StringBuilder();
         if(changement.getNom() != null) {
             str.append("Nom=" + changement.getNom());
         }
-       
+
         if(changement.getPrenom() != null) {
             str.append(", Prenom=" + changement.getPrenom());
         }
-        
+
         if(changement.getNote() != null) {
             str.append(", Note=" + changement.getNote());
         }
@@ -54,9 +52,6 @@ public class PersonneDAO extends AbstractDAO<Personne> {
         } catch (Exception e) {
             return false;
         }
-
-
-
     }
     /**
      * Supprime de la BDD une Personne
@@ -90,20 +85,17 @@ public class PersonneDAO extends AbstractDAO<Personne> {
      * @see SingleConnection
      */
     public boolean creer(Personne donne) {
-
-    	try {
+        try {
             PreparedStatement stmt = cn.prepareStatement("insert into personnes values(?,?,?)");
             stmt.setString(1,donne.getNom());
             stmt.setString(2,donne.getPrenom());
             stmt.setString(3,donne.getNote());
             return stmt.execute();
-    	} 
-    	catch (SQLException e) {
+        }
+        catch (SQLException e) {
             return false;
         }
     }
-    	
-
 
     /**
      *Cherche une Personne dans la base
@@ -113,7 +105,6 @@ public class PersonneDAO extends AbstractDAO<Personne> {
      * @see SingleConnection
      */
     public ArrayList<Personne> chercher(Personne donne) {
-
         PreparedStatement stmt= null;
         ArrayList listPers = new ArrayList();
         boolean premier=true;
@@ -150,6 +141,5 @@ public class PersonneDAO extends AbstractDAO<Personne> {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
 }
