@@ -13,7 +13,7 @@ public abstract class AbstractDAO<CCMS> extends SuperAbstractDAO{
     /**
      * Objet connection pour se connecter à la BDD.
      */
-    private static Connection cn;
+    protected static Connection cn;
 
     /**
      * Constructeur de la classe single connect.

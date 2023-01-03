@@ -20,13 +20,12 @@ public interface ExportTypeInterface {
      * @param f Fichier de sauvegarde
      * @param list L'intégralité d'une table
      * @return true si la base peut être exportée, false sinon
-     * @see Whole.daoPackage.AdminDAO#exportDonee
+     * @see Whole.daoPackage.AdminDAO#exportDonnee(ExportTypeInterface, String)
      * @see File
      */
     Boolean export(File f, ArrayList<ArrayList<String>> list);
-    default String getName(){
-        return name;
-    }
+    String getName();
+
 
 
 }

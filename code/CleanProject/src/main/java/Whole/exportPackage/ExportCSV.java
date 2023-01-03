@@ -5,7 +5,7 @@
 */
 package Whole.exportPackage;
 
-import java.io.File;
+import java.io.*;
 
 import java.util.ArrayList;
 
@@ -17,6 +17,10 @@ import java.util.ArrayList;
 public class ExportCSV implements ExportTypeInterface {
     String name = "CSV";
 
+    public ExportCSV() {
+
+    }
+
     @Override
     /**
      *  Implémante en SQL la sauvegarde de la base de donnée dans un fichier
@@ -25,7 +29,43 @@ public class ExportCSV implements ExportTypeInterface {
      * @see whole.AdminDao.exportDonee
      */
     public Boolean export(File f, ArrayList<ArrayList<String>> list) {
+        try {
+            BufferedWriter br = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(f)));
+            for(int i=0;i<list.size();i++){
+                for(int j=0;j<list.get(i).size();j++){
+                    br.write(escapeSpecialCharacters(list.get(i).get(j)));
+                    if(j+1<list.get(i).size()){
+                        br.write(",");
+                    }
+                }
+                br.newLine();
+            }
+            br.close();
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         return true;
     }
 
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    /**.
+     * Permet de gerer les caractères spéciaux en csv, issus de https://www.baeldung.com/java-csv
+     * @param data une chaine de charactère avec potentiellement des caractères spéciaux problématiques en csv
+     * @return une chaine de charactère sans caractères spéciaux problématiques en csv
+     *
+     */
+    public String escapeSpecialCharacters(String data) {
+        String escapedData = data.replaceAll("\\R", " ");
+        if (data.contains(",") || data.contains("\"") || data.contains("'")) {
+            data = data.replace("\"", "\"\"");
+            escapedData = "\"" + data + "\"";
+        }
+        return escapedData;
+    }
 }
