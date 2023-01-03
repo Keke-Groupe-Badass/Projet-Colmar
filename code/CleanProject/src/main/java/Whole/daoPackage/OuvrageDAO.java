@@ -12,8 +12,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
- * Cette classe est appelee pour creer un lien entre l'application et la base de donnees
- * pour tout ce qui concerne les interactions et les modifications d'un ouvrage
+ * Cette classe est appelée pour créer un lien entre l'application et la base de données
+ * pour tout ce qui concerne les intéractions et les modifications d'un ouvrage
  * @see AbstractDAO
  */
 public class OuvrageDAO extends AbstractDAO<Ouvrage> {
@@ -23,7 +23,6 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
      * @see Connection
      * @see SingleConnection
      */
-
     public OuvrageDAO(String url, String login, String password) {
         super(url, login, password);
     }
@@ -64,13 +63,12 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
         }
     }
 
-
     /**
     * Permet de faire une insertion dans la table "ecrit". On vérifie que
     * ni l'auteur, ni l'ouvrage est NULL, puis on fait une requête d'insertion.
     *
     * @param p Personne l'auteur de l'ouvrage
-    * @param objet Ouvrage ouvrage qu'on souhaite inserer
+    * @param objet Ouvrage ouvrage qu'on souhaite insérer
      * @see SingleConnection
     */
     public Boolean ecrit(Personne p, Ouvrage objet) {
@@ -93,9 +91,9 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
     }
     
     /**
-     * Permet de modifier un ouvrage dans la base de donnees. On s'assure que
-     * l'ouvrage qu'on souhaite modifier est bien dans la base de donnees, puis
-     * on le remplace par le nouvel ouvrage passe en 2e parametre.
+     * Permet de modifier un ouvrage dans la base de données. On s'assure que
+     * l'ouvrage qu'on souhaite modifier est bien dans la base de données, puis
+     * on le remplace par le nouvel ouvrage passé en 2e paramètre.
      * 
      * @param objet l'ouvrage cible qu'on souhaite modifier
      * @param changement l'ouvrage par lequel on souhaite remplacer l'ancien
@@ -135,9 +133,9 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
     }
     
     /**
-     * Permet de supprimer un ouvrage de la base de donnees. On s'assure que
-     * l'ouvrage qu'on souhaite supprimer est bien dans la base de donnees, puis
-     * si trouve on le supprime.
+     * Permet de supprimer un ouvrage de la base de données. On s'assure que
+     * l'ouvrage qu'on souhaite supprimer est bien dans la base de données, puis
+     * si trouvé on le supprime.
      * 
      * @param objet l'ouvrage cible qu'on souhaite supprimer
      * @see SingleConnection
@@ -156,10 +154,10 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
     }
     
     /**
-     * Permet de rechercher un ou plusieurs ouvrages dans la base de donnees
-     * selon un ou plusieurs criteres.
+     * Permet de rechercher un ou plusieurs ouvrages dans la base de données
+     * selon un ou plusieurs critères.
      * 
-     * @param objet ouvrage avec tous les parametres nuls sauf ceux a chercher
+     * @param objet ouvrage avec tous les paramètres nuls sauf ceux à chercher
      * @return renvoie une liste des ouvrages qui correspondent aux critères
      * de recherche
      * @see SingleConnection
@@ -234,7 +232,7 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
     		premier=false;
     	}
     	int intReechantillonage; //En SQL le boolean est un tinyint égal à 0 ou 1
-    	if(objet.getReechantillonage() == true)
+    	if(objet.getReechantillonage())
     		intReechantillonage=1;
     	else
     		intReechantillonage=0;
