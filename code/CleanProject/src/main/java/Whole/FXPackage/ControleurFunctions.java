@@ -1,5 +1,6 @@
 package Whole.FXPackage;
 
+import Whole.daoPackage.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -11,6 +12,13 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class ControleurFunctions {
+    public static AdminDAO adminDAO;
+    public static OuvrageDAO ouvrageDAO;
+    public static LettrineDAO lettrineDAO;
+    public static TagDAO tagDAO;
+    public static PersonneDAO personneDAO;
+    public static UtilisateurDAO utilisateurDAO;
+
     public static void changeScene(ActionEvent event, String filename) {
         try {
             Parent root = FXMLLoader.load(FXMain.class.getResource("/FXPackage/"+filename));

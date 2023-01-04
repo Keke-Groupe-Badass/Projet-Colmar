@@ -77,8 +77,15 @@ public class Ouvrage implements CCMS<Ouvrage> {
             this.auteurs.add(a);
         }
 	}
+	/**
+	 * A utiliser uniquement pour la recherche quand seul l'id est donnée
+	 * @param id l'id de l'ouvrage
+	 */
+	public Ouvrage(int id) {
+		this.id = id;
+	}
 
-    /**
+	/**
      * Renvoie l'id de l'ouvrage dans la base.
      * @return id int
      */

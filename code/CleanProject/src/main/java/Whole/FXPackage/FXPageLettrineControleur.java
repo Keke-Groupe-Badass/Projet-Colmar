@@ -19,7 +19,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class FXPageLettrineControleur implements Initializable {
-    Lettrine lettrine =new Lettrine();
+    public static Lettrine lettrine =new Lettrine();
     @FXML
     Button modifierBtn;
     @FXML
