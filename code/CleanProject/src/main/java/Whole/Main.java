@@ -1,6 +1,7 @@
 package Whole;
 
 
+import Whole.daoPackage.LettrineDAO;
 
 public class Main {
     /**
@@ -10,6 +11,7 @@ public class Main {
 
     public static void main(String[] args) {
         Controleur c =new Controleur();
+
         //c.AddUser("testUser","motdepasseSafe101_","motdepasseSafe101_","admin");
 
 

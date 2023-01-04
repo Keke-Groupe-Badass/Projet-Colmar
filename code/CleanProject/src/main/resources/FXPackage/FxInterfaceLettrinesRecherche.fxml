@@ -45,8 +45,8 @@
                      <bottom>
                         <HBox prefHeight="28.0" prefWidth="598.0" BorderPane.alignment="CENTER">
                            <children>
-                              <Button mnemonicParsing="false" text="Retour" />
-                              <Button fx:id="validerButton" mnemonicParsing="false" onAction="#validationForm" text="Valider" />
+                              <Button mnemonicParsing="false" text="Retour" onAction="#chercher"/>
+                              <Button fx:id="validerButton" mnemonicParsing="false" onAction="#chercher" text="Valider" />
                            </children>
                         </HBox>
                      </bottom>
@@ -67,17 +67,17 @@
                               <Label text="Ouvrage (id)" GridPane.rowIndex="1" />
                               <Label text="Personne (id)" GridPane.rowIndex="2" />
                               <Label text="Groupe de copie" GridPane.rowIndex="3" />
-                              <TextField GridPane.columnIndex="1" />
-                              <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                              <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <TextField GridPane.columnIndex="1" fx:id="idTextField"/>
+                              <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="ouvargeTextField"/>
+                              <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" fx:id="personneTextField"/>
+                              <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" fx:id="groupeTextField"/>
                            </children>
                         </GridPane>
                      </center>
                   </BorderPane>
                   <BorderPane prefHeight="200.0" prefWidth="200.0">
                      <center>
-                        <ListView prefHeight="282.0" prefWidth="598.0" BorderPane.alignment="CENTER" />
+                        <ListView prefHeight="282.0" prefWidth="598.0" BorderPane.alignment="CENTER" onMouseClicked="#retourForm"/>
                      </center>
                   </BorderPane>
                </items>
