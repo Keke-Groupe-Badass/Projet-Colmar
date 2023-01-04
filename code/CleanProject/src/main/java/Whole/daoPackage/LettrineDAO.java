@@ -47,15 +47,29 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
             str.append(", lien=" + changement.getLien());
         }
 
+        /*
+        pas necessaire imo car la méthode provient fait deja le job de lier une lettrine à un ouvrage
+        -> rendre la méthode static et l'appeler ici ? se poser la question de garder la méthode provient
+        -> en parler aux autres
+
         if(changement.getOuvrage() != null) {
             str.append(", idOuvrage=" + changement.getOuvrage().getId());
+        }
+         */
+
+        if(changement.getCreateur() != null) {
+            str.append(", idPersonne=" + changement.getCreateur().getId());
+        }
+
+        if(changement.getIdentique() != 0) {
+            str.append(", idIdentique=" + changement.getIdentique());
         }
 
         if(changement.getMetadonnees() != null) {
             for(Metadonnee meta : changement.getMetadonnees()) {
                 try {
-                    Statement stmtMeta = this.cn.createStatement();
-                    String sqlMeta = "UPDATE metadonnee SET idLettrine=" + objet.getId() +
+                    Statement stmtMeta = cn.createStatement();
+                    String sqlMeta = "UPDATE metadonnees SET idLettrine=" + objet.getId() +
                             " WHERE idMeta=" + meta.getId();
                     stmtMeta.executeQuery(sqlMeta);
 
@@ -92,10 +106,10 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
             return false;
         }
         try {
-            lettrine.getMetadonnees().stream().forEach(m->supprimerMeta(m));
-            lettrine.getTags().stream().forEach(t-> detaguer(lettrine,t));
+            lettrine.getMetadonnees().forEach(m->supprimerMeta(m));
+            lettrine.getTags().forEach(t-> detaguer(lettrine,t));
             Statement stmt = cn.createStatement();
-            String sql = "DELETE FROM lettrine WHERE id=" + lettrine.getId();
+            String sql = "DELETE FROM lettrines WHERE id=" + lettrine.getId();
             stmt.executeQuery(sql);
             return true;
         }
@@ -120,18 +134,18 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
             return false;
         }
         try {
-            PreparedStatement stmt=cn.prepareStatement("insert into Emp values(?,?,?,?,?)");
+            PreparedStatement stmt=cn.prepareStatement("INSERT INTO lettrines values(?,?,?,?,?)");
             stmt.setInt(1,donne.getNbPage());
             stmt.setString(2,donne.getLien());
             stmt.setInt(3,donne.getOuvrage().getId());
             stmt.setInt(4,donne.getCreateur().getId());
             stmt.setInt(5,donne.getIdentique());
-            Boolean verif =stmt.execute();
+            Boolean verif = stmt.execute();
             if(!verif){
                 return false;
             }
-            donne.getMetadonnees().stream().forEach(m->ajouterMeta(m,donne));
-            donne.getTags().stream().forEach(t-> taguer(donne,t));
+            donne.getMetadonnees().forEach(m->ajouterMeta(m,donne));
+            donne.getTags().forEach(t-> taguer(donne,t));
 
             return verif;
         }
@@ -139,6 +153,8 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
             return false;
         }
     }
+
+    //A SUPPRIMER QUAND chercher AURA ETE TESTE
 
     /**
      * Cherche des lettrines dans la base. La méthode renvoie une ArrayList de lettrines, en fonction
@@ -442,7 +458,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
         }
         try {
             Statement stmt = cn.createStatement();
-            String sql = "UPDATE lettrine SET idOuvrage=" + o.getId() + " WHERE id=" + l.getId();
+            String sql = "UPDATE lettrines SET idOuvrage=" + o.getId() + " WHERE id=" + l.getId();
             stmt.executeQuery(sql);
             return true;
         } catch (SQLException e) {
@@ -492,7 +508,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
         }
         try {
             Statement stmt = cn.createStatement();
-            String sql = "UPDATE metadonnee SET idLettrine=" + l.getId() + "WHERE idMeta=" + meta.getId();
+            String sql = "UPDATE metadonnees SET idLettrine=" + l.getId() + "WHERE idMeta=" + meta.getId();
             stmt.executeQuery(sql);
             return true;
         }
@@ -537,27 +553,23 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
             return false;
         }
         StringBuilder req = new StringBuilder();
-        String sqlNom = "";
         if(meta.getNom() != null) {
-            sqlNom = "nom=" + meta.getNom();
+            String sqlNom = "nom=" + meta.getNom();
             req.append(sqlNom);
         }
 
-        String sqlEntree = "";
         if(meta.getEntree() != null) {
-            sqlEntree = ", valeur=" + meta.getEntree();
+            String sqlEntree = ", valeur=" + meta.getEntree();
             req.append(sqlEntree);
         }
 
-        String sqlUnite = "";
         if(meta.getUnite() != null) {
-            sqlUnite = ", unite=" + meta.getUnite();
+            String sqlUnite = ", unite=" + meta.getUnite();
             req.append(sqlUnite);
         }
 
-        String sqlDesc = "";
         if(meta.getDescription() != null) {
-            sqlDesc = "description=" + meta.getDescription();
+            String sqlDesc = ", description=" + meta.getDescription();
             req.append(sqlDesc);
         }
 
@@ -567,7 +579,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
         else {
             try {
                 Statement stmt = cn.createStatement();
-                String sql = "UPDATE metadonnee SET " + req;
+                String sql = "UPDATE metadonnees SET " + req + " WHERE idMeta=" + meta.getId();
                 stmt.executeQuery(sql);
                 return true;
             }
@@ -815,6 +827,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
     /**
      * Permet de récupérer les id des lettrines qui nous intéressent parmi des listes d'id de lettrines
      * dont certaines peuvent ne pas correspondre à la recherche
+     * @author Romain
      * @param array arraylist contenant les arraylists des id des lettrines à trier
      * @return res, arraylist contenant les id des lettrines correspondantes à la recherche
      * @see #chercher
@@ -831,6 +844,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
 
     /**
      * Factorisation de code
+     * @author Romain
      * @param array arraylist contenant des id de lettrines
      * @param set set à remplir par des id de lettrine
      * @param id id d'une lettrine
@@ -844,6 +858,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
 
     /**
      * Permet de récupérer les métadonnées associées à la lettrine dont l'id est passé en paramètre
+     * @author Romain
      * @param id id de la lettrine dont on veut récupérer les métadonnées
      * @return meta : arraylist contenant les métadonnées récupérées
      * @see #chercher
@@ -872,6 +887,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
 
     /**
      * Permet de construire un objet de type Ouvrage en passant son id en paramètre
+     * @author Romain
      * @param id : id de l'ouvrage dans la base de données
      * @return o : Ouvrage
      * @see #chercher
@@ -907,6 +923,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
 
     /**
      * Permet de créer un objet de type Personne à partir de son id passé en paramètre
+     * @author Romain
      * @param id : id de la personne dans la base de données
      * @return p : Personne
      */
@@ -931,6 +948,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
 
     /**
      * Permet de récupérer les auteurs ayant écrit un ouvrage
+     * @author Romain
      * @param id : id de l'ouvrage
      * @return personnes : Arraylist contenant le (ou les) auteur(s) ayant écrit l'ouvrage
      */
@@ -956,6 +974,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
 
     /**
      * Permet de transformer en booléens les 0 et 1 de l'attribut reechantillonage de la base
+     * @author Romain
      * @param nb : 0 ou 1 pour false ou true
      * @return false si nb = 0, true sinon
      */
