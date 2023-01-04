@@ -1,7 +1,6 @@
 package Whole.daoPackage;
 
 import Whole.SingleConnection;
-import java.sql.Connection;
 import java.util.ArrayList;
 
 /**
@@ -16,10 +15,10 @@ public abstract class AbstractDAO<CCMS> extends SuperAbstractDAO{
      * @author Andreas
      * @param url l'url de la base de données
      * @param login le nom d'utilisateur
-     * @param password le mot de passe de la base de données
+     * @param mdp le mot de passe de la base de données
      */
-    public AbstractDAO(String url, String login, String password) {
-        super(url,login,password);
+    public AbstractDAO(String url, String login, String mdp) {
+        super(url,login,mdp);
     }
 
     /**
