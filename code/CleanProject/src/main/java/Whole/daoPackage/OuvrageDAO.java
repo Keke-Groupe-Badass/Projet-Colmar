@@ -46,8 +46,9 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
             //Si l'ouvrage n'a pas déjà été inséré
             if (!rs.next()){
                 PreparedStatement pstmt = cn.prepareStatement("INSERT INTO "
-                        + "ouvrages(libraire, imprimeur, lieuImpression, dateEdition, "
-                        + "lien, nbPage, copyright, creditPhoto, resolution, format, "
+                        + "ouvrages(libraire, imprimeur, lieuImpression, "
+                        + "dateEdition, lien, nbPage, copyright, "
+                        + "creditPhoto, resolution, format, "
                         + "titre, reechantillonage) "
                         + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
                 if (donne.getLibraire() != null)
@@ -89,7 +90,8 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
     public Boolean ecrit(Personne p, Ouvrage objet) {
         if (objet != null && p != null) {
             try {
-                String sql = "SELECT * FROM personnes WHERE idPersonne="+p.getId();
+                String sql = "SELECT * FROM personnes "
+                        + "WHERE idPersonne="+p.getId();
                 Statement stmt = cn.createStatement();
                 boolean personneExiste = stmt.execute(sql);
                 sql = "SELECT * FROM ouvrages WHERE idOuvrage="+objet.getId();
