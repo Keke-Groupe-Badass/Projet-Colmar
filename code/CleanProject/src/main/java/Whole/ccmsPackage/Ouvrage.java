@@ -58,8 +58,7 @@ public class Ouvrage implements CCMS<Ouvrage> {
      */
     public Ouvrage(int id, Personne libraire, Personne imprimeur, String lieuImpression, int dateEdition, String lien,
 			int nbPage, String copyright, String creditPhoto, String resolution, String format, String titre,
-
-			ArrayList<Personne> auteurs,boolean reechantillonage) {
+			ArrayList<Personne> auteurs, boolean reechantillonage) {
 
 		this.id = id;
 		this.libraire = libraire;
