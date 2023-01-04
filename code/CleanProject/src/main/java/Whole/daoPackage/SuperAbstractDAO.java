@@ -8,8 +8,8 @@ import java.sql.Connection;
  * Classe permettant la construction de tous les DAO en obtenant l'instance de SingleConnection
  */
 public abstract class SuperAbstractDAO {
-    static Connection cn;
+    protected static Connection cn;
     public SuperAbstractDAO(String url, String login, String password) {
-        cn= SingleConnection.getInstance(url,login,password);
+        cn = SingleConnection.getInstance(url,login,password);
     }
 }

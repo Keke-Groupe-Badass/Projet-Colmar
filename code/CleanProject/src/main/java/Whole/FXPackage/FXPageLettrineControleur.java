@@ -83,6 +83,7 @@ public class FXPageLettrineControleur implements Initializable {
             listTag.add(tag);
         }
         tagListView.setItems(listTag);
+        imageLettrine.setImage(lettrine.getImage());
     }
     @FXML
     protected void clickOnTag(ActionEvent event) {

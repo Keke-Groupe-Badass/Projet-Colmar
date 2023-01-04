@@ -6,14 +6,12 @@ import javafx.scene.image.Image;
 
 import javax.imageio.ImageIO;
 
-
 import java.awt.image.BufferedImage;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-
-import java.net.URL;
 
 import java.util.ArrayList;
 
@@ -345,6 +343,13 @@ public class Lettrine implements CCMS<Lettrine> {
         }
         return img;
     }
+
+    /**
+     * Permet de lire une image en locale
+     * @param path le lien vers l'image
+     * @return l'image si le fichier est trouvé et est une image sinon null
+     * @Deprecated
+     */
     public BufferedImage loadImageFromFile(String path){
         try {
             return ImageIO.read(new File(path));

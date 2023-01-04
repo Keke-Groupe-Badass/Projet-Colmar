@@ -1,6 +1,5 @@
 package Whole;
 
-import java.io.File;
 
 
 public class Main {
@@ -11,7 +10,7 @@ public class Main {
 
     public static void main(String[] args) {
         Controleur c =new Controleur();
-        c.AddUser("testUser","motdepasseSafe101_","motdepasseSafe101_","admin");
+        //c.AddUser("testUser","motdepasseSafe101_","motdepasseSafe101_","admin");
 
 
         /**
@@ -51,23 +50,32 @@ public class Main {
 
 
         //executeScriptPB();**/
+        /**ArrayList<ArrayList<String>> list2 = new ArrayList<>();
+        ArrayList<String> list11 = new ArrayList<>();
+        ArrayList<String> list12 = new ArrayList<>();
+        list12.add("lo'is");
+        list12.add("sup/er");
+        list11.add("test");
+        list11.add("vernie");
+        list11.add("sa");
+
+        list2.add(list11);
+        list2.add(list12);
+        testCSV(list2);
+        ExportCSV exportCSV = new ExportCSV();
+        exportCSV.export(new File("fileTest.csv"),list2);**/
     }
-    public static void executeScriptPB(){
-        try{
-            System.out.println("hi");
-            System.out.println(new File("C:/Users/andre/Projet-Colmar/Projet-Colmar/code/ProjetColmar/src/main/shell/exportSQL.sh").getAbsoluteFile());
-            System.out.println(new File("src/main/shell/exportSQL.sh").getAbsoluteFile());
-            String os = System.getProperty("os.name");
-            String type="sh";
-            if(os.contains("Windows")){
-                type="cmd.exe";
+    /**public static void testCSV(ArrayList<ArrayList<String>> list){
+
+        // create CSVWriter object filewriter object as parameter
+        List<Object[]> nList= list.stream().map(e->e.toArray()).collect(Collectors.toList());
+        for(Object[] str : nList){
+            String string ="";
+            for(Object objet : str){
+                string+=objet;
             }
-            String[] cmd = { type, "exportSQL.sh", "src/main/shell/exportSQL.sh"};
-            Runtime.getRuntime().exec(cmd);
-
-        }catch (Exception e){
-            e.printStackTrace();
+            System.out.println(string);
         }
+    }**/
 
-    }
 }

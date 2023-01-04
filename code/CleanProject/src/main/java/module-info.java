@@ -4,6 +4,8 @@ module com.example.cleanproject {
     requires java.sql;
     requires org.junit.jupiter.api;
     requires java.desktop;
+    requires mysql.connector.java;
+    requires java.naming; //rajouté
 
 
     opens com.example.cleanproject to javafx.fxml;
