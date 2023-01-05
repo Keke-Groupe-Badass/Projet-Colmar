@@ -96,7 +96,7 @@
                            <center>
                               <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                                  <children>
-                                    <ListView fx:id="tagListView" prefHeight="216.0" prefWidth="434.0" />
+                                    <ListView fx:id="tagListView" prefHeight="216.0" prefWidth="434.0" onMouseClicked="#clickOnTag"/>
                                  </children>
                               </VBox>
                            </center>

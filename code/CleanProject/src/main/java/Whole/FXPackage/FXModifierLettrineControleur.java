@@ -6,7 +6,6 @@ import Whole.ccmsPackage.Tag;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -76,12 +75,20 @@ public class FXModifierLettrineControleur implements Initializable {
 
     @FXML
     public void valider(ActionEvent event) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Lettrine Modifiée");
-        alert.setHeaderText(null);
-        alert.setContentText("La lettrine à été modifiée.");
+        Lettrine newLettrine = new Lettrine();
+        if(ControleurFunctions.lettrineDAO.modifier(lettrine,newLettrine)){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Lettrine Modifiée");
+            alert.setHeaderText(null);
+            alert.setContentText("La lettrine à été modifiée.");
+            alert.showAndWait();
+            ControleurFunctions.changeScene(event, "FxInterfacePageLettrine.fxml");
+        }else{
 
-        alert.showAndWait();
+        }
+    }
+    @FXML
+    protected void annuler(ActionEvent event){
         ControleurFunctions.changeScene(event, "FxInterfacePageLettrine.fxml");
     }
 
