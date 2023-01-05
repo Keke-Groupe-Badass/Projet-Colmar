@@ -28,7 +28,7 @@ public class ControleurFunctions {
             stage.show();
         }
         catch (IOException e) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Une erreur est survenue");
             alert.setHeaderText("Erreur lors du chargement de la page");
             alert.setContentText(e.getMessage());
