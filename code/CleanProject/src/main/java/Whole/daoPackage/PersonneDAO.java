@@ -165,6 +165,8 @@ public class PersonneDAO extends AbstractDAO<Personne> {
             sql += " note='" + donne.getPrenom() + "'";
             premier = false;
         }
+        if (premier) //Si tout est null
+            sql="SELECT * FROM personnes";
 
         try {
             stmt = cn.prepareStatement(sql);
