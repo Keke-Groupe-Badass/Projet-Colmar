@@ -130,8 +130,8 @@ public class Lettrine implements CCMS<Lettrine> {
         this.lien = null;
         this.tags=new ArrayList<>();
     }
+    /**
      * Constructeur lors de la création d'une lettrine pour la première fois.
-     *
      * @param ouvrage   ouvrage dont provient la lettrine
      * @param nbPage    numéro de page où se trouve la lettrine
      * @param lien      lien vers la lettrine

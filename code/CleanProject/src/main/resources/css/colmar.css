@@ -1,0 +1,40 @@
+*{
+    -fx-background-color: #F2E1C2;
+}
+.label{
+    -fx-text-fill: #550A21;
+    -fx-font-weight: bold;
+}
+
+.menu{
+    -fx-background-color: #BFAD8A;
+}
+.menu-item{
+    -fx-background-color: #BFAD8A;
+}
+.button{
+    -fx-background-color: #BFAD8A;
+    -fx-text-fill: #550A21;
+    -fx-font-weight: bold;
+}
+.text-field{
+    -fx-background-color: #BFAD8A;
+    -fx-text-fill: #550A21;
+    -fx-font-weight: bold;
+}
+.text-area{
+    -fx-background-color: #BFAD8A;
+    -fx-text-fill: #550A21;
+    -fx-font-weight: bold;
+}
+.list-view{
+    -fx-background-color: #BFAD8A;
+    -fx-text-fill: #550A21;
+    -fx-font-weight: bold;
+}
+.menu .label{
+    -fx-background-color: #BFAD8A;
+}
+.menu-item:hover{
+    -fx-background-color: #550A21;
+}
