@@ -49,5 +49,21 @@
             <Button fx:id="accueilButton" mnemonicParsing="false" onAction="#accueilScene" prefHeight="108.0" prefWidth="120.0" text="Accueil" />
          </children>
       </GridPane>
+      <GridPane layoutX="10.0" layoutY="75.0" prefHeight="25.0" prefWidth="600.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Button fx:id="ajouter" mnemonicParsing="false" onAction="#ouvrageAjoutFormScene" prefHeight="60.0" prefWidth="150.0" text="Ajouter" GridPane.columnIndex="1" />
+            <Button fx:id="rechercher" mnemonicParsing="false" onAction="#ouvrageRechercheFormScene" prefHeight="25.0" prefWidth="120.0" text="Rechercher" />
+         </children>
+      </GridPane>
    </children>
 </Pane>

@@ -1,0 +1,19 @@
+/**
+COMMENT RELIER UNE PAGE AVEC DU CSS
+à chaque changement de scene:
+            String css = this.getClass().getResource("chemin").toExternalForm();
+            scene.getStylesheets().add(css);
+            attention le chemin doit commencer par un slash, et debut dans le dossier ressource
+ */
+/**
+    COMMENT UTILISER DU CSS AVEC JAVAFX
+    JAVAFX SE COMPORTE COMME UNE CLASSE, DONC IL FAUT METTRE DES POINTS
+    ENSUITE RAJOUTER A LA COMMANDE CSS NORMAL  :-fx-
+    VOIR EXEMPLE
+ */
+.root{
+    -fx-background-color: beige;
+}
+.label{
+
+}

@@ -44,9 +44,9 @@ public class FXLettrinesAjoutControleur {
         Lettrine l = new Lettrine(o,nbPage,lien,p,identique);
         if(ControleurFunctions.lettrineDAO.creer(l)){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Lettrine Modifiée");
+            alert.setTitle("Lettrine Crée");
             alert.setHeaderText(null);
-            alert.setContentText("La lettrine à été modifiée.");
+            alert.setContentText("La lettrine à été crée.");
             alert.showAndWait();
             ControleurFunctions.changeScene(event, "FxInterfacePageLettrine.fxml");
             FXPageLettrineControleur.lettrine = l;
@@ -54,7 +54,7 @@ public class FXLettrinesAjoutControleur {
         else{
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Une erreur est survenue");
-            alert.setHeaderText("Erreur est survenue dans l'insertion de la base");
+            alert.setHeaderText("Erreur est survenue durant la modification de la base");
             alert.show();
         }
     }

@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Whole.FXPackage.FXLettrinesAjoutControleur">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Whole.FXPackage.FXOuvrageAjoutControleur">
    <top>
       <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="600.0">
         <menus>
@@ -55,34 +65,34 @@
                   <Label text="Format" GridPane.rowIndex="9" />
                   <Label text="lien" GridPane.rowIndex="10" />
                   <Label text="resolution" GridPane.rowIndex="11" />
-                  <TextField fx:id="ouvrageTextField" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                  <TextField fx:id="pageTextField" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                  <TextField fx:id="lienTextField" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-                  <TextField fx:id="graveurTextField" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-                  <TextField fx:id="identiqueTextField" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                  <TextField fx:id="libraireTextField" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                  <TextField fx:id="dateTextField" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                  <TextField fx:id="formatTextField" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                  <TextField fx:id="lienTextField" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                  <TextField fx:id="resolutionTextField" GridPane.columnIndex="1" GridPane.rowIndex="11" />
                   <Label text="Titre" />
                   <Label text="Credit Photo" GridPane.rowIndex="1" />
                   <Label text="Reechantillonage" GridPane.rowIndex="2" />
                   <Label text="Copyright" GridPane.rowIndex="3" />
                   <Label text="Nombre de Page" GridPane.rowIndex="4" />
                   <Label text="Lieu d'Edition" GridPane.rowIndex="5" />
-                  <Label text="Imprimaire (id)" GridPane.rowIndex="6" />
+                  <Label text="Imprimeure (id)" GridPane.rowIndex="6" />
                   <Label text="Libraire (id)" GridPane.rowIndex="7" />
-                  <CheckBox mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <TextField GridPane.columnIndex="1" />
+                  <CheckBox mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="2" fx:id="reechantillonageCheckBox"/>
+                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="6" fx:id="imprimeurTextField"/>
+                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="5" fx:id="lieuTextField"/>
+                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" fx:id="nombrePageTextField"/>
+                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" fx:id="copyrightTextField"/>
+                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="creditPhotoTextField"/>
+                  <TextField GridPane.columnIndex="1" fx:id="titreTextField"/>
                </children>
             </GridPane>
          </center>
          <bottom>
             <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
               <items>
-                <Button mnemonicParsing="false" text="Annuler" />
-                  <Button fx:id="valider" mnemonicParsing="false" onAction="#confirmationLettrinesScene" text="Valider" />
+                <Button mnemonicParsing="false" text="Annuler" fx:id="annulerBtn" onAction="#annuler"/>
+                  <Button fx:id="validerBtn" mnemonicParsing="false" onAction="#valider" text="Valider" />
               </items>
             </ToolBar>
          </bottom>
