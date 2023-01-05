@@ -16,6 +16,7 @@
          <children>
             <Button mnemonicParsing="false" text="Retour" />
             <Label text="Modifier utilisateur: " />
+            <Button mnemonicParsing="false" text="Supprimer Utilisateur" />
          </children>
       </HBox>
    </top>
