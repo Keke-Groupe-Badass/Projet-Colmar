@@ -1,11 +1,6 @@
 package Whole.FXPackage;
 
 import Whole.Controleur;
-import Whole.daoPackage.AdminDAO;
-import Whole.daoPackage.OuvrageDAO;
-import Whole.daoPackage.LettrineDAO;
-import Whole.daoPackage.TagDAO;
-import Whole.daoPackage.PersonneDAO;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -26,6 +21,8 @@ public class FXMain extends Application {
         try {
             root = FXMLLoader.load(FXMain.class.getResource("/FxPackage/FxInterfaceLogin.fxml"));
             Scene scene = new Scene(root);
+            String css = this.getClass().getResource("/css/test.css").toExternalForm();
+            scene.getStylesheets().add(css);
             stage.setTitle("Lettrine");
             stage.setScene(scene);
             stage.show();

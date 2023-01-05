@@ -2,55 +2,66 @@ package Whole.daoPackage;
 
 import Whole.SingleConnection;
 import Whole.ccmsPackage.Tag;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import java.util.ArrayList;
+
 /**
- * Classe servant à lier à la base de données les méthodes de Tag
+ * Classe servant à lier à la base de données les méthodes de Tag.
+ *
  * @see Tag
  */
-public class TagDAO extends AbstractDAO<Tag>{
+public class TagDAO extends AbstractDAO<Tag> {
     /**
      * Constructeur de la classe OuvrageDAO.
+     * @param url url de la BDD
+     * @param login login de la BDD
+     * @param mdp mot de passe de la BDD
      * @see SingleConnection
      */
-    public TagDAO(String url, String login, String password) {
-        super(url, login, password);
+    public TagDAO(String url, String login, String mdp) {
+        super(url, login, mdp);
     }
 
     /**
-     * Met à jour la BDD
+     * Met à jour la BDD.
      *
-     * @param objet Tag à changer
-     * @param changement Tag de changement (les paramètres null ne sont pas à changer)
+     * @param objet      Tag à changer
+     * @param changement Tag de changement (les paramètres null ne sont
+     *                   pas à changer)
      * @return true si la modification s'est correctement effectuée, false sinon
      * @see SingleConnection
      */
     @Override
-    public boolean modifier(Tag objet , Tag changement) {
-        if(changement==null){
+    public boolean modifier(Tag objet, Tag changement) {
+        boolean premier=true;
+        if (changement == null) {
             return false;
         }
         StringBuilder str = new StringBuilder();
         str.append("UPDATE `tags` SET ");
-        if(changement.getNom()!=null){
-            str.append("`nom`='"+changement.getNom()+"', ");
+        if (changement.getNom() != null) {
+            str.append("`nom`='" + changement.getNom() + "'");
+            premier=false;
         }
-        if(changement.getDescription()!=null){
-            str.append("`description`='"+changement.getDescription()+"'");
+        if (changement.getDescription() != null) {
+            if (!premier)
+                str.append(", ");
+            str.append("`description`='" + changement.getDescription() + "'");
         }
+        str.append(" WHERE idTag=" + objet.getId());
         try {
             PreparedStatement stmt = cn.prepareStatement(str.toString());
-            return stmt.execute();
+            int nbColonnesModifiees = stmt.executeUpdate();
+            return nbColonnesModifiees > 0;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
+
     /**
-     * Supprime de la BDD un Tag
+     * Supprime de la BDD un Tag.
      *
      * @param objet un Tag d'un type à déterminer dans chaque implémentation
      * @return true si la suppression s'est correctement effectuée, false sinon
@@ -58,25 +69,26 @@ public class TagDAO extends AbstractDAO<Tag>{
      * @see Tag
      */
     @Override
-    public boolean supprimer(Tag objet ) {
-        if(objet.getId() <= 0) {
+    public boolean supprimer(Tag objet) {
+        if (objet.getId() <= 0) {
             return false;
         }
         try {
-            PreparedStatement stmt = cn.prepareStatement("DELETE FROM `regroupe` WHERE `idTag`=?");
-            stmt.setInt(1,objet.getId());
+            String sql="DELETE FROM `regroupe` WHERE `idTag`=?";
+            PreparedStatement stmt = cn.prepareStatement(sql);
+            stmt.setInt(1, objet.getId());
             stmt.execute();
             stmt = cn.prepareStatement("DELETE FROM `tags` WHERE `idTag`=?");
-            stmt.setInt(1,objet.getId());
-            stmt.execute();
-            return true;
-        }
-        catch (SQLException e) {
+            stmt.setInt(1, objet.getId());
+            int nbColonnesModifiees = stmt.executeUpdate();
+            return nbColonnesModifiees > 0;
+        } catch (SQLException e) {
             return false;
-        }    }
+        }
+    }
 
     /**
-     * Ajoute à la base de donnée un Tag
+     * Ajoute à la base de donnée un Tag.
      *
      * @param objet le Tag à ajouter
      * @return true si l'ajout s'est correctement effectué, false sinon
@@ -85,46 +97,61 @@ public class TagDAO extends AbstractDAO<Tag>{
      */
     @Override
     public boolean creer(Tag objet) {
-        try {
-            PreparedStatement stmt = cn.prepareStatement("insert into tags values(?,?)");
-            stmt.setString(2,objet.getNom());
-            stmt.setString(1,objet.getDescription());
-            return stmt.execute();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        if (objet.getNom() != null) {
+            try {
+                String sql="SELECT * FROM tags WHERE idTag=" + objet.getId();
+                PreparedStatement stmt = cn.prepareStatement(sql);
+                if (!stmt.execute()){ //Si le tag n'existe pas déjà
+                    sql = "INSERT INTO tags (nom, description) VALUES(?,?)";
+                    stmt = cn.prepareStatement(sql);
+                    stmt.setString(1, objet.getNom());
+                    stmt.setString(2, objet.getDescription());
+                    int nbColonnes = stmt.executeUpdate();
+                    return nbColonnes > 0;
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
+        return false;
     }
 
     /**
-     *Cherche un Tag dans la base
+     * Cherche un Tag dans la base.
+     *
      * @param objet Tag avec tous les paramètres nuls sauf ceux à chercher
      * @return La liste des tags qui correspond aux paramètres donnés
      * @see SingleConnection
      * @see Tag
-     *
      */
     @Override
     public ArrayList<Tag> chercher(Tag objet) {
         ArrayList l = new ArrayList();
-        if(objet==null){
+        if (objet == null) {
             return l;
         }
         StringBuilder str = new StringBuilder();
-        str.append("SELECT * FROM `tags` WHERE 1 ");
-        if(objet.getId()>0){
-            str.append("&& idTag= "+objet.getId()+" ");
+        boolean premier=true;
+        str.append("SELECT * FROM `tags` WHERE");
+        if (objet.getNom() != null) {
+            str.append(" nom='" + objet.getNom() + "'");
+            premier=false;
         }
-        if(objet.getNom()!=null){
-            str.append("&& nom= "+objet.getNom()+" ");
-        }
-        if(objet.getDescription()!=null){
-            str.append("&& description= "+objet.getDescription()+" ");
+        if (objet.getDescription() != null) {
+            if (!premier)
+                str.append(" AND");
+            str.append(" description='" + objet.getDescription() + "'");
         }
         try {
             PreparedStatement stmt = cn.prepareStatement(str.toString());
+            if (objet.getNom() == null && objet.getDescription() == null){
+                String sql="SELECT * FROM tags";
+                stmt = cn.prepareStatement(sql);
+            }
             ResultSet rs = stmt.executeQuery();
-            while(rs.next()){
-                l.add(new Tag(rs.getInt(0),rs.getString(2),rs.getString(1)));
+            while (rs.next()) {
+                l.add(new Tag(rs.getInt("idTag"), rs.getString("nom"),
+                        rs.getString("description")));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

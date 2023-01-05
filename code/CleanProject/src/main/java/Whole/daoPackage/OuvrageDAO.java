@@ -169,9 +169,7 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
     }
     
     /**
-     * Permet de supprimer un ouvrage de la base de données. On s'assure que
-     * l'ouvrage qu'on souhaite supprimer est bien dans la base de données, puis
-     * si trouvé on le supprime.
+     * Permet de supprimer un ouvrage de la base de données.
      * 
      * @param objet l'ouvrage cible qu'on souhaite supprimer
      * @return true si la suppression s'est effectuée, false sinon
@@ -179,7 +177,11 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
      */
     public boolean supprimer(Ouvrage objet) {
         try {
-            PreparedStatement stmt = cn.prepareStatement("DELETE FROM `ecrit` "
+            PreparedStatement stmt=cn.prepareStatement("UPDATE lettrines "
+                    + "SET idOuvrage=null WHERE idOuvrage=?");
+            stmt.setInt(1,objet.getId());
+            stmt.execute();
+            stmt = cn.prepareStatement("DELETE FROM `ecrit` "
                     + "WHERE `idOuvrage`=?");
             stmt.setInt(1,objet.getId());
             stmt.execute();
@@ -282,7 +284,6 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
     	if (!premier)
 			sql+=" AND";
         sql+=" reechantillonage="+intReechantillonage;
-        premier=false;
     	
         try {
             stmt = cn.prepareStatement(sql);
