@@ -10,6 +10,7 @@
       <list>
         <ConfigurationLocation id="bundled-sun-checks" type="BUNDLED" scope="All" description="Sun Checks">(bundled)</ConfigurationLocation>
         <ConfigurationLocation id="bundled-google-checks" type="BUNDLED" scope="All" description="Google Checks">(bundled)</ConfigurationLocation>
+        <ConfigurationLocation id="80ec2ad5-5213-466c-a661-547f2cc27f14" type="HTTP_URL" scope="All" description="Colmar">https://raw.githubusercontent.com/Keke-Groupe-Badass/Convention-de-Codage/main/ColmarConvention1</ConfigurationLocation>
       </list>
     </option>
   </component>
