@@ -121,8 +121,8 @@ public class PersonneDAO extends AbstractDAO<Personne> {
             PreparedStatement stmt = cn.prepareStatement(sql);
             stmt.setInt(1, donne.getId());
             if (!stmt.execute()) { //Si la personne n'existe pas
-                sql = "INSERT INTO personnes (nom, prenom, note) "
-                        + "VALUES(?,?,?)";
+
+                sql = "INSERT INTO personnes (nom, prenom, note) VALUES(?,?,?)";
                 stmt = cn.prepareStatement(sql);
                 stmt.setString(1, donne.getNom());
                 stmt.setString(2, donne.getPrenom());

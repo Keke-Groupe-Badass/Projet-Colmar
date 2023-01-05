@@ -181,4 +181,9 @@ public class TagDAO extends AbstractDAO<Tag> {
         }
         return l;
     }
+    public static void tagAndSize(String path){
+        String sql = ""
+        PreparedStatement preparedStatement = cn.prepareStatement(sql);
+        ResultSet rs = preparedStatement.executeQuery();
+    }
 }
