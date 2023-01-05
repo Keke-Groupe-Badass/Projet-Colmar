@@ -21,7 +21,7 @@ public class FXMain extends Application {
         try {
             root = FXMLLoader.load(FXMain.class.getResource("/FxPackage/FxInterfaceLogin.fxml"));
             Scene scene = new Scene(root);
-            String css = this.getClass().getResource("/css/test.css").toExternalForm();
+            String css = this.getClass().getResource("/css/colmar.css").toExternalForm();
             scene.getStylesheets().add(css);
             stage.setTitle("Lettrine");
             stage.setScene(scene);

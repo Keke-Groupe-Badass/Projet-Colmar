@@ -1,0 +1,75 @@
+/**
+Tout
+ */
+*{
+    -fx-background-color: #F2E1C2;
+}
+/**
+Tout texte qui n'est pas dans un élément définis après
+ */
+.label{
+    -fx-text-fill: #550A21;
+    -fx-font-weight: bold;
+}
+/**
+le contour des menu item
+ */
+.context-menu{
+    -fx-background-color: #BFAD8A;
+}
+/**
+le contour de la barre des taches
+ */
+.menu-bar{
+    -fx-background-color: #BFAD8A;
+}
+/**
+les elements de la barre des taches
+ */
+.menu-item{
+    -fx-background-color: #BFAD8A;
+}
+/**
+bouton
+ */
+.button{
+    -fx-background-color: #BFAD8A;
+    -fx-text-fill: #550A21;
+    -fx-font-weight: bold;
+}
+/**
+TextField (pour rentrer des petits messages)
+ */
+.text-field{
+    -fx-background-color: #BFAD8A;
+    -fx-text-fill: #550A21;
+    -fx-font-weight: bold;
+}
+/**
+TextArea (pour rentrer des longs messages)
+ */
+.text-area{
+    -fx-background-color: #BFAD8A;
+    -fx-text-fill: #550A21;
+    -fx-font-weight: bold;
+}
+/**
+ListView une liste d'élements
+ */
+.list-view{
+    -fx-background-color: #BFAD8A;
+    -fx-text-fill: #550A21;
+    -fx-font-weight: bold;
+}
+/**
+Les textes dans les menus
+ */
+.menu .label{
+    -fx-background-color: #BFAD8A;
+}
+/**
+Quand on passe la sourie au dessus d'un ItemMenu
+ */
+.menu-item:hover{
+    -fx-background-color: #550A21;
+}
