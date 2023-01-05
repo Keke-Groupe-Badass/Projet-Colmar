@@ -27,7 +27,7 @@ public class AdminDAO extends SuperAbstractDAO {
      */
     private String bdd;
     /**
-     * Liste de tables.
+     * Liste des tables dans la BDD.
      */
     private ArrayList<String> listeTable;
 
@@ -43,6 +43,17 @@ public class AdminDAO extends SuperAbstractDAO {
         this.utilisateur = login;
         this.mdp = mdp;
         this.bdd = url;
+        listeTable = new ArrayList<>();
+        listeTable.add("ecrit");
+        listeTable.add("identiques");
+        listeTable.add("lettrines");
+        listeTable.add("logs");
+        listeTable.add("metadonnees");
+        listeTable.add("ouvrages");
+        listeTable.add("personnes");
+        listeTable.add("regroupe");
+        listeTable.add("tags");
+        listeTable.add("utilisateurs");
     }
 
     /**
@@ -98,7 +109,7 @@ public class AdminDAO extends SuperAbstractDAO {
             type = "cmd.exe";
         }
         String[] cmd = {type, "exportSQL.sh", "src/main/shell/exportSQL.sh",
-                        utilisateur, mdp, bdd, path};
+            utilisateur, mdp, bdd, path};
         try {
             Runtime.getRuntime().exec(cmd);
             return true;
@@ -113,7 +124,7 @@ public class AdminDAO extends SuperAbstractDAO {
      * première ligne est le nom des colonnes.
      *
      * @param table la table que l'on souhaite exporter
-     * @return true si tout c'est bien passé, false sinon
+     * @return true si tout s'est bien passé, false sinon
      * @author Andreas
      */
     private ArrayList<ArrayList<String>> getTableList(String table) {
@@ -123,21 +134,33 @@ public class AdminDAO extends SuperAbstractDAO {
 
             ResultSet rs = stmt.executeQuery("SELECT * FROM " + table);
             ResultSetMetaData md = rs.getMetaData();
-            int size = md.getColumnCount();
-            for (int i = 0; i < size; i++) {
-                list.get(0).add(md.getColumnName(i));
+            int nbColonne = md.getColumnCount();
+            ArrayList<String> listeNomColonne = new ArrayList<>();
+
+            System.out.println(table + " " + nbColonne);
+
+            if (rs.next()) {
+                for (int i = 1; i <= nbColonne; i++) {
+                    listeNomColonne.add(md.getColumnName(i));
+                }
             }
+            list.add(listeNomColonne);
             int row = 1;
             while (rs.next()) {
-                for (int j = 0; j < row; j++) {
-                    for (int i = 0; i < size; i++) {
-                        list.get(j).add((String) rs.getObject(i));
+                ArrayList<String> listeLigne = new ArrayList<>();
+                for (int j = 1; j <= row; j++) {
+                    for (int i = 1; i <= nbColonne; i++) {
+                        if (rs.getObject(i) != null)
+                            listeLigne.add((String) rs.getObject(i).toString());
+                        else
+                            listeLigne.add(null);
                     }
+                    list.add(listeLigne);
                 }
                 row++;
             }
         } catch (SQLException e) {
-            System.out.println("something went wrong");
+            throw new RuntimeException(e);
         }
         return list;
     }
@@ -145,17 +168,16 @@ public class AdminDAO extends SuperAbstractDAO {
     /**
      * Permet de stocker dans un fichier les logs.
      *
-     * @param cn   La connection à la base de données
      * @param file le fichier où seront exportés les logs
      * @return true si l'exportation s'est faite, false sinon
      * @author Andreas
      * @see SingleConnection
      */
-    public boolean exportLog(File file, Connection cn) {
+    public boolean exportLog(File file) {
         try {
             Statement stmt = cn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT `text`,`date`,`userLogin` "
-                    + "FROM `log`");
+            ResultSet rs = stmt.executeQuery("SELECT `texte`,`date`,`email` "
+                    + "FROM `logs`");
             String str = "Hello";
             BufferedWriter bw = new BufferedWriter(new FileWriter(file));
             bw.write("Log exporté le " + new Date(System.currentTimeMillis()));
@@ -169,27 +191,26 @@ public class AdminDAO extends SuperAbstractDAO {
             bw.close();
 
         } catch (SQLException e) {
-            System.err.println("something went wrong with the database link");
+            throw new RuntimeException(e);
         } catch (IOException e) {
-            System.err.println("something went wrong with the file's writing");
+            throw new RuntimeException(e);
         }
         return false;
     }
 
     /**
-     * Supprime les logs de la BDD.
+     * Supprime tous les logs de la BDD.
      *
-     * @param cn La connection à la base de données
      * @return true si fonctionne correctement, false sinon
      * @author Andreas
      * @see SingleConnection
      */
-    public Boolean deleteLog(Connection cn) {
+    public Boolean supprimerLogs() {
         Statement stm = null;
         try {
             stm = cn.createStatement();
-            stm.execute("DELETE FROM `log`");
-            return true;
+            int nbColonnes = stm.executeUpdate("DELETE FROM `logs`");
+            return nbColonnes > 0;
         } catch (SQLException e) {
             System.err.println("something went wrong with the database link");
         }
@@ -204,14 +225,16 @@ public class AdminDAO extends SuperAbstractDAO {
      * @author Andreas
      * @see SingleConnection
      */
-    public Boolean writeLog(String txt) {
+    public Boolean ecrireLog(String txt) {
         try {
-            Statement st = cn.createStatement();
-            st.execute("INSERT INTO `log`( `text`, `date`, `userLogin`) "
-                    + "VALUES('" + txt + "','"
+            String sql = "INSERT INTO `logs`(`texte`, `date`, `email`) "
+                    + "VALUES(?,'"
                     + new Date(System.currentTimeMillis()) + "','"
-                    + utilisateur + "'");
-            return true;
+                    + utilisateur + "')";
+            PreparedStatement st = cn.prepareStatement(sql);
+            st.setString(1, txt);
+            int nbColonnes = st.executeUpdate();
+            return nbColonnes > 0;
         } catch (SQLException e) {
             System.err.println("something went wrong with the database link");
         }
