@@ -117,17 +117,23 @@ public class PersonneDAO extends AbstractDAO<Personne> {
      */
     public boolean creer(Personne donne) {
         try {
-            String sql = "INSERT INTO personnes (nom, prenom, note) "
-                    + "VALUES(?,?,?)";
+            String sql = "SELECT * FROM personnes WHERE idPersonne=?";
             PreparedStatement stmt = cn.prepareStatement(sql);
-            stmt.setString(1, donne.getNom());
-            stmt.setString(2, donne.getPrenom());
-            stmt.setString(3, donne.getNote());
-            int nbColonnes = stmt.executeUpdate();
-            return nbColonnes > 0;
+            stmt.setInt(1, donne.getId());
+            if (!stmt.execute()) { //Si la personne n'existe pas
+                sql = "INSERT INTO personnes (nom, prenom, note) "
+                        + "VALUES(?,?,?)";
+                stmt = cn.prepareStatement(sql);
+                stmt.setString(1, donne.getNom());
+                stmt.setString(2, donne.getPrenom());
+                stmt.setString(3, donne.getNote());
+                int nbColonnes = stmt.executeUpdate();
+                return nbColonnes > 0;
+            }
         } catch (SQLException e) {
             return false;
         }
+        return false;
     }
 
     /**
