@@ -16,6 +16,7 @@ import javafx.scene.control.*;
 import java.net.URL;
 
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class FXModifierLettrineControleur implements Initializable {
@@ -186,6 +187,23 @@ public class FXModifierLettrineControleur implements Initializable {
             listMeta.remove(m);
             metaListView.refresh();
         }
+    }
+    @FXML
+    protected void supprimer(ActionEvent event){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Supprimer");
+        alert.setHeaderText("Voulez-vous vraiment supprimer cette lettrine?");
+        alert.setContentText("Cette action est irreversible");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            if(ControleurFunctions.lettrineDAO.supprimer(lettrine)){
+                ControleurFunctions.changeScene(event, "FxInterfaceLettrines.fxml");
+            }
+        } else {
+            // ... user chose CANCEL or closed the dialog
+        }
+
     }
 
 }

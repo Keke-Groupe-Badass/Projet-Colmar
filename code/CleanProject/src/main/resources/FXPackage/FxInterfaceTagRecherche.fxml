@@ -45,8 +45,8 @@
                      <bottom>
                         <HBox prefHeight="28.0" prefWidth="598.0" BorderPane.alignment="CENTER">
                            <children>
-                              <Button mnemonicParsing="false" text="Retour" />
-                              <Button fx:id="validerButton" mnemonicParsing="false" onAction="#validationForm" text="Valider" />
+                              <Button mnemonicParsing="false" text="Retour" onAction="#retourForm"/>
+                              <Button fx:id="validerButton" mnemonicParsing="false" onAction="#chercher" text="Valider" />
                            </children>
                         </HBox>
                      </bottom>
@@ -61,14 +61,14 @@
                           </rowConstraints>
                            <children>
                               <Label text="Nom" />
-                              <TextField GridPane.columnIndex="1" />
+                              <TextField GridPane.columnIndex="1" fx:id="nomTextField"/>
                            </children>
                         </GridPane>
                      </center>
                   </BorderPane>
                   <BorderPane prefHeight="200.0" prefWidth="200.0">
                      <center>
-                        <ListView prefHeight="455.0" prefWidth="598.0" BorderPane.alignment="CENTER" />
+                        <ListView prefHeight="455.0" prefWidth="598.0" BorderPane.alignment="CENTER" onMouseClicked="#itemCLick"/>
                      </center>
                   </BorderPane>
                </items>

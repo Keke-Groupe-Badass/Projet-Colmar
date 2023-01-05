@@ -42,9 +42,9 @@
                <top>
                   <HBox prefHeight="33.0" prefWidth="600.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Label text="Tag n°" fx:id="idLabel"/>
-                        <Button mnemonicParsing="false" text="Modifier" onAction="#modifierScene"/>
-                        <Button mnemonicParsing="false" text="Retour" onAction="#retour"/>
+                        <Label fx:id="idLabel" text="Tag n°" />
+                        <Button mnemonicParsing="false" onAction="#modifierScene" text="Modifier" />
+                        <Button mnemonicParsing="false" onAction="#retour" text="Retour"/>
                      </children>
                   </HBox>
                </top>
@@ -61,8 +61,8 @@
                      <children>
                         <Label text="Nom" />
                         <Label text="Description" GridPane.rowIndex="1" />
-                        <Label text="nomLabel" GridPane.columnIndex="1" fx:id="nomLabel"/>
-                        <Label text="descriptionLabel" GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="descriptionLabel"/>
+                        <Label fx:id="nomLabel" text="nomLabel" GridPane.columnIndex="1" />
+                        <Label fx:id="descriptionLabel" text="descriptionLabel" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
                </center>
@@ -72,7 +72,7 @@
                   <Label text="Liste des lettrines possédant le tag" BorderPane.alignment="CENTER" />
                </top>
                <center>
-                  <ListView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" fx:id="listView" onMouseClicked="#clickOnTag"/>
+                  <ListView fx:id="listView" onMouseClicked="#clickOnTag" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
                </center>
             </BorderPane>
         </items>

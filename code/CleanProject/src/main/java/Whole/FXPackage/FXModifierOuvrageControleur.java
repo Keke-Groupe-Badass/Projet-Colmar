@@ -12,6 +12,7 @@ import javafx.scene.control.*;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class FXModifierOuvrageControleur implements Initializable {
@@ -149,5 +150,22 @@ public class FXModifierOuvrageControleur implements Initializable {
         }else{
 
         }
+    }
+    @FXML
+    protected void supprimer(ActionEvent event){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Supprimer");
+        alert.setHeaderText("Voulez-vous vraiment supprimer cet ouvrage?");
+        alert.setContentText("Cette action est irreversible");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            if(ControleurFunctions.ouvrageDAO.supprimer(ouvrage)){
+                ControleurFunctions.changeScene(event, "FxInterfaceOuvrages.fxml");
+            }
+        } else {
+            // ... user chose CANCEL or closed the dialog
+        }
+
     }
 }

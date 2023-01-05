@@ -55,8 +55,8 @@
                   <HBox prefHeight="31.0" prefWidth="876.0" BorderPane.alignment="CENTER">
                       <children>
                           <Button fx:id="confirmerBtn" mnemonicParsing="false" onAction="#valider" text="Confirmer" />
-                          <Button fx:id="annulerBtn" mnemonicParsing="false" text="Annuler" onAction=""/>
-                          <Button mnemonicParsing="false" text="Supprimer" fx:id="supprimerBtn"/>
+                          <Button fx:id="annulerBtn" mnemonicParsing="false" text="Annuler" onAction="#annuler"/>
+                          <Button mnemonicParsing="false" text="Supprimer" fx:id="supprimerBtn" onAction="#supprimer"/>
                       </children>
                   </HBox>
                </bottom>
