@@ -38,31 +38,44 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      */
     @Override
     public boolean modifier(Lettrine objet, Lettrine changement) {
-        StringBuilder str = new StringBuilder();
+        ArrayList<String> rq = new ArrayList<>();
+
+        String reqNbPage = "";
         if(changement.getNbPage() != -1) {
-            str.append("nbPage=" + changement.getNbPage());
+            reqNbPage = reqNbPage + "nbPage=" + changement.getNbPage();
         }
+        rq.add(reqNbPage);
 
+        String reqChanngement = "";
         if(changement.getLien() != null) {
-            str.append(", lien=" + changement.getLien());
+            reqChanngement = reqChanngement + "lien=" + changement.getLien();
         }
+        rq.add(reqChanngement);
 
-        /*
-        pas necessaire imo car la méthode provient fait deja le job de lier une lettrine à un ouvrage
-        -> rendre la méthode static et l'appeler ici ? se poser la question de garder la méthode provient
-        -> en parler aux autres
-
-        if(changement.getOuvrage() != null) {
-            str.append(", idOuvrage=" + changement.getOuvrage().getId());
-        }
-         */
-
+        String reqCrea = "";
         if(changement.getCreateur() != null) {
-            str.append(", idPersonne=" + changement.getCreateur().getId());
+            reqCrea = reqCrea + "idPersonne=" + changement.getCreateur().getId();
         }
+        rq.add(reqCrea);
 
+        String reqIden = "";
         if(changement.getIdentique() != 0) {
-            str.append(", idIdentique=" + changement.getIdentique());
+            reqIden = reqIden + "idIdentique=" + changement.getIdentique();
+        }
+        rq.add(reqIden);
+
+        StringBuilder str = new StringBuilder();
+        for(String s : rq) {
+            if(s.isBlank())
+                rq.remove(s);
+        }
+        
+        //return true car pas de modif à faire
+        if(rq.isEmpty()) {
+            return true;
+        }
+        else {
+            str.append(", ?".repeat(rq.size() - 1));
         }
 
         if(changement.getMetadonnees() != null) {
@@ -80,9 +93,11 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
             }
         }
             try {
-                Statement stmt = cn.createStatement();
-                String sql = "UPDATE lettrines SET " + str + " WHERE idLettrine=" + objet.getId();
-                stmt.executeQuery(sql);
+                PreparedStatement pstmt = cn.prepareStatement("UPDATE lettrines SET ?" + str);
+                for(int i=0; i<rq.size(); i++) {
+                    pstmt.setString(i+1, rq.get(i));
+                }
+                pstmt.executeQuery();
                 return true;
             }
             catch (SQLException e) {
@@ -140,7 +155,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
             stmt.setInt(3,donne.getOuvrage().getId());
             stmt.setInt(4,donne.getCreateur().getId());
             stmt.setInt(5,donne.getIdentique());
-            Boolean verif = stmt.execute();
+            boolean verif = stmt.execute();
             if(!verif){
                 return false;
             }
@@ -677,6 +692,33 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
     @Override
     public ArrayList<Lettrine> chercher(Lettrine donne) {
         ArrayList<ArrayList<Integer>> taille = new ArrayList<>();
+        ArrayList<Lettrine> let = new ArrayList<>();
+        Lettrine l = new Lettrine();
+
+        donne.setMetadonnees(rechercheMeta(donne.getMetadonnees().get(0)));
+
+        // Recherche par id
+        if(donne.getId() >= 0) {
+            try {
+                Statement stmt = cn.createStatement();
+                String sql = "SELECT * FROM lettrines WHERE idLettrine=" + donne.getId();
+                ResultSet res = stmt.executeQuery(sql);
+                if (res.next()) {
+                    l.setId(res.getInt(1));
+                    l.setNbPage(res.getInt(2));
+                    l.setLien(res.getString(3));
+                    l.setOuvrage(setOuvr(res.getInt(4)));
+                    l.setMetadonnees(setMeta(res.getInt(1)));
+                    l.setCreateur(setPers(res.getInt(5)));
+                    l.setIdentique(res.getInt(6));
+                    let.add(l);
+                }
+                return let;
+            }
+            catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
 
         // Recherche des lettrines associées à l'ouvrage
         ArrayList<Integer> idRechercheOuvrage = new ArrayList<>();
@@ -799,8 +841,6 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
            rechercheID(idRecherchePlagiat, idSet, id);
         }
 
-        ArrayList<Lettrine> let = new ArrayList<>();
-        Lettrine l = new Lettrine();
         for(int id : idSet) {
             try {
                 Statement st = cn.createStatement();
@@ -981,4 +1021,82 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
     public static boolean setReechantillonage(int nb) {
         return nb != 0;
     }
+
+    /**
+     * permet de rechercher dans la base les métadonnées dont les champs correspondent à ceux de la
+     * métadonnée passée en param
+     * @author Romain
+     * @param meta métadonnée dont les champs vont servir à la recherche
+     * @return arrayRes Araylist contenant les métadonnées extraites de la base
+     * @see #chercher
+     */
+    public static ArrayList<Metadonnee> rechercheMeta(Metadonnee meta) {
+        ArrayList<Metadonnee> arrayRes = new ArrayList<>();
+        ArrayList<String> array = new ArrayList<>();
+
+        String reqNom = "";
+        if(meta.getNom() != null) {
+            reqNom = reqNom + "nom=" + meta.getNom();
+        }
+        array.add(reqNom);
+
+        String reqDesc = "";
+        if(meta.getDescription() != null) {
+            reqDesc = reqDesc + "description=" + meta.getDescription();
+        }
+        array.add(reqDesc);
+
+        String reqVal = "";
+        if(meta.getEntree() != null) {
+            reqVal = reqVal + "valeur=" + meta.getEntree();
+        }
+        array.add(reqVal);
+
+        String reqUnite = "";
+        if(meta.getUnite() != null) {
+            reqUnite = reqUnite + "unite=" + meta.getUnite();
+        }
+
+        array.add(reqUnite);
+
+        for(String str : array) {
+            if(str.isBlank()) {
+                array.remove(str);
+            }
+        }
+        String requete = "";
+        StringBuilder ps = new StringBuilder();
+        if(array.isEmpty()) {
+            requete = "SELECT * FROM metadonnees";
+        }
+        else {
+            ps.append("AND ? ".repeat(array.size() - 1));
+        }
+        Metadonnee m = new Metadonnee();
+        try {
+            if(requete.isBlank())
+                requete = "SELECT * FROM metadonnees WHERE ?" + ps;
+            PreparedStatement pstmt = cn.prepareStatement(requete);
+            if(!requete.equals("SELECT * FROM metadonnees")) {
+                for (int i = 0; i < array.size(); i++) {
+                    pstmt.setString(i + 1, array.get(i));
+                }
+            }
+            ResultSet res = pstmt.executeQuery();
+            while (res.next()) {
+                m.setId(res.getInt(1));
+                m.setNom(res.getString(2));
+                m.setDescription(res.getString(3));
+                m.setEntree(res.getString(4));
+                m.setUnite(res.getString(5));
+                arrayRes.add(m);
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return arrayRes;
+    }
+
 }
