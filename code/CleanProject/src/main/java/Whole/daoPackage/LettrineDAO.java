@@ -69,10 +69,13 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
             if(s.isBlank())
                 rq.remove(s);
         }
-
-        // !!!! NE MARCHE PAS SI L'ARRAYLIST EST VIDE
-        for (int i=0; i<rq.size()-1; i++) {
-            str.append(", ?");
+        
+        //return true car pas de modif à faire
+        if(rq.isEmpty()) {
+            return true;
+        }
+        else {
+            str.append(", ?".repeat(rq.size() - 1));
         }
 
         if(changement.getMetadonnees() != null) {
@@ -1061,17 +1064,23 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
                 array.remove(str);
             }
         }
-
+        String requete = "";
         StringBuilder ps = new StringBuilder();
-        for(int i=0; i<array.size()-1; i++) {
-            ps.append("AND ? ");
+        if(array.isEmpty()) {
+            requete = "SELECT * FROM metadonnees";
         }
-
+        else {
+            ps.append("AND ? ".repeat(array.size() - 1));
+        }
         Metadonnee m = new Metadonnee();
         try {
-            PreparedStatement pstmt = cn.prepareStatement("SELECT * FROM metadonnees WHERE ?" + ps);
-            for(int i=0; i<array.size(); i++) {
-                pstmt.setString(i+1, array.get(i));
+            if(requete.isBlank())
+                requete = "SELECT * FROM metadonnees WHERE ?" + ps;
+            PreparedStatement pstmt = cn.prepareStatement(requete);
+            if(!requete.equals("SELECT * FROM metadonnees")) {
+                for (int i = 0; i < array.size(); i++) {
+                    pstmt.setString(i + 1, array.get(i));
+                }
             }
             ResultSet res = pstmt.executeQuery();
             while (res.next()) {
