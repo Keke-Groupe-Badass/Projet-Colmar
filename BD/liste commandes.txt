@@ -23,3 +23,8 @@ inner join t_personne a on t.Auteur=a.nom_prenom
 
 SELECT distinct t.Auteur FROM t_ouvrages t left join t_personne a on t.Auteur=a.nom_prenom where Num_personne is Null ORDER BY `a`.`Num_personne` ASC
 
+INSERT INTO `regroupe`(`idLettrine`, `idTag`) 
+SELECT lettrines.idLettrine,lettrines.idIdentique from lettrines WHERE lettrines.idIdentique !=0
+
+SELECT `nom`,count(*) FROM `tags` inner join regroupe on tags.idTag=regroupe.idTag
+group by regroupe.idTag
