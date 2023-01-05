@@ -21,8 +21,12 @@
     -fx-background-color: #343434;
     -fx-text-fill: white;
 }
+.list-view{
+    -fx-background-color: #343434;
+}
 .label{
     -fx-background-color: 343434;
     -fx-text-fill: white;
 }
+
 

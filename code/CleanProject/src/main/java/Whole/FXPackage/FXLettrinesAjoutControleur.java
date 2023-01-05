@@ -58,4 +58,8 @@ public class FXLettrinesAjoutControleur {
             alert.show();
         }
     }
+    @FXML
+    public void retourForm(ActionEvent event) {
+        ControleurFunctions.changeScene(event, "FxInterfaceLettrines.fxml");
+    }
 }
