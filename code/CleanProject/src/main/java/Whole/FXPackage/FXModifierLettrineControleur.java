@@ -76,6 +76,7 @@ public class FXModifierLettrineControleur implements Initializable {
     @FXML
     public void valider(ActionEvent event) {
         Lettrine newLettrine = new Lettrine();
+        //TODO remplir newLettrine avec les nouveaux elements
         if(ControleurFunctions.lettrineDAO.modifier(lettrine,newLettrine)){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Lettrine Modifiée");

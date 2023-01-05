@@ -1,11 +1,8 @@
 package Whole.FXPackage;
 
-import Whole.Metadonnee;
-import Whole.ccmsPackage.Lettrine;
 import Whole.ccmsPackage.Ouvrage;
 import Whole.ccmsPackage.Personne;
 
-import Whole.ccmsPackage.Tag;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -110,6 +107,41 @@ public class FXModifierOuvrageControleur implements Initializable {
     @FXML
     public void valider(ActionEvent event) {
         Ouvrage newOuvrage = new Ouvrage();
+        if(!titreTextField.getText().isBlank()){
+            newOuvrage.setTitre(titreTextField.getText());
+        }
+        if(!formatTextField.getText().isBlank()){
+            newOuvrage.setFormat(formatTextField.getText());
+        }
+        if(!resolutionTextField.getText().isBlank()){
+            newOuvrage.setResolution(resolutionTextField.getText());
+        }
+        if(!creditPhotoTextField.getText().isBlank()){
+            newOuvrage.setCreditPhoto(creditPhotoTextField.getText());
+        }
+        newOuvrage.setReechantillonage(reechantillonageCheckBox.isSelected());
+        if(!copyrightTextField.getText().isBlank()){
+            newOuvrage.setCopyright(copyrightTextField.getText());
+        }
+        if(!lieuTextField.getText().isBlank()){
+            newOuvrage.setLieuImpression(lieuTextField.getText());
+        }
+        if(!lienTextField.getText().isBlank()){
+            newOuvrage.setLien(lienTextField.getText());
+        }
+        if(!dateTextField.getText().isBlank()){
+            newOuvrage.setDateEdition(Integer.parseInt(dateTextField.getText()));
+        }
+        if(!pageTextField.getText().isBlank()){
+            newOuvrage.setNbPage(Integer.parseInt(pageTextField.getText()));
+        }
+        if(!imprimeurTextField.getText().isBlank()){
+            newOuvrage.setImprimeur(new Personne(Integer.parseInt(imprimeurTextField.getText())));
+        }
+        if(!libraireTextField.getText().isBlank()){
+            newOuvrage.setLibraire(new Personne(Integer.parseInt(libraireTextField.getText())));
+        }
+
         if(ControleurFunctions.ouvrageDAO.modifier(ouvrage,newOuvrage)){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Ouvrage Modifiée");
