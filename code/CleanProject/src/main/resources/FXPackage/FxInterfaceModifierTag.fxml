@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Whole.FXPackage.FXModifierOuvrageControleur">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Whole.FXPackage.FXModifierTagsControleur">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
@@ -41,7 +41,7 @@
          <items>
             <BorderPane>
                <center>
-                  <SplitPane dividerPositions="0.5" prefHeight="152.0" prefWidth="598.0" BorderPane.alignment="CENTER">
+                  <SplitPane dividerPositions="0.2785234899328859" prefHeight="152.0" prefWidth="598.0" BorderPane.alignment="CENTER">
                      <items>
                         <GridPane>
                            <columnConstraints>
@@ -50,13 +50,10 @@
                            </columnConstraints>
                            <rowConstraints>
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
                               <Label text="Nom" />
-                              <Label text="Description" GridPane.rowIndex="1" />
-                              <TextField GridPane.columnIndex="1" />
-                              <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <TextField GridPane.columnIndex="1" fx:id="nomTextField"/>
                            </children>
                         </GridPane>
                         <BorderPane prefHeight="200.0" prefWidth="200.0">
@@ -64,7 +61,7 @@
                               <Label text="Note:" BorderPane.alignment="CENTER" />
                            </top>
                            <center>
-                              <TextArea prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+                              <TextArea prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" fx:id="descriptionTextArea"/>
                            </center>
                         </BorderPane>
                      </items>
@@ -74,9 +71,9 @@
                   <HBox prefHeight="28.0" prefWidth="598.0" BorderPane.alignment="CENTER">
                      <children>
                         <Label fx:id="labelModifier" text="Tag n°" />
-                        <Button fx:id="modifierBtn" mnemonicParsing="false" onAction="#modifierScene" text="Confirmer" />
-                        <Button fx:id="retourBtn" mnemonicParsing="false" text="Retour" />
-                        <Button mnemonicParsing="false" text="Supprimer" />
+                        <Button fx:id="modifierBtn" mnemonicParsing="false" onAction="#valider" text="Confirmer" />
+                        <Button fx:id="retourBtn" mnemonicParsing="false" text="Retour" onAction="#annuler"/>
+                        <Button mnemonicParsing="false" text="Supprimer" onAction="#supprimer"/>
                      </children>
                   </HBox>
                </top>

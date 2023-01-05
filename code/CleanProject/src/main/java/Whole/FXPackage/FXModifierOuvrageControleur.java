@@ -12,6 +12,7 @@ import javafx.scene.control.*;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class FXModifierOuvrageControleur implements Initializable {
@@ -88,9 +89,13 @@ public class FXModifierOuvrageControleur implements Initializable {
     protected void clickListAuteur(ActionEvent event){
         if(supprimerCheckBox.isSelected()){
             Personne p = listView.getSelectionModel().getSelectedItem();
-            newPersonne.remove(p);
+            if(newPersonne.contains(p)){
+                newPersonne.remove(p);
+            }
+            else{
+                removePersonne.add(p);
+            }
             listPersonne.remove(p);
-            removePersonne.add(p);
             listView.refresh();
         }
     }
@@ -135,7 +140,6 @@ public class FXModifierOuvrageControleur implements Initializable {
         if(!libraireTextField.getText().isBlank()){
             newOuvrage.setLibraire(new Personne(Integer.parseInt(libraireTextField.getText())));
         }
-
         if(ControleurFunctions.ouvrageDAO.modifier(ouvrage,newOuvrage)){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Ouvrage Modifiée");
@@ -146,5 +150,22 @@ public class FXModifierOuvrageControleur implements Initializable {
         }else{
 
         }
+    }
+    @FXML
+    protected void supprimer(ActionEvent event){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Supprimer");
+        alert.setHeaderText("Voulez-vous vraiment supprimer cet ouvrage?");
+        alert.setContentText("Cette action est irreversible");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            if(ControleurFunctions.ouvrageDAO.supprimer(ouvrage)){
+                ControleurFunctions.changeScene(event, "FxInterfaceOuvrages.fxml");
+            }
+        } else {
+            // ... user chose CANCEL or closed the dialog
+        }
+
     }
 }

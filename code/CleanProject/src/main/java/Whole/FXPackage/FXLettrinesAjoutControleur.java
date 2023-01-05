@@ -20,6 +20,7 @@ public class FXLettrinesAjoutControleur {
     TextField graveurTextField;
     @FXML
     TextField identiqueTextField;
+    @FXML
     public void confirmationLettrinesScene(ActionEvent event) {
         Ouvrage o = new Ouvrage();
         int nbPage = -1;
@@ -57,5 +58,9 @@ public class FXLettrinesAjoutControleur {
             alert.setHeaderText("Erreur est survenue durant la modification de la base");
             alert.show();
         }
+    }
+    @FXML
+    public void retourForm(ActionEvent event) {
+        ControleurFunctions.changeScene(event, "FxInterfaceLettrines.fxml");
     }
 }

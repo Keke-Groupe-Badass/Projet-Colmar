@@ -97,7 +97,7 @@
                         <Label fx:id="labelModifier" text="Ouvrage n°" />
                         <Button fx:id="modifierBtn" mnemonicParsing="false" onAction="#valider" text="Confirmer" />
                         <Button fx:id="retourBtn" mnemonicParsing="false" text="Retour" onAction="#annuler" />
-                        <Button mnemonicParsing="false" text="Supprimer" />
+                        <Button mnemonicParsing="false" text="Supprimer" onAction="#supprimer"/>
                      </children>
                   </HBox>
                </top>

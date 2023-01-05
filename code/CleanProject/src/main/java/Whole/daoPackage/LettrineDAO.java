@@ -753,9 +753,10 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
         ArrayList<ArrayList<Integer>> taille = new ArrayList<>();
         ArrayList<Lettrine> let = new ArrayList<>();
         Lettrine l = new Lettrine();
+        if(donne.getMetadonnees().size()>0){
+            donne.setMetadonnees(rechercheMeta(donne.getMetadonnees().get(0)));
 
-        donne.setMetadonnees(rechercheMeta(donne.getMetadonnees().get(0)));
-
+        }
         // Recherche par id
         if (donne.getId() >= 0) {
             try {

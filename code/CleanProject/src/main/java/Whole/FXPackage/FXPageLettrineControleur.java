@@ -89,8 +89,8 @@ public class FXPageLettrineControleur implements Initializable {
     protected void clickOnTag(ActionEvent event) {
         Tag t = tagListView.getSelectionModel().getSelectedItem();
         if(t!=null){
-            //TODO CHANGE TO TAG PAGE of the Tag T
-            ControleurFunctions.changeScene(event, ".fxml");
+            FXPageTagControleur.tag = t;
+            ControleurFunctions.changeScene(event, "FxInterfacePageTag.fxml");
         }
     }
 }
