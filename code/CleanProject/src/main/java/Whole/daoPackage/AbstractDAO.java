@@ -61,7 +61,6 @@ public abstract class AbstractDAO<CCMS> extends SuperAbstractDAO{
      * @see CCMS
      * @see SingleConnection
      */
-
     public abstract ArrayList<CCMS> chercher(CCMS donne);
 
 }
