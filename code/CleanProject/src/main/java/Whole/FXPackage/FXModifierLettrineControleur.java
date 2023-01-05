@@ -2,6 +2,8 @@ package Whole.FXPackage;
 
 import Whole.Metadonnee;
 import Whole.ccmsPackage.Lettrine;
+import Whole.ccmsPackage.Ouvrage;
+import Whole.ccmsPackage.Personne;
 import Whole.ccmsPackage.Tag;
 
 import javafx.collections.FXCollections;
@@ -76,7 +78,23 @@ public class FXModifierLettrineControleur implements Initializable {
     @FXML
     public void valider(ActionEvent event) {
         Lettrine newLettrine = new Lettrine();
-        //TODO remplir newLettrine avec les nouveaux elements
+        if(pageTextField.getText().isBlank()){
+            newLettrine.setNbPage(Integer.parseInt(pageTextField.getText()));
+        }
+        if(plagiatTextField.getText().isBlank()){
+            newLettrine.setIdentique(Integer.parseInt(plagiatTextField.getText()));
+        }
+        if(lienTextField.getText().isBlank()){
+            newLettrine.setLien(lienTextField.getText());
+        }
+        if(ouvrageTextField.getText().isBlank()){
+            newLettrine.setOuvrage(new Ouvrage(Integer.parseInt(ouvrageTextField.getText())));
+        }
+        if(createurTextField.getText().isBlank()){
+            newLettrine.setCreateur(new Personne(Integer.parseInt(createurTextField.getText())));
+        }
+
+
         if(ControleurFunctions.lettrineDAO.modifier(lettrine,newLettrine)){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Lettrine Modifiée");
@@ -145,9 +163,13 @@ public class FXModifierLettrineControleur implements Initializable {
     protected void clickListViewTag(ActionEvent event){
         if(tagSupression){
             Tag t = tagListView.getSelectionModel().getSelectedItem();
-            newTag.remove(t);
+            if(newTag.contains(t)){
+                newTag.remove(t);
+            }
+            else{
+                removeTag.add(t);
+            }
             listTag.remove(t);
-            removeTag.add(t);
             tagListView.refresh();
         }
     }
@@ -155,9 +177,13 @@ public class FXModifierLettrineControleur implements Initializable {
     protected void clickListViewMeta(ActionEvent event){
         if(metaSupression){
             Metadonnee m = metaListView.getSelectionModel().getSelectedItem();
-            newMeta.remove(m);
+            if(newMeta.contains(m)){
+                newMeta.remove(m);
+            }
+            else{
+                removeMeta.add(m);
+            }
             listMeta.remove(m);
-            removeMeta.add(m);
             metaListView.refresh();
         }
     }

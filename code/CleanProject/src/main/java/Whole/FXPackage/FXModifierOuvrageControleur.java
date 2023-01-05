@@ -88,9 +88,13 @@ public class FXModifierOuvrageControleur implements Initializable {
     protected void clickListAuteur(ActionEvent event){
         if(supprimerCheckBox.isSelected()){
             Personne p = listView.getSelectionModel().getSelectedItem();
-            newPersonne.remove(p);
+            if(newPersonne.contains(p)){
+                newPersonne.remove(p);
+            }
+            else{
+                removePersonne.add(p);
+            }
             listPersonne.remove(p);
-            removePersonne.add(p);
             listView.refresh();
         }
     }
@@ -135,7 +139,6 @@ public class FXModifierOuvrageControleur implements Initializable {
         if(!libraireTextField.getText().isBlank()){
             newOuvrage.setLibraire(new Personne(Integer.parseInt(libraireTextField.getText())));
         }
-
         if(ControleurFunctions.ouvrageDAO.modifier(ouvrage,newOuvrage)){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Ouvrage Modifiée");
