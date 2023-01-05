@@ -16,9 +16,10 @@ import java.util.ArrayList;
 public class PersonneDAO extends AbstractDAO<Personne> {
     /**
      * Constructeur de PersonneDAO.
-     * @param url url de la BDD
+     *
+     * @param url   url de la BDD
      * @param login login de la BDD
-     * @param mdp mot de passe de la BDD
+     * @param mdp   mot de passe de la BDD
      * @see SingleConnection
      */
     public PersonneDAO(String url, String login, String mdp) {
@@ -35,12 +36,12 @@ public class PersonneDAO extends AbstractDAO<Personne> {
      * @see SingleConnection
      */
     public boolean modifier(Personne objet, Personne changement) {
-        boolean premier=true;
+        boolean premier = true;
         StringBuilder str = new StringBuilder();
         if (changement.getNom() != null) {
             str.append("nom='" + changement.getNom());
             str.append("'");
-            premier=false;
+            premier = false;
         }
 
         if (changement.getPrenom() != null) {
@@ -48,7 +49,7 @@ public class PersonneDAO extends AbstractDAO<Personne> {
                 str.append(", ");
             str.append("prenom='" + changement.getPrenom());
             str.append("'");
-            premier=false;
+            premier = false;
         }
 
         if (changement.getNote() != null) {
@@ -86,15 +87,15 @@ public class PersonneDAO extends AbstractDAO<Personne> {
         }
         try {
             Statement stmt = cn.createStatement();
-            String sql="DELETE FROM ecrit WHERE idPersonne=" + objet.getId();
+            String sql = "DELETE FROM ecrit WHERE idPersonne=" + objet.getId();
             stmt.execute(sql);
-            sql="UPDATE lettrines SET idPersonne=NULL "
+            sql = "UPDATE lettrines SET idPersonne=NULL "
                     + "WHERE idPersonne=" + objet.getId();
             stmt.execute(sql);
-            sql="UPDATE ouvrages SET imprimeur=NULL "
+            sql = "UPDATE ouvrages SET imprimeur=NULL "
                     + "WHERE imprimeur=" + objet.getId();
             stmt.execute(sql);
-            sql="UPDATE ouvrages SET libraire=NULL "
+            sql = "UPDATE ouvrages SET libraire=NULL "
                     + "WHERE libraire=" + objet.getId();
             stmt.execute(sql);
             sql = "DELETE FROM personnes "
@@ -116,7 +117,7 @@ public class PersonneDAO extends AbstractDAO<Personne> {
      */
     public boolean creer(Personne donne) {
         try {
-            String sql="INSERT INTO personnes (nom, prenom, note) "
+            String sql = "INSERT INTO personnes (nom, prenom, note) "
                     + "VALUES(?,?,?)";
             PreparedStatement stmt = cn.prepareStatement(sql);
             stmt.setString(1, donne.getNom());
