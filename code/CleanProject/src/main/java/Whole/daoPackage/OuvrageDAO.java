@@ -179,7 +179,11 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
      */
     public boolean supprimer(Ouvrage objet) {
         try {
-            PreparedStatement stmt = cn.prepareStatement("DELETE FROM `ecrit` "
+            PreparedStatement stmt=cn.prepareStatement("UPDATE lettrines "
+                    + "SET idOuvrage=null WHERE idOuvrage=?");
+            stmt.setInt(1,objet.getId());
+            stmt.execute();
+            stmt = cn.prepareStatement("DELETE FROM `ecrit` "
                     + "WHERE `idOuvrage`=?");
             stmt.setInt(1,objet.getId());
             stmt.execute();
@@ -282,7 +286,6 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
     	if (!premier)
 			sql+=" AND";
         sql+=" reechantillonage="+intReechantillonage;
-        premier=false;
     	
         try {
             stmt = cn.prepareStatement(sql);
