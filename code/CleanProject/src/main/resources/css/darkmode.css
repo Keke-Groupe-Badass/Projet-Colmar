@@ -1,0 +1,28 @@
+*{
+    -fx-background-color: black;
+}
+.button{
+    -fx-background-color: #343434;
+    -fx-text-fill: white;
+}
+.text-field{
+    -fx-background-color: #343434;
+    -fx-text-fill: white;
+}
+.menu{
+    -fx-background-color: #343434;
+    -fx-text-fill: white;
+}
+.menu-bar{
+    -fx-background-color: #343434;
+    -fx-text-fill: white;
+}
+.menu-item{
+    -fx-background-color: #343434;
+    -fx-text-fill: white;
+}
+.label{
+    -fx-background-color: 343434;
+    -fx-text-fill: white;
+}
+
