@@ -169,9 +169,7 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
     }
     
     /**
-     * Permet de supprimer un ouvrage de la base de données. On s'assure que
-     * l'ouvrage qu'on souhaite supprimer est bien dans la base de données, puis
-     * si trouvé on le supprime.
+     * Permet de supprimer un ouvrage de la base de données.
      * 
      * @param objet l'ouvrage cible qu'on souhaite supprimer
      * @return true si la suppression s'est effectuée, false sinon
