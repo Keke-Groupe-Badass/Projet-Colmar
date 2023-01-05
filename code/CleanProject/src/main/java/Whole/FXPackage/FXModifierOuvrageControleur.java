@@ -48,13 +48,9 @@ public class FXModifierOuvrageControleur implements Initializable {
     ListView<Personne> listView;
     @FXML
     Label idLabel;
-
     ArrayList<Personne> newPersonne = new ArrayList<>();
-
     ArrayList<Personne> removePersonne = new ArrayList<>();
-
     ObservableList<Personne> listPersonne = FXCollections.observableArrayList();
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -78,10 +74,8 @@ public class FXModifierOuvrageControleur implements Initializable {
         listView.setItems(listPersonne);
         listView.refresh();
     }
-
-
     @FXML
-    protected void ajouterAUteur(ActionEvent event){
+    protected void ajouterAuteur(ActionEvent event){
         if(addAuteurTextField.getText()!=null){
             Personne p = new Personne(Integer.parseInt(addAuteurTextField.getText()));
             newPersonne.add(p);

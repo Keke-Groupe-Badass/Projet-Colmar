@@ -95,8 +95,8 @@
                   <HBox prefHeight="28.0" prefWidth="598.0" BorderPane.alignment="CENTER">
                      <children>
                         <Label fx:id="labelModifier" text="Ouvrage n°" />
-                        <Button fx:id="modifierBtn" mnemonicParsing="false" onAction="#modifierScene" text="Confirmer" />
-                        <Button fx:id="retourBtn" mnemonicParsing="false" text="Retour" />
+                        <Button fx:id="modifierBtn" mnemonicParsing="false" onAction="#valider" text="Confirmer" />
+                        <Button fx:id="retourBtn" mnemonicParsing="false" text="Retour" onAction="#annuler" />
                         <Button mnemonicParsing="false" text="Supprimer" />
                      </children>
                   </HBox>
@@ -110,7 +110,7 @@
                            <center>
                               <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                                  <children>
-                                    <ListView fx:id="metaListView" prefHeight="150.0" prefWidth="596.0" />
+                                    <ListView fx:id="metaListView" prefHeight="150.0" prefWidth="596.0" onMouseClicked="#clickListAuteur" />
                                  </children>
                               </VBox>
                            </center>
@@ -122,7 +122,7 @@
                                        <children>
                                           <CheckBox mnemonicParsing="false" text="Supprimer" />
                                           <TextField prefHeight="25.0" prefWidth="100.0" text="Auteur (id)" />
-                                          <Button mnemonicParsing="false" text="+" />
+                                          <Button mnemonicParsing="false" text="+" onAction="#ajouterAuteur"/>
                                        </children>
                                     </HBox>
                                  </children>
