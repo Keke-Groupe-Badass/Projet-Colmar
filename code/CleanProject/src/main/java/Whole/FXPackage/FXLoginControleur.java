@@ -2,8 +2,9 @@ package Whole.FXPackage;
 
 import Whole.Controleur;
 import Whole.daoPackage.*;
-import javafx.event.ActionEvent;
+import Whole.exceptionPackage.mauvaisMDPException;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -26,11 +27,8 @@ public class FXLoginControleur implements Initializable {
     PasswordField passwordTextField;
     @FXML
     TextField dbTextField;
-
-
-
     @FXML
-    public void changementDeScene(ActionEvent event) {
+    public void changementDeScene(ActionEvent event) throws mauvaisMDPException {
         try {
             Controleur.getConfigList().set(0,dbTextField.getText());
             if(FXMain.connect(mailTextField.getText(),passwordTextField.getText())){
@@ -47,9 +45,8 @@ public class FXLoginControleur implements Initializable {
                 ControleurFunctions.utilisateurDAO = new UtilisateurDAO(dbTextField.getText(),mailTextField.getText(),passwordTextField.getText());
             }
             else{
-
+                throw new mauvaisMDPException();
             }
-            //TODO MESSAGE MAUVAIS DE MOT DE PASSE
         }
         catch (IOException e) {
             e.printStackTrace();
