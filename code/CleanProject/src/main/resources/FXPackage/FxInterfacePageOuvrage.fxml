@@ -60,19 +60,19 @@
                               <Label text="Imprimeur " GridPane.columnIndex="2" GridPane.rowIndex="3" />
                               <Label text="Libraire" GridPane.columnIndex="2" GridPane.rowIndex="4" />
                               <Label GridPane.columnIndex="2" GridPane.rowIndex="5" />
-                              <Label text="titreLabel" GridPane.columnIndex="1" />
-                              <Label text="dateLabel" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <Label text="formatLabel" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                              <Label text="resolutionLabel" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                              <Label text="creditPhotoLabel" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                              <Label text="reechantilonageLAbel" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                              <Label text="copyrightLabel" GridPane.columnIndex="3" />
-                              <Label text="pageLabel" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                              <Label text="lieuLabel" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                              <Label text="titreLabel" GridPane.columnIndex="1" fx:id="titreLabel" />
+                              <Label text="dateLabel" GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="dateLabel"/>
+                              <Label text="formatLabel" GridPane.columnIndex="1" GridPane.rowIndex="2" fx:id="formatLabel"/>
+                              <Label text="resolutionLabel" GridPane.columnIndex="1" GridPane.rowIndex="3" fx:id="resolutionLabel"/>
+                              <Label text="creditPhotoLabel" GridPane.columnIndex="1" GridPane.rowIndex="4" fx:id="creditPhotoLabel"/>
+                              <Label text="reechantilonageLAbel" GridPane.columnIndex="1" GridPane.rowIndex="5" fx:id="reechantillonageLabel"/>
+                              <Label text="copyrightLabel" GridPane.columnIndex="3" fx:id="copyrightLabel"/>
+                              <Label text="pageLabel" GridPane.columnIndex="3" GridPane.rowIndex="1" fx:id="nombrePageLabel"/>
+                              <Label text="lieuLabel" GridPane.columnIndex="3" GridPane.rowIndex="2" fx:id="lieuLabel"/>
                               <Label text="Lien" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-                              <Label text="lienLabel" GridPane.columnIndex="3" GridPane.rowIndex="5" />
-                              <Button mnemonicParsing="false" text="Imprimeur" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-                              <Button mnemonicParsing="false" text="Libraire" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                              <Label text="lienLabel" GridPane.columnIndex="3" GridPane.rowIndex="5" fx:id="lienLabel"/>
+                              <Button mnemonicParsing="false" text="Imprimeur" GridPane.columnIndex="3" GridPane.rowIndex="3" fx:id="imprimeurBtn" onAction="#clickOnImprimeurBtn"/>
+                              <Button mnemonicParsing="false" text="Libraire" GridPane.columnIndex="3" GridPane.rowIndex="4" fx:id="libraireBtn" onAction="#clickOnLibraireBtn"/>
                            </children>
                         </GridPane>
                      </items>
@@ -83,7 +83,7 @@
                      <children>
                         <Label fx:id="labelModifier" text="Ouvrage n°" />
                         <Button fx:id="modifierBtn" mnemonicParsing="false" onAction="#modifierScene" text="Modifier" />
-                        <Button fx:id="retourBtn" mnemonicParsing="false" text="Retour" />
+                        <Button fx:id="retourBtn" mnemonicParsing="false" text="Retour" onAction="#retour"/>
                      </children>
                   </HBox>
                </top>
@@ -99,7 +99,7 @@
                            <center>
                               <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                                  <children>
-                                    <ListView fx:id="metaListView" prefHeight="216.0" prefWidth="434.0" />
+                                    <ListView fx:id="personneListView" prefHeight="216.0" prefWidth="434.0" onMouseClicked="#clickOnPersonne"/>
                                  </children>
                               </VBox>
                            </center>
