@@ -20,6 +20,7 @@ public class FXLettrinesAjoutControleur {
     TextField graveurTextField;
     @FXML
     TextField identiqueTextField;
+    @FXML
     public void confirmationLettrinesScene(ActionEvent event) {
         Ouvrage o = new Ouvrage();
         int nbPage = -1;

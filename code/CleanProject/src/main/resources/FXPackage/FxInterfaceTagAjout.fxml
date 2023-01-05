@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.BorderPane?>
@@ -52,8 +53,8 @@
                <children>
                   <Label text="Nom" />
                   <Label text="Description" GridPane.rowIndex="1" />
-                  <TextField fx:id="ouvrageTextField" GridPane.columnIndex="1" />
-                  <TextField fx:id="pageTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="nomTextField" GridPane.columnIndex="1" />
+                  <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="descriptionTextArea"/>
                </children>
             </GridPane>
          </center>
@@ -61,7 +62,7 @@
             <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
               <items>
                 <Button mnemonicParsing="false" text="Annuler" />
-                  <Button fx:id="valider" mnemonicParsing="false" onAction="#confirmationLettrinesScene" text="Valider" />
+                  <Button fx:id="valider" mnemonicParsing="false" onAction="#valider" text="Valider" />
               </items>
             </ToolBar>
          </bottom>

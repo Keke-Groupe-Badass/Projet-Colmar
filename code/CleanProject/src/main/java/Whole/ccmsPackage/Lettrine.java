@@ -112,6 +112,19 @@ public class Lettrine implements CCMS<Lettrine> {
     }
 
     /**
+     * Constructeur pour afficher la liste des lettrines dans la page tag
+     * @param id l'id de la lettrine
+     */
+    public Lettrine(int id){
+        this.ouvrage = null;
+        this.metadonnees = new ArrayList<>();
+        this.nbPage = -2;
+        this.id = id;
+        this.lien = null;
+        this.tags=new ArrayList<>();
+    }
+
+    /**
      * Constructeur lors de la création d'une lettrine pour la première fois
      * @param ouvrage
      * @param nbPage

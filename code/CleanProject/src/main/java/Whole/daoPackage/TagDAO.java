@@ -1,6 +1,7 @@
 package Whole.daoPackage;
 
 import Whole.SingleConnection;
+import Whole.ccmsPackage.Lettrine;
 import Whole.ccmsPackage.Tag;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -155,6 +156,28 @@ public class TagDAO extends AbstractDAO<Tag> {
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        }
+        return l;
+    }
+
+    /**
+     * Permet d'obtenir toutes les lettrines associées à un tag
+     * @param t le tag que la lettrine doit avoir
+     * @return la liste des lettrines possédant le tag
+     */
+    public ArrayList<Lettrine> lettrinesAssociees(Tag t){
+        ArrayList<Lettrine> l = new ArrayList<>();
+        if(t!=null){
+            String sql = "SELECT lettrines.idLettrine FROM `lettrines` INNER JOIN regroupe on regroupe.idLettrine = idLettrine WHERE regroupe.idTag = ?";
+            try {
+                PreparedStatement preparedStatement = cn.prepareStatement(sql);
+                ResultSet rs = preparedStatement.executeQuery();
+                while(rs.next()){
+                    l.add(new Lettrine(rs.getInt(1)));
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
         return l;
     }
