@@ -21,7 +21,9 @@ public class AdminDAO extends SuperAbstractDAO {
     private String utilisateur;
     private String mdp;
     private String bdd;
-
+    /**
+     * La liste des tables dans la base de données
+     */
     private ArrayList<String> listeTable;
 
     /**
