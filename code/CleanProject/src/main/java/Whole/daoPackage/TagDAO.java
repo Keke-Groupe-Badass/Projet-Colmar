@@ -3,9 +3,17 @@ package Whole.daoPackage;
 import Whole.SingleConnection;
 import Whole.ccmsPackage.Lettrine;
 import Whole.ccmsPackage.Tag;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+
 import java.util.ArrayList;
 
 /**
@@ -182,8 +190,24 @@ public class TagDAO extends AbstractDAO<Tag> {
         return l;
     }
     public static void tagAndSize(String path){
-        String sql = ""
-        PreparedStatement preparedStatement = cn.prepareStatement(sql);
-        ResultSet rs = preparedStatement.executeQuery();
+        String sql = "SELECT `nom`,count(*) as `total` FROM `tags` inner join regroupe on tags.idTag=regroupe.idTag group by regroupe.idTag";
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = cn.prepareStatement(sql);
+            ResultSet rs = preparedStatement.executeQuery();
+            File f = new File(path);
+            BufferedWriter bw = new BufferedWriter(new FileWriter(f));
+            ResultSetMetaData resultSetMetaData = rs.getMetaData();
+            bw.write(resultSetMetaData.getColumnName(0)+","+resultSetMetaData.getColumnName(1));
+            while(rs.next()){
+                bw.newLine();
+                bw.write(rs.getString(0)+","+rs.getInt(1));
+            }
+            bw.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
