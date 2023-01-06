@@ -11,25 +11,29 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Whole.FXPackage.FXTagsControleur">
    <children>
-      <MenuBar prefHeight="25.0" prefWidth="600.0">
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
+       <MenuBar fx:id="myMenuBar" layoutY="1.0" prefHeight="27.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+           <menus>
+               <Menu mnemonicParsing="false" text="Fichier">
+                   <items>
+                       <MenuItem mnemonicParsing="false" onAction="#exporterDonee" text="Exporter les données" />
+                       <MenuItem mnemonicParsing="false" onAction="#log" text="Exporter les logs" />
+                       <MenuItem mnemonicParsing="false" onAction="#quitter" text="Fermer" />
+                   </items>
+               </Menu>
+               <Menu mnemonicParsing="false" text="Utilisateur">
+                   <items>
+                       <MenuItem mnemonicParsing="false" onAction="#creerUtilisateur" text="Creer un utilisateur" />
+                       <MenuItem mnemonicParsing="false" onAction="#chercherUtilisateur" text="Chercher un utilisateur" />
+                       <MenuItem mnemonicParsing="false" onAction="#changeUtilisateur" text="Modifier mot de passe" />
+                   </items>
+               </Menu>
+               <Menu mnemonicParsing="false" text="Aide">
+                   <items>
+                       <MenuItem mnemonicParsing="false" text="Documentation" />
+                   </items>
+               </Menu>
+           </menus>
+       </MenuBar>
       <GridPane layoutY="25.0" prefHeight="40.0" prefWidth="600.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
