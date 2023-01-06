@@ -16,6 +16,8 @@ import java.sql.SQLException;
 
 import java.util.ArrayList;
 
+import static Whole.exportPackage.ExportCSV.escapeSpecialCharacters;
+
 /**
  * Classe servant à lier à la base de données les méthodes de Tag.
  *
@@ -201,7 +203,7 @@ public class TagDAO extends AbstractDAO<Tag> {
             bw.write(resultSetMetaData.getColumnName(0)+","+resultSetMetaData.getColumnName(1));
             while(rs.next()){
                 bw.newLine();
-                bw.write(rs.getString(0)+","+rs.getInt(1));
+                bw.write(escapeSpecialCharacters(rs.getString(0))+","+rs.getInt(1));
             }
             bw.close();
         } catch (SQLException e) {
