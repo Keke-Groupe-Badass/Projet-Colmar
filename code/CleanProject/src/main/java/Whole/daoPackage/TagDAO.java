@@ -4,15 +4,13 @@ import Whole.SingleConnection;
 import Whole.ccmsPackage.Lettrine;
 import Whole.ccmsPackage.Tag;
 
+import javax.swing.plaf.nimbus.State;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
+import java.sql.*;
 
 import java.util.ArrayList;
 
@@ -191,25 +189,21 @@ public class TagDAO extends AbstractDAO<Tag> {
         }
         return l;
     }
-    public static void tagAndSize(String path){
-        String sql = "SELECT `nom`,count(*) as `total` FROM `tags` inner join regroupe on tags.idTag=regroupe.idTag group by regroupe.idTag";
-        PreparedStatement preparedStatement = null;
+    public static String tagAndSize(){
+        StringBuilder str = new StringBuilder();
         try {
-            preparedStatement = cn.prepareStatement(sql);
-            ResultSet rs = preparedStatement.executeQuery();
-            File f = new File(path);
-            BufferedWriter bw = new BufferedWriter(new FileWriter(f));
-            ResultSetMetaData resultSetMetaData = rs.getMetaData();
-            bw.write(resultSetMetaData.getColumnName(0)+","+resultSetMetaData.getColumnName(1));
-            while(rs.next()){
-                bw.newLine();
-                bw.write(escapeSpecialCharacters(rs.getString(0))+","+rs.getInt(1));
+            Statement stmt = cn.createStatement();
+            String sql = "SELECT `nom`,count(*) as `total` FROM `tags` inner join regroupe on tags.idTag=regroupe.idTag group by regroupe.idTag";
+            ResultSet res = stmt.executeQuery(sql);
+            while (res.next()) {
+                for(int i=0; i<res.getInt(2); i++) {
+                    str.append(res.getString(1));
+                }
             }
-            bw.close();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
         }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return str.toString();
     }
 }
