@@ -25,6 +25,7 @@ public class ControleurFunctions {
 
     public static void changeScene(ActionEvent event, String filename) {
         try {
+            
             Parent root = FXMLLoader.load(FXMain.class.getResource("/FXPackage/"+filename));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);

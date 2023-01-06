@@ -42,6 +42,8 @@ public class FXPageOuvrageControleur extends FXMenuBarAbstractControleur impleme
     Label lienLabel;
     @FXML
     ListView<Personne> personneListView;
+    @FXML
+    Button modifierBtn;
     public void modifierScene(ActionEvent event) {
         FXModifierOuvrageControleur.ouvrage=ouvrage;
         ControleurFunctions.changeScene(event, "FxInterfaceModifierOuvrage.fxml");
@@ -65,6 +67,9 @@ public class FXPageOuvrageControleur extends FXMenuBarAbstractControleur impleme
         lieuLabel.setText(ouvrage.getLieuImpression());
         imprimeurBtn.setText(ouvrage.getImprimeur().toString());
         libraireBtn.setText(ouvrage.getLibraire().toString());
+        if(ControleurFunctions.statut.equals("chercheur")){
+            modifierBtn.setDisable(true);
+        }
     }
     @FXML
     protected void clickOnPersonne(ActionEvent event) {

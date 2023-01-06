@@ -65,7 +65,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Button fx:id="ajouter" mnemonicParsing="false" onAction="#tagsAjoutFormControleur" prefHeight="60.0" prefWidth="150.0" text="Ajouter" GridPane.columnIndex="1" />
+            <Button fx:id="ajouterBtn" mnemonicParsing="false" onAction="#tagsAjoutFormControleur" prefHeight="60.0" prefWidth="150.0" text="Ajouter" GridPane.columnIndex="1" />
             <Button fx:id="rechercher" mnemonicParsing="false" onAction="#tagsRechercheFormScene" prefHeight="25.0" prefWidth="120.0" text="Rechercher" />
             <Button fx:id="nuage" mnemonicParsing="false" onAction="#nuageAction" prefHeight="40.0" prefWidth="120.0" text="Nuage" GridPane.columnIndex="2" GridPane.columnSpan="2" />
          </children>

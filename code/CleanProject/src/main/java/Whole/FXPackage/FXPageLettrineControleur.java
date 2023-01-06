@@ -88,6 +88,9 @@ public class FXPageLettrineControleur extends FXMenuBarAbstractControleur implem
         }catch (Exception e){
 
         }
+        if(ControleurFunctions.statut.equals("chercheur")){
+            modifierBtn.setDisable(true);
+        }
     }
     @FXML
     protected void clickOnTag(ActionEvent event) {

@@ -1,10 +1,17 @@
 package Whole.FXPackage;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 
-public class FXLettrinesControleur extends FXMenuBarAbstractControleur{
-
+public class FXLettrinesControleur extends FXMenuBarAbstractControleur implements Initializable {
+    @FXML
+    Button ajouterBtn;
     public void accueilScene(ActionEvent event) {
         /**
          *         Parent root = FXMLLoader.load(FXMain.class.getResource("/FXPackage/"+filename));
@@ -43,6 +50,10 @@ public class FXLettrinesControleur extends FXMenuBarAbstractControleur{
     }
 
 
-
-
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        if(ControleurFunctions.statut.equals("chercheur")){
+            ajouterBtn.setDisable(true);
+        }
+    }
 }
