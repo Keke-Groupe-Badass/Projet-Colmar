@@ -70,7 +70,7 @@ public class ExportCSV implements ExportTypeInterface {
      * @param data une chaine de charactère avec potentiellement des caractères spéciaux problématiques en csv
      * @return une chaine de charactère sans caractères spéciaux problématiques en csv
      */
-    public String escapeSpecialCharacters(String data) {
+    public static String escapeSpecialCharacters(String data) {
         String escapedData = null;
         if (data != null) {
             escapedData = data.replaceAll("\\R", " ");

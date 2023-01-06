@@ -12,7 +12,7 @@ public class Main {
     public static void main(String[] args) {
         Controleur c =new Controleur();
 
-        //c.AddUser("testUser","motdepasseSafe101_","motdepasseSafe101_","admin");
+        //System.out.println(c.AddUser("andreasmulard@gmail.com","motdepasseSafe101_","motdepasseSafe101_","admin"));
 
 
         /**

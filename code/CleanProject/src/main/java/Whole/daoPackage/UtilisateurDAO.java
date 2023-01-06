@@ -156,25 +156,25 @@ public class UtilisateurDAO extends SuperAbstractDAO {
         boolean statutValide = false;
         //On vérifie que rien n'est null, puis on vérifie le format du login
         // et du statut
+
         if (login != null && mdp != null && statut != null) {
             String regex = "^[a-zA-Z.]+@([a-zA-Z-]+.)+[a-zA-Z-]{2,4}$";
             Pattern p = Pattern.compile(regex);
             Matcher m = p.matcher(login);
             loginValide = m.matches();
-            regex = "^[a-zA-Z]*$";
-            p = Pattern.compile(regex);
-            m = p.matcher(statut);
-            statutValide = m.matches();
         }
-
         boolean fonctionne = false;
-        if (loginValide && mdpValide(mdp) && statutValide) {
+
+        if (loginValide && mdpValide(mdp)) {
+            System.out.println("hi");
+
             String sql = "SELECT email FROM utilisateurs "
                     + "WHERE email=?";
             try {
                 PreparedStatement stmt = cn.prepareStatement(sql);
                 stmt.setString(1, login);
                 ResultSet rs = stmt.executeQuery();
+                rs.next();
                 if (!rs.next()) { //Si le login n'est pas déjà utilisé
                     final String mdpEncrypte = encrypte(mdp);
                     sql = "INSERT INTO utilisateurs VALUES(?, ?, ?)";
@@ -183,7 +183,17 @@ public class UtilisateurDAO extends SuperAbstractDAO {
                     stmt.setString(2, mdpEncrypte);
                     stmt.setString(3, statut);
                     int nbColonnes = stmt.executeUpdate();
+                    System.out.println("hi");
+                    System.out.println(login);
                     fonctionne = nbColonnes > 0;
+                    login = login;
+                    if(fonctionne){
+                        sql = "CREATE USER '"+login+"'@'localhost' IDENTIFIED BY 'password';";
+                        stmt = cn.prepareStatement(sql);
+                        stmt.execute();
+                        return stmt.execute();
+                        //TODO trouver un moyen de verifier qur l'utilisateur est été enregistré pour la bd (pas dans la table utilisateur)
+                    }
                 }
             } catch (SQLException e) {
                 e.printStackTrace();

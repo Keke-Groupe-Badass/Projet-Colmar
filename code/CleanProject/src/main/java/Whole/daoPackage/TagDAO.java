@@ -14,6 +14,8 @@ import java.sql.*;
 
 import java.util.ArrayList;
 
+import static Whole.exportPackage.ExportCSV.escapeSpecialCharacters;
+
 /**
  * Classe servant à lier à la base de données les méthodes de Tag.
  *
