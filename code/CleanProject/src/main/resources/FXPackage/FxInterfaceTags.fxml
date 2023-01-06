@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Whole.FXPackage.FXTagsControleur">
    <children>
       <MenuBar prefHeight="25.0" prefWidth="600.0">
@@ -50,5 +49,6 @@
             <Button fx:id="accueilButton" mnemonicParsing="false" onAction="#accueilScene" prefHeight="108.0" prefWidth="120.0" text="Accueil" />
          </children>
       </GridPane>
+      <Button fx:id="nuage" layoutX="234.0" layoutY="65.0" mnemonicParsing="false" onAction="#nuageAction" prefHeight="40.0" prefWidth="120.0" text="Nuage" />
    </children>
 </Pane>
