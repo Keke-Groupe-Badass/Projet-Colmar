@@ -23,14 +23,19 @@ def saveimg(name):
 	plt.savefig(name)
 	plt.clf()
 
+#permet de lire l'image
 txtArray = []
 with open('src/main/wordcloud/text.txt') as file:
+    #separe les lignes
 	for line in file:
+	    #separe les mots
 		for word in line.split():
 			txtArray.append(word)
 
+#permet de convertir la liste de l'image en string
 text = " ".join(i for i in txtArray)
 
+#appel de la bibliothèque WordCloud pour créer l'image
 word_cloud = WordCloud(
 	width=3000,
 	height=2000,
@@ -41,6 +46,9 @@ word_cloud = WordCloud(
 	stopwords=STOPWORDS,
 ).generate(text)
 
+#affiche l'image
 plt.imshow(word_cloud)
 plt.axis("off")
+
+#sauvegarde l'image
 saveimg("cloud")

@@ -30,7 +30,6 @@
         </menus>
       </MenuBar>
       <Button fx:id="retour" layoutY="27.0" mnemonicParsing="false" onAction="#retour" text="retour" />
-      <Button fx:id="afficher" layoutX="274.0" layoutY="27.0" mnemonicParsing="false" onAction="#displayImg" text="Afficher" />
       <ImageView fx:id="img" fitHeight="344.0" fitWidth="550.0" layoutX="29.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </Pane>
