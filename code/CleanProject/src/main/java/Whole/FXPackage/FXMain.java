@@ -27,8 +27,11 @@ public class FXMain extends Application {
             stage.setTitle("Projet Colmar");
             stage.setScene(scene);
             stage.show();
-            stage.getIcons().add(new Image("/lettrine.png"));
-
+            try {
+                stage.getIcons().add(new Image("/lettrine.png"));
+            }
+            catch (Exception e){
+            }
             if(controleur==null){
                 controleur = new Controleur();
             }
@@ -37,7 +40,8 @@ public class FXMain extends Application {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Une erreur est survenue");
             alert.setHeaderText("Erreur lors du chargement de la page");
-            alert.setContentText(e.getMessage());
+
+            alert.setContentText(System.err.toString());
             alert.show();
         }
 

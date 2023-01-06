@@ -419,7 +419,7 @@ public class Lettrine implements CCMS<Lettrine> {
         Image img;
         try {
             img = new Image(new FileInputStream(lien));
-        } catch (IOException e) {
+        } catch (Exception e) {
             try {
                 img = new Image(new FileInputStream("src/lettrine.png"));
             } catch (FileNotFoundException ex) {

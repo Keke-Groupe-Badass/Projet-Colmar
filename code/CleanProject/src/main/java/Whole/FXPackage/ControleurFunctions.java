@@ -34,7 +34,8 @@ public class ControleurFunctions {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Une erreur est survenue");
             alert.setHeaderText("Erreur lors du chargement de la page");
-            alert.setContentText(e.getMessage());
+            e.printStackTrace();
+            alert.setContentText(e.toString());
             alert.show();
         }
     }
