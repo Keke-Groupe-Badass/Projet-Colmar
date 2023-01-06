@@ -49,6 +49,6 @@
             <Button fx:id="accueilButton" mnemonicParsing="false" onAction="#accueilScene" prefHeight="108.0" prefWidth="120.0" text="Accueil" />
          </children>
       </GridPane>
-      <Button fx:id="nuage" layoutX="234.0" layoutY="65.0" mnemonicParsing="false" onAction="#nuageAction" prefHeight="40.0" prefWidth="120.0" text="Nuage" />
+      <Button fx:id="nuage" layoutX="240.0" layoutY="65.0" mnemonicParsing="false" onAction="#nuageAction" prefHeight="40.0" prefWidth="120.0" text="Nuage" />
    </children>
 </Pane>

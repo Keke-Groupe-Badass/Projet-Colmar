@@ -1,13 +1,13 @@
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud, STOPWORDS
+from random import randint
+
 """
 Pour installer:
 matplotlib:
 python -m pip install matplotlib
-
 worldcloud:
 -m pip install WordCloud
-
 
 Fonctionement:
 Le programme lit le fichier texte produit par le java.
@@ -22,6 +22,10 @@ def saveimg(name):
 	name = "src/main/wordcloud/" + name  +".png"
 	plt.savefig(name)
 	plt.clf()
+
+#permet de génerer une couleur aléatoire
+def couleur(*args, **kwargs):
+    return "rgb({}, {}, {})".format(randint(0, 255), randint(0, 255), randint(0, 255))
 
 #permet de lire l'image
 txtArray = []
@@ -40,14 +44,14 @@ word_cloud = WordCloud(
 	width=3000,
 	height=2000,
 	random_state=1,
-	background_color="salmon",
+	background_color="white",
 	colormap="Pastel1",
 	collocations=False,
 	stopwords=STOPWORDS,
 ).generate(text)
 
 #affiche l'image
-plt.imshow(word_cloud)
+plt.imshow(word_cloud.recolor(color_func = couleur))
 plt.axis("off")
 
 #sauvegarde l'image
