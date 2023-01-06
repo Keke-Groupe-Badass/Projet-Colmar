@@ -60,7 +60,7 @@ public class AdminDAO extends SuperAbstractDAO {
     /**
      * Permet de stocker dans un fichier la BDD.
      *
-     * @param e    le nom de la méthode d'export
+     * @param methode    le nom de la méthode d'export
      * @param path le fichier où seront exportées les données
      * @return true si l'export a pu se faire, false sinon
      * @author Andreas
