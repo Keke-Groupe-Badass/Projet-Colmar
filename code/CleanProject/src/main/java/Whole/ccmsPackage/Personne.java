@@ -161,4 +161,11 @@ public class Personne implements CCMS<Personne> {
     public boolean equals(Personne objet) {
         return this.estClone(objet);
     }
+
+    @Override
+    public String toString() {
+        return "id: " + id +
+                ", nom: '" + nom  +
+                ", prenom: '" + prenom;
+    }
 }

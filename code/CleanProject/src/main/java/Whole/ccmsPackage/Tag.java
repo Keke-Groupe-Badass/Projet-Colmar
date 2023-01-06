@@ -137,4 +137,10 @@ public class Tag implements CCMS<Tag> {
     public Tag(int id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return "id: " + id +
+                ", nom: '" + nom;
+    }
 }
