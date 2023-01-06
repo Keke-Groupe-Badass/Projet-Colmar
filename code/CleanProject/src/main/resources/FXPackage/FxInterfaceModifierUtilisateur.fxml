@@ -10,18 +10,18 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:controller="Whole.FXPackage.FXModifierUtilisateur" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <HBox prefHeight="38.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" text="Retour" />
-            <Label text="Modifier utilisateur: " />
-            <Button mnemonicParsing="false" text="Supprimer Utilisateur" />
+            <Button mnemonicParsing="false" text="Retour" onAction="#annuler"/>
+            <Label text="Modifier utilisateur: " fx:id="nomLabel"/>
+            <Button mnemonicParsing="false" text="Supprimer Utilisateur" onAction="#supprimer"/>
          </children>
       </HBox>
    </top>
    <bottom>
-      <Button mnemonicParsing="false" text="Confirmer" BorderPane.alignment="CENTER" />
+      <Button mnemonicParsing="false" text="Confirmer" BorderPane.alignment="CENTER" onAction="#valider"/>
    </bottom>
    <center>
       <GridPane BorderPane.alignment="CENTER">
@@ -38,9 +38,9 @@
             <Label text="Mot de passe" />
             <Label text="Confirmer mot de passe" GridPane.rowIndex="1" />
             <Label text="Statut" GridPane.rowIndex="2" />
-            <PasswordField GridPane.columnIndex="1" />
-            <PasswordField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <ChoiceBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <PasswordField GridPane.columnIndex="1" fx:id="passwordField"/>
+            <PasswordField GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="confirmPasswordField"/>
+            <ChoiceBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" fx:id="choiceBox"/>
          </children>
       </GridPane>
    </center>
