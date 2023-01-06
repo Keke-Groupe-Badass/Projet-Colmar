@@ -1,8 +1,5 @@
 package Whole;
 
-
-import Whole.daoPackage.LettrineDAO;
-
 public class Main {
     /**
      * Permet de démarrer l'application
