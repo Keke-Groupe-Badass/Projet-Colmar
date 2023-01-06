@@ -63,5 +63,4 @@ public class FXLettrinesRechercheControleur {
         ControleurFunctions.changeScene(event,"FxInterfacePageLettrine.fxml");
     }
 
-
 }

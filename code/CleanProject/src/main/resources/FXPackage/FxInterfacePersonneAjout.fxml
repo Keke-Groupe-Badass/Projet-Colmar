@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Whole.FXPackage.FXLettrinesAjoutControleur">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Whole.FXPackage.FXPersonneAjoutControleur">
    <top>
       <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="600.0">
         <menus>
@@ -54,17 +54,17 @@
                   <Label text="Nom" />
                   <Label text="Prenom" GridPane.rowIndex="1" />
                   <Label text="Note" GridPane.rowIndex="2" />
-                  <TextField fx:id="ouvrageTextField" GridPane.columnIndex="1" />
-                  <TextField fx:id="pageTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <TextField fx:id="lienTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField fx:id="nomTextField" GridPane.columnIndex="1" />
+                  <TextField fx:id="prenomTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="noteTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                </children>
             </GridPane>
          </center>
          <bottom>
             <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
               <items>
-                <Button mnemonicParsing="false" text="Annuler" />
-                  <Button fx:id="valider" mnemonicParsing="false" onAction="#confirmationLettrinesScene" text="Valider" />
+                <Button fx:id="annulerButton" mnemonicParsing="false" onAction="#annuler" text="Annuler" />
+                  <Button fx:id="validerButton" mnemonicParsing="false" onAction="#valider" text="Valider" />
               </items>
             </ToolBar>
          </bottom>

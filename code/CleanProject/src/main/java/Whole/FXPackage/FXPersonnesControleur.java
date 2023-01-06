@@ -23,9 +23,11 @@ public class FXPersonnesControleur {
         ControleurFunctions.changeScene(event, "FxInterfacePagePersonne.fxml");
     }
 
-    public void lettrinesRechercheFormScene(ActionEvent event) {
+    public void personnesAjoutFormControleur(ActionEvent event) {
+        ControleurFunctions.changeScene(event, "FxInterfacePersonneAjout.fxml");
     }
 
-    public void lettrinesAjoutFormControleur(ActionEvent event) {
+    public void personnesRechercheFormScene(ActionEvent event) {
+        ControleurFunctions.changeScene(event, "FxInterfacePersonneRecherche.fxml");
     }
 }

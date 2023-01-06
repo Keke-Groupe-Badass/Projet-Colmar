@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="715.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Whole.FXPackage.FXLettrinesRechercheControleur">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="715.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Whole.FXPackage.FXPersonneRechercheControleur">
    <top>
       <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="600.0">
         <menus>
@@ -45,8 +45,8 @@
                      <bottom>
                         <HBox prefHeight="0.0" prefWidth="598.0" BorderPane.alignment="CENTER">
                            <children>
-                              <Button mnemonicParsing="false" text="Retour" />
-                              <Button fx:id="validerButton" mnemonicParsing="false" onAction="#validationForm" text="Valider" />
+                              <Button fx:id="retourButton" mnemonicParsing="false" onAction="#retour" text="Retour" />
+                              <Button fx:id="validerButton" mnemonicParsing="false" onAction="#validation" text="Valider" />
                            </children>
                         </HBox>
                      </bottom>
@@ -63,15 +63,15 @@
                            <children>
                               <Label text="Nom" />
                               <Label text="Prenom" GridPane.rowIndex="1" />
-                              <TextField GridPane.columnIndex="1" />
-                              <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <TextField fx:id="nomTextField" GridPane.columnIndex="1" />
+                              <TextField fx:id="prenomTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                            </children>
                         </GridPane>
                      </center>
                   </BorderPane>
                   <BorderPane prefHeight="473.0" prefWidth="598.0">
                      <center>
-                        <ListView prefHeight="282.0" prefWidth="598.0" BorderPane.alignment="CENTER" />
+                        <ListView fx:id="lv" prefHeight="282.0" prefWidth="598.0" BorderPane.alignment="CENTER" />
                      </center>
                   </BorderPane>
                </items>
