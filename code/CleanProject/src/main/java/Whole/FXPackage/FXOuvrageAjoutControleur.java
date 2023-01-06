@@ -42,40 +42,33 @@ public class FXOuvrageAjoutControleur extends FXMenuBarAbstractControleur{
     @FXML
     protected void valider(ActionEvent event){
         Ouvrage o = new Ouvrage();
-        if(!titreTextField.getText().isBlank()){
-            o.setTitre(titreTextField.getText());
-        }
-        if(!creditPhotoTextField.getText().isBlank()){
-            o.setCreditPhoto(creditPhotoTextField.getText());
-        }
+        o.setTitre(titreTextField.getText());
+        o.setCreditPhoto(creditPhotoTextField.getText());
         o.setReechantillonage(reechantillonageCheckBox.isSelected());
-        if(!copyrightTextField.getText().isBlank()){
-            o.setCopyright(copyrightTextField.getText());
-        }
-        if(!nombrePageTextField.getText().isBlank()){
+        o.setCopyright(copyrightTextField.getText());
+        if(nombrePageTextField.getText()!=null){
             o.setNbPage(Integer.parseInt(nombrePageTextField.getText()));
+        }else{
+            o.setNbPage(-1);
         }
-        if(!lieuTextField.getText().isBlank()){
-            o.setLieuImpression(lieuTextField.getText());
-        }
-        if(!imprimeurTextField.getText().isBlank()){
+        o.setLieuImpression(lieuTextField.getText());
+        if(imprimeurTextField.getText()==null){
+            o.setImprimeur(null);
+        }else{
             o.setImprimeur(new Personne(Integer.parseInt(imprimeurTextField.getText())));
         }
-        if(!libraireTextField.getText().isBlank()){
+        if(libraireTextField.getText()==null){
+            o.setLibraire(null);
+        }else{
             o.setLibraire(new Personne(Integer.parseInt(libraireTextField.getText())));
         }
-        if(!dateTextField.getText().isBlank()){
+        if(dateTextField.getText()!=null){
             o.setDateEdition(Integer.parseInt(dateTextField.getText()));
+        }else{
+            o.setDateEdition(-1);
         }
-        if(!formatTextField.getText().isBlank()){
-            o.setFormat(dateTextField.getText());
-        }
-        if(!lienTextField.getText().isBlank()){
-            o.setLien(lienTextField.getText());
-        }
-        if(!resolutionTextField.getText().isBlank()){
-            o.setResolution(resolutionTextField.getText());
-        }
+        o.setLien(lienTextField.getText());
+        o.setResolution(resolutionTextField.getText());
         if(ControleurFunctions.ouvrageDAO.creer(o)){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Ouvrage crée");

@@ -106,40 +106,35 @@ public class FXModifierOuvrageControleur extends FXMenuBarAbstractControleur imp
     @FXML
     public void valider(ActionEvent event) {
         Ouvrage newOuvrage = new Ouvrage();
-        if(!titreTextField.getText().isBlank()){
-            newOuvrage.setTitre(titreTextField.getText());
-        }
-        if(!formatTextField.getText().isBlank()){
-            newOuvrage.setFormat(formatTextField.getText());
-        }
-        if(!resolutionTextField.getText().isBlank()){
-            newOuvrage.setResolution(resolutionTextField.getText());
-        }
-        if(!creditPhotoTextField.getText().isBlank()){
-            newOuvrage.setCreditPhoto(creditPhotoTextField.getText());
-        }
+        newOuvrage.setTitre(titreTextField.getText());
+        newOuvrage.setFormat(formatTextField.getText());
+        newOuvrage.setResolution(resolutionTextField.getText());
+        newOuvrage.setCreditPhoto(creditPhotoTextField.getText());
         newOuvrage.setReechantillonage(reechantillonageCheckBox.isSelected());
-        if(!copyrightTextField.getText().isBlank()){
-            newOuvrage.setCopyright(copyrightTextField.getText());
-        }
-        if(!lieuTextField.getText().isBlank()){
-            newOuvrage.setLieuImpression(lieuTextField.getText());
-        }
-        if(!lienTextField.getText().isBlank()){
-            newOuvrage.setLien(lienTextField.getText());
-        }
-        if(!dateTextField.getText().isBlank()){
+        newOuvrage.setCopyright(copyrightTextField.getText());
+        newOuvrage.setLieuImpression(lieuTextField.getText());
+        newOuvrage.setLien(lienTextField.getText());
+        if(dateTextField.getText()!=null) {
             newOuvrage.setDateEdition(Integer.parseInt(dateTextField.getText()));
+        }else{
+            newOuvrage.setDateEdition(-1);
         }
-        if(!pageTextField.getText().isBlank()){
+        if(pageTextField.getText()!=null) {
             newOuvrage.setNbPage(Integer.parseInt(pageTextField.getText()));
+        }else{
+            newOuvrage.setNbPage(-1);
         }
-        if(!imprimeurTextField.getText().isBlank()){
+        if(imprimeurTextField.getText()==null){
+            newOuvrage.setImprimeur(null);
+        }else{
             newOuvrage.setImprimeur(new Personne(Integer.parseInt(imprimeurTextField.getText())));
         }
-        if(!libraireTextField.getText().isBlank()){
+        if(libraireTextField.getText()==null){
+            newOuvrage.setLibraire(null);
+        }else{
             newOuvrage.setLibraire(new Personne(Integer.parseInt(libraireTextField.getText())));
         }
+
         if(ControleurFunctions.ouvrageDAO.modifier(ouvrage,newOuvrage)){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Ouvrage Modifiée");
