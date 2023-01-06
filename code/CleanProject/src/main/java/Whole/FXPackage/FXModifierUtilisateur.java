@@ -13,7 +13,7 @@ import java.net.URL;
 
 import java.util.ResourceBundle;
 
-public class FXModifierUtilisateur implements Initializable {
+public class FXModifierUtilisateur extends FXMenuBarAbstractControleur implements Initializable {
 
     @FXML
     Label nomLabel;

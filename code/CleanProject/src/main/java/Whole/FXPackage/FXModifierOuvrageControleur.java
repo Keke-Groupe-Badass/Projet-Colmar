@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class FXModifierOuvrageControleur implements Initializable {
+public class FXModifierOuvrageControleur extends FXMenuBarAbstractControleur implements Initializable {
     public static Ouvrage ouvrage;
     @FXML
     TextField titreTextField;

@@ -2,7 +2,7 @@ package Whole.FXPackage;
 
 import javafx.event.ActionEvent;
 
-public class FXPersonnesControleur {
+public class FXPersonnesControleur extends FXMenuBarAbstractControleur{
 
     public void accueilScene(ActionEvent event) {
         ControleurFunctions.changeScene(event, "FxInterfaceMain.fxml");

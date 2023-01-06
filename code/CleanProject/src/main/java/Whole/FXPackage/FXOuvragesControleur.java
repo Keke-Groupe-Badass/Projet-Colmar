@@ -3,7 +3,7 @@ package Whole.FXPackage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
-public class FXOuvragesControleur {
+public class FXOuvragesControleur extends FXMenuBarAbstractControleur{
 
     public void accueilScene(ActionEvent event) {
         ControleurFunctions.changeScene(event, "FxInterfaceMain.fxml");

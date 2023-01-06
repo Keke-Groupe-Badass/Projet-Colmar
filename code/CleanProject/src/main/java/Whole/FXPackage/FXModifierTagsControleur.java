@@ -12,7 +12,7 @@ import javafx.scene.control.TextField;
 
 import java.util.Optional;
 
-public class FXModifierTagsControleur {
+public class FXModifierTagsControleur extends FXMenuBarAbstractControleur{
     public static Tag tag;
     @FXML
     TextField nomTextField;

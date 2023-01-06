@@ -12,7 +12,7 @@ import javafx.scene.control.TextField;
 import java.util.ArrayList;
 
 
-public class FXOuvrageRechercheControleur {
+public class FXOuvrageRechercheControleur extends FXMenuBarAbstractControleur{
     @FXML
     TextField imprimeurTextField;
     @FXML

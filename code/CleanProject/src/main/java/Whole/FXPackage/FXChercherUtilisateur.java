@@ -1,8 +1,5 @@
 package Whole.FXPackage;
 
-import Whole.ccmsPackage.Lettrine;
-import Whole.ccmsPackage.Ouvrage;
-import Whole.ccmsPackage.Personne;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,7 +8,7 @@ import javafx.scene.control.TextField;
 
 import java.util.ArrayList;
 
-public class FXChercherUtilisateur {
+public class FXChercherUtilisateur extends FXMenuBarAbstractControleur{
     @FXML
     TextField emailTextField;
     @FXML

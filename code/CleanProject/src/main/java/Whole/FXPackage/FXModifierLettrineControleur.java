@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class FXModifierLettrineControleur implements Initializable {
+public class FXModifierLettrineControleur extends FXMenuBarAbstractControleur implements Initializable {
 
     public static Lettrine lettrine;
 
