@@ -16,5 +16,7 @@ module com.example.cleanproject {
     opens Whole.fenetrePackageTest to javafx.fxml;
     opens Whole.FXPackage to javafx.fxml;
     exports Whole.FXPackage;
+    exports Whole.wordCloud;
+    opens Whole.wordCloud to javafx.fxml;
 
 }
