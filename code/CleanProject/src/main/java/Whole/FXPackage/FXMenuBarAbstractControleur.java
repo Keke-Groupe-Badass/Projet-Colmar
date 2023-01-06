@@ -1,31 +1,28 @@
 package Whole.FXPackage;
 
-import Whole.daoPackage.*;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.MenuBar;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class ControleurFunctions {
-    public static String nom;
-    public static String statut;
-    public static AdminDAO adminDAO;
-    public static OuvrageDAO ouvrageDAO;
-    public static LettrineDAO lettrineDAO;
-    public static TagDAO tagDAO;
-    public static PersonneDAO personneDAO;
-    public static UtilisateurDAO utilisateurDAO;
-
-
-    public static void changeScene(ActionEvent event, String filename) {
+public abstract class FXMenuBarAbstractControleur {
+    @FXML
+    MenuBar myMenuBar;
+    @FXML
+    protected void changeUtilisateur(ActionEvent event){
+        Stage stage = (Stage) myMenuBar.getScene().getWindow();
+        changeScene(stage,"FxInterfaceModifierUtilisateur.fxml");
+    }
+    public static void changeScene(Stage stage, String filename) {
         try {
             Parent root = FXMLLoader.load(FXMain.class.getResource("/FXPackage/"+filename));
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();

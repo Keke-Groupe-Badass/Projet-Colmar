@@ -8,6 +8,7 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -190,7 +191,6 @@ public class UtilisateurDAO extends SuperAbstractDAO {
                     if(fonctionne){
                         sql = "CREATE USER '"+login+"'@'localhost' IDENTIFIED BY 'password';";
                         stmt = cn.prepareStatement(sql);
-                        stmt.execute();
                         return stmt.execute();
                         //TODO trouver un moyen de verifier qur l'utilisateur est été enregistré pour la bd (pas dans la table utilisateur)
                     }
@@ -243,5 +243,49 @@ public class UtilisateurDAO extends SuperAbstractDAO {
             e.printStackTrace();
         }
         return mdpEncrypte;
+    }
+
+    /**
+     * Permet d'obtenir le statut d'un utilisateur
+     * @param email le mail d'un utilisateur
+     * @return le statut si l'utilisateur est trouvé, null sinon
+     */
+    public String obtenirStatut(String email) {
+        String sql;
+        sql = "SELECT `email` FROM `utilisateurs` WHERE `email`='" + email + "'";
+        Statement stmt = null;
+        try {
+            stmt = cn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            if (rs.next()) {
+                return rs.getString(1);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
+    }
+
+    /**
+     * Permet de changer le statut d'un utilisateur
+     * @param email l'email de l'utilisateur
+     * @param statut le statut à donner
+     * @return true si le statut a pu être changé, false sinon
+     */
+    public Boolean changeStatut(String email,String statut)  {
+        String sql = "UPDATE utilisateurs SET statut='"+statut
+                + "' WHERE email='"+email+"'";
+        Statement stmt = null;
+        try {
+            stmt = cn.createStatement();
+            int i = stmt.executeUpdate(sql);
+            if(i==1){
+                return true;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return false;
+
     }
 }

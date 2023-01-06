@@ -1,9 +1,10 @@
 package Whole.FXPackage;
 
-import javafx.event.ActionEvent;
 import Whole.wordCloud.cloudWordGenerator;
+import javafx.event.ActionEvent;
 
-import java.io.IOException;
+import javafx.fxml.FXML;
+
 
 public class FXTagsControleur {
 
@@ -27,5 +28,15 @@ public class FXTagsControleur {
         String[] args = new String[0];
         cloudWordGenerator.main(args);
         ControleurFunctions.changeScene(event, "FxInterfaceNuage.fxml");
+    }
+    @FXML
+    public void tagsRechercheFormScene(ActionEvent event) {
+        ControleurFunctions.changeScene(event, "FxInterfaceTagRecherche.fxml");
+
+    }
+    @FXML
+    public void tagsAjoutFormControleur(ActionEvent event) {
+        ControleurFunctions.changeScene(event, "FxInterfaceTagAjout.fxml");
+
     }
 }
