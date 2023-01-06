@@ -33,10 +33,12 @@ public class FXModifierUtilisateur extends FXMenuBarAbstractControleur implement
     }
     @FXML
     protected void valider(ActionEvent event) {
-        if(passwordField.getText().equals(confirmPasswordField.getText())){
-            ControleurFunctions.utilisateurDAO.changeMDP(utilisateur,passwordField.getText());
-            ControleurFunctions.utilisateurDAO.changeStatut(utilisateur,choiceBox.getValue());
-            ControleurFunctions.changeScene(event,"FxInterfaceMain.fxml");
+        if(passwordField.getText()!=null){
+            if(passwordField.getText().equals(confirmPasswordField.getText())){
+                ControleurFunctions.utilisateurDAO.changeMDP(utilisateur,passwordField.getText());
+                ControleurFunctions.utilisateurDAO.changeStatut(utilisateur,choiceBox.getValue());
+                ControleurFunctions.changeScene(event,"FxInterfaceMain.fxml");
+            }
         }
     }
     @FXML

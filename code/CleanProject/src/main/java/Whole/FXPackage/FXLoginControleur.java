@@ -32,7 +32,11 @@ public class FXLoginControleur implements Initializable {
     @FXML
     public void changementDeScene(ActionEvent event) throws mauvaisMDPException {
         try {
-            Controleur.getConfigList().set(0,dbTextField.getText());
+            if(dbTextField.getText()!=null){
+                if(!dbTextField.getText().trim().isEmpty()){
+                    Controleur.getConfigList().set(0,dbTextField.getText());
+                }
+            }
             if(FXMain.connect(mailTextField.getText(),passwordTextField.getText())){
                 Parent root = FXMLLoader.load(FXMain.class.getResource("/FXPackage/FxInterfaceMain.fxml"));
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -40,12 +44,12 @@ public class FXLoginControleur implements Initializable {
                 stage.setScene(scene);
                 stage.show();
                 ControleurFunctions.nom = mailTextField.getText();
-                ControleurFunctions.lettrineDAO = new LettrineDAO(dbTextField.getText(),mailTextField.getText(),passwordTextField.getText());
-                ControleurFunctions.tagDAO = new TagDAO(dbTextField.getText(),mailTextField.getText(),passwordTextField.getText());
-                ControleurFunctions.ouvrageDAO = new OuvrageDAO(dbTextField.getText(),mailTextField.getText(),passwordTextField.getText());
-                ControleurFunctions.personneDAO = new PersonneDAO(dbTextField.getText(),mailTextField.getText(),passwordTextField.getText());
-                ControleurFunctions.adminDAO = new AdminDAO(dbTextField.getText(),mailTextField.getText(),passwordTextField.getText());
-                ControleurFunctions.utilisateurDAO = new UtilisateurDAO(dbTextField.getText(),mailTextField.getText(),passwordTextField.getText());
+                ControleurFunctions.lettrineDAO = new LettrineDAO(Controleur.getConfigList().get(0),mailTextField.getText(),passwordTextField.getText());
+                ControleurFunctions.tagDAO = new TagDAO(Controleur.getConfigList().get(0),mailTextField.getText(),passwordTextField.getText());
+                ControleurFunctions.ouvrageDAO = new OuvrageDAO(Controleur.getConfigList().get(0),mailTextField.getText(),passwordTextField.getText());
+                ControleurFunctions.personneDAO = new PersonneDAO(Controleur.getConfigList().get(0),mailTextField.getText(),passwordTextField.getText());
+                ControleurFunctions.adminDAO = new AdminDAO(Controleur.getConfigList().get(0),mailTextField.getText(),passwordTextField.getText());
+                ControleurFunctions.utilisateurDAO = new UtilisateurDAO(Controleur.getConfigList().get(0),mailTextField.getText(),passwordTextField.getText());
                 ControleurFunctions.statut = ControleurFunctions.utilisateurDAO.obtenirStatut(ControleurFunctions.nom);
             }
             else{

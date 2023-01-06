@@ -79,7 +79,7 @@
                                  <children>
                                     <Label fx:id="labelModifier" text="Lettrine n°" />
                                     <Button fx:id="modifierBtn" mnemonicParsing="false" onAction="#modifierScene" text="Modifier" />
-                                    <Button fx:id="retourBtn" mnemonicParsing="false" text="Retour" />
+                                    <Button fx:id="retourBtn" mnemonicParsing="false" text="Retour" onAction="#retour"/>
                                  </children>
                               </HBox>
                               <ImageView fx:id="imageLettrine" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />

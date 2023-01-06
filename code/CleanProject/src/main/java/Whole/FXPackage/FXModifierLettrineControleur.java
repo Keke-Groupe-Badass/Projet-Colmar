@@ -79,21 +79,29 @@ public class FXModifierLettrineControleur extends FXMenuBarAbstractControleur im
     @FXML
     public void valider(ActionEvent event) {
         Lettrine newLettrine = new Lettrine();
-        if(pageTextField.getText().isBlank()){
+        if(pageTextField.getText()==null){
+            newLettrine.setNbPage(-1);
+        }else {
             newLettrine.setNbPage(Integer.parseInt(pageTextField.getText()));
         }
-        if(plagiatTextField.getText().isBlank()){
+
+        if(plagiatTextField.getText()==null){
+            newLettrine.setIdentique(0);
+        }else{
             newLettrine.setIdentique(Integer.parseInt(plagiatTextField.getText()));
         }
-        if(lienTextField.getText().isBlank()){
-            newLettrine.setLien(lienTextField.getText());
-        }
-        if(ouvrageTextField.getText().isBlank()){
+
+        newLettrine.setLien(lienTextField.getText());
+
+
+
+        if(ouvrageTextField.getText()!=null){
             newLettrine.setOuvrage(new Ouvrage(Integer.parseInt(ouvrageTextField.getText())));
         }
-        if(createurTextField.getText().isBlank()){
+        if(createurTextField.getText()!=null){
             newLettrine.setCreateur(new Personne(Integer.parseInt(createurTextField.getText())));
         }
+
 
 
         if(ControleurFunctions.lettrineDAO.modifier(lettrine,newLettrine)){

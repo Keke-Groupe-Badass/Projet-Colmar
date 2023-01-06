@@ -83,7 +83,14 @@ public class FXPageLettrineControleur extends FXMenuBarAbstractControleur implem
             listTag.add(tag);
         }
         tagListView.setItems(listTag);
-        imageLettrine.setImage(lettrine.getImage());
+        try {
+            imageLettrine.setImage(lettrine.getImage());
+        }catch (Exception e){
+
+        }
+        if(ControleurFunctions.statut.equals("chercheur")){
+            modifierBtn.setDisable(true);
+        }
     }
     @FXML
     protected void clickOnTag(ActionEvent event) {

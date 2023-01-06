@@ -419,7 +419,7 @@ public class Lettrine implements CCMS<Lettrine> {
         Image img;
         try {
             img = new Image(new FileInputStream(lien));
-        } catch (IOException e) {
+        } catch (Exception e) {
             try {
                 img = new Image(new FileInputStream("src/lettrine.png"));
             } catch (FileNotFoundException ex) {
@@ -446,15 +446,8 @@ public class Lettrine implements CCMS<Lettrine> {
 
     @Override
     public String toString() {
-        return "Lettrine{" +
-                "ouvrage=" + ouvrage +
-                ", metadonnees=" + metadonnees +
-                ", nbPage=" + nbPage +
-                ", id=" + id +
-                ", tags=" + tags +
-                ", lien='" + lien + '\'' +
-                ", createur=" + createur +
-                ", identique=" + identique +
-                '}';
+        return "ouvrage: " + ouvrage +
+                ", identique: " + identique
+                +", id: "+id;
     }
 }

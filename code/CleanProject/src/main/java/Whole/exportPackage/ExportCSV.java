@@ -14,9 +14,9 @@ import java.util.ArrayList;
 /**
  * Implémentation de ExportTypeIntetface pour le SQL
  *
- * @see ExportTypeInterface
+ * @see ExportAbstract
  */
-public class ExportCSV extends ExportTypeInterface {
+public class ExportCSV extends ExportAbstract {
 
 
     @Override

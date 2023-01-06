@@ -18,7 +18,7 @@ public class FXTagRechercheControleur extends FXMenuBarAbstractControleur{
     @FXML
     protected void chercher(ActionEvent event){
         Tag t = new Tag();
-        if(!nomTextField.getText().isBlank()){
+        if(nomTextField.getText()!=null){
             t.setNom(nomTextField.getText());
         }
         ArrayList<Tag> list = ControleurFunctions.tagDAO.chercher(t);

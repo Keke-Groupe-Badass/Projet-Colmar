@@ -2,7 +2,7 @@ package Whole.daoPackage;
 
 import Whole.SingleConnection;
 import Whole.exportPackage.ExportCSV;
-import Whole.exportPackage.ExportTypeInterface;
+import Whole.exportPackage.ExportAbstract;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -60,12 +60,12 @@ public class AdminDAO extends SuperAbstractDAO {
     /**
      * Permet de stocker dans un fichier la BDD.
      *
-     * @param e    le nom de la méthode d'export
+     * @param methode    le nom de la méthode d'export
      * @param path le fichier où seront exportées les données
      * @return true si l'export a pu se faire, false sinon
      * @author Andreas
      * @see SingleConnection
-     * @see ExportTypeInterface
+     * @see ExportAbstract
      */
     public Boolean exportDonnee(String methode, String path) {
         if (methode == null) {
@@ -88,7 +88,7 @@ public class AdminDAO extends SuperAbstractDAO {
     private boolean exportNonSQL(String path, String methode) {
         boolean b = true;
         ArrayList<ArrayList<String>> list;
-        ExportTypeInterface e = null;
+        ExportAbstract e = null;
         if(methode.equals("CSV")){
             e = new ExportCSV();
         }

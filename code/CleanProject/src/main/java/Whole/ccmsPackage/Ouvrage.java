@@ -481,4 +481,10 @@ public class Ouvrage implements CCMS<Ouvrage> {
     public boolean equals(Ouvrage objet) {
         return this.estClone(objet);
     }
+
+    @Override
+    public String toString() {
+        return "id:" + id +
+                ", titre:'" + titre;
+    }
 }

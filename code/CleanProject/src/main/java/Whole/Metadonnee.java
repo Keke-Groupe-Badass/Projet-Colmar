@@ -131,4 +131,13 @@ public class Metadonnee {
         this.unite = unite;
         this.description = description;
     }
+
+    @Override
+    public String toString() {
+        return
+                "nom:" + nom +
+                ", entree:" + entree  +
+                ", unite:" + unite + ", id:" + id
+                ;
+    }
 }

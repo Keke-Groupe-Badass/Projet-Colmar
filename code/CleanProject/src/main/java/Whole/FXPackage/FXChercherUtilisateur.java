@@ -19,14 +19,15 @@ public class FXChercherUtilisateur extends FXMenuBarAbstractControleur{
     }
     @FXML
     protected void chercher(ActionEvent event){
-        if(!emailTextField.getText().isBlank()){
-            ArrayList<String> list = ControleurFunctions.utilisateurDAO.chercher(emailTextField.getText());
-            ObservableList observableList = listView.getItems();
-            observableList.clear();
-            observableList.addAll(list);
-            listView.refresh();
+        if(emailTextField.getText()!=null){
+            if(!emailTextField.getText().isBlank()){
+                ArrayList<String> list = ControleurFunctions.utilisateurDAO.chercher(emailTextField.getText());
+                ObservableList observableList = listView.getItems();
+                observableList.clear();
+                observableList.addAll(list);
+                listView.refresh();
+            }
         }
-
     }
     @FXML
     protected void itemCLick(ActionEvent event){

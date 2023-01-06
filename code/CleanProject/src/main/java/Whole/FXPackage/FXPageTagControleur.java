@@ -6,6 +6,7 @@ import Whole.ccmsPackage.Tag;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 
@@ -22,13 +23,17 @@ public class FXPageTagControleur extends FXMenuBarAbstractControleur implements 
     Label idLabel;
     @FXML
     Label descriptionLabel;
-
+    @FXML
+    Button modifierBtn;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         nomLabel.setText(tag.getNom());
         idLabel.setText(idLabel.getText()+tag.getId());
         descriptionLabel.setText(tag.getDescription());
         listView.getItems().addAll(ControleurFunctions.tagDAO.lettrinesAssociees(tag));
+        if(ControleurFunctions.statut.equals("chercheur")){
+            modifierBtn.setDisable(true);
+        }
     }
     @FXML
     protected void clickOnTag(ActionEvent event) {

@@ -31,6 +31,8 @@ public class TagDAO extends AbstractDAO<Tag> {
      */
     public TagDAO(String url, String login, String mdp) {
         super(url, login, mdp);
+        System.out.println(login);
+
     }
 
     /**

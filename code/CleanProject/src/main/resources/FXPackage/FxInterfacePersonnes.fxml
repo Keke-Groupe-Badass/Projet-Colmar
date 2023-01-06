@@ -66,7 +66,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Button fx:id="ajouter" mnemonicParsing="false" onAction="#lettrinesAjoutFormControleur" prefHeight="60.0" prefWidth="150.0" text="Ajouter" GridPane.columnIndex="1" />
+            <Button fx:id="ajouterBtn" mnemonicParsing="false" onAction="#lettrinesAjoutFormControleur" prefHeight="60.0" prefWidth="150.0" text="Ajouter" GridPane.columnIndex="1" />
             <Button fx:id="rechercher" mnemonicParsing="false" onAction="#lettrinesRechercheFormScene" prefHeight="25.0" prefWidth="120.0" text="Rechercher" />
          </children>
       </GridPane>

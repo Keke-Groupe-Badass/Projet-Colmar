@@ -22,11 +22,14 @@ public class FXCreerUtilisateur {
     }
     @FXML
     protected void valider(ActionEvent event) {
-        if(passwordField.getText().equals(confirmPasswordField.getText())){
-            if(ControleurFunctions.utilisateurDAO.mdpValide(passwordField.getText())){
-                ControleurFunctions.utilisateurDAO.creerUtilisateur(emailTextField.getText(), passwordField.getText(), statutChoiceBox.getValue());
-                ControleurFunctions.changeScene(event, "FxInterfaceMain.fxml");
+        if(passwordField.getText()!=null&confirmPasswordField.getText()!=null){
+            if(passwordField.getText().equals(confirmPasswordField.getText())){
+                if(ControleurFunctions.utilisateurDAO.mdpValide(passwordField.getText())){
+                    ControleurFunctions.utilisateurDAO.creerUtilisateur(emailTextField.getText(), passwordField.getText(), statutChoiceBox.getValue());
+                    ControleurFunctions.changeScene(event, "FxInterfaceMain.fxml");
+                }
             }
         }
+
     }
 }

@@ -27,20 +27,32 @@ public class FXLettrinesAjoutControleur extends FXMenuBarAbstractControleur{
         String lien = null;
         Personne p = new Personne();
         int identique = -1;
-        if(!ouvrageTextField.getText().isBlank()){
-            o.setId(Integer.parseInt(ouvrageTextField.getText()));
+        if(ouvrageTextField.getText()!=null){
+            if(!ouvrageTextField.getText().isBlank()){
+                o.setId(Integer.parseInt(ouvrageTextField.getText()));
+            }
         }
-        if(!pageTextField.getText().isBlank()){
-            nbPage = Integer.parseInt(pageTextField.getText());
+        if(pageTextField!=null){
+            if(!pageTextField.getText().isBlank()){
+                nbPage = Integer.parseInt(pageTextField.getText());
+            }
         }
-        if(!lienTextField.getText().isBlank()){
-            lien = lienTextField.getText();
+
+        if(lienTextField!=null){
+            if(!lienTextField.getText().isBlank()){
+                lien = lienTextField.getText();
+            }
         }
-        if(!graveurTextField.getText().isBlank()){
-            p.setId(Integer.parseInt(graveurTextField.getText()));
+
+        if(graveurTextField!=null){
+            if(!graveurTextField.getText().isBlank()){
+                p.setId(Integer.parseInt(graveurTextField.getText()));
+            }
         }
-        if(!identiqueTextField.getText().isBlank()){
-            identique = Integer.parseInt(identiqueTextField.getText());
+        if(identiqueTextField!=null){
+            if(!identiqueTextField.getText().isBlank()){
+                identique = Integer.parseInt(identiqueTextField.getText());
+            }
         }
         Lettrine l = new Lettrine(o,nbPage,lien,p,identique);
         if(ControleurFunctions.lettrineDAO.creer(l)){
