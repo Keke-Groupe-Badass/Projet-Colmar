@@ -47,7 +47,6 @@ public class FXTagsControleur extends FXMenuBarAbstractControleur implements Ini
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ControleurFunctions.statut = "chercheur";
         if(ControleurFunctions.statut.equals("chercheur")){
             ajouterBtn.setDisable(true);
         }
