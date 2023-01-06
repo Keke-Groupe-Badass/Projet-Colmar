@@ -12,18 +12,22 @@
 
 <Pane id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Whole.FXPackage.FXLettrinesControleur">
    <children>
-      <MenuBar layoutY="1.0" prefHeight="27.0" prefWidth="600.0" fx:id="myMenuBar">
+      <MenuBar fx:id="myMenuBar" layoutY="1.0" prefHeight="27.0" prefWidth="600.0">
         <menus>
           <Menu mnemonicParsing="false" text="Fichier">
             <items>
-              <MenuItem mnemonicParsing="false" text="Fermer" />
-                <MenuItem mnemonicParsing="false" text="Exporter les données" />
+                <MenuItem mnemonicParsing="false" onAction="#exporterDonee" text="Exporter les données" />
+                <MenuItem mnemonicParsing="false" onAction="#log" text="Exporter les logs" />
+              <MenuItem mnemonicParsing="false" onAction="#quitter" text="Fermer" />
+
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Utilisateur">
             <items>
-              <MenuItem mnemonicParsing="false" text="Chercher utilisateur" />
-                <MenuItem mnemonicParsing="false" text="Modifier mot de passe" onAction="#changeUtilisateur"/>
+                <MenuItem mnemonicParsing="false" onAction="#creerUtilisateur" text="Creer un utilisateur" />
+              <MenuItem mnemonicParsing="false" onAction="#chercherUtilisateur" text="Chercher un utilisateur" />
+                <MenuItem mnemonicParsing="false" onAction="#changeUtilisateur" text="Modifier mot de passe" />
+
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Aide">
@@ -64,7 +68,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Button fx:id="ajouter" mnemonicParsing="false" onAction="#lettrinesAjoutFormScene" prefHeight="60.0" prefWidth="150.0" text="Ajouter" GridPane.columnIndex="1" />
+            <Button fx:id="ajouterBtn" mnemonicParsing="false" onAction="#lettrinesAjoutFormScene" prefHeight="60.0" prefWidth="150.0" text="Ajouter" GridPane.columnIndex="1" />
             <Button fx:id="rechercher" mnemonicParsing="false" onAction="#lettrinesRechercheFormScene" prefHeight="25.0" prefWidth="120.0" text="Rechercher" />
          </children>
       </GridPane>

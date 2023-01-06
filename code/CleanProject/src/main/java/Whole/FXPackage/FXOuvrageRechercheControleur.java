@@ -12,7 +12,7 @@ import javafx.scene.control.TextField;
 import java.util.ArrayList;
 
 
-public class FXOuvrageRechercheControleur {
+public class FXOuvrageRechercheControleur extends FXMenuBarAbstractControleur{
     @FXML
     TextField imprimeurTextField;
     @FXML
@@ -30,18 +30,19 @@ public class FXOuvrageRechercheControleur {
     @FXML
     protected void valider(ActionEvent event){
         Ouvrage o = new Ouvrage();
-        if(!imprimeurTextField.getText().isBlank()){
+        if(imprimeurTextField.getText()==null){
+            o.setImprimeur(null);
+        }else{
             o.setImprimeur(new Personne(Integer.parseInt(imprimeurTextField.getText())));
         }
-        if(!libraireTextField.getText().isBlank()){
+        if(libraireTextField.getText()==null){
+            o.setLibraire(null);
+        }else{
             o.setLibraire(new Personne(Integer.parseInt(libraireTextField.getText())));
         }
-        if(!titreTextField.getText().isBlank()){
-            o.setTitre(titreTextField.getText());
-        }
-        if(!lieuTextField.getText().isBlank()){
-            o.setLien(lieuTextField.getText());
-        }
+        o.setTitre(titreTextField.getText());
+        o.setLien(lieuTextField.getText());
+
         ArrayList<Ouvrage> listOuvrage = ControleurFunctions.ouvrageDAO.chercher(o);
         listView.getItems().clear();
         listView.getItems().addAll(listOuvrage);

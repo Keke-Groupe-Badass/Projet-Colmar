@@ -16,7 +16,7 @@ import java.nio.file.Path;
 
 import java.util.ResourceBundle;
 
-public class FXNuageControleur implements Initializable {
+public class FXNuageControleur extends FXMenuBarAbstractControleur implements Initializable {
     @FXML ImageView img;
 
     public void retour(ActionEvent event) throws IOException {

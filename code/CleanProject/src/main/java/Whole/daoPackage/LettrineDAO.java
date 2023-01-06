@@ -44,6 +44,8 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      */
     @Override
     public boolean modifier(Lettrine objet, Lettrine changement) {
+        if (objet == null || changement == null)
+            return false;
         ArrayList<String> rq = new ArrayList<>();
 
         String reqNbPage = "";
@@ -52,11 +54,11 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
         }
         rq.add(reqNbPage);
 
-        String reqChanngement = "";
+        String reqChangement = "";
         if (changement.getLien() != null) {
-            reqChanngement = reqChanngement + "lien=" + changement.getLien();
+            reqChangement = reqChangement + "lien='" + changement.getLien() + "'";
         }
-        rq.add(reqChanngement);
+        rq.add(reqChangement);
 
         String reqCrea = "";
         if (changement.getCreateur() != null) {
@@ -70,42 +72,44 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
             reqIden = reqIden + "idIdentique=" + changement.getIdentique();
         }
         rq.add(reqIden);
-
-        StringBuilder str = new StringBuilder();
-        for (String s : rq) {
-            if (s.isBlank())
-                rq.remove(s);
-        }
+        rq.removeIf(String::isBlank);
 
         //return true car pas de modif à faire
         if (rq.isEmpty()) {
             return true;
-        } else {
-            str.append(", ?".repeat(rq.size() - 1));
         }
 
         if (changement.getMetadonnees() != null) {
             for (Metadonnee meta : changement.getMetadonnees()) {
-                try {
-                    Statement stmtMeta = cn.createStatement();
-                    String sqlMeta = "UPDATE metadonnees "
-                            + "SET idLettrine=" + objet.getId()
-                            + " WHERE idMeta=" + meta.getId();
-                    stmtMeta.executeQuery(sqlMeta);
-
-                } catch (SQLException e) {
-                    return false;
+                if (meta != null) {
+                    try {
+                        Statement stmtMeta = cn.createStatement();
+                        String sqlMeta = "UPDATE metadonnees "
+                                + "SET idLettrine=" + objet.getId()
+                                + " WHERE idMeta=" + meta.getId();
+                        stmtMeta.executeUpdate(sqlMeta);
+                    } catch (SQLException e) {
+                        return false;
+                    }
                 }
             }
         }
         try {
-            String sql="UPDATE lettrines SET ?" + str;
-            PreparedStatement pstmt = cn.prepareStatement(sql);
-            for (int i = 0; i < rq.size(); i++) {
-                pstmt.setString(i + 1, rq.get(i));
+            StringBuilder sql= new StringBuilder("UPDATE lettrines SET ");
+            boolean premier=true;
+            for (String s : rq) {
+                if (!premier)
+                    sql.append(", ");
+                sql.append(s);
+                premier=false;
             }
-            pstmt.executeQuery();
-            return true;
+            sql.append(" WHERE idLettrine=").append(objet.getId());
+            System.out.println(sql);
+            PreparedStatement pstmt = cn.prepareStatement(sql.toString());
+
+            System.out.println(pstmt);
+            int nbColonne = pstmt.executeUpdate();
+            return nbColonne > 0;
         } catch (SQLException e) {
             return false;
         }
@@ -124,19 +128,32 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      */
     @Override
     public boolean supprimer(Lettrine lettrine) {
-        if (lettrine.getId() <= 0) {
-            return false;
+        if (lettrine != null) {
+            if (lettrine.getId() <= 0) {
+                return false;
+            }
+            try {
+                String sql="";
+                Statement stmt = cn.createStatement();
+                if (lettrine.getMetadonnees() != null) {
+                    //TODO à supprimer si ça marche sans lettrine.getMetadonnees().forEach(m -> supprimerMeta(m));
+                    sql="DELETE FROM metadonnees WHERE idLettrine=" + lettrine.getId();
+                    stmt.executeUpdate(sql);
+                }
+                if (lettrine.getTags() != null) {
+                    //TODO comme au dessus lettrine.getTags().forEach(t -> detaguer(lettrine, t));
+                    sql="DELETE FROM `regroupe` WHERE `idLettrine`=" + lettrine.getId();
+                    stmt.executeUpdate(sql);
+                }
+
+                sql = "DELETE FROM lettrines WHERE idLettrine=" + lettrine.getId();
+                int nbColonne = stmt.executeUpdate(sql);
+                return nbColonne > 0;
+            } catch (SQLException e) {
+                return false;
+            }
         }
-        try {
-            lettrine.getMetadonnees().forEach(m -> supprimerMeta(m));
-            lettrine.getTags().forEach(t -> detaguer(lettrine, t));
-            Statement stmt = cn.createStatement();
-            String sql = "DELETE FROM lettrines WHERE id=" + lettrine.getId();
-            stmt.executeQuery(sql);
-            return true;
-        } catch (SQLException e) {
-            return false;
-        }
+        return false;
     }
 
     /**
@@ -176,8 +193,10 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
             if (nbColonne <= 0) {
                 return false;
             }
-            donne.getMetadonnees().forEach(m -> ajouterMeta(m, donne));
-            donne.getTags().forEach(t -> taguer(donne, t));
+            if (donne.getMetadonnees() != null)
+                donne.getMetadonnees().forEach(m -> ajouterMeta(m, donne));
+            if (donne.getTags() != null)
+                donne.getTags().forEach(t -> taguer(donne, t));
 
             return true;
         } catch (SQLException e) {
@@ -509,8 +528,8 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
             Statement stmt = cn.createStatement();
             String sql = "UPDATE lettrines SET idOuvrage=" + o.getId() +
                     " WHERE id=" + l.getId();
-            stmt.executeQuery(sql);
-            return true;
+            int nbColonne = stmt.executeUpdate(sql);
+            return nbColonne > 0;
         } catch (SQLException e) {
             return false;
         }
@@ -537,8 +556,8 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
             Statement stmt = cn.createStatement();
             String sql = "INSERT INTO regroupe " +
                     "VALUES (" + t.getId() + ", " + l.getId() + ")";
-            stmt.executeQuery(sql);
-            return true;
+            int nbColonne = stmt.executeUpdate(sql);
+            return nbColonne > 0;
         } catch (SQLException e) {
             return false;
         }
@@ -557,18 +576,21 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * @see Metadonnee
      */
     public boolean ajouterMeta(Metadonnee meta, Lettrine l) {
-        if (meta.getId() <= 0 || l.getId() <= 0) {
-            return false;
+        if (meta != null){
+            if (meta.getId() <= 0 || l.getId() <= 0) {
+                return false;
+            }
+            try {
+                Statement stmt = cn.createStatement();
+                String sql = "UPDATE metadonnees SET idLettrine=" + l.getId() +
+                        "WHERE idMeta=" + meta.getId();
+                int nbColonne = stmt.executeUpdate(sql);
+                return nbColonne > 0;
+            } catch (SQLException e) {
+                return false;
+            }
         }
-        try {
-            Statement stmt = cn.createStatement();
-            String sql = "UPDATE metadonnees SET idLettrine=" + l.getId() +
-                    "WHERE idMeta=" + meta.getId();
-            stmt.executeQuery(sql);
-            return true;
-        } catch (SQLException e) {
-            return false;
-        }
+        return false;
     }
 
     /**
@@ -579,18 +601,22 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * @return true si la requête s'est effectuée, false sinon
      * @author Romain
      */
+    //TODO à supprimer si ça marche sans
     public boolean supprimerMeta(Metadonnee meta) {
-        if (meta.getId() <= 0) {
-            return false;
+        if (meta != null) {
+            if (meta.getId() <= 0) {
+                return false;
+            }
+            try {
+                Statement stmt = cn.createStatement();
+                String sql = "DELETE FROM metadonnees WHERE idMeta=" + meta.getId();
+                int nbColonne = stmt.executeUpdate(sql);
+                return nbColonne > 0;
+            } catch (SQLException e) {
+                return false;
+            }
         }
-        try {
-            Statement stmt = cn.createStatement();
-            String sql = "DELETE FROM metadonnees WHERE idMeta=" + meta.getId();
-            stmt.executeQuery(sql);
-            return true;
-        } catch (SQLException e) {
-            return false;
-        }
+        return false;
     }
 
     /**
@@ -718,6 +744,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * @return true si la liaison a pu être retirée ou s'il n'y a jamais eu de
      *          lien, false en cas d'erreur
      */
+    //TODO Supprimer si ça marche sans
     public Boolean detaguer(Lettrine l, Tag t) {
         if (t == null) {
             return false;
@@ -755,7 +782,6 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
         Lettrine l = new Lettrine();
         if(donne.getMetadonnees().size()>0){
             donne.setMetadonnees(rechercheMeta(donne.getMetadonnees().get(0)));
-
         }
         // Recherche par id
         if (donne.getId() >= 0) {

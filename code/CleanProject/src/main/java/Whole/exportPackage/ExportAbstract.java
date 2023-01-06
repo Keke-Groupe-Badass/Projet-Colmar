@@ -12,20 +12,21 @@ import java.util.ArrayList;
 /**
  * Interface qui permet d'ajouter facilement des nouvelles méthodes d'export
  */
-public interface ExportTypeInterface {
+public abstract class ExportAbstract {
 
-    String name="null";
+    public String name="null";
     /**
      *  Implémante d'une manière à définir la sauvegarde de la base de donnée dans un fichier
      * @param f Fichier de sauvegarde
      * @param list L'intégralité d'une table
      * @return true si la base peut être exportée, false sinon
-     * @see Whole.daoPackage.AdminDAO#exportDonnee(ExportTypeInterface, String)
+     * @see Whole.daoPackage.AdminDAO#exportDonnee(ExportAbstract, String)
      * @see File
      */
-    Boolean export(File f, ArrayList<ArrayList<String>> list);
-    String getName();
+    public abstract Boolean export(File f, ArrayList<ArrayList<String>> list);
+    abstract String getName();
 
-
-
+    public ExportAbstract(String name) {
+        this.name = name;
+    }
 }

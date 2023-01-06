@@ -14,7 +14,7 @@ import java.net.URL;
 
 import java.util.ResourceBundle;
 
-public class FXPageOuvrageControleur implements Initializable {
+public class FXPageOuvrageControleur extends FXMenuBarAbstractControleur implements Initializable {
     public static Ouvrage ouvrage;
     @FXML
     Label titreLabel;
@@ -42,6 +42,8 @@ public class FXPageOuvrageControleur implements Initializable {
     Label lienLabel;
     @FXML
     ListView<Personne> personneListView;
+    @FXML
+    Button modifierBtn;
     public void modifierScene(ActionEvent event) {
         FXModifierOuvrageControleur.ouvrage=ouvrage;
         ControleurFunctions.changeScene(event, "FxInterfaceModifierOuvrage.fxml");
@@ -65,6 +67,9 @@ public class FXPageOuvrageControleur implements Initializable {
         lieuLabel.setText(ouvrage.getLieuImpression());
         imprimeurBtn.setText(ouvrage.getImprimeur().toString());
         libraireBtn.setText(ouvrage.getLibraire().toString());
+        if(ControleurFunctions.statut.equals("chercheur")){
+            modifierBtn.setDisable(true);
+        }
     }
     @FXML
     protected void clickOnPersonne(ActionEvent event) {

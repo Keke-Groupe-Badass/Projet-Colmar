@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -23,9 +24,14 @@ public class FXMain extends Application {
             Scene scene = new Scene(root);
             String css = this.getClass().getResource("/css/colmar.css").toExternalForm();
             scene.getStylesheets().add(css);
-            stage.setTitle("Lettrine");
+            stage.setTitle("Projet Colmar");
             stage.setScene(scene);
             stage.show();
+            try {
+                stage.getIcons().add(new Image("/lettrine.png"));
+            }
+            catch (Exception e){
+            }
             if(controleur==null){
                 controleur = new Controleur();
             }
@@ -34,7 +40,8 @@ public class FXMain extends Application {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Une erreur est survenue");
             alert.setHeaderText("Erreur lors du chargement de la page");
-            alert.setContentText(e.getMessage());
+
+            alert.setContentText(System.err.toString());
             alert.show();
         }
 
@@ -42,13 +49,12 @@ public class FXMain extends Application {
 
     }
     public static Boolean connect(String login, String pwd){
-        /**
+
         if(Controleur.Login(login,pwd)){
-            name = login;
+            ControleurFunctions.nom = login;
             return true;
         }
-        return false;**/
-        return true;
+        return false;
     }
     public static void main(String[] args) {
         launch();

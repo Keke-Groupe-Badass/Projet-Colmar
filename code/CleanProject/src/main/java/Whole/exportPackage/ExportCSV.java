@@ -14,14 +14,10 @@ import java.util.ArrayList;
 /**
  * Implémentation de ExportTypeIntetface pour le SQL
  *
- * @see ExportTypeInterface
+ * @see ExportAbstract
  */
-public class ExportCSV implements ExportTypeInterface {
-    String name = "CSV";
+public class ExportCSV extends ExportAbstract {
 
-    public ExportCSV() {
-
-    }
 
     @Override
     /**
@@ -80,5 +76,9 @@ public class ExportCSV implements ExportTypeInterface {
             }
         }
         return escapedData;
+    }
+
+    public ExportCSV() {
+        super("CSV");
     }
 }

@@ -8,7 +8,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-public class FXTagAjoutControleur {
+public class FXTagAjoutControleur extends FXMenuBarAbstractControleur{
     @FXML
     TextField nomTextField;
     @FXML
@@ -16,12 +16,9 @@ public class FXTagAjoutControleur {
     @FXML
     public void valider(ActionEvent event) {
         Tag t = new Tag();
-        if(!descriptionTextArea.getText().isBlank()){
-            t.setDescription(descriptionTextArea.getText());
-        }
-        if(!nomTextField.getText().isBlank()){
-            t.setNom(nomTextField.getText());
-        }
+        t.setDescription(descriptionTextArea.getText());
+        t.setNom(nomTextField.getText());
+
         if(ControleurFunctions.tagDAO.creer(t)){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Tag Crée");

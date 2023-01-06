@@ -3,10 +3,25 @@ package Whole.FXPackage;
 import Whole.ccmsPackage.Personne;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 
-public class FXPagePersonneControleur {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class FXPagePersonneControleur extends FXMenuBarAbstractControleur implements Initializable {
+    @FXML
+    Button modifierBtn;
     public static Personne personne;
     public void retourPersonnes(ActionEvent event) {
         ControleurFunctions.changeScene(event, "FxInterfacePersonnes.fxml");
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        if(ControleurFunctions.statut.equals("chercheur")){
+            modifierBtn.setDisable(true);
+        }
     }
 }

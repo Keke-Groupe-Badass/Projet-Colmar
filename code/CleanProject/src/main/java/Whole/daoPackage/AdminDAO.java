@@ -1,7 +1,8 @@
 package Whole.daoPackage;
 
 import Whole.SingleConnection;
-import Whole.exportPackage.ExportTypeInterface;
+import Whole.exportPackage.ExportCSV;
+import Whole.exportPackage.ExportAbstract;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -59,38 +60,44 @@ public class AdminDAO extends SuperAbstractDAO {
     /**
      * Permet de stocker dans un fichier la BDD.
      *
-     * @param e    le nom de la méthode d'export
+     * @param methode    le nom de la méthode d'export
      * @param path le fichier où seront exportées les données
      * @return true si l'export a pu se faire, false sinon
      * @author Andreas
      * @see SingleConnection
-     * @see ExportTypeInterface
+     * @see ExportAbstract
      */
-    public Boolean exportDonnee(ExportTypeInterface e, String path) {
-        if (e == null) {
+    public Boolean exportDonnee(String methode, String path) {
+        if (methode == null) {
             return false;
         }
-        if (e.getName().equals("SQL")) {
+        if (methode.equals("SQL")) {
             return sqlExport(path);
         }
-        return exportNonSQL(path, e);
+        return exportNonSQL(path, methode);
     }
 
     /**
      * Permet d'exporter les données aux formats non-sql.
      *
      * @param path le fichier où seront exportées les données
-     * @param e    ExportTypeInterface
+     * @param methode le nom de la méthode d'exportation
      * @return true si l'export a pu se faire, false sinon
      * @author Andreas
      */
-    private boolean exportNonSQL(String path, ExportTypeInterface e) {
+    private boolean exportNonSQL(String path, String methode) {
         boolean b = true;
         ArrayList<ArrayList<String>> list;
-        for (String st : listeTable) {
-            list = getTableList(st);
-            File f = new File(path + "/" + st);
-            b = b && e.export(f, list);
+        ExportAbstract e = null;
+        if(methode.equals("CSV")){
+            e = new ExportCSV();
+        }
+        if(e!=null){
+            for (String st : listeTable) {
+                list = getTableList(st);
+                File f = new File(path + "/" + st);
+                b = b && e.export(f, list);
+            }
         }
         return b;
     }

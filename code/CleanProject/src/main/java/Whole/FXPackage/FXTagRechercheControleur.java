@@ -10,7 +10,7 @@ import javafx.scene.control.TextField;
 
 import java.util.ArrayList;
 
-public class FXTagRechercheControleur {
+public class FXTagRechercheControleur extends FXMenuBarAbstractControleur{
     @FXML
     TextField nomTextField;
     @FXML
@@ -18,7 +18,7 @@ public class FXTagRechercheControleur {
     @FXML
     protected void chercher(ActionEvent event){
         Tag t = new Tag();
-        if(!nomTextField.getText().isBlank()){
+        if(nomTextField.getText()!=null){
             t.setNom(nomTextField.getText());
         }
         ArrayList<Tag> list = ControleurFunctions.tagDAO.chercher(t);

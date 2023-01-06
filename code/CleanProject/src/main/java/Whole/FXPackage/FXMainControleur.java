@@ -2,7 +2,7 @@ package Whole.FXPackage;
 
 import javafx.event.ActionEvent;
 
-public class FXMainControleur {
+public class FXMainControleur extends FXMenuBarAbstractControleur{
 
     public void lettrinesScene(ActionEvent event) {
         ControleurFunctions.changeScene(event, "FxInterfaceLettrines.fxml");

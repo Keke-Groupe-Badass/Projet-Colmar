@@ -12,7 +12,7 @@ import javafx.scene.control.TextField;
 
 import java.util.Optional;
 
-public class FXModifierTagsControleur {
+public class FXModifierTagsControleur extends FXMenuBarAbstractControleur{
     public static Tag tag;
     @FXML
     TextField nomTextField;
@@ -42,12 +42,9 @@ public class FXModifierTagsControleur {
     @FXML
     public void valider(ActionEvent event) {
         Tag t = new Tag();
-        if(!nomTextField.getText().isBlank()){
-            t.setNom(nomTextField.getText());
-        }
-        if(!descriptionTextArea.getText().isBlank()){
-            t.setDescription(descriptionTextArea.getText());
-        }
+        t.setNom(nomTextField.getText());
+        t.setDescription(descriptionTextArea.getText());
+
         if(ControleurFunctions.tagDAO.modifier(tag,t)){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Tag Modifiée");

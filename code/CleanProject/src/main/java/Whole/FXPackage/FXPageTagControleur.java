@@ -6,13 +6,14 @@ import Whole.ccmsPackage.Tag;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class FXPageTagControleur implements Initializable {
+public class FXPageTagControleur extends FXMenuBarAbstractControleur implements Initializable {
     public static Tag tag;
     @FXML
     ListView<Lettrine> listView;
@@ -22,13 +23,17 @@ public class FXPageTagControleur implements Initializable {
     Label idLabel;
     @FXML
     Label descriptionLabel;
-
+    @FXML
+    Button modifierBtn;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         nomLabel.setText(tag.getNom());
         idLabel.setText(idLabel.getText()+tag.getId());
         descriptionLabel.setText(tag.getDescription());
         listView.getItems().addAll(ControleurFunctions.tagDAO.lettrinesAssociees(tag));
+        if(ControleurFunctions.statut.equals("chercheur")){
+            modifierBtn.setDisable(true);
+        }
     }
     @FXML
     protected void clickOnTag(ActionEvent event) {
