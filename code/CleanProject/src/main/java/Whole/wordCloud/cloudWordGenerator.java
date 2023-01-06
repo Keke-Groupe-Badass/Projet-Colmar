@@ -10,7 +10,7 @@ import Whole.daoPackage.TagDAO;
 public class cloudWordGenerator {
     public static void main(String[] args) {
         try {
-            String texte = "je suis un nuage de mot je sers a tester"; //TagDAO.tagAndSize();
+            String texte = "je je je suis un nuage de mots mots mots mots je sers a tester"; //TagDAO.tagAndSize();
             String path = "src/main/wordcloud/text.txt";
             Files.write(Paths.get(path), texte.getBytes());
             ProcessBuilder process = new ProcessBuilder("python", "src/main/wordcloud/cloud.py").inheritIO();
