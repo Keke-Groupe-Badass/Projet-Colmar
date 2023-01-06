@@ -23,16 +23,19 @@ public class FXModifierUtilisateur implements Initializable {
     PasswordField confirmPasswordField;
     @FXML
     ChoiceBox<String> choiceBox;
+    public static String utilisateur;
     @FXML
     protected void supprimer(ActionEvent event) {
-        ControleurFunctions.utilisateurDAO.supprimerUtilisateur(ControleurFunctions.nom);
-        ControleurFunctions.changeScene(event,"FxInterfaceMain.fxml");
+        if(!utilisateur.equals(ControleurFunctions.nom)){
+            ControleurFunctions.utilisateurDAO.supprimerUtilisateur(ControleurFunctions.nom);
+            ControleurFunctions.changeScene(event,"FxInterfaceMain.fxml");
+        }
     }
     @FXML
     protected void valider(ActionEvent event) {
         if(passwordField.getText().equals(confirmPasswordField.getText())){
-            ControleurFunctions.utilisateurDAO.changeMDP(ControleurFunctions.nom,passwordField.getText());
-            ControleurFunctions.utilisateurDAO.changeStatut(ControleurFunctions.nom,choiceBox.getValue());
+            ControleurFunctions.utilisateurDAO.changeMDP(utilisateur,passwordField.getText());
+            ControleurFunctions.utilisateurDAO.changeStatut(utilisateur,choiceBox.getValue());
             ControleurFunctions.changeScene(event,"FxInterfaceMain.fxml");
         }
     }

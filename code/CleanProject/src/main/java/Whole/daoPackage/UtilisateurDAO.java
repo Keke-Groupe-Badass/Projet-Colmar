@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -212,7 +213,7 @@ public class UtilisateurDAO extends SuperAbstractDAO {
      *          false sinon
      * @author Emerance
      */
-    private boolean mdpValide(String mdp) {
+    public boolean mdpValide(String mdp) {
         String regex = "^[A-Za-z0-9_!?=-]{6,}$";
         Pattern p = Pattern.compile(regex);
         Matcher m = p.matcher(mdp);
@@ -287,5 +288,26 @@ public class UtilisateurDAO extends SuperAbstractDAO {
         }
         return false;
 
+    }
+
+    /**
+     * Permet d'obtenir la liste des utilisateurs avec une recherche par leur email
+     * @param login email possiblement incomplet
+     * @return La liste des emails correspondants
+     */
+    public ArrayList<String> chercher(String login){
+        ArrayList<String> list = new ArrayList<>();
+        String sql = "SELECT `email` FROM `utilisateurs` WHERE `email` LIKE '"+login+"'";
+        try {
+            Statement stmt = cn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while(rs.next()){
+                list.add(rs.getString(0));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return list;
     }
 }

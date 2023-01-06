@@ -12,17 +12,17 @@
 <?import javafx.scene.layout.RowConstraints?>
 
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:controller="Whole.FXPackage.FXCreerUtilisateur" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <HBox prefHeight="38.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" text="Retour" />
+            <Button mnemonicParsing="false" text="Retour" onAction="#annuler"/>
             <Label text="Ajouter un utilisateur" />
          </children>
       </HBox>
    </top>
    <bottom>
-      <Button mnemonicParsing="false" text="Confirmer" BorderPane.alignment="CENTER" />
+      <Button mnemonicParsing="false" text="Confirmer" BorderPane.alignment="CENTER" onAction="#valider"/>
    </bottom>
    <center>
       <GridPane BorderPane.alignment="CENTER">
@@ -41,10 +41,10 @@
             <Label text="Mot de passe" GridPane.rowIndex="1" />
             <Label text="Confirmer mot de passe" GridPane.rowIndex="2" />
             <Label text="Statut" GridPane.rowIndex="3" />
-            <TextField GridPane.columnIndex="1" />
-            <PasswordField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <PasswordField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <ChoiceBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField GridPane.columnIndex="1" fx:id="emailTextField"/>
+            <PasswordField GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="passwordField"/>
+            <PasswordField GridPane.columnIndex="1" GridPane.rowIndex="2" fx:id="confirmPasswordField"/>
+            <ChoiceBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" fx:id="statutChoiceBox"/>
          </children>
       </GridPane>
    </center>

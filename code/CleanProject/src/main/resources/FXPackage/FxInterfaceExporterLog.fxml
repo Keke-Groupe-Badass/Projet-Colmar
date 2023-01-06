@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
@@ -11,18 +10,17 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-
-<BorderPane fx:controller="Whole.FXPackage.FXExporterDonneeControleur" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Whole.FXPackage.FXExporterLogControleur">
    <top>
       <HBox prefHeight="47.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" text="Retour" onAction="#annuler"/>
-            <Label text="Exporter les données" />
+            <Button mnemonicParsing="false" onAction="#annuler" text="Retour" />
+            <Label text="Exporter les logs" />
          </children>
       </HBox>
    </top>
    <bottom>
-      <Button mnemonicParsing="false" text="Confirmer" BorderPane.alignment="CENTER" onAction="#valider"/>
+      <Button mnemonicParsing="false" onAction="#valider" text="Confirmer" BorderPane.alignment="CENTER" />
    </bottom>
    <center>
       <GridPane BorderPane.alignment="CENTER">
@@ -32,16 +30,17 @@
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Format" />
-            <Label text="Dossier" GridPane.rowIndex="1" />
-            <ChoiceBox prefWidth="150.0" GridPane.columnIndex="1" fx:id="choiceBox"/>
-            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
                <children>
-                  <TextField fx:id="dossierTextField"/>
-                  <Button mnemonicParsing="false" text="Explorateur de fichier" onAction="#explorer"/>
+                  <TextField fx:id="dossierTextField" />
+                  <Button mnemonicParsing="false" onAction="#explorer" text="Explorateur de fichier" />
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label text="Dossier" />
                </children>
             </VBox>
          </children>
