@@ -9,7 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 
-public class FXLettrinesAjoutControleur {
+public class FXLettrinesAjoutControleur extends FXMenuBarAbstractControleur{
     @FXML
     TextField ouvrageTextField;
     @FXML

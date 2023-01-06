@@ -6,7 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 
-public class FXTagsControleur {
+public class FXTagsControleur extends FXMenuBarAbstractControleur{
 
     public void accueilScene(ActionEvent event) {
         ControleurFunctions.changeScene(event, "FxInterfaceMain.fxml");

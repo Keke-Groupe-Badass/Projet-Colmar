@@ -20,6 +20,34 @@ public abstract class FXMenuBarAbstractControleur {
         Stage stage = (Stage) myMenuBar.getScene().getWindow();
         changeScene(stage,"FxInterfaceModifierUtilisateur.fxml");
     }
+    @FXML
+    protected void quitter(ActionEvent event){
+        //TODO quitter l'appli proprement
+    }
+    @FXML
+    protected void log(ActionEvent event){
+        Stage stage = (Stage) myMenuBar.getScene().getWindow();
+        changeScene(stage,"FxInterfaceExporterLog.fxml");
+    }
+    @FXML
+    protected void chercherUtilisateur(ActionEvent event){
+        Stage stage = (Stage) myMenuBar.getScene().getWindow();
+        changeScene(stage,"FxInterfaceChercherUtilisateur.fxml");
+    }
+    @FXML
+    protected void exporterDonee(ActionEvent event){
+        Stage stage = (Stage) myMenuBar.getScene().getWindow();
+        changeScene(stage,"FxInterfaceExporterDonnee.fxml");
+    }
+    @FXML
+    protected void creerUtilisateur(ActionEvent event){
+        Stage stage = (Stage) myMenuBar.getScene().getWindow();
+        changeScene(stage,"FxInterfaceCreerUtilisateur.fxml");
+    }
+    @FXML
+    protected void aide(ActionEvent event){
+        //TODO Lancer la docu
+    }
     public static void changeScene(Stage stage, String filename) {
         try {
             Parent root = FXMLLoader.load(FXMain.class.getResource("/FXPackage/"+filename));

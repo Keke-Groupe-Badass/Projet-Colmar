@@ -12,7 +12,7 @@ import javafx.scene.control.ListView;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class FXPageTagControleur implements Initializable {
+public class FXPageTagControleur extends FXMenuBarAbstractControleur implements Initializable {
     public static Tag tag;
     @FXML
     ListView<Lettrine> listView;

@@ -16,12 +16,8 @@ import java.util.ArrayList;
  *
  * @see ExportTypeInterface
  */
-public class ExportCSV implements ExportTypeInterface {
-    String name = "CSV";
+public class ExportCSV extends ExportTypeInterface {
 
-    public ExportCSV() {
-
-    }
 
     @Override
     /**
@@ -80,5 +76,9 @@ public class ExportCSV implements ExportTypeInterface {
             }
         }
         return escapedData;
+    }
+
+    public ExportCSV() {
+        super("CSV");
     }
 }

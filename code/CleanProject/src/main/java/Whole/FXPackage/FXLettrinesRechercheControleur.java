@@ -13,7 +13,7 @@ import javafx.scene.control.TextField;
 
 import java.util.ArrayList;
 
-public class FXLettrinesRechercheControleur {
+public class FXLettrinesRechercheControleur extends FXMenuBarAbstractControleur{
     @FXML
     TextField idTextField;
     @FXML
@@ -22,10 +22,6 @@ public class FXLettrinesRechercheControleur {
     TextField personneTextField;
     @FXML
     TextField groupeTextField;
-    @FXML
-    Button validerBtn;
-    @FXML
-    Button retourBtn;
     @FXML
     ListView<Lettrine> listView;
     public void retourForm(ActionEvent event) {

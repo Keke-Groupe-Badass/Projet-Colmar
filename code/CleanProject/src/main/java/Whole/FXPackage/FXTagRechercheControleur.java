@@ -10,7 +10,7 @@ import javafx.scene.control.TextField;
 
 import java.util.ArrayList;
 
-public class FXTagRechercheControleur {
+public class FXTagRechercheControleur extends FXMenuBarAbstractControleur{
     @FXML
     TextField nomTextField;
     @FXML

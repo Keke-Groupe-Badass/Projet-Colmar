@@ -14,7 +14,7 @@ import java.net.URL;
 
 import java.util.ResourceBundle;
 
-public class FXPageOuvrageControleur implements Initializable {
+public class FXPageOuvrageControleur extends FXMenuBarAbstractControleur implements Initializable {
     public static Ouvrage ouvrage;
     @FXML
     Label titreLabel;
