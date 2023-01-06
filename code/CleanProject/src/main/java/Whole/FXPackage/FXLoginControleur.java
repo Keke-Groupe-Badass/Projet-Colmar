@@ -39,12 +39,14 @@ public class FXLoginControleur implements Initializable {
                 Scene scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
+                ControleurFunctions.nom = mailTextField.getText();
                 ControleurFunctions.lettrineDAO = new LettrineDAO(dbTextField.getText(),mailTextField.getText(),passwordTextField.getText());
                 ControleurFunctions.tagDAO = new TagDAO(dbTextField.getText(),mailTextField.getText(),passwordTextField.getText());
                 ControleurFunctions.ouvrageDAO = new OuvrageDAO(dbTextField.getText(),mailTextField.getText(),passwordTextField.getText());
                 ControleurFunctions.personneDAO = new PersonneDAO(dbTextField.getText(),mailTextField.getText(),passwordTextField.getText());
                 ControleurFunctions.adminDAO = new AdminDAO(dbTextField.getText(),mailTextField.getText(),passwordTextField.getText());
                 ControleurFunctions.utilisateurDAO = new UtilisateurDAO(dbTextField.getText(),mailTextField.getText(),passwordTextField.getText());
+                ControleurFunctions.statut = ControleurFunctions.utilisateurDAO.obtenirStatut(ControleurFunctions.nom);
             }
             else{
                 throw new mauvaisMDPException();
