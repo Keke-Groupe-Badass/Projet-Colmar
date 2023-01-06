@@ -1,7 +1,23 @@
-import pandas as pd 
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud, STOPWORDS
+"""
+Pour installer:
+matplotlib:
+python -m pip install matplotlib
 
+worldcloud:
+-m pip install WordCloud
+
+
+Fonctionement:
+Le programme lit le fichier texte produit par le java.
+Il séprare le texte par mot.
+Ensuite il appel la bibliothèque que word_cloud qui renvoie une image
+Le programme sauvegarde l'image avec saveimg
+L'image sera supprimé dans le java ainsi que le text
+"""
+
+#permet de sauvegarder l'image
 def saveimg(name):
 	name = "src/main/wordcloud/" + name  +".png"
 	plt.savefig(name)
