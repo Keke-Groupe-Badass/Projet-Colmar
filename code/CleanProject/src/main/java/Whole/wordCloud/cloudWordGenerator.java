@@ -5,10 +5,11 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import Whole.daoPackage.TagDAO;
+
 
 public class cloudWordGenerator {
     public static void main(String[] args) {
+
         try {
             String texte = "je je je suis un nuage de mots mots mots mots je sers a tester"; //TagDAO.tagAndSize();
             String path = "src/main/wordcloud/text.txt";
@@ -26,6 +27,7 @@ public class cloudWordGenerator {
             while ((Output_line = Buffered_Reader.readLine()) != null) {
                 System.out.println(Output_line);
             }
+
         }
         catch (IOException | InterruptedException i) {
             i.printStackTrace();
