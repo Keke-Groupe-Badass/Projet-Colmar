@@ -1,6 +1,5 @@
 package Whole.FXPackage;
 
-import Whole.ccmsPackage.Lettrine;
 import Whole.ccmsPackage.Personne;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;

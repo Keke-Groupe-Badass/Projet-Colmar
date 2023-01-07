@@ -93,13 +93,9 @@ public class FXLettrinesRechercheControleur extends FXMenuBarAbstractControleur 
         ControleurFunctions.changeScene(event,"FxInterfacePageLettrine.fxml");
     }
 
-<<<<<<< HEAD
-=======
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         listView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         listView.setOrientation(Orientation.VERTICAL);
     }
->>>>>>> 4ed0d24c33213d509a9bdf28ec438d0f68c1d4a2
 }
