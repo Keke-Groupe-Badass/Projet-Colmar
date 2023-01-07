@@ -51,6 +51,7 @@ public class FXModifierTagsControleur extends FXMenuBarAbstractControleur{
             alert.setHeaderText(null);
             alert.setContentText("Le tag à été modifié.");
             alert.showAndWait();
+            FXPageTagControleur.tag = t;
             ControleurFunctions.changeScene(event, "FxInterfacePageTag.fxml");
         }else{
 

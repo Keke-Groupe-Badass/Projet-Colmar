@@ -1,6 +1,6 @@
 package Whole.wordCloud;
 
-import Whole.daoPackage.TagDAO;
+import javafx.scene.control.Alert;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,10 +13,9 @@ public class cloudWordGenerator {
     public static void main(String[] args) {
 
         try {
-            TagDAO.saveText();
             String texte = "je je je suis un nuage de mots mots mots mots je sers a tester"; //TagDAO.tagAndSize();
             String path = "src/main/wordcloud/text.txt";
-            //Files.write(Paths.get(path), texte.getBytes());
+            Files.write(Paths.get(path), texte.getBytes());
             ProcessBuilder process = new ProcessBuilder("python", "src/main/wordcloud/cloud.py").inheritIO();
             Process p = process.start();
             p.waitFor();
@@ -33,6 +32,12 @@ public class cloudWordGenerator {
 
         }
         catch (IOException | InterruptedException i) {
+            i.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Une erreur est survenue");
+            alert.setHeaderText("Une erreur est survenue durant la création du nuage");
+            alert.setContentText("Il est nécessaire d'avoir Python installé ainsi que matplotlib.pyplot, worldcloud et random");
+            alert.show();
             i.printStackTrace();
         }
     }

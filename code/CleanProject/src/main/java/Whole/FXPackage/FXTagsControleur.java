@@ -51,4 +51,5 @@ public class FXTagsControleur extends FXMenuBarAbstractControleur implements Ini
             ajouterBtn.setDisable(true);
         }
     }
+
 }
