@@ -194,7 +194,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
                 return false;
             }
             if (donne.getMetadonnees() != null)
-                donne.getMetadonnees().forEach(m -> ajouterMeta(m, donne));
+                donne.getMetadonnees().forEach(m -> ajouterMetaLettrine(m, donne));
             if (donne.getTags() != null)
                 donne.getTags().forEach(t -> taguer(donne, t));
 
@@ -575,7 +575,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      * @see SingleConnection
      * @see Metadonnee
      */
-    public boolean ajouterMeta(Metadonnee meta, Lettrine l) {
+    public boolean ajouterMetaLettrine(Metadonnee meta, Lettrine l) {
         if (meta != null){
             if (meta.getId() <= 0 || l.getId() <= 0) {
                 return false;
