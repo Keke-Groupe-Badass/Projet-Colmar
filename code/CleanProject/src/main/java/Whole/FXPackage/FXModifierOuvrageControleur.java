@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -48,17 +49,15 @@ public class FXModifierOuvrageControleur extends FXMenuBarAbstractControleur imp
     @FXML
     ListView<Personne> listView;
     @FXML
-    Label idLabel;
+    Label labelModifier;
     ArrayList<Personne> newPersonne = new ArrayList<>();
     ArrayList<Personne> removePersonne = new ArrayList<>();
     ObservableList<Personne> listPersonne = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        idLabel.setText(idLabel.getText()+ouvrage.getId());
+        labelModifier.setText("Modifier Ouvrage n°:"+ouvrage.getId());
         lienTextField.setText(ouvrage.getLien());
-        libraireTextField.setText(ouvrage.getLibraire().toString());
-        imprimeurTextField.setText(ouvrage.getImprimeur().toString());
         lieuTextField.setText(ouvrage.getLieuImpression());
         pageTextField.setText(""+ouvrage.getNbPage());
         copyrightTextField.setText(ouvrage.getCopyright());
@@ -69,6 +68,12 @@ public class FXModifierOuvrageControleur extends FXMenuBarAbstractControleur imp
         titreTextField.setText(ouvrage.getTitre());
         dateTextField.setText(""+ouvrage.getDateEdition());
 
+        if(ouvrage.getLibraire()!=null){
+            libraireTextField.setText(ouvrage.getLibraire().toString());
+        }
+        if(ouvrage.getImprimeur()!=null){
+            imprimeurTextField.setText(ouvrage.getImprimeur().toString());
+        }
         for(Personne p:ouvrage.getAuteurs()){
             listPersonne.add(p);
         }
@@ -86,7 +91,7 @@ public class FXModifierOuvrageControleur extends FXMenuBarAbstractControleur imp
     }
 
     @FXML
-    protected void clickListAuteur(ActionEvent event){
+    protected void clickListAuteur(MouseEvent event){
         if(supprimerCheckBox.isSelected()){
             Personne p = listView.getSelectionModel().getSelectedItem();
             if(newPersonne.contains(p)){

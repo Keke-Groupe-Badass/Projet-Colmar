@@ -69,6 +69,7 @@ public class Ouvrage implements CCMS<Ouvrage> {
     public Ouvrage() {
         this.id = -2;
         this.nbPage = -2;
+        this.auteurs = new ArrayList<>();
     }
 
     /**

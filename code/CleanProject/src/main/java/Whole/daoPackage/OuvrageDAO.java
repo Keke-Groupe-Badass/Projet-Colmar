@@ -36,15 +36,10 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
      */
     @Override
     public boolean creer(Ouvrage donne) {
-        if(donne.getId() < 0) {
-            return false;
-        }
         try {
-            String sql="SELECT * FROM ouvrages WHERE idOuvrage="+donne.getId();
-            Statement stmt=cn.createStatement();
-            ResultSet rs=stmt.executeQuery(sql);
+
             //Si l'ouvrage n'a pas déjà été inséré
-            if (!rs.next()){
+                System.out.println("hi man");
                 PreparedStatement pstmt = cn.prepareStatement("INSERT INTO "
                         + "ouvrages(libraire, imprimeur, lieuImpression, "
                         + "dateEdition, lien, nbPage, copyright, "
@@ -69,20 +64,22 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
                 pstmt.setString(10, donne.getFormat());
                 pstmt.setString(11, donne.getTitre());
                 pstmt.setBoolean(12, donne.getReechantillonage());
+
                 int nbColonnes = pstmt.executeUpdate();
                 if(nbColonnes>0){
-                    ResultSet rs2 = stmt.getGeneratedKeys();
-                    if(rs.next()){
+                    ResultSet rs2 = pstmt.getGeneratedKeys();
+                    if(rs2.next()){
                         donne.setId(rs2.getInt(1));
                     }
                 }
                 return nbColonnes > 0;
-            }
+
         } catch (SQLException e) {
+            System.err.println(e);
             return false;
         }
-        return false;
     }
+
 
     /**
     * Permet de faire une insertion dans la table "ecrit". On vérifie que
