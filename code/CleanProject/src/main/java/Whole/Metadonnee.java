@@ -176,8 +176,8 @@ public class Metadonnee {
     public String toString() {
         return
                 "nom:" + nom +
-                ", entree:" + valeur +
-                ", unite:" + unite + ", id:" + id
+                        ", entree:" + valeur +
+                        ", unite:" + unite + ", id:" + id
                 ;
     }
 }

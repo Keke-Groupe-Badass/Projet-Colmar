@@ -62,7 +62,7 @@ public class ControleurFunctions {
     }
     public static Boolean connect(String login, String pwd){
 
-        if(Controleur.Login(login,pwd)){
+        if(Controleur.login(login,pwd)){
             nom = login;
             return true;
         }

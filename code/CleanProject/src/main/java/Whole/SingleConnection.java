@@ -17,18 +17,18 @@ public class SingleConnection {
      * login et le mot de passe.
      * Constructeur de la classe SingleConnection.
      *
-     * @param url url de la BDD
+     * @param url   url de la BDD
      * @param login login de la BDD
-     * @param mdp mot de passe de la BDD
+     * @param mdp   mot de passe de la BDD
      */
     private SingleConnection(String url, String login, String mdp) {
-        final MysqlDataSource mysqlDS=new MysqlDataSource();
+        final MysqlDataSource mysqlDS = new MysqlDataSource();
         mysqlDS.setURL(url);
         mysqlDS.setUser(login);
         mysqlDS.setPassword(mdp);
 
         try {
-            cn=mysqlDS.getConnection();
+            cn = mysqlDS.getConnection();
         } catch (SQLException e) {
             System.out.println("Erreur");
             e.printStackTrace();
@@ -45,13 +45,13 @@ public class SingleConnection {
      * Sinon, elle renvoie la connexion deja existante.
      * Si échec de connexion, elle lève une exception SQLException.
      *
-     * @author Emerance
      * @param url   lien vers la base de donnees
      * @param login login de l'utilisateur de la BDD, permet de s'identifier
      *              sur la base de données pour y avoir accès
      * @param mdp   mot de passe de l'utilisateur de la BDD, permet également
      *              de s'identifier sur la base de donnees
      * @return renvoie l'objet Connection cn
+     * @author Emerance
      */
     public static Connection getInstance(String url, String login, String mdp) {
         if (cn == null) {
@@ -59,7 +59,8 @@ public class SingleConnection {
         }
         return cn;
     }
-    public static void resetConnection(){
+
+    public static void resetConnection() {
         cn = null;
     }
 }
