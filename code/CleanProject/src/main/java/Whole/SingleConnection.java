@@ -59,4 +59,7 @@ public class SingleConnection {
         }
         return cn;
     }
+    public static void resetConnection(){
+        cn = null;
+    }
 }

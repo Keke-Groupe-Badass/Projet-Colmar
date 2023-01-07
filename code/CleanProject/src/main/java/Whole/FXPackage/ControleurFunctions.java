@@ -1,5 +1,6 @@
 package Whole.FXPackage;
 
+import Whole.Controleur;
 import Whole.daoPackage.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -14,6 +15,7 @@ import java.io.IOException;
 
 public class ControleurFunctions {
     public static String nom;
+
     public static String statut;
     public static AdminDAO adminDAO;
     public static OuvrageDAO ouvrageDAO;
@@ -57,5 +59,13 @@ public class ControleurFunctions {
             alert.setContentText(e.toString());
             alert.show();
         }
+    }
+    public static Boolean connect(String login, String pwd){
+
+        if(Controleur.Login(login,pwd)){
+            nom = login;
+            return true;
+        }
+        return false;
     }
 }

@@ -3,8 +3,11 @@ package Whole.daoPackage;
 import Whole.Metadonnee;
 import Whole.SingleConnection;
 import Whole.ccmsPackage.*;
+
 import java.awt.image.BufferedImage;
+
 import java.sql.*;
+
 import java.util.ArrayList;
 import java.util.Set;
 import java.util.TreeSet;
@@ -170,7 +173,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      */
     @Override
     public boolean creer(Lettrine donne) {
-        if (donne.getId() < 0 || donne.getLien() == null) {
+        if ( donne.getLien() == null) { //donne.getId() < 0 ||
             return false;
         }
         try {
@@ -193,6 +196,10 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
             if (nbColonne <= 0) {
                 return false;
             }
+            ResultSet rs = stmt.getGeneratedKeys();
+            if(rs.next()){
+                donne.setId(rs.getInt(1));
+            }
             if (donne.getMetadonnees() != null)
                 donne.getMetadonnees().forEach(m -> ajouterMeta(m, donne));
             if (donne.getTags() != null)
@@ -200,6 +207,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
 
             return true;
         } catch (SQLException e) {
+            System.err.println(e);
             return false;
         }
     }
@@ -577,7 +585,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      */
     public boolean ajouterMeta(Metadonnee meta, Lettrine l) {
         if (meta != null){
-            if (meta.getId() <= 0 || l.getId() <= 0) {
+            if ( l.getId() <= 0) {
                 return false;
             }
             try {
@@ -585,6 +593,12 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
                 String sql = "UPDATE metadonnees SET idLettrine=" + l.getId() +
                         "WHERE idMeta=" + meta.getId();
                 int nbColonne = stmt.executeUpdate(sql);
+                if(nbColonne>0){
+                    ResultSet rs2 = stmt.getGeneratedKeys();
+                    if(rs2.next()){
+                        meta.setId(rs2.getInt(1));
+                    }
+                }
                 return nbColonne > 0;
             } catch (SQLException e) {
                 return false;

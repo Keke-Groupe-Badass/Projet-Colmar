@@ -118,6 +118,12 @@ public class TagDAO extends AbstractDAO<Tag> {
                     stmt.setString(1, objet.getNom());
                     stmt.setString(2, objet.getDescription());
                     int nbColonnes = stmt.executeUpdate();
+                    if(nbColonnes>0){
+                        ResultSet rs2 = stmt.getGeneratedKeys();
+                        if(rs2.next()){
+                            objet.setId(rs2.getInt(1));
+                        }
+                    }
                     return nbColonnes > 0;
                 }
             } catch (SQLException e) {
