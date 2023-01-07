@@ -46,8 +46,14 @@ public class FXOuvrageAjoutControleur extends FXMenuBarAbstractControleur{
         o.setCreditPhoto(creditPhotoTextField.getText());
         o.setReechantillonage(reechantillonageCheckBox.isSelected());
         o.setCopyright(copyrightTextField.getText());
+        o.setFormat(formatTextField.getText());
         if(nombrePageTextField.getText()!=null){
-            o.setNbPage(Integer.parseInt(nombrePageTextField.getText()));
+            try {
+                o.setNbPage(Integer.parseInt(nombrePageTextField.getText()));
+            }catch(Exception e){
+                System.err.println(e);
+                o.setNbPage(-1);
+            }
         }else{
             o.setNbPage(-1);
         }
@@ -55,15 +61,33 @@ public class FXOuvrageAjoutControleur extends FXMenuBarAbstractControleur{
         if(imprimeurTextField.getText()==null){
             o.setImprimeur(null);
         }else{
-            o.setImprimeur(new Personne(Integer.parseInt(imprimeurTextField.getText())));
+            try{
+                o.setImprimeur(new Personne(Integer.parseInt(imprimeurTextField.getText())));
+            }catch(Exception e){
+                System.err.println(e);
+                o.setImprimeur(null);
+
+            }
         }
         if(libraireTextField.getText()==null){
             o.setLibraire(null);
         }else{
-            o.setLibraire(new Personne(Integer.parseInt(libraireTextField.getText())));
+            try{
+                o.setLibraire(new Personne(Integer.parseInt(libraireTextField.getText())));
+            }catch(Exception e){
+                System.err.println(e);
+                o.setLibraire(null);
+
+            }
         }
         if(dateTextField.getText()!=null){
-            o.setDateEdition(Integer.parseInt(dateTextField.getText()));
+            try{
+                o.setDateEdition(Integer.parseInt(dateTextField.getText()));
+            }catch(Exception e){
+                System.err.println(e);
+                o.setDateEdition(-1);
+
+            }
         }else{
             o.setDateEdition(-1);
         }
@@ -75,8 +99,9 @@ public class FXOuvrageAjoutControleur extends FXMenuBarAbstractControleur{
             alert.setHeaderText(null);
             alert.setContentText("L'ouvrage à été crée.");
             alert.showAndWait();
-            ControleurFunctions.changeScene(event, "FxInterfacePageOuvrage.fxml");
             FXPageOuvrageControleur.ouvrage = o;
+
+            ControleurFunctions.changeScene(event, "FxInterfacePageOuvrage.fxml");
         }
         else{
             Alert alert = new Alert(Alert.AlertType.ERROR);

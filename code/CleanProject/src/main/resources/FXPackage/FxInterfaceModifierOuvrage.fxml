@@ -77,18 +77,18 @@
                               <Label text="Imprimeur (id)" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                               <Label text="Libraire (id)" GridPane.columnIndex="2" GridPane.rowIndex="4" />
                               <Label GridPane.columnIndex="2" GridPane.rowIndex="5" />
-                              <CheckBox mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                              <TextField GridPane.columnIndex="1" />
-                              <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                              <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                              <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                              <TextField GridPane.columnIndex="3" />
-                              <TextField GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                              <TextField GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                              <TextField GridPane.columnIndex="3" GridPane.rowIndex="3" />
-                              <TextField GridPane.columnIndex="3" GridPane.rowIndex="4" />
-                              <TextField GridPane.columnIndex="3" GridPane.rowIndex="5" />
+                              <CheckBox mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="5" fx:id="reechantillonageCheckBox"/>
+                              <TextField GridPane.columnIndex="1" fx:id="titreTextField"/>
+                              <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="dateTextField" />
+                              <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" fx:id="formatTextField"/>
+                              <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" fx:id="resolutionTextField"/>
+                              <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" fx:id="creditPhotoTextField"/>
+                              <TextField GridPane.columnIndex="3" fx:id="copyrightTextField"/>
+                              <TextField GridPane.columnIndex="3" GridPane.rowIndex="1" fx:id="pageTextField"/>
+                              <TextField GridPane.columnIndex="3" GridPane.rowIndex="2" fx:id="lieuTextField"/>
+                              <TextField GridPane.columnIndex="3" GridPane.rowIndex="3" fx:id="imprimeurTextField"/>
+                              <TextField GridPane.columnIndex="3" GridPane.rowIndex="4" fx:id="libraireTextField"/>
+                              <TextField GridPane.columnIndex="3" GridPane.rowIndex="5" fx:id="lienTextField"/>
                               <Label text="Lien" GridPane.columnIndex="2" GridPane.rowIndex="5" />
                            </children>
                         </GridPane>
@@ -114,7 +114,7 @@
                            <center>
                               <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                                  <children>
-                                    <ListView fx:id="metaListView" prefHeight="150.0" prefWidth="596.0" onMouseClicked="#clickListAuteur" />
+                                    <ListView fx:id="listView" prefHeight="150.0" prefWidth="596.0" onMouseClicked="#clickListAuteur" />
                                  </children>
                               </VBox>
                            </center>
@@ -124,8 +124,8 @@
                                     <Label prefHeight="0.0" prefWidth="41.0" text="Auteurs" />
                                     <HBox prefHeight="24.0" prefWidth="596.0">
                                        <children>
-                                          <CheckBox mnemonicParsing="false" text="Supprimer" />
-                                          <TextField prefHeight="25.0" prefWidth="100.0" text="Auteur (id)" />
+                                          <CheckBox mnemonicParsing="false" text="Supprimer" fx:id="supprimerCheckBox"/>
+                                          <TextField prefHeight="25.0" prefWidth="100.0" text="Auteur (id)" fx:id="addAuteurTextField"/>
                                           <Button mnemonicParsing="false" text="+" onAction="#ajouterAuteur"/>
                                        </children>
                                     </HBox>

@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
 
@@ -18,6 +19,8 @@ public class FXPageOuvrageControleur extends FXMenuBarAbstractControleur impleme
     public static Ouvrage ouvrage;
     @FXML
     Label titreLabel;
+    @FXML
+    Label idLabel;
     @FXML
     Label dateLabel;
     @FXML
@@ -65,6 +68,7 @@ public class FXPageOuvrageControleur extends FXMenuBarAbstractControleur impleme
         copyrightLabel.setText(ouvrage.getCopyright());
         nombrePageLabel.setText(""+ouvrage.getNbPage());
         lieuLabel.setText(ouvrage.getLieuImpression());
+        idLabel.setText(""+ouvrage.getId());
         if(ouvrage.getImprimeur()!=null){
             imprimeurBtn.setText(ouvrage.getImprimeur().toString());
         }
@@ -76,7 +80,7 @@ public class FXPageOuvrageControleur extends FXMenuBarAbstractControleur impleme
         }
     }
     @FXML
-    protected void clickOnPersonne(ActionEvent event) {
+    protected void clickOnPersonne(MouseEvent event) {
         Personne p = personneListView.getSelectionModel().getSelectedItem();
         if(p!=null){
             FXPagePersonneControleur.personne = p;

@@ -85,7 +85,7 @@
                <top>
                   <HBox prefHeight="28.0" prefWidth="598.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Label fx:id="labelModifier" text="Ouvrage n°" />
+                        <Label fx:id="idLabel" text="Ouvrage n°" />
                         <Button fx:id="modifierBtn" mnemonicParsing="false" onAction="#modifierScene" text="Modifier" />
                         <Button fx:id="retourBtn" mnemonicParsing="false" text="Retour" onAction="#retour"/>
                      </children>
