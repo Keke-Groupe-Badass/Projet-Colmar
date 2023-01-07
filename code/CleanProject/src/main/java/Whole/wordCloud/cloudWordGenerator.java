@@ -14,8 +14,9 @@ public class cloudWordGenerator {
 
         try {
             String texte = TagDAO.tagAndSize();
+
             String path = "src/main/wordcloud/text.txt";
-            Files.write(Paths.get(path), texte.getBytes());
+            //Files.write(Paths.get(path), texte.getBytes());
             ProcessBuilder process = new ProcessBuilder("python", "src/main/wordcloud/cloud.py").inheritIO();
             Process p = process.start();
             p.waitFor();
