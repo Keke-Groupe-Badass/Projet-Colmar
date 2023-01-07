@@ -444,8 +444,8 @@ public class Lettrine implements CCMS<Lettrine> {
 
     @Override
     public String toString() {
-        return "ouvrage: " + ouvrage +
-                ", identique: " + identique
-                +", id: "+id;
+        return "id: "+id+", ouvrage: " + ouvrage +
+                ", identique: " + identique;
+
     }
 }

@@ -1,5 +1,7 @@
 package Whole.wordCloud;
 
+import Whole.daoPackage.TagDAO;
+
 import javafx.scene.control.Alert;
 
 import java.io.BufferedReader;

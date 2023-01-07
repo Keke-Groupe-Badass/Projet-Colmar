@@ -343,7 +343,7 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
      * @param id l'identifiant de la personne
      * @return la personne
      */
-    private Personne getPersonne(int id){
+    public Personne getPersonne(int id){
         PreparedStatement stmt= null;
         try {
             stmt = cn.prepareStatement("SELECT * FROM `personnes` "

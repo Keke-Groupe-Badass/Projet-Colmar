@@ -68,7 +68,7 @@ public class FXPageOuvrageControleur extends FXMenuBarAbstractControleur impleme
         copyrightLabel.setText(ouvrage.getCopyright());
         nombrePageLabel.setText(""+ouvrage.getNbPage());
         lieuLabel.setText(ouvrage.getLieuImpression());
-        idLabel.setText(""+ouvrage.getId());
+        idLabel.setText("Ouvrage n°"+ouvrage.getId());
         if(ouvrage.getImprimeur()!=null){
             imprimeurBtn.setText(ouvrage.getImprimeur().toString());
         }

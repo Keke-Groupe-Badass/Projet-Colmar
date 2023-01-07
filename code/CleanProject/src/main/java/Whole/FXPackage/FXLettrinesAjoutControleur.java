@@ -62,6 +62,7 @@ public class FXLettrinesAjoutControleur extends FXMenuBarAbstractControleur{
             alert.setContentText("La lettrine à été crée.");
             alert.showAndWait();
             FXPageLettrineControleur.lettrine = l;
+            l.setCreateur(ControleurFunctions.ouvrageDAO.getPersonne(l.getCreateur().getId()));
 
             ControleurFunctions.changeScene(event, "FxInterfacePageLettrine.fxml");
         }
