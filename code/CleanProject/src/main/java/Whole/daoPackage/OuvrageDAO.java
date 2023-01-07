@@ -50,7 +50,7 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
                         + "dateEdition, lien, nbPage, copyright, "
                         + "creditPhoto, resolution, format, "
                         + "titre, reechantillonage) "
-                        + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",Statement.RETURN_GENERATED_KEYS);
+                        + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
                 if (donne.getLibraire() != null)
                     pstmt.setInt(1, donne.getLibraire().getId());
                 else
@@ -184,7 +184,7 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
     public boolean supprimer(Ouvrage objet) {
         try {
             PreparedStatement stmt=cn.prepareStatement("UPDATE lettrines "
-                    + "SET idOuvrage=null WHERE idOuvrage=?");
+                    + "SET idOuvrage=-1 WHERE idOuvrage=?");
             stmt.setInt(1,objet.getId());
             stmt.execute();
             stmt = cn.prepareStatement("DELETE FROM `ecrit` "
