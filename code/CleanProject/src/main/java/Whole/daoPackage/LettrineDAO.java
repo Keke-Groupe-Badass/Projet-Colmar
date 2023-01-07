@@ -170,7 +170,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
      */
     @Override
     public boolean creer(Lettrine donne) {
-        if (donne.getId() < 0 || donne.getLien() == null) {
+        if ( donne.getLien() == null) { //donne.getId() < 0 ||
             return false;
         }
         try {
@@ -200,6 +200,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
 
             return true;
         } catch (SQLException e) {
+            System.err.println(e);
             return false;
         }
     }

@@ -1,6 +1,7 @@
 package Whole.FXPackage;
 
 import Whole.Controleur;
+import Whole.SingleConnection;
 import Whole.daoPackage.*;
 import Whole.exceptionPackage.mauvaisMDPException;
 
@@ -19,6 +20,7 @@ import java.io.IOException;
 
 import java.net.URL;
 
+import java.sql.Connection;
 import java.util.ResourceBundle;
 
 public class FXLoginControleur implements Initializable {
@@ -37,7 +39,11 @@ public class FXLoginControleur implements Initializable {
                     Controleur.getConfigList().set(0,dbTextField.getText());
                 }
             }
-            if(FXMain.connect(mailTextField.getText(),passwordTextField.getText())){
+            System.out.println(UtilisateurDAO.encrypte(passwordTextField.getText()));
+            System.out.println(UtilisateurDAO.encrypte(passwordTextField.getText()));
+
+            Connection cn = SingleConnection.getInstance(Controleur.getConfigList().get(0),mailTextField.getText(),UtilisateurDAO.encrypte(passwordTextField.getText()));
+            if(cn != null){
                 Parent root = FXMLLoader.load(FXMain.class.getResource("/FXPackage/FxInterfaceMain.fxml"));
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 Scene scene = new Scene(root);
@@ -50,7 +56,12 @@ public class FXLoginControleur implements Initializable {
                 ControleurFunctions.personneDAO = new PersonneDAO(Controleur.getConfigList().get(0),mailTextField.getText(),passwordTextField.getText());
                 ControleurFunctions.adminDAO = new AdminDAO(Controleur.getConfigList().get(0),mailTextField.getText(),passwordTextField.getText());
                 ControleurFunctions.utilisateurDAO = new UtilisateurDAO(Controleur.getConfigList().get(0),mailTextField.getText(),passwordTextField.getText());
+                System.out.println();
+
                 ControleurFunctions.statut = ControleurFunctions.utilisateurDAO.obtenirStatut(ControleurFunctions.nom);
+                if(ControleurFunctions.statut==null){
+                    ControleurFunctions.statut = "chercheur";
+                }
             }
             else{
                 throw new mauvaisMDPException();
@@ -63,6 +74,7 @@ public class FXLoginControleur implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        ControleurFunctions.statut = "chercheur";
         dbTextField.setText(dbName);
     }
 }

@@ -65,6 +65,7 @@ public class FXLettrinesAjoutControleur extends FXMenuBarAbstractControleur{
             FXPageLettrineControleur.lettrine = l;
         }
         else{
+
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Une erreur est survenue");
             alert.setHeaderText("Erreur est survenue durant la modification de la base");

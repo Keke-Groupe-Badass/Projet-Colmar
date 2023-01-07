@@ -18,7 +18,7 @@ import java.util.ArrayList;
 */
 public  class Controleur {
     static ArrayList<String> configList;
-    static UtilisateurDAO utilisateurDAO;
+    public static UtilisateurDAO utilisateurDAO;
     private static String login;
     /**
     * Permet de sauvegarder des métadonnés (ou autre) dans le but d'un copier coller
@@ -77,7 +77,7 @@ public  class Controleur {
             configList = new ArrayList<>();
             lireConfigFile();
             System.out.println(configList);
-            utilisateurDAO = new UtilisateurDAO(configList.get(0),"utilisateurSeulement","");
+            //utilisateurDAO = new UtilisateurDAO(configList.get(0),"utilisateurSeulement","");
             this.pressePapier=new Object();
         } catch (IOException e) {
             throw new RuntimeException(e);
