@@ -70,6 +70,12 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
                 pstmt.setString(11, donne.getTitre());
                 pstmt.setBoolean(12, donne.getReechantillonage());
                 int nbColonnes = pstmt.executeUpdate();
+                if(nbColonnes>0){
+                    ResultSet rs2 = stmt.getGeneratedKeys();
+                    if(rs.next()){
+                        donne.setId(rs2.getInt(1));
+                    }
+                }
                 return nbColonnes > 0;
             }
         } catch (SQLException e) {

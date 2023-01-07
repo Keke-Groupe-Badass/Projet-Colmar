@@ -1,12 +1,18 @@
 package Whole.FXPackage;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-public class FXCreerUtilisateur {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class FXCreerUtilisateur implements Initializable {
     @FXML
     TextField emailTextField;
     @FXML
@@ -31,5 +37,12 @@ public class FXCreerUtilisateur {
             }
         }
 
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        ObservableList<String> options = FXCollections.observableArrayList("chercheur","modérateur","admin");
+        statutChoiceBox.setValue("chercheur");
+        statutChoiceBox.setItems(options);
     }
 }

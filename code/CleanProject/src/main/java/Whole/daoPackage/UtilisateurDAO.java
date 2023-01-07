@@ -49,6 +49,9 @@ public class UtilisateurDAO extends SuperAbstractDAO {
      * @see SingleConnection
      */
     public String connexion(String login, String mdp) {
+        /**
+         *
+         */
         if (!mdpValide(mdp))
             return null;
         final String mdpEncrypte = encrypte(mdp);
@@ -179,6 +182,7 @@ public class UtilisateurDAO extends SuperAbstractDAO {
                 rs.next();
                 if (!rs.next()) { //Si le login n'est pas déjà utilisé
                     final String mdpEncrypte = encrypte(mdp);
+                    System.out.println(mdpEncrypte);
                     sql = "INSERT INTO utilisateurs VALUES(?, ?, ?)";
                     stmt = cn.prepareStatement(sql);
                     stmt.setString(1, login);
@@ -188,13 +192,13 @@ public class UtilisateurDAO extends SuperAbstractDAO {
                     System.out.println("hi");
                     System.out.println(login);
                     fonctionne = nbColonnes > 0;
-                    login = login;
+                    /** ancien méthode de création utilisateur (insert elements dans localhost directement
                     if(fonctionne){
-                        sql = "CREATE USER '"+login+"'@'localhost' IDENTIFIED BY 'password';";
+                        sql = "CREATE USER '"+login+"'@'localhost' IDENTIFIED BY '"+mdpEncrypte+"'";
                         stmt = cn.prepareStatement(sql);
                         return stmt.execute();
                         //TODO trouver un moyen de verifier qur l'utilisateur est été enregistré pour la bd (pas dans la table utilisateur)
-                    }
+                    }*/
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -228,7 +232,7 @@ public class UtilisateurDAO extends SuperAbstractDAO {
      * @return renvoie le mot de passe encrypté
      * @author Emerance
      */
-    private String encrypte(String mdp) {
+    public static String encrypte(String mdp) {
         String mdpEncrypte = null;
 
         try {
@@ -253,7 +257,7 @@ public class UtilisateurDAO extends SuperAbstractDAO {
      */
     public String obtenirStatut(String email) {
         String sql;
-        sql = "SELECT `email` FROM `utilisateurs` WHERE `email`='" + email + "'";
+        sql = "SELECT `statut` FROM `utilisateurs` WHERE `email`='" + email + "'";
         Statement stmt = null;
         try {
             stmt = cn.createStatement();
