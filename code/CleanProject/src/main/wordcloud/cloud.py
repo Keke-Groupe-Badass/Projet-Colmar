@@ -4,17 +4,19 @@ from random import randint
 
 """
 Pour installer:
+voir scripts
+
 matplotlib:
 python -m pip install matplotlib
 worldcloud:
--m pip install WordCloud
+python -m pip install WordCloud
 
 Fonctionement:
-Le programme lit le fichier texte produit par le java.
+Le programme lit le fichier texte produit par la classe java cloudWordGenerator.
 Il séprare le texte par mot.
-Ensuite il appel la bibliothèque que word_cloud qui renvoie une image
-Le programme sauvegarde l'image avec saveimg
-L'image sera supprimé dans le java ainsi que le text
+Ensuite il appel la bibliothèque word_cloud qui renvoie une image
+Le programme sauvegarde l'image avec la méthode saveimg
+L'image et le texte créés seront suprimés lors de l'action sur le bouton retour
 """
 
 #permet de sauvegarder l'image
@@ -27,7 +29,7 @@ def saveimg(name):
 def couleur(*args, **kwargs):
     return "rgb({}, {}, {})".format(randint(0, 255), randint(0, 255), randint(0, 255))
 
-#permet de lire l'image
+#permet de lire le texte et de placer les mots un par un dans une liste
 txtArray = []
 with open('src/main/wordcloud/text.txt') as file:
     #separe les lignes
@@ -36,13 +38,13 @@ with open('src/main/wordcloud/text.txt') as file:
 		for word in line.split():
 			txtArray.append(word)
 
-#permet de convertir la liste de l'image en string
+#permet de convertir la liste de mots en string, chaque mot est séparé du précédent par un espace
 text = " ".join(i for i in txtArray)
 
 #appel de la bibliothèque WordCloud pour créer l'image
 word_cloud = WordCloud(
-	width=3000,
-	height=2000,
+	width=600,
+	height=345,
 	random_state=1,
 	background_color="white",
 	colormap="Pastel1",

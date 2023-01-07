@@ -831,11 +831,8 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
     public ArrayList<Lettrine> chercher(Lettrine donne) {
         ArrayList<ArrayList<Integer>> taille = new ArrayList<>();
         ArrayList<Lettrine> let = new ArrayList<>();
-        Lettrine l = new Lettrine();
-        if (donne.getMetadonnees() != null) {
-            if (donne.getMetadonnees().size() > 0) {
-                donne.setMetadonnees(rechercheMeta(donne.getMetadonnees().get(0)));
-            }
+        if(donne.getMetadonnees().size()>0){
+            donne.setMetadonnees(rechercheMeta(donne.getMetadonnees().get(0)));
         }
 
         // Recherche par id
@@ -846,6 +843,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
                         "WHERE idLettrine=" + donne.getId();
                 ResultSet res = stmt.executeQuery(sql);
                 if (res.next()) {
+                    Lettrine l = new Lettrine();
                     l.setId(res.getInt(1));
                     l.setNbPage(res.getInt(2));
                     l.setLien(res.getString(3));
@@ -872,11 +870,12 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
                 while (resOuvrage.next()) {
                     idRechercheOuvrage.add(resOuvrage.getInt(1));
                 }
-                taille.add(idRechercheOuvrage);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
+        if(!idRechercheOuvrage.isEmpty())
+            taille.add(idRechercheOuvrage);
 
         // Recherche des lettrines associées au num de page
         ArrayList<Integer> idRechercheNumPage = new ArrayList<>();
@@ -889,15 +888,16 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
                 while (resNumPage.next()) {
                     idRechercheNumPage.add(resNumPage.getInt(1));
                 }
-                taille.add(idRechercheNumPage);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
+        if(!idRechercheNumPage.isEmpty())
+            taille.add(idRechercheNumPage);
 
         // Recherche des lettrines associées aux métadonnées
         Set<Integer> idRechercheMetaSet = new TreeSet<>();
-        if (donne.getMetadonnees() != null) {
+        if (!donne.getMetadonnees().isEmpty()) {
             try {
                 for (Metadonnee meta : donne.getMetadonnees()) {
                     Statement stmtMeta = cn.createStatement();
@@ -914,24 +914,6 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
             }
         }
 
-        // Recherche des lettrines associées aux tests
-        Set<Integer> idRechercheTagSet = new TreeSet<>();
-        if (donne.getTags() != null) {
-            try {
-                for (Tag tag : donne.getTags()) {
-                    Statement stmtTag = cn.createStatement();
-                    String sqlTag = "SELECT idLettrine FROM regroupe " +
-                            "WHERE idTag=" + tag.getId();
-                    ResultSet resTag = stmtTag.executeQuery(sqlTag);
-                    while (resTag.next()) {
-                        idRechercheTagSet.add(resTag.getInt(1));
-                    }
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-
         // Recherche des lettrines associées à la personne
         ArrayList<Integer> idRecherchePersonne = new ArrayList<>();
         if (donne.getCreateur() != null) {
@@ -943,43 +925,56 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
                 while (resPersonne.next()) {
                     idRecherchePersonne.add(resPersonne.getInt(1));
                 }
-                taille.add(idRecherchePersonne);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
+        if(!idRecherchePersonne.isEmpty())
+            taille.add(idRecherchePersonne);
 
         //recherche des lettrines associées aux plagiat
         ArrayList<Integer> idRecherchePlagiat = new ArrayList<>();
-        if (donne.getIdentique() != -1) {
+        if (donne.getIdentique() != 0) {
             try {
                 Statement stmtPlagiat = cn.createStatement();
                 String sqlPlagiat = "SELECT idLettrine FROM lettrines " +
                         "WHERE idIdentique=" + donne.getIdentique();
                 ResultSet resPlagiat = stmtPlagiat.executeQuery(sqlPlagiat);
-                if (resPlagiat.next()) {
+                while (resPlagiat.next()) {
                     idRecherchePlagiat.add(resPlagiat.getInt(1));
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
+        if(!idRecherchePlagiat.isEmpty())
+            taille.add(idRecherchePlagiat);
 
         ArrayList<Integer> idRechercheMeta = new ArrayList<>(idRechercheMetaSet);
-        taille.add(idRechercheMeta);
+        if(!idRechercheMetaSet.isEmpty()) {
+            taille.add(idRechercheMeta);
+        }
 
-        ArrayList<Integer> idRechercheTag = new ArrayList<>(idRechercheTagSet);
-        taille.add(idRechercheTag);
+        ArrayList<Integer> tot = new ArrayList<>();
+        try {
+            Statement statement = cn.createStatement();
+            String sqltot = "SELECT idLettrine FROM lettrines";
+            ResultSet resultSet = statement.executeQuery(sqltot);
+            while(resultSet.next()) {
+                tot.add(resultSet.getInt(1));
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
 
-        ArrayList<Integer> boucle = max(taille);
-        Set<Integer> idSet = new TreeSet<>();
-        for (int id : boucle) {
-            rechercheID(idRechercheOuvrage, idSet, id);
-            rechercheID(idRechercheNumPage, idSet, id);
-            rechercheID(idRechercheMeta, idSet, id);
-            rechercheID(idRechercheTag, idSet, id);
-            rechercheID(idRecherchePersonne, idSet, id);
-            rechercheID(idRecherchePlagiat, idSet, id);
+        Set<Integer> idSet;
+        if(taille.size() > 1) {
+            idSet = rechercheID(taille, tot);
+        }
+
+        else {
+            idSet = new TreeSet<>(taille.get(0));
         }
 
         for (int id : idSet) {
@@ -988,6 +983,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
                 String sql = "SELECT * FROM lettrines WHERE idLettrine=" + id;
                 ResultSet res = st.executeQuery(sql);
                 while (res.next()) {
+                    Lettrine l = new Lettrine();
                     l.setId(res.getInt(1));
                     l.setNbPage(res.getInt(2));
                     l.setLien(res.getString(3));
@@ -1005,41 +1001,29 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
     }
 
     /**
-     * Permet de récupérer les id des lettrines qui nous intéressent parmi des
-     * listes d'id de lettrines dont certaines peuvent ne pas correspondre à
-     * la recherche.
+     * Factorisation de code.
      *
-     * @param array arraylist contenant les arraylists des id des lettrines à
-     *              trier
-     * @return res, arraylist contenant les id des lettrines correspondantes à
-     *          la recherche
+     * @param array arraylist contenant les arraylists contenant des id de lettrines
+     * @param tot   arraylist contenant les id de toutes les lettrines de la base
+     * @return res  set contenant les id des lettrines a contruire
      * @author Romain
      * @see #chercher
      */
-    public static ArrayList<Integer> max(ArrayList<ArrayList<Integer>> array) {
-        ArrayList<Integer> res = new ArrayList<>(array.get(0));
-        for (int i = 0; i < array.size() - 1; i++) {
-            if (array.get(i).size() >= array.get(i + 1).size()) {
-                res = array.get(i + 1);
+    public static Set<Integer> rechercheID(ArrayList<ArrayList<Integer>> array, ArrayList<Integer> tot) {
+        Set<Integer> res = new TreeSet<>();
+        int cp;
+        for(int id : tot) {
+            cp = 0;
+            for(int i=0; i<array.size(); i++) {
+                if(array.get(i).contains(id)) {
+                    cp ++;
+                }
+            }
+            if(cp == array.size()) {
+                res.add(id);
             }
         }
         return res;
-    }
-
-    /**
-     * Factorisation de code.
-     *
-     * @param array arraylist contenant des id de lettrines
-     * @param set   set à remplir par des id de lettrine
-     * @param id    id d'une lettrine
-     * @author Romain
-     * @see #chercher
-     */
-    public static void rechercheID(ArrayList<Integer> array, Set<Integer> set,
-                                   int id) {
-        if (array.contains(id)) {
-            set.add(id);
-        }
     }
 
     /**

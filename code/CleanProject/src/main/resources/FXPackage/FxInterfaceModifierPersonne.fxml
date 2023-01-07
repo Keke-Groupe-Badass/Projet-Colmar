@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Whole.FXPackage.FXModifierOuvrageControleur">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Whole.FXPackage.FXModifierPersonneControleur">
    <top>
     <MenuBar fx:id="myMenuBar" layoutY="1.0" prefHeight="27.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
            <menus>
@@ -59,8 +59,8 @@
                            <children>
                               <Label text="Nom" />
                               <Label text="Prenom" GridPane.rowIndex="1" />
-                              <TextField GridPane.columnIndex="1" />
-                              <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <TextField fx:id="nomTextField" GridPane.columnIndex="1" />
+                              <TextField fx:id="prenomTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                            </children>
                         </GridPane>
                         <BorderPane prefHeight="200.0" prefWidth="200.0">
@@ -68,7 +68,7 @@
                               <Label text="Note:" BorderPane.alignment="CENTER" />
                            </top>
                            <center>
-                              <TextArea prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+                              <TextArea fx:id="noteTextArea" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
                            </center>
                         </BorderPane>
                      </items>
@@ -78,9 +78,9 @@
                   <HBox prefHeight="28.0" prefWidth="598.0" BorderPane.alignment="CENTER">
                      <children>
                         <Label fx:id="labelModifier" text="Personne n°" />
-                        <Button fx:id="modifierBtn" mnemonicParsing="false" onAction="#modifierScene" text="Confirmer" />
-                        <Button fx:id="retourBtn" mnemonicParsing="false" text="Retour" />
-                        <Button mnemonicParsing="false" text="Supprimer" />
+                        <Button fx:id="confirmer" mnemonicParsing="false" onAction="#confirmer" text="Confirmer" />
+                        <Button fx:id="retourBtn" mnemonicParsing="false" onAction="#retour" text="Retour" />
+                        <Button fx:id="supprimer" mnemonicParsing="false" onAction="#supprimer" text="Supprimer" />
                      </children>
                   </HBox>
                </top>
