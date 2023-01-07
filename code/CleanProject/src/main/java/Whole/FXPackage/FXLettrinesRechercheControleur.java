@@ -87,10 +87,13 @@ public class FXLettrinesRechercheControleur extends FXMenuBarAbstractControleur 
         //int id = listView.getSelectionModel().getSelectedIndex();
         //System.out.println(id);
         Lettrine l = listView.getSelectionModel().getSelectedItem();
-        //Lettrine l = listView.getItems().get(id);
-        System.out.println(l);
-        FXPageLettrineControleur.lettrine=l;
-        ControleurFunctions.changeScene(event,"FxInterfacePageLettrine.fxml");
+        if(l!=null){
+            //Lettrine l = listView.getItems().get(id);
+            System.out.println(l);
+            FXPageLettrineControleur.lettrine=l;
+            ControleurFunctions.changeScene(event,"FxInterfacePageLettrine.fxml");
+        }
+
     }
 
 

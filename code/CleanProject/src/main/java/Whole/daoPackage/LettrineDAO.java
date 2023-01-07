@@ -1252,5 +1252,20 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
 
         return arrayRes;
     }
-
+    public ArrayList<Tag> chercherTag(Lettrine l){
+        ArrayList<Tag> list = new ArrayList<>();
+        String sql ="SELECT  tags.`idTag`,`description`,`nom` FROM `regroupe`" +
+                "inner join tags on tags.idTag = regroupe.idTag where regroupe.idLettrine= ?";
+        try {
+            PreparedStatement stmt = cn.prepareStatement(sql);
+            stmt.setInt(1,l.getId());
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()){
+                list.add(new Tag(rs.getInt(1),rs.getString(2),rs.getString(3)));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return list;
+    }
 }
