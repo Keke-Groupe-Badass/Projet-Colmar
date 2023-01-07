@@ -205,7 +205,7 @@ public class TagDAO extends AbstractDAO<Tag> {
             ResultSet res = stmt.executeQuery(sql);
             while (res.next()) {
                 for(int i=0; i<res.getInt(2); i++) {
-                    str.append(res.getString(1));
+                    str.append(res.getString(1) + " ");
                 }
             }
         }

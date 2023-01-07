@@ -96,7 +96,6 @@ public class FXLettrinesRechercheControleur extends FXMenuBarAbstractControleur 
 
     }
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         listView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
