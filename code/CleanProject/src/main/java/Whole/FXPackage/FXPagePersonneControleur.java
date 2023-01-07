@@ -11,17 +11,22 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class FXPagePersonneControleur extends FXMenuBarAbstractControleur implements Initializable {
-    @FXML
-    Button modifierBtn;
-    public static Personne personne;
-    public void retourPersonnes(ActionEvent event) {
-        ControleurFunctions.changeScene(event, "FxInterfacePersonnes.fxml");
-    }
+    public static Personne personne = new Personne();
+    @FXML Button modifier;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         if(ControleurFunctions.statut.equals("chercheur")){
-            modifierBtn.setDisable(true);
+            modifier.setDisable(true);
         }
+    }
+
+    public void modifier(ActionEvent event) {
+        FXModifierPersonneControleur.personne = personne;
+        ControleurFunctions.changeScene(event, "FxInterfaceModifierPersonne.fxml");
+    }
+
+    public void retour(ActionEvent event) {
+        ControleurFunctions.changeScene(event, "FxIntercePersonnes.fxml");
     }
 }

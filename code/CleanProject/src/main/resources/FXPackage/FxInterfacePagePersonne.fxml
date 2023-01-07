@@ -11,8 +11,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Whole.FXPackage.FXPagePersonneControleur">
    <top>
        <MenuBar fx:id="myMenuBar" layoutY="1.0" prefHeight="27.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
            <menus>
@@ -44,8 +43,8 @@
             <HBox prefHeight="33.0" prefWidth="600.0" BorderPane.alignment="CENTER">
                <children>
                   <Label text="Personne n°" />
-                  <Button mnemonicParsing="false" text="Modifier" />
-                  <Button mnemonicParsing="false" text="Retour" />
+                  <Button fx:id="modifier" mnemonicParsing="false" onAction="#modifier" text="Modifier" />
+                  <Button fx:id="retour" mnemonicParsing="false" onAction="#retour" text="Retour" />
                </children>
             </HBox>
          </top>
