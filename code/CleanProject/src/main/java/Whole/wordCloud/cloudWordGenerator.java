@@ -1,5 +1,7 @@
 package Whole.wordCloud;
 
+import Whole.daoPackage.TagDAO;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -11,9 +13,10 @@ public class cloudWordGenerator {
     public static void main(String[] args) {
 
         try {
+            TagDAO.saveText();
             String texte = "je je je suis un nuage de mots mots mots mots je sers a tester"; //TagDAO.tagAndSize();
             String path = "src/main/wordcloud/text.txt";
-            Files.write(Paths.get(path), texte.getBytes());
+            //Files.write(Paths.get(path), texte.getBytes());
             ProcessBuilder process = new ProcessBuilder("python", "src/main/wordcloud/cloud.py").inheritIO();
             Process p = process.start();
             p.waitFor();
