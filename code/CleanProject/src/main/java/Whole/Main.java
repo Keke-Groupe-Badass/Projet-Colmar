@@ -1,5 +1,7 @@
 package Whole;
 
+import Whole.daoPackage.UtilisateurDAO;
+
 public class Main {
     /**
      * Permet de démarrer l'application
@@ -8,8 +10,10 @@ public class Main {
 
     public static void main(String[] args) {
         Controleur c =new Controleur();
+        SingleConnection.getInstance("jdbc:mysql://localhost:3306/fprojectcolmar?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC","root","");
+        Controleur.utilisateurDAO = new UtilisateurDAO("jdbc:mysql://localhost:3306/fprojectcolmar?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC","root","");
 
-        //System.out.println(c.AddUser("andreasmulard@gmail.com","motdepasseSafe101_","motdepasseSafe101_","admin"));
+        System.out.println(c.AddUser("andreasmulard@gmail.com","motdepasseSafe101_","motdepasseSafe101_","admin"));
 
 
         /**
