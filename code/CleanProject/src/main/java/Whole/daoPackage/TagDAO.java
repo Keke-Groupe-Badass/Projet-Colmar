@@ -114,7 +114,7 @@ public class TagDAO extends AbstractDAO<Tag> {
                 PreparedStatement stmt = cn.prepareStatement(sql);
                 if (!stmt.execute()){ //Si le tag n'existe pas déjà
                     sql = "INSERT INTO tags (nom, description) VALUES(?,?)";
-                    stmt = cn.prepareStatement(sql);
+                    stmt = cn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
                     stmt.setString(1, objet.getNom());
                     stmt.setString(2, objet.getDescription());
                     int nbColonnes = stmt.executeUpdate();
