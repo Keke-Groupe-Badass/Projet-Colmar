@@ -20,7 +20,7 @@ public class FXLoginControleur {
     @FXML
     protected void handleConnection(ActionEvent event) {
         try {
-            if(Controleur.Login(nameTextField.getText(),passwordField.getText())){
+            if(Controleur.login(nameTextField.getText(),passwordField.getText())){
                 fx.changeScene("FxInterfaceMain");
             }
             else{

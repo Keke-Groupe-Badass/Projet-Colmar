@@ -89,13 +89,13 @@ public class PersonneDAO extends AbstractDAO<Personne> {
             Statement stmt = cn.createStatement();
             String sql = "DELETE FROM ecrit WHERE idPersonne=" + objet.getId();
             stmt.execute(sql);
-            sql = "UPDATE lettrines SET idPersonne=NULL "
+            sql = "UPDATE lettrines SET idPersonne=-1 "
                     + "WHERE idPersonne=" + objet.getId();
             stmt.execute(sql);
-            sql = "UPDATE ouvrages SET imprimeur=NULL "
+            sql = "UPDATE ouvrages SET imprimeur=-1 "
                     + "WHERE imprimeur=" + objet.getId();
             stmt.execute(sql);
-            sql = "UPDATE ouvrages SET libraire=NULL "
+            sql = "UPDATE ouvrages SET libraire=-1 "
                     + "WHERE libraire=" + objet.getId();
             stmt.execute(sql);
             sql = "DELETE FROM personnes "
@@ -123,7 +123,7 @@ public class PersonneDAO extends AbstractDAO<Personne> {
             if (!stmt.execute()) { //Si la personne n'existe pas
 
                 sql = "INSERT INTO personnes (nom, prenom, note) VALUES(?,?,?)";
-                stmt = cn.prepareStatement(sql);
+                stmt = cn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
                 stmt.setString(1, donne.getNom());
                 stmt.setString(2, donne.getPrenom());
                 stmt.setString(3, donne.getNote());

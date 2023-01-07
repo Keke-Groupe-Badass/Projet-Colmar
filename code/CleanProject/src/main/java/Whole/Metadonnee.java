@@ -5,33 +5,62 @@ public class Metadonnee {
 
     private int id;
 
-    private String entree;
+    private String valeur;
 
     private String unite;
 
     private String description;
 
+    private int idLettrine;
+
 
     /**
      * Constructeur de la classe Metadonnee
      *
-     * @param nom         String : nom de la metadonnee
-     * @param id          int : id de la metadonnee
-     * @param entree      String : valeur de la métadonnee
+     * @param nom         String : nom de la métadonnée
+     * @param id          int : id de la métadonnée
+     * @param valeur      String : valeur de la métadonnée
      * @param unite       String : unité de la métadonnée
-     * @param description String : description de la métadonnee
+     * @param description String : description de la métadonnée
+     * @param idLettrine  int : id de la lettrine associée à la métadonnée
      */
 
-    public Metadonnee(String nom, int id, String entree, String unite, String description) {
+    public Metadonnee(String nom, int id, String valeur, String unite, String description, int idLettrine) {
         this.nom = nom;
         this.id = id;
-        this.entree = entree;
+        this.valeur = valeur;
         this.unite = unite;
         this.description = description;
+        this.idLettrine = idLettrine;
+    }
+
+    public Metadonnee(String nom, int id, String valeur, String unite, String description) {
+        this.nom = nom;
+        this.id = id;
+        this.valeur = valeur;
+        this.unite = unite;
+        this.description = description;
+        this.idLettrine = -1;
     }
 
     public Metadonnee() {
 
+    }
+
+    public Metadonnee(String nom, String valeur, String unite, String description, int idLettrine) {
+        this.nom = nom;
+        this.valeur = valeur;
+        this.unite = unite;
+        this.description = description;
+        this.idLettrine = idLettrine;
+    }
+
+    public Metadonnee(String nom, String valeur, String unite, String description) {
+        this.nom = nom;
+        this.valeur = valeur;
+        this.unite = unite;
+        this.description = description;
+        this.idLettrine = -1;
     }
 
     /**
@@ -58,8 +87,8 @@ public class Metadonnee {
      *
      * @return entree String
      */
-    public String getEntree() {
-        return entree;
+    public String getValeur() {
+        return valeur;
     }
 
     /**
@@ -101,10 +130,10 @@ public class Metadonnee {
     /**
      * change la valeur de la métadonnée par l'entree passée en paramètre
      *
-     * @param entree String
+     * @param valeur String
      */
-    public void setEntree(String entree) {
-        this.entree = entree;
+    public void setValeur(String valeur) {
+        this.valeur = valeur;
     }
 
     /**
@@ -125,19 +154,30 @@ public class Metadonnee {
         this.description = description;
     }
 
-    public Metadonnee(String nom, String entree, String unite, String description) {
-        this.nom = nom;
-        this.entree = entree;
-        this.unite = unite;
-        this.description = description;
+    /**
+     * Renvoie l'id de la lettrine à laquelle est associée la métadonnée.
+     *
+     * @return idLettrine
+     */
+    public int getIdLettrine() {
+        return idLettrine;
+    }
+
+    /**
+     * Change l'id de la lettrine à laquelle est associée la métadonnée.
+     *
+     * @param idLettrine nouvel id
+     */
+    public void setIdLettrine(int idLettrine) {
+        this.idLettrine = idLettrine;
     }
 
     @Override
     public String toString() {
         return
                 "nom:" + nom +
-                ", entree:" + entree  +
-                ", unite:" + unite + ", id:" + id
+                        ", entree:" + valeur +
+                        ", unite:" + unite + ", id:" + id
                 ;
     }
 }

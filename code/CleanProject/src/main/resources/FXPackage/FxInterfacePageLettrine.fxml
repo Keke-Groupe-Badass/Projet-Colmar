@@ -69,8 +69,8 @@
                               <Label fx:id="nbPageLabel" text="labelNbPage" GridPane.columnIndex="1" />
                               <Label fx:id="lienLabel" text="labelLien" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                               <Label fx:id="plagiatLabel" text="labelPlagiat" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                              <Button fx:id="ouvrageBtn" mnemonicParsing="false" text="Ouvrage" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                              <Button fx:id="createurBtn" mnemonicParsing="false" text="Createur" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <Button fx:id="ouvrageBtn" onAction="#ouvragePage" mnemonicParsing="false" text="Ouvrage" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Button fx:id="createurBtn" mnemonicParsing="false" onAction="#personnePage" text="Createur" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                            </children>
                         </GridPane>
                         <VBox prefHeight="200.0" prefWidth="100.0">

@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
 
@@ -18,6 +19,8 @@ public class FXPageOuvrageControleur extends FXMenuBarAbstractControleur impleme
     public static Ouvrage ouvrage;
     @FXML
     Label titreLabel;
+    @FXML
+    Label idLabel;
     @FXML
     Label dateLabel;
     @FXML
@@ -50,7 +53,7 @@ public class FXPageOuvrageControleur extends FXMenuBarAbstractControleur impleme
     }
 
     public void retour(ActionEvent event) {
-        ControleurFunctions.changeScene(event, "FxInterfaceOuvrage.fxml");
+        ControleurFunctions.changeScene(event, "FxInterfaceOuvrages.fxml");
     }
 
     @Override
@@ -65,14 +68,19 @@ public class FXPageOuvrageControleur extends FXMenuBarAbstractControleur impleme
         copyrightLabel.setText(ouvrage.getCopyright());
         nombrePageLabel.setText(""+ouvrage.getNbPage());
         lieuLabel.setText(ouvrage.getLieuImpression());
-        imprimeurBtn.setText(ouvrage.getImprimeur().toString());
-        libraireBtn.setText(ouvrage.getLibraire().toString());
+        idLabel.setText(""+ouvrage.getId());
+        if(ouvrage.getImprimeur()!=null){
+            imprimeurBtn.setText(ouvrage.getImprimeur().toString());
+        }
+        if(ouvrage.getLibraire()!=null){
+            libraireBtn.setText(ouvrage.getLibraire().toString());
+        }
         if(ControleurFunctions.statut.equals("chercheur")){
             modifierBtn.setDisable(true);
         }
     }
     @FXML
-    protected void clickOnPersonne(ActionEvent event) {
+    protected void clickOnPersonne(MouseEvent event) {
         Personne p = personneListView.getSelectionModel().getSelectedItem();
         if(p!=null){
             FXPagePersonneControleur.personne = p;
@@ -91,8 +99,10 @@ public class FXPageOuvrageControleur extends FXMenuBarAbstractControleur impleme
     protected void clickOnImprimeurBtn(ActionEvent event) {
         Personne p = ouvrage.getImprimeur();
         if(p!=null){
-            FXPagePersonneControleur.personne = p;
-            ControleurFunctions.changeScene(event, "FxInterfacePagePersonne.fxml");
+            if(p.getId()>-1){
+                FXPagePersonneControleur.personne = p;
+                ControleurFunctions.changeScene(event, "FxInterfacePagePersonne.fxml");
+            }
         }
     }
 

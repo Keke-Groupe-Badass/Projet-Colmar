@@ -69,6 +69,7 @@ public class Ouvrage implements CCMS<Ouvrage> {
     public Ouvrage() {
         this.id = -2;
         this.nbPage = -2;
+        this.auteurs = new ArrayList<>();
     }
 
     /**
@@ -83,7 +84,7 @@ public class Ouvrage implements CCMS<Ouvrage> {
     }
 
     /**
-     * Constructeur de la classe pour lettrineDai
+     * Constructeur de la classe pour LettrineDAO.
      * @param id l'identifiant de l'ouvrage
      */
     public Ouvrage( int id) {
