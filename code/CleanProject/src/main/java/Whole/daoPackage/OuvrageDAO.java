@@ -50,7 +50,7 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
                         + "dateEdition, lien, nbPage, copyright, "
                         + "creditPhoto, resolution, format, "
                         + "titre, reechantillonage) "
-                        + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                        + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",Statement.RETURN_GENERATED_KEYS);
                 if (donne.getLibraire() != null)
                     pstmt.setInt(1, donne.getLibraire().getId());
                 else

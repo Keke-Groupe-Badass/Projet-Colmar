@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
 
@@ -109,7 +110,7 @@ public class FXPageLettrineControleur extends FXMenuBarAbstractControleur implem
         }
     }
     @FXML
-    protected void clickOnTag(ActionEvent event) {
+    protected void clickOnTag(MouseEvent event) {
         Tag t = tagListView.getSelectionModel().getSelectedItem();
         if(t!=null){
             FXPageTagControleur.tag = t;

@@ -180,7 +180,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
             String sql="INSERT INTO lettrines(nbPage, lien, idOuvrage," +
                     "idPersonne, idIdentique) " +
                     "VALUES(?,?,?,?,?)";
-            PreparedStatement stmt = cn.prepareStatement(sql);
+            PreparedStatement stmt = cn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
             stmt.setInt(1, donne.getNbPage());
             stmt.setString(2, donne.getLien());
             if (donne.getOuvrage() != null)
@@ -1045,7 +1045,7 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
         if (id != -1) {
             try {
                 Statement stmt = cn.createStatement();
-                String sql = "SELECT * FROM Ouvrage WHERE idOuvrage=" + id;
+                String sql = "SELECT * FROM ouvrages WHERE idOuvrage=" + id;
                 ResultSet res = stmt.executeQuery(sql);
                 if (res.next()) {
                     o.setId(res.getInt(1));

@@ -75,11 +75,11 @@
                                     <HBox prefHeight="41.0" prefWidth="434.0">
                                        <children>
                                           <TextField fx:id="tagTextField" prefHeight="25.0" prefWidth="110.0" promptText="id" />
-                                          <Button fx:id="ajouterTagBtn" mnemonicParsing="false" text="+" />
+                                          <Button fx:id="ajouterTagBtn" mnemonicParsing="false" text="+" onAction="#ajouterTag"/>
                                           <CheckBox fx:id="suppresionTag" mnemonicParsing="false" text="Suppression" />
                                        </children>
                                     </HBox>
-                                    <ListView fx:id="tagListView" prefHeight="216.0" prefWidth="434.0" />
+                                    <ListView fx:id="tagListView" prefHeight="216.0" prefWidth="434.0" onMouseClicked="#clickListViewTag"/>
                                  </children>
                               </VBox>
                            </center>
@@ -97,11 +97,11 @@
                                           <TextField fx:id="valeurMetaTextField" prefHeight="25.0" prefWidth="119.0" promptText="valeur" />
                                           <TextField fx:id="uniteValeurMetaTextField" layoutX="35.0" layoutY="10.0" prefHeight="25.0" prefWidth="81.0" promptText="unite" />
                                           <TextField fx:id="descriptionMetaTextField" layoutX="152.0" layoutY="10.0" prefHeight="25.0" prefWidth="168.0" promptText="description" />
-                                          <Button fx:id="ajouterMetaBtn" mnemonicParsing="false" text="+" />
+                                          <Button fx:id="ajouterMetaBtn" mnemonicParsing="false" text="+" onAction="#ajouterMeta"/>
                                           <CheckBox fx:id="suppresionMeta" mnemonicParsing="false" text="Suppression" />
                                        </children>
                                     </HBox>
-                                    <ListView fx:id="metaListView" prefHeight="216.0" prefWidth="434.0" />
+                                    <ListView fx:id="metaListView" prefHeight="216.0" prefWidth="434.0" onMouseClicked="#clickListViewMeta"/>
                                  </children>
                               </VBox>
                            </center>

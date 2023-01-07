@@ -12,6 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
 
@@ -62,9 +63,6 @@ public class FXModifierLettrineControleur extends FXMenuBarAbstractControleur im
     @FXML
     ListView<Tag> tagListView;
 
-    Boolean tagSupression;
-    Boolean metaSupression;
-
     ArrayList<Tag> newTag = new ArrayList<>();
     ArrayList<Metadonnee> newMeta = new ArrayList<>();
 
@@ -110,6 +108,9 @@ public class FXModifierLettrineControleur extends FXMenuBarAbstractControleur im
             alert.setHeaderText(null);
             alert.setContentText("La lettrine à été modifiée.");
             alert.showAndWait();
+            newLettrine.setId(lettrine.getId());
+            FXPageLettrineControleur.lettrine = newLettrine;
+
             ControleurFunctions.changeScene(event, "FxInterfacePageLettrine.fxml");
         }else{
 
@@ -143,20 +144,14 @@ public class FXModifierLettrineControleur extends FXMenuBarAbstractControleur im
         tagListView.setItems(listTag);
     }
     @FXML
-    protected void setMetaSupression(ActionEvent event){
-        metaSupression = suppresionMeta.isSelected();
-    }
-    @FXML
-    protected void setTagSupression(ActionEvent event){
-        tagSupression = suppresionTag.isSelected();
-    }
-    @FXML
     protected void ajouterTag(ActionEvent event){
         if(tagTextField.getText()!=null){
             Tag t = new Tag(Integer.parseInt(tagTextField.getText()));
-            newTag.add(t);
-            listTag.add(t);
-            tagListView.refresh();
+            if(!listTag.contains(t)){
+                newTag.add(t);
+                listTag.add(t);
+                tagListView.refresh();
+            }
         }
     }
     @FXML
@@ -169,8 +164,8 @@ public class FXModifierLettrineControleur extends FXMenuBarAbstractControleur im
         }
     }
     @FXML
-    protected void clickListViewTag(ActionEvent event){
-        if(tagSupression){
+    protected void clickListViewTag(MouseEvent event){
+        if(suppresionTag.isSelected()){
             Tag t = tagListView.getSelectionModel().getSelectedItem();
             if(newTag.contains(t)){
                 newTag.remove(t);
@@ -183,8 +178,8 @@ public class FXModifierLettrineControleur extends FXMenuBarAbstractControleur im
         }
     }
     @FXML
-    protected void clickListViewMeta(ActionEvent event){
-        if(metaSupression){
+    protected void clickListViewMeta(MouseEvent event){
+        if(suppresionMeta.isSelected()){
             Metadonnee m = metaListView.getSelectionModel().getSelectedItem();
             if(newMeta.contains(m)){
                 newMeta.remove(m);
