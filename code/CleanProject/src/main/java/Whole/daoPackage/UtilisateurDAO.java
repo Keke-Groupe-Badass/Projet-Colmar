@@ -192,13 +192,13 @@ public class UtilisateurDAO extends SuperAbstractDAO {
                     System.out.println("hi");
                     System.out.println(login);
                     fonctionne = nbColonnes > 0;
-                    login = login;
+                    /** ancien méthode de création utilisateur (insert elements dans localhost directement
                     if(fonctionne){
                         sql = "CREATE USER '"+login+"'@'localhost' IDENTIFIED BY '"+mdpEncrypte+"'";
                         stmt = cn.prepareStatement(sql);
                         return stmt.execute();
                         //TODO trouver un moyen de verifier qur l'utilisateur est été enregistré pour la bd (pas dans la table utilisateur)
-                    }
+                    }*/
                 }
             } catch (SQLException e) {
                 e.printStackTrace();

@@ -50,14 +50,7 @@ public class FXMain extends Application {
     }
 
 
-    public static Boolean connect(String login, String pwd){
 
-        if(Controleur.Login(login,pwd)){
-            ControleurFunctions.nom = login;
-            return true;
-        }
-        return false;
-    }
     public static void main(String[] args) {
         launch();
     }

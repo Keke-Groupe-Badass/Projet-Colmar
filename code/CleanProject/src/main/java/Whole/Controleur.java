@@ -91,8 +91,15 @@ public  class Controleur {
         int i = 0;
         while ((line=br.readLine())!=null){
             if(!line.isBlank()){
-                line=line.split(";")[1];
-                configList.add(line);
+                String[] lineList = line.split(";");
+                if(lineList.length >= 1){
+                    if(lineList.length==1){
+                        line = "";
+                    }else{
+                        line=line.split(";")[1];
+                    }
+                    configList.add(line);
+                }
             }
             i++;
         }
