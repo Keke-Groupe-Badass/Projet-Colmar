@@ -57,9 +57,25 @@ public class FXPageLettrineControleur extends FXMenuBarAbstractControleur implem
     public void afficheLettrinesParTagname(ActionEvent event) {
         ControleurFunctions.changeScene(event, "FxInterfaceLettrines.fxml");
     }
-
+    @FXML
     public void personnePage(ActionEvent event) {
-        ControleurFunctions.changeScene(event, "FxInterfacePagePersonne.fxml");
+        if(lettrine.getCreateur()!=null){
+            if(lettrine.getCreateur().getId()>-1){
+                FXPagePersonneControleur.personne = lettrine.getCreateur();
+                ControleurFunctions.changeScene(event, "FxInterfacePagePersonne.fxml");
+            }
+        }
+
+    }
+    @FXML
+    public void ouvragePage(ActionEvent event) {
+        if(lettrine.getOuvrage()!=null){
+            if(lettrine.getOuvrage().getId()>-1){
+                FXPageOuvrageControleur.ouvrage = lettrine.getOuvrage();
+                ControleurFunctions.changeScene(event, "FxInterfacePageOuvrage.fxml");
+            }
+        }
+
     }
 
     @Override
