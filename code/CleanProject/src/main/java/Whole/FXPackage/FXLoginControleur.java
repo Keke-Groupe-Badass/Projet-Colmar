@@ -41,11 +41,7 @@ public class FXLoginControleur implements Initializable {
             }
             Connection cn = SingleConnection.getInstance(Controleur.getConfigList().get(0),Controleur.getConfigList().get(1),Controleur.getConfigList().get(2));
             if(cn != null){
-                Parent root = FXMLLoader.load(FXMain.class.getResource("/FXPackage/FxInterfaceMain.fxml"));
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
+
                 ControleurFunctions.nom = mailTextField.getText();
                 ControleurFunctions.lettrineDAO = new LettrineDAO(Controleur.getConfigList().get(0),Controleur.getConfigList().get(1),Controleur.getConfigList().get(2));
                 ControleurFunctions.tagDAO = new TagDAO(Controleur.getConfigList().get(0),Controleur.getConfigList().get(1),Controleur.getConfigList().get(2));
@@ -54,8 +50,14 @@ public class FXLoginControleur implements Initializable {
                 ControleurFunctions.adminDAO = new AdminDAO(Controleur.getConfigList().get(0),Controleur.getConfigList().get(1),Controleur.getConfigList().get(2));
                 ControleurFunctions.utilisateurDAO = new UtilisateurDAO(Controleur.getConfigList().get(0),Controleur.getConfigList().get(1),Controleur.getConfigList().get(2));
                 ControleurFunctions.statut = ControleurFunctions.utilisateurDAO.obtenirStatut(ControleurFunctions.nom);
+                if(ControleurFunctions.utilisateurDAO.connexion(mailTextField.getText(),passwordTextField.getText())!=null){
+                    Parent root = FXMLLoader.load(FXMain.class.getResource("/FXPackage/FxInterfaceMain.fxml"));
+                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    Scene scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();
+                }
 
-                ControleurFunctions.utilisateurDAO.connexion(mailTextField.getText(),passwordTextField.getText());
 
                 if(ControleurFunctions.statut==null){
                     ControleurFunctions.statut = "chercheur";
