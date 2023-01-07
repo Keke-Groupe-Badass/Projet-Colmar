@@ -20,6 +20,6 @@ public abstract class SuperAbstractDAO {
      * @param mdp mot de passe de la BDD
      */
     public SuperAbstractDAO(String url, String login, String mdp) {
-        cn = SingleConnection.getInstance(url,login,UtilisateurDAO.encrypte(mdp));
+        cn = SingleConnection.getInstance(url,login,mdp);
     }
 }
