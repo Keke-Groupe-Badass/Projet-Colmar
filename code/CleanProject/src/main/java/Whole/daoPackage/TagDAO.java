@@ -5,10 +5,7 @@ import Whole.ccmsPackage.Lettrine;
 import Whole.ccmsPackage.Tag;
 
 import javax.swing.plaf.nimbus.State;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 import java.sql.*;
 
@@ -213,5 +210,22 @@ public class TagDAO extends AbstractDAO<Tag> {
             e.printStackTrace();
         }
         return str.toString();
+    }
+    public static void saveText(){
+        try {
+            File f = new File("src/main/wordcloud/text.txt");
+            BufferedWriter br = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(f)));
+            Statement stmt = cn.createStatement();
+            String sql = "SELECT tags.nom FROM `regroupe` inner join tags on tags.idTag=regroupe.idTag";
+            ResultSet res = stmt.executeQuery(sql);
+            while (res.next()) {
+                br.write(" "+res.getString(1));
+            }
+            br.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
