@@ -8,22 +8,25 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 public class FXModifierPersonneControleur {
-    private static Personne personne = new Personne();
+    public static Personne personne;
     @FXML TextField nomTextField;
     @FXML TextField prenomTextField;
     @FXML TextArea noteTextArea;
     public void confirmer(ActionEvent event) {
         Personne p = new Personne();
-        if(!nomTextField.getText().isBlank()) {
-            p.setNom(nomTextField.getText());
+        if(nomTextField.getText() != null) {
+            if(!nomTextField.getText().isBlank())
+                p.setNom(nomTextField.getText());
         }
 
-        if(!prenomTextField.getText().isBlank()) {
-            p.setPrenom(prenomTextField.getText());
+        if(prenomTextField.getText()!=null) {
+            if(nomTextField.getText().isBlank())
+                p.setPrenom(prenomTextField.getText());
         }
-
-        if(!noteTextArea.getText().isBlank()) {
-            p.setNote(noteTextArea.getText());
+        if(noteTextArea.getText() != null) {
+            if (!noteTextArea.getText().isBlank()) {
+                p.setNote(noteTextArea.getText());
+            }
         }
 
         if (ControleurFunctions.personneDAO.modifier(personne, p)) {
@@ -40,5 +43,14 @@ public class FXModifierPersonneControleur {
             alert.setHeaderText("Erreur est survenue lors de l'insertion dans la base");
             alert.show();
         }
+    }
+
+    public void retour(ActionEvent event) {
+        FXPagePersonneControleur.personne = personne;
+        ControleurFunctions.changeScene(event, "FxInterfacePagePersonne");
+    }
+
+    public void supprimer(ActionEvent event) {
+
     }
 }
