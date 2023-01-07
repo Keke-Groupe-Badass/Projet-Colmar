@@ -84,7 +84,7 @@ public class Ouvrage implements CCMS<Ouvrage> {
     }
 
     /**
-     * Constructeur de la classe pour lettrineDai
+     * Constructeur de la classe pour LettrineDAO.
      * @param id l'identifiant de l'ouvrage
      */
     public Ouvrage( int id) {

@@ -2,7 +2,6 @@ package Whole.ccmsPackage;
 
 import Whole.Metadonnee;
 import javafx.scene.image.Image;
-
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -118,8 +117,7 @@ public class Lettrine implements CCMS<Lettrine> {
     }
 
     /**
-
-     * Constructeur pour afficher la liste des lettrines dans la page tag
+     * Constructeur pour afficher la liste des lettrines dans la page tag.
      * @param id l'id de la lettrine
      */
     public Lettrine(int id){
@@ -419,7 +417,7 @@ public class Lettrine implements CCMS<Lettrine> {
         Image img;
         try {
             img = new Image(new FileInputStream(lien));
-        } catch (Exception e) {
+        } catch (FileNotFoundException e) {
             try {
                 img = new Image(new FileInputStream("src/lettrine.png"));
             } catch (FileNotFoundException ex) {
