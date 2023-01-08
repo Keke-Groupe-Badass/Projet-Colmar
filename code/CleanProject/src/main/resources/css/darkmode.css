@@ -1,5 +1,6 @@
 *{
     -fx-background-color: black;
+    -fx-border-color: white;
 }
 .button{
     -fx-background-color: #343434;
