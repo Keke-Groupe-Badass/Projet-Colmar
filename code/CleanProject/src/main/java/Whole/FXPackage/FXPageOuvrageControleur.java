@@ -78,6 +78,8 @@ public class FXPageOuvrageControleur extends FXMenuBarAbstractControleur impleme
         if(ControleurFunctions.statut.equals("chercheur")){
             modifierBtn.setDisable(true);
         }
+        System.out.println(ouvrage.getAuteurs());
+        personneListView.getItems().addAll(ouvrage.getAuteurs());
     }
     @FXML
     protected void clickOnPersonne(MouseEvent event) {

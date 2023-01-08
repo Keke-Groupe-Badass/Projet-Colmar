@@ -1,6 +1,7 @@
 package Whole.daoPackage;
 
 import Whole.SingleConnection;
+import Whole.ccmsPackage.Lettrine;
 import Whole.ccmsPackage.Ouvrage;
 import Whole.ccmsPackage.Personne;
 import java.sql.*;
@@ -326,9 +327,10 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
     private ArrayList listeAuteur(int id){
         ArrayList l = new ArrayList();
         try {
-            PreparedStatement stmt = cn.prepareStatement("SELECT * "
-                    + "FROM `personnes` "
-                    + "WHERE `idPersonne`=?");
+            String sql = "SELECT personnes.`idPersonne`,personnes.`nom`,personnes.`prenom`,personnes.`note` FROM `personnes`\n" +
+                    "inner join ecrit on ecrit.idPersonne = personnes.idPersonne\n" +
+                    "where ecrit.idOuvrage=?";
+            PreparedStatement stmt = cn.prepareStatement(sql);
             stmt.setInt(1,id);
             ResultSet rs = stmt.executeQuery();
             while(rs.next()){
@@ -354,14 +356,29 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
             ResultSet rs =stmt.executeQuery();
             Personne p = new Personne();
             if(rs.next()){
+                System.out.println("hi");
                 p.setId(rs.getInt(1));
                 p.setNom(rs.getString(2));
                 p.setPrenom(rs.getString(3));
                 p.setNote(rs.getString(4));
+                return p;
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         return null;
+    }
+
+    public void ajouterAuteur(Ouvrage o, Personne p){
+        String sql ="INSERT INTO `ecrit`(`idPersonne`, `idOuvrage`) VALUES (?,?)";
+        try {
+            PreparedStatement stmt = cn.prepareStatement(sql);
+            stmt.setInt(1,p.getId());
+            stmt.setInt(2,o.getId());
+            stmt.execute();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }

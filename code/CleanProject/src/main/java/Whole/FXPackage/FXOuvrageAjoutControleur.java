@@ -62,7 +62,7 @@ public class FXOuvrageAjoutControleur extends FXMenuBarAbstractControleur{
             o.setImprimeur(null);
         }else{
             try{
-                o.setImprimeur(new Personne(Integer.parseInt(imprimeurTextField.getText())));
+                o.setImprimeur(ControleurFunctions.ouvrageDAO.getPersonne(Integer.parseInt(imprimeurTextField.getText())));
             }catch(Exception e){
                 System.err.println(e);
                 o.setImprimeur(null);
@@ -73,7 +73,7 @@ public class FXOuvrageAjoutControleur extends FXMenuBarAbstractControleur{
             o.setLibraire(null);
         }else{
             try{
-                o.setLibraire(new Personne(Integer.parseInt(libraireTextField.getText())));
+                o.setLibraire(ControleurFunctions.ouvrageDAO.getPersonne(Integer.parseInt(libraireTextField.getText())));
             }catch(Exception e){
                 System.err.println(e);
                 o.setLibraire(null);
@@ -100,7 +100,6 @@ public class FXOuvrageAjoutControleur extends FXMenuBarAbstractControleur{
             alert.showAndWait();
             FXPageOuvrageControleur.ouvrage = o;
             ControleurFunctions.adminDAO.ecrireLog("à créer ouvrage"+o.getId());
-
             ControleurFunctions.changeScene(event, "FxInterfacePageOuvrage.fxml");
         }
         else{
