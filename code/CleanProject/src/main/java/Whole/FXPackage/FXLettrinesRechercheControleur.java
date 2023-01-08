@@ -49,6 +49,7 @@ public class FXLettrinesRechercheControleur extends FXMenuBarAbstractControleur 
         if(personneTextField.getText()!=null){
             try{
                 p = new Personne(Integer.parseInt(personneTextField.getText()));
+
             }catch (NumberFormatException exception){
 
             }
