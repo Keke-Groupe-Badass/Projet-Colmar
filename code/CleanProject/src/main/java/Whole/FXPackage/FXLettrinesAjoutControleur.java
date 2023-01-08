@@ -28,11 +28,13 @@ public class FXLettrinesAjoutControleur extends FXMenuBarAbstractControleur{
         Personne p = new Personne();
         int identique = -1;
         if(ouvrageTextField.getText()!=null){
-            if(!ouvrageTextField.getText().isBlank()){
+            try{
                 o.setId(Integer.parseInt(ouvrageTextField.getText()));
-                System.out.println("hi");
+            }catch (NumberFormatException exception){
+                System.err.println(exception);
             }
         }
+
         if(pageTextField!=null){
             if(!pageTextField.getText().isBlank()){
                 nbPage = Integer.parseInt(pageTextField.getText());
@@ -44,10 +46,16 @@ public class FXLettrinesAjoutControleur extends FXMenuBarAbstractControleur{
                 lien = lienTextField.getText();
             }
         }
+        if(graveurTextField.getText()!=null){
+            try{
+                p.setId(Integer.parseInt(graveurTextField.getText()));
+            }catch (NumberFormatException exception){
+                System.err.println(exception);
+            }
+        }
 
         if(graveurTextField!=null){
             if(!graveurTextField.getText().isBlank()){
-                p.setId(Integer.parseInt(graveurTextField.getText()));
             }
         }
         if(identiqueTextField!=null){

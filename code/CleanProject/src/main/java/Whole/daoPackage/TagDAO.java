@@ -214,5 +214,22 @@ public class TagDAO extends AbstractDAO<Tag> {
         }
         return str.toString();
     }
+    public Tag getTag(int id){
+        Tag tag = new Tag(id);
+        String sql = "SELECT * FROM `tags` WHERE idTag = ?";
+        PreparedStatement stmt = null;
+        try {
+            stmt = cn.prepareStatement(sql);
+            stmt.setInt(1,id);
+            ResultSet res = stmt.executeQuery();
+            if(res.next()){
+                tag.setDescription(res.getString(2));
+                tag.setNom(res.getString(3));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
+        return tag;
+    }
 }

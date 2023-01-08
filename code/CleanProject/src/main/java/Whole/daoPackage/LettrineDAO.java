@@ -929,8 +929,10 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
                 e.printStackTrace();
             }
         }
-        if(!idRecherchePersonne.isEmpty())
+        if(!idRecherchePersonne.isEmpty()){
             taille.add(idRecherchePersonne);
+
+        }
 
         //recherche des lettrines associées aux plagiat
         ArrayList<Integer> idRecherchePlagiat = new ArrayList<>();

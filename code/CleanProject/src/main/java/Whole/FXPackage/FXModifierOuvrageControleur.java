@@ -168,6 +168,7 @@ public class FXModifierOuvrageControleur extends FXMenuBarAbstractControleur imp
             }
             for(Personne auteur : removePersonne){
                 ouvrage.retirerAuteur(auteur);
+                ControleurFunctions.ouvrageDAO.retirerAuteur(ouvrage,auteur);
             }
             ControleurFunctions.changeScene(event, "FxInterfacePageOuvrage.fxml");
         }else{

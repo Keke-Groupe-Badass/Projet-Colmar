@@ -64,7 +64,7 @@
                   <Label text="Groupe de Copie" GridPane.rowIndex="4" />
                   <TextField fx:id="ouvrageTextField" GridPane.columnIndex="1" />
                   <TextField fx:id="pageTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <TextField fx:id="lienTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField fx:id="lienTextField" promptText="obligatoire" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <TextField fx:id="graveurTextField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                   <TextField fx:id="identiqueTextField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                </children>
@@ -73,7 +73,7 @@
          <bottom>
             <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
               <items>
-                <Button mnemonicParsing="false" text="Annuler" onAction="#retourForm"/>
+                <Button mnemonicParsing="false" onAction="#retourForm" text="Annuler" />
                   <Button fx:id="valider" mnemonicParsing="false" onAction="#confirmationLettrinesScene" text="Valider" />
               </items>
             </ToolBar>
