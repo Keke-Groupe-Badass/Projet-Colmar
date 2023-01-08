@@ -379,6 +379,16 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
+    }
+    public void retirerAuteur(Ouvrage o, Personne p){
+        String sql ="DELETE FROM `ecrit` WHERE `idPersonne`=? and `idOuvrage`=?";
+        try {
+            PreparedStatement stmt = cn.prepareStatement(sql);
+            stmt.setInt(1,p.getId());
+            stmt.setInt(2,o.getId());
+            stmt.execute();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

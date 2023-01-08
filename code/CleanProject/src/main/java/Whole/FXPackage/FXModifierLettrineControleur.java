@@ -90,27 +90,53 @@ public class FXModifierLettrineControleur extends FXMenuBarAbstractControleur im
         }
 
         newLettrine.setLien(lienTextField.getText());
-
-
-
         if(ouvrageTextField.getText()!=null){
-            newLettrine.setOuvrage(new Ouvrage(Integer.parseInt(ouvrageTextField.getText())));
+            try{
+                newLettrine.setOuvrage(new Ouvrage(Integer.parseInt(ouvrageTextField.getText())));
+            }catch (NumberFormatException exception){
+
+            }
         }
         if(createurTextField.getText()!=null){
-            newLettrine.setCreateur(new Personne(Integer.parseInt(createurTextField.getText())));
+            try{
+                newLettrine.setCreateur(new Personne(Integer.parseInt(createurTextField.getText())));
+            }catch (NumberFormatException exception){
+
+            }
         }
 
-
-
         if(ControleurFunctions.lettrineDAO.modifier(lettrine,newLettrine)){
+
+
+            for(Tag tag : newTag){
+                tag = ControleurFunctions.tagDAO.getTag(tag.getId());
+                ControleurFunctions.lettrineDAO.taguer(lettrine,tag);
+                lettrine.ajouterTag(tag);
+            }
+            for(Tag tag : removeTag){
+                ControleurFunctions.lettrineDAO.detaguer(lettrine,tag);
+                lettrine.retirerTag(tag);
+            }
+            for(Metadonnee meta : newMeta){
+                meta.setIdLettrine(lettrine.getId());
+                ControleurFunctions.lettrineDAO.ajouterMeta(meta);
+                lettrine.ajouterMetadonnees(meta);
+            }
+            for(Metadonnee meta : removeMeta){
+                ControleurFunctions.lettrineDAO.supprimerMeta(meta);
+                lettrine.supprimerMetadonnees(meta);
+            }
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Lettrine Modifiée");
             alert.setHeaderText(null);
             alert.setContentText("La lettrine à été modifiée.");
             alert.showAndWait();
+            newLettrine.setTags(lettrine.getTags());
+            newLettrine.setMetadonnees(lettrine.getMetadonnees());
             newLettrine.setId(lettrine.getId());
             FXPageLettrineControleur.lettrine = newLettrine;
             ControleurFunctions.adminDAO.ecrireLog("à modifier lettrine "+lettrine.getId());
+
 
             ControleurFunctions.changeScene(event, "FxInterfacePageLettrine.fxml");
         }else{
