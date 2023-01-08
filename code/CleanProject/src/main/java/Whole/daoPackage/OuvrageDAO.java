@@ -260,6 +260,7 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
             sql+=" creditPhoto='"+objet.getCreditPhoto()+"'";
             premier=false;
     	}
+
     	if (objet.getResolution() != null) {
             if (!premier)
     			sql+=" AND";
@@ -275,10 +276,11 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
     	if (objet.getTitre() != null) {
             if (!premier)
     			sql+=" AND";
-            sql+=" titre='"+objet.getTitre()+"'";
+            sql+=" titre like '%"+objet.getTitre()+"%'";
             premier=false;
     	}
         //En SQL le boolean est un tinyint égal à 0 ou 1
+        /**
     	int intReechantillonage;
     	if(objet.getReechantillonage())
     		intReechantillonage=1;
@@ -286,8 +288,8 @@ public class OuvrageDAO extends AbstractDAO<Ouvrage> {
     		intReechantillonage=0;
     	if (!premier)
 			sql+=" AND";
-        sql+=" reechantillonage="+intReechantillonage;
-    	
+        sql+=" reechantillonage="+intReechantillonage;**/
+        System.out.println(sql);
         try {
             stmt = cn.prepareStatement(sql);
             ResultSet rs=stmt.executeQuery();

@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 
 import java.util.ArrayList;
 
@@ -30,19 +31,32 @@ public class FXOuvrageRechercheControleur extends FXMenuBarAbstractControleur{
     @FXML
     protected void valider(ActionEvent event){
         Ouvrage o = new Ouvrage();
-        if(imprimeurTextField.getText()==null){
+        if(imprimeurTextField.getText()!=null){
+            try{
+                o.setImprimeur(new Personne(Integer.parseInt(imprimeurTextField.getText())));
+            }catch(Exception e){
+                System.err.println(e);
+                o.setImprimeur(null);
+            }
+        }else{
             o.setImprimeur(null);
-        }else{
-            o.setImprimeur(new Personne(Integer.parseInt(imprimeurTextField.getText())));
         }
-        if(libraireTextField.getText()==null){
+        if(libraireTextField.getText()!=null){
+            try{
+                o.setLibraire(new Personne(Integer.parseInt(libraireTextField.getText())));
+            }catch(Exception e){
+                System.err.println(e);
+                o.setLibraire(null);
+            }
+        }else{
             o.setLibraire(null);
-        }else{
-            o.setLibraire(new Personne(Integer.parseInt(libraireTextField.getText())));
         }
-        o.setTitre(titreTextField.getText());
-        o.setLien(lieuTextField.getText());
 
+        o.setTitre(titreTextField.getText());
+        o.setDateEdition(-1);
+        o.setNbPage(-1);
+
+        System.out.println(o);
         ArrayList<Ouvrage> listOuvrage = ControleurFunctions.ouvrageDAO.chercher(o);
         listView.getItems().clear();
         listView.getItems().addAll(listOuvrage);
@@ -53,7 +67,7 @@ public class FXOuvrageRechercheControleur extends FXMenuBarAbstractControleur{
         ControleurFunctions.changeScene(event, "FxInterfaceOuvrages.fxml");
     }
     @FXML
-    protected void itemCLick(ActionEvent event){
+    protected void itemCLick(MouseEvent event){
         Ouvrage o = listView.getSelectionModel().getSelectedItem();
         FXPageOuvrageControleur.ouvrage=o;
         ControleurFunctions.changeScene(event,"FxInterfacePageOuvrage.fxml");

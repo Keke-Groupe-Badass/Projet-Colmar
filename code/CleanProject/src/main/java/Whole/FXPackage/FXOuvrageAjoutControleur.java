@@ -86,7 +86,6 @@ public class FXOuvrageAjoutControleur extends FXMenuBarAbstractControleur{
             }catch(Exception e){
                 System.err.println(e);
                 o.setDateEdition(-1);
-
             }
         }else{
             o.setDateEdition(-1);
