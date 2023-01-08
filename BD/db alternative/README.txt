@@ -1,0 +1,2 @@
+Il y a dans t_bois un attribut graveur qui est utilisé pour faire le lien entre t_personne et t_bois, néanmoins il y a aussi une table corresp_bois_graveur qui fait aussi ce lien,
+les 2 ont des données étranges
