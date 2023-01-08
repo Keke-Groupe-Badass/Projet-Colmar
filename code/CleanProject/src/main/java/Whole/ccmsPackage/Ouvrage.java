@@ -486,6 +486,6 @@ public class Ouvrage implements CCMS<Ouvrage> {
     @Override
     public String toString() {
         return "id:" + id +
-                ", titre:'" + titre;
+                ", titre: " + titre;
     }
 }

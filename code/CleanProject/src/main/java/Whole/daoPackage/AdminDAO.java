@@ -121,10 +121,14 @@ public class AdminDAO extends SuperAbstractDAO {
         String os = System.getProperty("os.name");
         System.out.println(os);
         String type = "sh";
+        String commande = "exportSQL.sh";
+        String file = "src/main/shell/exportSQL.sh";
         if (os.contains("Windows")) {
             type = "cmd.exe";
+            commande = "exportSQL.bat";
+            file = "src/main/shell/exportSQL.bat";
         }
-        String[] cmd = {type, "exportSQL.sh", "src/main/shell/exportSQL.sh",
+        String[] cmd = {type,commande, file ,
             utilisateur, mdp, bdd, path};
         try {
             Runtime.getRuntime().exec(cmd);

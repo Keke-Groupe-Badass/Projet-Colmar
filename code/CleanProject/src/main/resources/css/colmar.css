@@ -17,6 +17,9 @@ le contour des menu item
 .context-menu{
     -fx-background-color: #BFAD8A;
 }
+.menu{
+    -fx-border-color: #161712;
+}
 /**
 le contour de la barre des taches
  */
@@ -36,6 +39,25 @@ bouton
     -fx-background-color: #BFAD8A;
     -fx-text-fill: #550A21;
     -fx-font-weight: bold;
+    -fx-border-color: #161712;
+    /**
+        L'arrondi de la bordure du bouton
+     */
+    -fx-border-radius: 15px;
+    /**
+        L'arrondi du fond du bouton
+     */
+    -fx-background-radius: 15px;
+    -fx-border-width: 3px;
+    /**
+        Le style du bouton, chaque emplacement représente un coté
+     */
+    -fx-border-style: dotted , dashed  , dashed  , dashed;
+    /**
+        Couleur des différents cotés
+     */
+    -fx-border-color: #161712 #550A21 #161712 #550A21;
+
 }
 /**
 TextField (pour rentrer des petits messages)
