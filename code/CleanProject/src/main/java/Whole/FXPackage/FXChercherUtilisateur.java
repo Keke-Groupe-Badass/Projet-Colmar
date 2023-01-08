@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 
 import java.util.ArrayList;
 
@@ -30,9 +31,11 @@ public class FXChercherUtilisateur extends FXMenuBarAbstractControleur{
         }
     }
     @FXML
-    protected void itemCLick(ActionEvent event){
+    protected void itemCLick(MouseEvent event){
         String email = listView.getSelectionModel().getSelectedItem();
-        FXModifierUtilisateur.utilisateur=email;
-        ControleurFunctions.changeScene(event,"FxInterfaceModifierUtilisateur.fxml");
+        if(email!=null){
+            FXModifierUtilisateur.utilisateur = email;
+            ControleurFunctions.changeScene(event,"FxInterfaceModifierUtilisateur.fxml");
+        }
     }
 }
