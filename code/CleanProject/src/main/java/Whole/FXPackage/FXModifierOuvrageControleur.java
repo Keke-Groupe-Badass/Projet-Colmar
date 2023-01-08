@@ -119,26 +119,40 @@ public class FXModifierOuvrageControleur extends FXMenuBarAbstractControleur imp
         newOuvrage.setCopyright(copyrightTextField.getText());
         newOuvrage.setLieuImpression(lieuTextField.getText());
         newOuvrage.setLien(lienTextField.getText());
-        if(dateTextField.getText()!=null) {
-            newOuvrage.setDateEdition(Integer.parseInt(dateTextField.getText()));
-        }else{
-            newOuvrage.setDateEdition(-1);
+
+        if(dateTextField.getText()!=null){
+            try{
+                newOuvrage.setDateEdition(Integer.parseInt(dateTextField.getText()));
+            }catch (NumberFormatException exception){
+                newOuvrage.setDateEdition(-1);
+
+            }
         }
-        if(pageTextField.getText()!=null) {
-            newOuvrage.setNbPage(Integer.parseInt(pageTextField.getText()));
-        }else{
-            newOuvrage.setNbPage(-1);
+        if(pageTextField.getText()!=null){
+            try{
+                newOuvrage.setDateEdition(Integer.parseInt(pageTextField.getText()));
+            }catch (NumberFormatException exception){
+                newOuvrage.setDateEdition(-1);
+
+            }
         }
-        if(imprimeurTextField.getText()==null){
-            newOuvrage.setImprimeur(null);
-        }else{
-            newOuvrage.setImprimeur(new Personne(Integer.parseInt(imprimeurTextField.getText())));
+
+        if(imprimeurTextField.getText()!=null){
+            try{
+                newOuvrage.setImprimeur(new Personne(Integer.parseInt(imprimeurTextField.getText())));
+            }catch (NumberFormatException exception){
+                newOuvrage.setImprimeur(null);
+            }
         }
-        if(libraireTextField.getText()==null){
-            newOuvrage.setLibraire(null);
-        }else{
-            newOuvrage.setLibraire(new Personne(Integer.parseInt(libraireTextField.getText())));
+
+        if(libraireTextField.getText()!=null){
+            try{
+                newOuvrage.setLibraire(new Personne(Integer.parseInt(libraireTextField.getText())));
+            }catch (NumberFormatException exception){
+                newOuvrage.setLibraire(null);
+            }
         }
+
 
         if(ControleurFunctions.ouvrageDAO.modifier(ouvrage,newOuvrage)){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -147,7 +161,14 @@ public class FXModifierOuvrageControleur extends FXMenuBarAbstractControleur imp
             alert.setContentText("L'ouvrage à été modifié.");
             alert.showAndWait();
             ControleurFunctions.adminDAO.ecrireLog("à modifier ouvrage "+ouvrage.getId());
-
+            for(Personne auteur : newPersonne){
+                auteur = ControleurFunctions.ouvrageDAO.getPersonne(auteur.getId());
+                ControleurFunctions.ouvrageDAO.ajouterAuteur(ouvrage,auteur);
+                ouvrage.ajouterAuteur(auteur);
+            }
+            for(Personne auteur : removePersonne){
+                ouvrage.retirerAuteur(auteur);
+            }
             ControleurFunctions.changeScene(event, "FxInterfacePageOuvrage.fxml");
         }else{
 

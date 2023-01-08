@@ -4,9 +4,9 @@ from random import randint
 
 """
 Le nuage n'est pas fondamental à l'utilisation,
-par conséquent ne pas installer python permet une utilisation correcte de l'application
+par conséquent ne pas installer python 3 permet une utilisation correcte de l'application
 
-Pour installer:
+Pour installer: Windows
 voir scripts
 
 matplotlib:
@@ -24,6 +24,27 @@ ou (dépend des utilisateurs)
 py -m pip install WordCloud
 
 random est normalement inclus dans python
+
+Pour installer: Linux
+
+matplotlib:
+pip3 install matplotlib
+
+WordCloud:
+pip3 install WordCloud
+
+Si l'instalation ne marche pas
+tentez de mettre à jours le pip:
+
+Linux:
+sudo -H pip3 install --upgrade pi
+
+Windows:
+python -m pip --upgrade pip
+
+ou
+
+py -m pip --upgrade pip
 
 Fonctionement:
 Le programme lit le fichier texte produit par la classe java cloudWordGenerator.

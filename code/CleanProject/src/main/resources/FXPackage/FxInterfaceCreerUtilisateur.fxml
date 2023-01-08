@@ -22,7 +22,7 @@
       </HBox>
    </top>
    <bottom>
-      <Button mnemonicParsing="false" text="Confirmer" BorderPane.alignment="CENTER" onAction="#valider"/>
+      <Button mnemonicParsing="false" text="Confirmer" BorderPane.alignment="CENTER" onAction="#valider" fx:id="confirm"/>
    </bottom>
    <center>
       <GridPane BorderPane.alignment="CENTER">

@@ -31,6 +31,7 @@ public class FXOuvrageRechercheControleur extends FXMenuBarAbstractControleur{
     @FXML
     protected void valider(ActionEvent event){
         Ouvrage o = new Ouvrage();
+        System.out.println("auteur"+o.getAuteurs());
         if(imprimeurTextField.getText()!=null){
             try{
                 o.setImprimeur(new Personne(Integer.parseInt(imprimeurTextField.getText())));
@@ -51,6 +52,7 @@ public class FXOuvrageRechercheControleur extends FXMenuBarAbstractControleur{
         }else{
             o.setLibraire(null);
         }
+        System.out.println("auteur"+o.getAuteurs());
 
         o.setTitre(titreTextField.getText());
         o.setDateEdition(-1);
@@ -58,6 +60,8 @@ public class FXOuvrageRechercheControleur extends FXMenuBarAbstractControleur{
 
         System.out.println(o);
         ArrayList<Ouvrage> listOuvrage = ControleurFunctions.ouvrageDAO.chercher(o);
+        System.out.println("auteur"+o.getAuteurs());
+
         listView.getItems().clear();
         listView.getItems().addAll(listOuvrage);
         listView.refresh();
@@ -70,6 +74,8 @@ public class FXOuvrageRechercheControleur extends FXMenuBarAbstractControleur{
     protected void itemCLick(MouseEvent event){
         Ouvrage o = listView.getSelectionModel().getSelectedItem();
         FXPageOuvrageControleur.ouvrage=o;
+        System.out.println("auteur"+o.getAuteurs());
+
         ControleurFunctions.changeScene(event,"FxInterfacePageOuvrage.fxml");
     }
 

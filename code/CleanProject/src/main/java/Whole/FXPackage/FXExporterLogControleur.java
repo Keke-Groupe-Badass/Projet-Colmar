@@ -2,17 +2,23 @@ package Whole.FXPackage;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class FXExporterLogControleur {
+public class FXExporterLogControleur implements Initializable {
     @FXML
     TextField dossierTextField;
+    @FXML
+    Button confirm;
     @FXML
     protected void annuler(ActionEvent event){
         ControleurFunctions.changeScene(event, "FxInterfaceMain.fxml");
@@ -37,5 +43,12 @@ public class FXExporterLogControleur {
             }
         }
 
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        if(!ControleurFunctions.statut.equals("admin")){
+            confirm.setDisable(true);
+        }
     }
 }

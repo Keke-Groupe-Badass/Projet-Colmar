@@ -77,18 +77,18 @@
                               <Label text="Imprimeur (id)" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                               <Label text="Libraire (id)" GridPane.columnIndex="2" GridPane.rowIndex="4" />
                               <Label GridPane.columnIndex="2" GridPane.rowIndex="5" />
-                              <CheckBox mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="5" fx:id="reechantillonageCheckBox"/>
-                              <TextField GridPane.columnIndex="1" fx:id="titreTextField"/>
-                              <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="dateTextField" />
-                              <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" fx:id="formatTextField"/>
-                              <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" fx:id="resolutionTextField"/>
-                              <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" fx:id="creditPhotoTextField"/>
-                              <TextField GridPane.columnIndex="3" fx:id="copyrightTextField"/>
-                              <TextField GridPane.columnIndex="3" GridPane.rowIndex="1" fx:id="pageTextField"/>
-                              <TextField GridPane.columnIndex="3" GridPane.rowIndex="2" fx:id="lieuTextField"/>
-                              <TextField GridPane.columnIndex="3" GridPane.rowIndex="3" fx:id="imprimeurTextField"/>
-                              <TextField GridPane.columnIndex="3" GridPane.rowIndex="4" fx:id="libraireTextField"/>
-                              <TextField GridPane.columnIndex="3" GridPane.rowIndex="5" fx:id="lienTextField"/>
+                              <CheckBox fx:id="reechantillonageCheckBox" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                              <TextField fx:id="titreTextField" GridPane.columnIndex="1" />
+                              <TextField fx:id="dateTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <TextField fx:id="formatTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <TextField fx:id="resolutionTextField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <TextField fx:id="creditPhotoTextField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <TextField fx:id="copyrightTextField" GridPane.columnIndex="3" />
+                              <TextField fx:id="pageTextField" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                              <TextField fx:id="lieuTextField" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                              <TextField fx:id="imprimeurTextField" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                              <TextField fx:id="libraireTextField" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                              <TextField fx:id="lienTextField" GridPane.columnIndex="3" GridPane.rowIndex="5" />
                               <Label text="Lien" GridPane.columnIndex="2" GridPane.rowIndex="5" />
                            </children>
                         </GridPane>
@@ -100,8 +100,8 @@
                      <children>
                         <Label fx:id="labelModifier" text="Ouvrage n°" />
                         <Button fx:id="modifierBtn" mnemonicParsing="false" onAction="#valider" text="Confirmer" />
-                        <Button fx:id="retourBtn" mnemonicParsing="false" text="Retour" onAction="#annuler" />
-                        <Button mnemonicParsing="false" text="Supprimer" onAction="#supprimer"/>
+                        <Button fx:id="retourBtn" mnemonicParsing="false" onAction="#annuler" text="Retour" />
+                        <Button mnemonicParsing="false" onAction="#supprimer" text="Supprimer" />
                      </children>
                   </HBox>
                </top>
@@ -114,7 +114,7 @@
                            <center>
                               <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                                  <children>
-                                    <ListView fx:id="listView" prefHeight="150.0" prefWidth="596.0" onMouseClicked="#clickListAuteur" />
+                                    <ListView fx:id="listView" onMouseClicked="#clickListAuteur" prefHeight="150.0" prefWidth="596.0" />
                                  </children>
                               </VBox>
                            </center>
@@ -124,9 +124,9 @@
                                     <Label prefHeight="0.0" prefWidth="41.0" text="Auteurs" />
                                     <HBox prefHeight="24.0" prefWidth="596.0">
                                        <children>
-                                          <CheckBox mnemonicParsing="false" text="Supprimer" fx:id="supprimerCheckBox"/>
-                                          <TextField prefHeight="25.0" prefWidth="100.0" text="Auteur (id)" fx:id="addAuteurTextField"/>
-                                          <Button mnemonicParsing="false" text="+" onAction="#ajouterAuteur"/>
+                                          <CheckBox fx:id="supprimerCheckBox" mnemonicParsing="false" text="Supprimer" />
+                                          <TextField fx:id="addAuteurTextField" prefHeight="25.0" prefWidth="100.0" promptText="Auteur (id)" />
+                                          <Button mnemonicParsing="false" onAction="#ajouterAuteur" text="+" />
                                        </children>
                                     </HBox>
                                  </children>
