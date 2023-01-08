@@ -448,4 +448,14 @@ public class Lettrine implements CCMS<Lettrine> {
                 ", identique: " + identique;
 
     }
+    public void ajouterTag(Tag t){
+        if(t!=null){
+            if(!tags.contains(t)){
+                tags.add(t);
+            }
+        }
+    }
+    public void retirerTag(Tag t){
+        tags.remove(t);
+    }
 }
