@@ -24,7 +24,7 @@ public class FXPersonneAjoutControleur extends FXMenuBarAbstractControleur{
         }
 
         if(prenomTextField.getText()!=null) {
-            if(nomTextField.getText().isBlank())
+            if(!prenomTextField.getText().isBlank())
                 p.setPrenom(prenomTextField.getText());
         }
         if(noteTextArea.getText() != null) {
@@ -39,8 +39,8 @@ public class FXPersonneAjoutControleur extends FXMenuBarAbstractControleur{
             alert.setHeaderText(null);
             alert.setContentText("La personne à été crée.");
             alert.showAndWait();
-            ControleurFunctions.changeScene(event, "FxInterfacePagePersonne.fxml");
             FXPagePersonneControleur.personne = p;
+            ControleurFunctions.changeScene(event, "FxInterfacePagePersonne.fxml");
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Une erreur est survenue");
@@ -50,7 +50,7 @@ public class FXPersonneAjoutControleur extends FXMenuBarAbstractControleur{
     }
 
     public void retour(ActionEvent event) {
-        ControleurFunctions.changeScene(event, "FxInterfacePersonne");
+        ControleurFunctions.changeScene(event, "FxInterfacePersonnes.fxml");
     }
 
 
