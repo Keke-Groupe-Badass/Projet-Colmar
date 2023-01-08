@@ -29,16 +29,10 @@ public class FXLoginControleur implements Initializable {
     TextField mailTextField;
     @FXML
     PasswordField passwordTextField;
-    @FXML
-    TextField dbTextField;
+
     @FXML
     public void changementDeScene(ActionEvent event) throws mauvaisMDPException {
         try {
-            if(dbTextField.getText()!=null){
-                if(!dbTextField.getText().trim().isEmpty()){
-                    Controleur.getConfigList().set(0,dbTextField.getText());
-                }
-            }
             Connection cn = SingleConnection.getInstance(Controleur.getConfigList().get(0),Controleur.getConfigList().get(1),Controleur.getConfigList().get(2));
             if(cn != null){
 
@@ -77,6 +71,5 @@ public class FXLoginControleur implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ControleurFunctions.statut = "chercheur";
-        dbTextField.setText(dbName);
     }
 }

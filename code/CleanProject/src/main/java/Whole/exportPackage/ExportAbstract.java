@@ -17,13 +17,13 @@ public abstract class ExportAbstract {
     public String name="null";
     /**
      *  Implémante d'une manière à définir la sauvegarde de la base de donnée dans un fichier
-     * @param f Fichier de sauvegarde
+     * @param path chemin d'accès
      * @param list L'intégralité d'une table
      * @return true si la base peut être exportée, false sinon
-     * @see Whole.daoPackage.AdminDAO#exportDonnee(ExportAbstract, String)
+     * @see Whole.daoPackage.AdminDAO#exportDonnee(String, String) 
      * @see File
      */
-    public abstract Boolean export(File f, ArrayList<ArrayList<String>> list);
+    public abstract Boolean export(String path, ArrayList<ArrayList<String>> list);
     abstract String getName();
 
     public ExportAbstract(String name) {

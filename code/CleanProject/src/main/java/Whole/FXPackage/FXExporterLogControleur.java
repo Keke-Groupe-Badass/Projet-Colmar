@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.TextField;
 import javafx.stage.DirectoryChooser;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -18,11 +19,11 @@ public class FXExporterLogControleur {
     }
     @FXML
     protected void explorer(ActionEvent event) {
-        DirectoryChooser directoryChooser = new DirectoryChooser();
-        File selectedDirectory = directoryChooser.showDialog((Stage) ((Node) event.getSource()).getScene().getWindow());
-        if(selectedDirectory == null){
+        FileChooser fileChooser = new FileChooser();
+        File file = fileChooser.showOpenDialog((Stage) ((Node) event.getSource()).getScene().getWindow());
+        if(file == null){
         }else{
-            dossierTextField.setText(selectedDirectory.getAbsolutePath());
+            dossierTextField.setText(file.getAbsolutePath());
         }
     }
     @FXML
