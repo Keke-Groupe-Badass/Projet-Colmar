@@ -49,7 +49,7 @@
                   <Label text="Utilisateurs:" BorderPane.alignment="CENTER" />
                </top>
                <center>
-                  <ListView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" onMouseClicked="#itemCLick"/>
+                  <ListView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" onMouseClicked="#itemCLick" fx:id="listView"/>
                </center>
             </BorderPane>
          </items>

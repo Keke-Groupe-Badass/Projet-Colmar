@@ -2,6 +2,7 @@ package Whole.FXPackage;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
@@ -9,8 +10,10 @@ import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class FXExporterDonneeControleur {
+public class FXExporterDonneeControleur implements Initializable {
     @FXML
     ChoiceBox<String> choiceBox;
     @FXML
@@ -31,7 +34,14 @@ public class FXExporterDonneeControleur {
     @FXML
     protected void valider(ActionEvent event){
         if(ControleurFunctions.adminDAO.exportDonnee(choiceBox.getValue(),dossierTextField.getText())){
+            ControleurFunctions.adminDAO.ecrireLog("à exporter les données au format "+choiceBox.getValue());
             ControleurFunctions.changeScene(event, "FxInterfaceMain.fxml");
         }
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        choiceBox.getItems().addAll("SQL","CSV");
+        choiceBox.setValue("CSV");
     }
 }

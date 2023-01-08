@@ -26,6 +26,8 @@ public class FXTagAjoutControleur extends FXMenuBarAbstractControleur{
             alert.setContentText("Le tag à été crée.");
             alert.showAndWait();
             FXPageTagControleur.tag = t;
+            ControleurFunctions.adminDAO.ecrireLog("à créer tag"+t.getId());
+
             ControleurFunctions.changeScene(event, "FxInterfacePageTag.fxml");
         }
         else{

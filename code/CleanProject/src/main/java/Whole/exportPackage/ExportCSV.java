@@ -26,7 +26,8 @@ public class ExportCSV extends ExportAbstract {
      * @return true si la base peut être exportée, false sinon
      * @see whole.AdminDao.exportDonee
      */
-    public Boolean export(File f, ArrayList<ArrayList<String>> list) {
+    public Boolean export(String path, ArrayList<ArrayList<String>> list) {
+        File f = new File(path+".csv");
         try {
             BufferedWriter br = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(f)));
             for (ArrayList<String> strings : list) {

@@ -32,6 +32,8 @@ public class FXModifierTagsControleur extends FXMenuBarAbstractControleur{
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK){
             if(ControleurFunctions.tagDAO.supprimer(tag)){
+                ControleurFunctions.adminDAO.ecrireLog("à supprimer tag "+tag.getId());
+
                 ControleurFunctions.changeScene(event, "FxInterfaceTags.fxml");
             }
         } else {
@@ -52,6 +54,7 @@ public class FXModifierTagsControleur extends FXMenuBarAbstractControleur{
             alert.setContentText("Le tag à été modifié.");
             alert.showAndWait();
             FXPageTagControleur.tag = t;
+            ControleurFunctions.adminDAO.ecrireLog("à modifier tag "+tag.getId());
             ControleurFunctions.changeScene(event, "FxInterfacePageTag.fxml");
         }else{
 

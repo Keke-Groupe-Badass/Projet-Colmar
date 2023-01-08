@@ -146,6 +146,8 @@ public class FXModifierOuvrageControleur extends FXMenuBarAbstractControleur imp
             alert.setHeaderText(null);
             alert.setContentText("L'ouvrage à été modifié.");
             alert.showAndWait();
+            ControleurFunctions.adminDAO.ecrireLog("à modifier ouvrage "+ouvrage.getId());
+
             ControleurFunctions.changeScene(event, "FxInterfacePageOuvrage.fxml");
         }else{
 
@@ -161,6 +163,8 @@ public class FXModifierOuvrageControleur extends FXMenuBarAbstractControleur imp
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK){
             if(ControleurFunctions.ouvrageDAO.supprimer(ouvrage)){
+                ControleurFunctions.adminDAO.ecrireLog("à supprimer ouvrage "+ouvrage.getId());
+
                 ControleurFunctions.changeScene(event, "FxInterfaceOuvrages.fxml");
             }
         } else {

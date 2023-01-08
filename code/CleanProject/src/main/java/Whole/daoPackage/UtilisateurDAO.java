@@ -301,12 +301,12 @@ public class UtilisateurDAO extends SuperAbstractDAO {
      */
     public ArrayList<String> chercher(String login){
         ArrayList<String> list = new ArrayList<>();
-        String sql = "SELECT `email` FROM `utilisateurs` WHERE `email` LIKE '"+login+"'";
+        String sql = "SELECT `email` FROM `utilisateurs` WHERE `email` LIKE '%"+login+"%'";
         try {
             Statement stmt = cn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             while(rs.next()){
-                list.add(rs.getString(0));
+                list.add(rs.getString(1));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

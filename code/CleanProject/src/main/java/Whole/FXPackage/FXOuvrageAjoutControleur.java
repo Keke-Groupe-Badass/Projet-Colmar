@@ -100,6 +100,7 @@ public class FXOuvrageAjoutControleur extends FXMenuBarAbstractControleur{
             alert.setContentText("L'ouvrage à été crée.");
             alert.showAndWait();
             FXPageOuvrageControleur.ouvrage = o;
+            ControleurFunctions.adminDAO.ecrireLog("à créer ouvrage"+o.getId());
 
             ControleurFunctions.changeScene(event, "FxInterfacePageOuvrage.fxml");
         }

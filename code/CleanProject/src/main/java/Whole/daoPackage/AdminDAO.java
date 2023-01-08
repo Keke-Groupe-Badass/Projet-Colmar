@@ -15,6 +15,7 @@ import java.util.ArrayList;
  * Classe permettant à l'administrateur de gérer la base de données.
  */
 public class AdminDAO extends SuperAbstractDAO {
+    private String nom = "serveur";
     /**
      * Utilisateur de la BDD.
      */
@@ -57,6 +58,14 @@ public class AdminDAO extends SuperAbstractDAO {
         listeTable.add("utilisateurs");
     }
 
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
     /**
      * Permet de stocker dans un fichier la BDD.
      *
@@ -95,8 +104,7 @@ public class AdminDAO extends SuperAbstractDAO {
         if(e!=null){
             for (String st : listeTable) {
                 list = getTableList(st);
-                File f = new File(path + "/" + st);
-                b = b && e.export(f, list);
+                b = b && e.export(path + "/" + st, list);
             }
         }
         return b;
@@ -111,6 +119,7 @@ public class AdminDAO extends SuperAbstractDAO {
      */
     private boolean sqlExport(String path) {
         String os = System.getProperty("os.name");
+        System.out.println(os);
         String type = "sh";
         if (os.contains("Windows")) {
             type = "cmd.exe";
@@ -121,6 +130,7 @@ public class AdminDAO extends SuperAbstractDAO {
             Runtime.getRuntime().exec(cmd);
             return true;
         } catch (IOException ex) {
+            System.err.println(ex);
             return false;
         }
     }
@@ -152,19 +162,12 @@ public class AdminDAO extends SuperAbstractDAO {
                 }
             }
             list.add(listeNomColonne);
-            int row = 1;
             while (rs.next()) {
                 ArrayList<String> listeLigne = new ArrayList<>();
-                for (int j = 1; j <= row; j++) {
-                    for (int i = 1; i <= nbColonne; i++) {
-                        if (rs.getObject(i) != null)
-                            listeLigne.add((String) rs.getObject(i).toString());
-                        else
-                            listeLigne.add(null);
-                    }
-                    list.add(listeLigne);
+                list.add(listeLigne);
+                for(int i=1;i<=nbColonne;i++){
+                    listeLigne.add(""+rs.getObject(i));
                 }
-                row++;
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -237,7 +240,7 @@ public class AdminDAO extends SuperAbstractDAO {
             String sql = "INSERT INTO `logs`(`texte`, `date`, `email`) "
                     + "VALUES(?,'"
                     + new Date(System.currentTimeMillis()) + "','"
-                    + utilisateur + "')";
+                    + nom + "')";
             PreparedStatement st = cn.prepareStatement(sql);
             st.setString(1, txt);
             int nbColonnes = st.executeUpdate();

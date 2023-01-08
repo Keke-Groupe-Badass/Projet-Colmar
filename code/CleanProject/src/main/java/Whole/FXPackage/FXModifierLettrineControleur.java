@@ -110,6 +110,7 @@ public class FXModifierLettrineControleur extends FXMenuBarAbstractControleur im
             alert.showAndWait();
             newLettrine.setId(lettrine.getId());
             FXPageLettrineControleur.lettrine = newLettrine;
+            ControleurFunctions.adminDAO.ecrireLog("à modifier lettrine "+lettrine.getId());
 
             ControleurFunctions.changeScene(event, "FxInterfacePageLettrine.fxml");
         }else{
@@ -161,6 +162,8 @@ public class FXModifierLettrineControleur extends FXMenuBarAbstractControleur im
             newMeta.add(m);
             listMeta.add(m);
             metaListView.refresh();
+            ControleurFunctions.adminDAO.ecrireLog("à crée "+m.getId());
+
         }
     }
     @FXML
@@ -201,6 +204,8 @@ public class FXModifierLettrineControleur extends FXMenuBarAbstractControleur im
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK){
             if(ControleurFunctions.lettrineDAO.supprimer(lettrine)){
+                ControleurFunctions.adminDAO.ecrireLog("à supprimer lettrine "+lettrine.getId());
+
                 ControleurFunctions.changeScene(event, "FxInterfaceLettrines.fxml");
             }
         } else {

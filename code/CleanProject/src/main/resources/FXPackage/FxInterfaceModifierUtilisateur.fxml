@@ -14,9 +14,9 @@
    <top>
       <HBox prefHeight="38.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" text="Retour" onAction="#annuler"/>
+            <Button mnemonicParsing="false" text="Retour" onAction="#annuler" />
             <Label text="Modifier utilisateur: " fx:id="nomLabel"/>
-            <Button mnemonicParsing="false" text="Supprimer Utilisateur" onAction="#supprimer"/>
+            <Button mnemonicParsing="false" text="Supprimer Utilisateur" onAction="#supprimer" fx:id="supprimerBtn"/>
          </children>
       </HBox>
    </top>
