@@ -40,6 +40,8 @@ public class FXLettrinesRechercheControleur extends FXMenuBarAbstractControleur 
             try{
                 o = new Ouvrage(Integer.parseInt(ouvargeTextField.getText()));
             }catch (NumberFormatException exception){
+                o = null;
+                System.err.println(exception);
 
             }
 
@@ -51,7 +53,8 @@ public class FXLettrinesRechercheControleur extends FXMenuBarAbstractControleur 
                 p = new Personne(Integer.parseInt(personneTextField.getText()));
 
             }catch (NumberFormatException exception){
-
+                p = null;
+                System.err.println(exception);
             }
 
         }
@@ -75,6 +78,8 @@ public class FXLettrinesRechercheControleur extends FXMenuBarAbstractControleur 
 
         l.setOuvrage(o);
         l.setCreateur(p);
+
+
         ArrayList<Lettrine> list = ControleurFunctions.lettrineDAO.chercher(l);
         System.out.println(list.size());
         ObservableList observableList = listView.getItems();
