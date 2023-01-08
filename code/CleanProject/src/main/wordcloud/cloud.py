@@ -3,13 +3,27 @@ from wordcloud import WordCloud, STOPWORDS
 from random import randint
 
 """
+Le nuage n'est pas fondamental à l'utilisation,
+par conséquent ne pas installer python permet une utilisation correcte de l'application
+
 Pour installer:
 voir scripts
 
 matplotlib:
 python -m pip install matplotlib
+
+ou (dépend des utilisateurs)
+
+py -m pip install matplotlib
+
 worldcloud:
 python -m pip install WordCloud
+
+ou (dépend des utilisateurs)
+
+py -m pip install WordCloud
+
+random est normalement inclus dans python
 
 Fonctionement:
 Le programme lit le fichier texte produit par la classe java cloudWordGenerator.
