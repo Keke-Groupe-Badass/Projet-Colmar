@@ -46,11 +46,11 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Button fx:id="lettrinesButton" mnemonicParsing="false" onAction="#lettrinesScene" prefHeight="60.0" prefWidth="150.0" text="Lettrines" GridPane.columnIndex="1" />
-            <Button fx:id="ouvragesButton" mnemonicParsing="false" onAction="#ouvragesScene" prefHeight="70.0" prefWidth="150.0" text="Ouvrages" GridPane.columnIndex="2" />
-            <Button fx:id="personnesButton" mnemonicParsing="false" onAction="#personnesScene" prefHeight="111.0" prefWidth="150.0" text="Personnes" GridPane.columnIndex="3" />
-            <Button fx:id="tagsButton" mnemonicParsing="false" prefHeight="166.0" prefWidth="150.0" text="Tags" GridPane.columnIndex="4" />
-            <Button fx:id="accueilButton" mnemonicParsing="false" onAction="#accueilScene" prefHeight="108.0" prefWidth="120.0" text="Accueil" />
+            <Button fx:id="lettrinesButton" mnemonicParsing="false" onAction="#lettrinesScene" prefHeight="60.0" prefWidth="150.0" style="-fx-background-color: orange; -fx-border-color: black; -fx-text-fill: white;" text="Lettrines" GridPane.columnIndex="1" />
+            <Button fx:id="ouvragesButton" mnemonicParsing="false" onAction="#ouvragesScene" prefHeight="70.0" prefWidth="150.0" style="-fx-background-color: orange; -fx-border-color: black; -fx-text-fill: white;" text="Ouvrages" GridPane.columnIndex="2" />
+            <Button fx:id="personnesButton" mnemonicParsing="false" onAction="#personnesScene" prefHeight="111.0" prefWidth="150.0" style="-fx-background-color: orange; -fx-border-color: black; -fx-text-fill: white;" text="Personnes" GridPane.columnIndex="3" />
+            <Button fx:id="tagsButton" mnemonicParsing="false" prefHeight="166.0" prefWidth="150.0" style="-fx-background-color: white; -fx-border-color: black; -fx-text-fill: orange;" text="Tags" GridPane.columnIndex="4" />
+            <Button fx:id="accueilButton" mnemonicParsing="false" onAction="#accueilScene" prefHeight="108.0" prefWidth="120.0" style="-fx-background-color: orange; -fx-border-color: black; -fx-text-fill: white;" text="Accueil" />
          </children>
       </GridPane>
       <GridPane layoutY="65.0" prefHeight="25.0" prefWidth="600.0">
