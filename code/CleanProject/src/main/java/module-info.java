@@ -8,12 +8,12 @@ module com.example.cleanproject {
     requires java.naming; //rajouté
 
 
-    opens com.example.cleanproject to javafx.fxml;
-    exports com.example.cleanproject;
+    //opens com.example.cleanproject to javafx.fxml;
+    //exports com.example.cleanproject;
     exports Whole.exportPackage;
     opens Whole.exportPackage to javafx.fxml;
-    exports Whole.fenetrePackageTest;
-    opens Whole.fenetrePackageTest to javafx.fxml;
+    //exports Whole.fenetrePackageTest;
+    //opens Whole.fenetrePackageTest to javafx.fxml;
     opens Whole.FXPackage to javafx.fxml;
     exports Whole.FXPackage;
     exports Whole.wordCloud;
