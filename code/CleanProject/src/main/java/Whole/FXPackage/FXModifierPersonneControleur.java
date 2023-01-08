@@ -44,6 +44,8 @@ public class FXModifierPersonneControleur extends FXMenuBarAbstractControleur im
             alert.showAndWait();
             FXPagePersonneControleur.personne = p;
             p.setId(personne.getId());
+            ControleurFunctions.adminDAO.ecrireLog("à modifier personne "+personne.getId());
+
             ControleurFunctions.changeScene(event, "FxInterfacePagePersonne.fxml");
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -62,6 +64,8 @@ public class FXModifierPersonneControleur extends FXMenuBarAbstractControleur im
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK){
             if(ControleurFunctions.personneDAO.supprimer(personne)){
+                ControleurFunctions.adminDAO.ecrireLog("à supprimer personne "+personne.getId());
+
                 ControleurFunctions.changeScene(event, "FxInterfacePersonnes.fxml");
             }
         } else {

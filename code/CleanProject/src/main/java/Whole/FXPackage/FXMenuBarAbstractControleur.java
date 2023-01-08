@@ -1,9 +1,9 @@
 package Whole.FXPackage;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -22,7 +22,8 @@ public abstract class FXMenuBarAbstractControleur {
     }
     @FXML
     protected void quitter(ActionEvent event){
-        //TODO quitter l'appli proprement
+        Platform.exit();
+        System.exit(0);
     }
     @FXML
     protected void log(ActionEvent event){

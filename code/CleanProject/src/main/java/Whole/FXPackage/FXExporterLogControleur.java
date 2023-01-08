@@ -31,6 +31,8 @@ public class FXExporterLogControleur {
         if(!dossierTextField.getText().isBlank()){
             if(ControleurFunctions.adminDAO.exportLog(new File(dossierTextField.getText()))){
                 ControleurFunctions.changeScene(event, "FxInterfaceMain.fxml");
+                ControleurFunctions.adminDAO.ecrireLog("à exporter les logs");
+
             }
         }
 

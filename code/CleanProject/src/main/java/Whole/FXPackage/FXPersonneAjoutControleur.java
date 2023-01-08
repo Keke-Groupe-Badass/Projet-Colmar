@@ -40,6 +40,8 @@ public class FXPersonneAjoutControleur extends FXMenuBarAbstractControleur{
             alert.setContentText("La personne à été crée.");
             alert.showAndWait();
             FXPagePersonneControleur.personne = p;
+            ControleurFunctions.adminDAO.ecrireLog("à créer personne"+p.getId());
+
             ControleurFunctions.changeScene(event, "FxInterfacePagePersonne.fxml");
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);

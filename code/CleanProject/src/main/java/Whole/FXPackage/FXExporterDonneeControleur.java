@@ -31,6 +31,7 @@ public class FXExporterDonneeControleur {
     @FXML
     protected void valider(ActionEvent event){
         if(ControleurFunctions.adminDAO.exportDonnee(choiceBox.getValue(),dossierTextField.getText())){
+            ControleurFunctions.adminDAO.ecrireLog("à exporter les données au format "+choiceBox.getValue());
             ControleurFunctions.changeScene(event, "FxInterfaceMain.fxml");
         }
     }

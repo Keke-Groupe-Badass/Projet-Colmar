@@ -15,6 +15,7 @@ import java.util.ArrayList;
  * Classe permettant à l'administrateur de gérer la base de données.
  */
 public class AdminDAO extends SuperAbstractDAO {
+    private String nom = "serveur";
     /**
      * Utilisateur de la BDD.
      */
@@ -55,6 +56,14 @@ public class AdminDAO extends SuperAbstractDAO {
         listeTable.add("regroupe");
         listeTable.add("tags");
         listeTable.add("utilisateurs");
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
     /**
@@ -237,7 +246,7 @@ public class AdminDAO extends SuperAbstractDAO {
             String sql = "INSERT INTO `logs`(`texte`, `date`, `email`) "
                     + "VALUES(?,'"
                     + new Date(System.currentTimeMillis()) + "','"
-                    + utilisateur + "')";
+                    + nom + "')";
             PreparedStatement st = cn.prepareStatement(sql);
             st.setString(1, txt);
             int nbColonnes = st.executeUpdate();

@@ -50,7 +50,9 @@ public class FXLoginControleur implements Initializable {
                 ControleurFunctions.adminDAO = new AdminDAO(Controleur.getConfigList().get(0),Controleur.getConfigList().get(1),Controleur.getConfigList().get(2));
                 ControleurFunctions.utilisateurDAO = new UtilisateurDAO(Controleur.getConfigList().get(0),Controleur.getConfigList().get(1),Controleur.getConfigList().get(2));
                 ControleurFunctions.statut = ControleurFunctions.utilisateurDAO.obtenirStatut(ControleurFunctions.nom);
+                ControleurFunctions.adminDAO.setNom(mailTextField.getText());
                 if(ControleurFunctions.utilisateurDAO.connexion(mailTextField.getText(),passwordTextField.getText())!=null){
+                    ControleurFunctions.adminDAO.ecrireLog("c'est connecté");
                     Parent root = FXMLLoader.load(FXMain.class.getResource("/FXPackage/FxInterfaceMain.fxml"));
                     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                     Scene scene = new Scene(root);

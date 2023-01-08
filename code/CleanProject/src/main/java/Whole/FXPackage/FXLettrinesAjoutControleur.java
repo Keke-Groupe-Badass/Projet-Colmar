@@ -66,6 +66,7 @@ public class FXLettrinesAjoutControleur extends FXMenuBarAbstractControleur{
             System.out.println(l.getOuvrage());
             l.setCreateur(ControleurFunctions.ouvrageDAO.getPersonne(l.getCreateur().getId()));
             FXPageLettrineControleur.lettrine = l;
+            ControleurFunctions.adminDAO.ecrireLog("à créer lettrine"+l.getId());
 
             ControleurFunctions.changeScene(event, "FxInterfacePageLettrine.fxml");
         }
