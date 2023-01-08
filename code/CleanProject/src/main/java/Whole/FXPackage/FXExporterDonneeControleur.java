@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.DirectoryChooser;
@@ -18,6 +19,8 @@ public class FXExporterDonneeControleur implements Initializable {
     ChoiceBox<String> choiceBox;
     @FXML
     TextField dossierTextField;
+    @FXML
+    Button confirm;
     @FXML
     protected void annuler(ActionEvent event){
         ControleurFunctions.changeScene(event, "FxInterfaceMain.fxml");
@@ -41,7 +44,11 @@ public class FXExporterDonneeControleur implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        choiceBox.getItems().addAll("SQL","CSV");
+        choiceBox.getItems().addAll("CSV"); //SQL
         choiceBox.setValue("CSV");
+        if(ControleurFunctions.statut.equals("chercheur")){
+            confirm.setDisable(true);
+        }
     }
+
 }

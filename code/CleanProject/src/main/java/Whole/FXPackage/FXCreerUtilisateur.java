@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -21,7 +22,8 @@ public class FXCreerUtilisateur implements Initializable {
     PasswordField confirmPasswordField;
     @FXML
     ChoiceBox<String> statutChoiceBox;
-
+    @FXML
+    Button confirm;
     @FXML
     protected void annuler(ActionEvent event){
         ControleurFunctions.changeScene(event, "FxInterfaceMain.fxml");
@@ -45,5 +47,8 @@ public class FXCreerUtilisateur implements Initializable {
         ObservableList<String> options = FXCollections.observableArrayList("chercheur","modérateur","admin");
         statutChoiceBox.setValue("chercheur");
         statutChoiceBox.setItems(options);
+        if(!ControleurFunctions.statut.equals("admin")){
+            confirm.setDisable(true);
+        }
     }
 }
