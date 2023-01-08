@@ -117,23 +117,26 @@ public class PersonneDAO extends AbstractDAO<Personne> {
      */
     public boolean creer(Personne donne) {
         try {
-            String sql = "SELECT * FROM personnes WHERE idPersonne=?";
+            String sql = "INSERT INTO personnes (nom, prenom, note) VALUES(?,?,?)";
             PreparedStatement stmt = cn.prepareStatement(sql);
-            stmt.setInt(1, donne.getId());
-            if (!stmt.execute()) { //Si la personne n'existe pas
-
-                sql = "INSERT INTO personnes (nom, prenom, note) VALUES(?,?,?)";
-                stmt = cn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
-                stmt.setString(1, donne.getNom());
-                stmt.setString(2, donne.getPrenom());
-                stmt.setString(3, donne.getNote());
-                int nbColonnes = stmt.executeUpdate();
-                return nbColonnes > 0;
+            stmt = cn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+            stmt.setString(1, donne.getNom());
+            stmt.setString(2, donne.getPrenom());
+            stmt.setString(3, donne.getNote());
+            int nbColonnes = stmt.executeUpdate();
+            if (nbColonnes <= 0) {
+                System.out.println("ouch something went wrong here");
+                return false;
             }
+            ResultSet rs2 = stmt.getGeneratedKeys();
+            if(rs2.next()){
+                donne.setId(rs2.getInt(1));
+            }
+                return nbColonnes > 0;
+
         } catch (SQLException e) {
             return false;
         }
-        return false;
     }
 
     /**
@@ -150,13 +153,13 @@ public class PersonneDAO extends AbstractDAO<Personne> {
         boolean premier = true;
         String sql = "SELECT * FROM personnes WHERE";
         if (donne.getNom() != null) {
-            sql += " nom='" + donne.getNom() + "'";
+            sql += " nom like '%" + donne.getNom() + "%'";
             premier = false;
         }
         if (donne.getPrenom() != null) {
             if (!premier)
                 sql += " AND";
-            sql += " prenom='" + donne.getPrenom() + "'";
+            sql += " prenom like '%" + donne.getPrenom() + "%'";
             premier = false;
         }
         if (donne.getNote() != null) {

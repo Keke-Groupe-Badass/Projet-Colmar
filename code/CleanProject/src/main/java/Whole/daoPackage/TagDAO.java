@@ -50,17 +50,20 @@ public class TagDAO extends AbstractDAO<Tag> {
         StringBuilder str = new StringBuilder();
         str.append("UPDATE `tags` SET ");
         if (changement.getNom() != null) {
-            str.append("`nom`='" + changement.getNom() + "'");
+            str.append("`nom`= ? ");
             premier=false;
         }
+
         if (changement.getDescription() != null) {
             if (!premier)
                 str.append(", ");
-            str.append("`description`='" + changement.getDescription() + "'");
+            str.append("`description`= ?");
         }
         str.append(" WHERE idTag=" + objet.getId());
         try {
             PreparedStatement stmt = cn.prepareStatement(str.toString());
+            stmt.setString(1,changement.getNom());
+            stmt.setString(2,changement.getDescription());
             int nbColonnesModifiees = stmt.executeUpdate();
             return nbColonnesModifiees > 0;
         } catch (SQLException e) {
@@ -106,23 +109,22 @@ public class TagDAO extends AbstractDAO<Tag> {
     @Override
     public boolean creer(Tag objet) {
         if (objet.getNom() != null) {
+            System.out.println("non nul");
             try {
-                String sql="SELECT * FROM tags WHERE idTag=" + objet.getId();
-                PreparedStatement stmt = cn.prepareStatement(sql);
-                if (!stmt.execute()){ //Si le tag n'existe pas déjà
-                    sql = "INSERT INTO tags (nom, description) VALUES(?,?)";
-                    stmt = cn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
-                    stmt.setString(1, objet.getNom());
-                    stmt.setString(2, objet.getDescription());
-                    int nbColonnes = stmt.executeUpdate();
-                    if(nbColonnes>0){
-                        ResultSet rs2 = stmt.getGeneratedKeys();
-                        if(rs2.next()){
-                            objet.setId(rs2.getInt(1));
-                        }
-                    }
-                    return nbColonnes > 0;
+                String sql = "INSERT INTO tags (nom, description) VALUES(?,?)";
+                PreparedStatement stmt = cn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+                stmt.setString(1, objet.getNom());
+                stmt.setString(2, objet.getDescription());
+                int nbColonnes = stmt.executeUpdate();
+                if (nbColonnes <= 0) {
+                    System.out.println("ouch something went wrong here");
+                    return false;
                 }
+                ResultSet rs2 = stmt.getGeneratedKeys();
+                if(rs2.next()){
+                    objet.setId(rs2.getInt(1));
+                }
+                return nbColonnes > 0;
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
@@ -148,7 +150,7 @@ public class TagDAO extends AbstractDAO<Tag> {
         boolean premier=true;
         str.append("SELECT * FROM `tags` WHERE");
         if (objet.getNom() != null) {
-            str.append(" nom='" + objet.getNom() + "'");
+            str.append(" nom like '%" + objet.getNom() + "%'");
             premier=false;
         }
         if (objet.getDescription() != null) {
@@ -181,9 +183,10 @@ public class TagDAO extends AbstractDAO<Tag> {
     public ArrayList<Lettrine> lettrinesAssociees(Tag t){
         ArrayList<Lettrine> l = new ArrayList<>();
         if(t!=null){
-            String sql = "SELECT lettrines.idLettrine FROM `lettrines` INNER JOIN regroupe on regroupe.idLettrine = idLettrine WHERE regroupe.idTag = ?";
+            String sql = "SELECT lettrines.idLettrine FROM `lettrines` INNER JOIN regroupe on regroupe.idLettrine = lettrines.idLettrine WHERE regroupe.idTag = ?";
             try {
                 PreparedStatement preparedStatement = cn.prepareStatement(sql);
+                preparedStatement.setInt(1,t.getId());
                 ResultSet rs = preparedStatement.executeQuery();
                 while(rs.next()){
                     l.add(new Lettrine(rs.getInt(1)));
@@ -211,21 +214,5 @@ public class TagDAO extends AbstractDAO<Tag> {
         }
         return str.toString();
     }
-    public static void saveText(){
-        try {
-            File f = new File("src/main/wordcloud/text.txt");
-            BufferedWriter br = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(f)));
-            Statement stmt = cn.createStatement();
-            String sql = "SELECT tags.nom FROM `regroupe` inner join tags on tags.idTag=regroupe.idTag";
-            ResultSet res = stmt.executeQuery(sql);
-            while (res.next()) {
-                br.write(" "+res.getString(1));
-            }
-            br.close();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
+
 }

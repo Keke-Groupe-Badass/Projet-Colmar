@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 
 import java.util.ArrayList;
 
@@ -28,10 +29,13 @@ public class FXTagRechercheControleur extends FXMenuBarAbstractControleur{
         listView.refresh();
     }
     @FXML
-    protected void itemCLick(ActionEvent event){
+    protected void itemCLick(MouseEvent event){
         Tag t = listView.getSelectionModel().getSelectedItem();
-        FXPageTagControleur.tag=t;
-        ControleurFunctions.changeScene(event,"FxInterfacePageTag.fxml");
+        if(t!=null){
+            FXPageTagControleur.tag=t;
+            ControleurFunctions.changeScene(event,"FxInterfacePageTag.fxml");
+        }
+
     }
     @FXML
     public void retourForm(ActionEvent event) {

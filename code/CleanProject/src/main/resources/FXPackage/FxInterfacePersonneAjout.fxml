@@ -12,6 +12,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
+<?import javafx.scene.control.TextArea?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Whole.FXPackage.FXPersonneAjoutControleur">
    <top>
        <MenuBar fx:id="myMenuBar" layoutY="1.0" prefHeight="27.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
@@ -60,15 +61,15 @@
                   <Label text="Note" GridPane.rowIndex="2" />
                   <TextField fx:id="nomTextField" GridPane.columnIndex="1" />
                   <TextField fx:id="prenomTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <TextField fx:id="noteTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextArea fx:id="noteTextArea" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                </children>
             </GridPane>
          </center>
          <bottom>
             <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
               <items>
-                <Button fx:id="annulerButton" mnemonicParsing="false" onAction="#annuler" text="Annuler" />
-                  <Button fx:id="validerButton" mnemonicParsing="false" onAction="#valider" text="Valider" />
+                <Button fx:id="annulerButton" mnemonicParsing="false" onAction="#retour" text="Annuler" />
+                  <Button fx:id="validerButton" mnemonicParsing="false" onAction="#confirmer" text="Valider" />
               </items>
             </ToolBar>
          </bottom>

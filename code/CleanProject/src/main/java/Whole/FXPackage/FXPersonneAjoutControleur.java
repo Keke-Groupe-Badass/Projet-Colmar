@@ -4,44 +4,43 @@ import Whole.ccmsPackage.Personne;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-public class FXPersonneAjoutControleur {
+public class FXPersonneAjoutControleur extends FXMenuBarAbstractControleur{
 
-    public static Personne personne;
     @FXML
     TextField nomTextField;
     @FXML
     TextField prenomTextField;
     @FXML
-    TextField noteTextField;
+    TextArea noteTextArea;
 
-    public void annuler(ActionEvent event) {
-        ControleurFunctions.changeScene(event, "FxInterfacePersonnes.fxml");
-    }
-
-    public void valider(ActionEvent event) {
+    public void confirmer(ActionEvent event) {
         Personne p = new Personne();
-        if (!nomTextField.getText().isBlank()) {
-            p.setNom(nomTextField.getText());
+        if(nomTextField.getText() != null) {
+            if(!nomTextField.getText().isBlank())
+                p.setNom(nomTextField.getText());
         }
 
-        if (!prenomTextField.getText().isBlank()) {
-            p.setPrenom(prenomTextField.getText());
+        if(prenomTextField.getText()!=null) {
+            if(!prenomTextField.getText().isBlank())
+                p.setPrenom(prenomTextField.getText());
+        }
+        if(noteTextArea.getText() != null) {
+            if (!noteTextArea.getText().isBlank()) {
+                p.setNote(noteTextArea.getText());
+            }
         }
 
-        if (!noteTextField.getText().isBlank()) {
-            p.setNote(noteTextField.getText());
-        }
-
-        if (ControleurFunctions.personneDAO.modifier(personne, p)) {
+        if (ControleurFunctions.personneDAO.creer(p)) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Personne modifiée");
+            alert.setTitle("Personne Crée");
             alert.setHeaderText(null);
-            alert.setContentText("La personne à été modifiée.");
+            alert.setContentText("La personne à été crée.");
             alert.showAndWait();
-            ControleurFunctions.changeScene(event, "FxInterfacePagePersonne.fxml");
             FXPagePersonneControleur.personne = p;
+            ControleurFunctions.changeScene(event, "FxInterfacePagePersonne.fxml");
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Une erreur est survenue");
@@ -49,4 +48,11 @@ public class FXPersonneAjoutControleur {
             alert.show();
         }
     }
+
+    public void retour(ActionEvent event) {
+        ControleurFunctions.changeScene(event, "FxInterfacePersonnes.fxml");
+    }
+
+
+
 }

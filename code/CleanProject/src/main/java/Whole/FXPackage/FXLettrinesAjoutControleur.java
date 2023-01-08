@@ -30,6 +30,7 @@ public class FXLettrinesAjoutControleur extends FXMenuBarAbstractControleur{
         if(ouvrageTextField.getText()!=null){
             if(!ouvrageTextField.getText().isBlank()){
                 o.setId(Integer.parseInt(ouvrageTextField.getText()));
+                System.out.println("hi");
             }
         }
         if(pageTextField!=null){
@@ -61,12 +62,14 @@ public class FXLettrinesAjoutControleur extends FXMenuBarAbstractControleur{
             alert.setHeaderText(null);
             alert.setContentText("La lettrine à été crée.");
             alert.showAndWait();
+            l.setOuvrage(ControleurFunctions.lettrineDAO.getOuvrage(l.getOuvrage().getId()));
+            System.out.println(l.getOuvrage());
+            l.setCreateur(ControleurFunctions.ouvrageDAO.getPersonne(l.getCreateur().getId()));
             FXPageLettrineControleur.lettrine = l;
 
             ControleurFunctions.changeScene(event, "FxInterfacePageLettrine.fxml");
         }
         else{
-
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Une erreur est survenue");
             alert.setHeaderText("Erreur est survenue durant la modification de la base");

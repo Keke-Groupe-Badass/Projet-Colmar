@@ -4,6 +4,7 @@ import Whole.Metadonnee;
 import Whole.ccmsPackage.Lettrine;
 import Whole.ccmsPackage.Tag;
 
+import Whole.daoPackage.LettrineDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -96,6 +97,8 @@ public class FXPageLettrineControleur extends FXMenuBarAbstractControleur implem
             listMeta.add(meta);
         }
         metaListView.setItems(listMeta);
+        lettrine.setTags(ControleurFunctions.lettrineDAO.chercherTag(lettrine));
+
         for(Tag tag:lettrine.getTags()){
             listTag.add(tag);
         }

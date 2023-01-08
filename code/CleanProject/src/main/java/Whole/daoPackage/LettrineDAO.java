@@ -974,7 +974,10 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
         }
 
         else {
-            idSet = new TreeSet<>(taille.get(0));
+            idSet = new TreeSet<>();
+            if(taille.size()>0){
+                idSet = new TreeSet<>(taille.get(0));
+            }
         }
 
         for (int id : idSet) {
@@ -1236,5 +1239,68 @@ public class LettrineDAO extends AbstractDAO<Lettrine> {
 
         return arrayRes;
     }
+    public ArrayList<Tag> chercherTag(Lettrine l){
+        ArrayList<Tag> list = new ArrayList<>();
+        String sql ="SELECT  tags.`idTag`,`description`,`nom` FROM `regroupe`" +
+                "inner join tags on tags.idTag = regroupe.idTag where regroupe.idLettrine= ?";
+        try {
+            PreparedStatement stmt = cn.prepareStatement(sql);
+            stmt.setInt(1,l.getId());
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()){
+                list.add(new Tag(rs.getInt(1),rs.getString(2),rs.getString(3)));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return list;
+    }
+    public Ouvrage getOuvrage(int id){
+        PreparedStatement stmt= null;
+        Ouvrage ouvrage = new Ouvrage(id);
 
+        try {
+            stmt = cn.prepareStatement("SELECT * FROM `ouvrages` where idOuvrage =?");
+            stmt.setInt(1,id);
+            ResultSet rs =stmt.executeQuery();
+            if(rs.next()){
+                System.out.println(id+"lol");
+                ouvrage.setId(rs.getInt(1));
+                ouvrage.setTitre(rs.getString(2));
+                ouvrage.setDateEdition(rs.getInt(3));
+                ouvrage.setFormat(rs.getString(4));
+                ouvrage.setLien(rs.getString(5));
+                ouvrage.setResolution(rs.getString(6));
+                ouvrage.setCreditPhoto(rs.getString(7));
+                ouvrage.setReechantillonage(rs.getBoolean(8));
+                ouvrage.setCopyright(rs.getString(9));
+                ouvrage.setNbPage(rs.getInt(10));
+                ouvrage.setLieuImpression(rs.getString(11));
+                ouvrage.setImprimeur(getPersonne(rs.getInt(12)));
+                ouvrage.setLibraire(getPersonne(rs.getInt(13)));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return ouvrage;
+    }
+    public Personne getPersonne(int id){
+        PreparedStatement stmt= null;
+        try {
+            stmt = cn.prepareStatement("SELECT * FROM `personnes` "
+                    + "WHERE `idPersonne`=?");
+            stmt.setInt(1,id);
+            ResultSet rs =stmt.executeQuery();
+            Personne p = new Personne();
+            if(rs.next()){
+                p.setId(rs.getInt(1));
+                p.setNom(rs.getString(2));
+                p.setPrenom(rs.getString(3));
+                p.setNote(rs.getString(4));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
+    }
 }

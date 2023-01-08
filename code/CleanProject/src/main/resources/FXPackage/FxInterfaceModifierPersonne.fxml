@@ -77,9 +77,9 @@
                <top>
                   <HBox prefHeight="28.0" prefWidth="598.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Label fx:id="labelModifier" text="Personne n°" />
-                        <Button fx:id="confirmer" mnemonicParsing="false" onAction="#confirmer" text="Confirmer" />
-                        <Button fx:id="retourBtn" mnemonicParsing="false" onAction="#retour" text="Retour" />
+                        <Label fx:id="idLabel" text="Personne n°" />
+                        <Button fx:id="confirmer" mnemonicParsing="false" onAction="#valider" text="Confirmer" />
+                        <Button fx:id="retourBtn" mnemonicParsing="false" onAction="#annuler" text="Retour" />
                         <Button fx:id="supprimer" mnemonicParsing="false" onAction="#supprimer" text="Supprimer" />
                      </children>
                   </HBox>
