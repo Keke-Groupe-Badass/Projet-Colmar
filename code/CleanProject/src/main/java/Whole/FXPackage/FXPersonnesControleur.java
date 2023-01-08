@@ -27,10 +27,12 @@ public class FXPersonnesControleur extends FXMenuBarAbstractControleur implement
     }
 
     public void pagePersonne(ActionEvent event) {
+
         ControleurFunctions.changeScene(event, "FxInterfacePagePersonne.fxml");
     }
 
     public void personnesAjoutFormControleur(ActionEvent event) {
+
         ControleurFunctions.changeScene(event, "FxInterfacePersonneAjout.fxml");
     }
 

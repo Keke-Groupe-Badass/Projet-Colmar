@@ -1,15 +1,17 @@
 package Whole.FXPackage;
 
 import Whole.ccmsPackage.Personne;
+
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 
 import java.util.ArrayList;
 
-public class FXPersonneRechercheControleur {
+public class FXPersonneRechercheControleur extends FXMenuBarAbstractControleur{
 
     @FXML TextField nomTextField;
     @FXML TextField prenomTextField;
@@ -35,9 +37,12 @@ public class FXPersonneRechercheControleur {
         observableList.addAll(arr);
         lv.refresh();
     }
-
-    protected void itemCLick(ActionEvent event){
-        FXPagePersonneControleur.personne= lv.getSelectionModel().getSelectedItem();
-        ControleurFunctions.changeScene(event,"FxInterfacePagePersonne.fxml");
+    @FXML
+    protected void itemCLick(MouseEvent event){
+        Personne p= lv.getSelectionModel().getSelectedItem();
+        if(p!=null){
+            FXPagePersonneControleur.personne = p;
+            ControleurFunctions.changeScene(event,"FxInterfacePagePersonne.fxml");
+        }
     }
 }

@@ -20,13 +20,13 @@ public class FXPagePersonneControleur extends FXMenuBarAbstractControleur implem
             modifier.setDisable(true);
         }
     }
-
+    @FXML
     public void modifier(ActionEvent event) {
         FXModifierPersonneControleur.personne = personne;
         ControleurFunctions.changeScene(event, "FxInterfaceModifierPersonne.fxml");
     }
-
+    @FXML
     public void retour(ActionEvent event) {
-        ControleurFunctions.changeScene(event, "FxIntercePersonnes.fxml");
+        ControleurFunctions.changeScene(event, "FxInterfacePersonnes.fxml");
     }
 }

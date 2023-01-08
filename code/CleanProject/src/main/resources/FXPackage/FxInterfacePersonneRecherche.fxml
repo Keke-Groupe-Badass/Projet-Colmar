@@ -75,7 +75,7 @@
                   </BorderPane>
                   <BorderPane prefHeight="473.0" prefWidth="598.0">
                      <center>
-                        <ListView fx:id="lv" prefHeight="282.0" prefWidth="598.0" BorderPane.alignment="CENTER" />
+                        <ListView fx:id="lv" prefHeight="282.0" prefWidth="598.0" BorderPane.alignment="CENTER" onMouseClicked="#itemCLick"/>
                      </center>
                   </BorderPane>
                </items>
