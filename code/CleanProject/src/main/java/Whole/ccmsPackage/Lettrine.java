@@ -432,7 +432,7 @@ public class Lettrine implements CCMS<Lettrine> {
      *
      * @param path le lien vers l'image
      * @return l'image si le fichier est trouvé et est une image sinon null
-     * @Deprecated
+     * @deprecated
      */
     public BufferedImage loadImageFromFile(String path) {
         try {
