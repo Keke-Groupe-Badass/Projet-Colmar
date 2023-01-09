@@ -3,7 +3,7 @@
 ### Java
 Nous avons utilisé java 17, nous ne garantissons pas le fonctionement pour une autre version
 
-###Installation du projet
+### Installation du projet
 Importer le projet ici: https://github.com/Keke-Groupe-Badass/Projet-Colmar.git
 Nous recommendons l'usage d'InteliJ pour importer le projet
 
@@ -18,7 +18,7 @@ Ajouter à la vitural machine les arguments
 --module-path <chemin absolue>/lib/JavaFX/lib/
 --add-modules=javafx.base,javafx.graphics,javafx.controls,javafx.fxml,javafx.web,javafx.media
 
-####MySQL Connector
+#### MySQL Connector
 MySQL Connector est fourni dans le dossier lib, il ne reste plus qu'à ajouter la bibliothèque dans le projet
 
 ### Configuration
@@ -38,13 +38,18 @@ Il faut créer une base de donnée MySql nommée "fprojectcolmar"
 #### Importation des données
 Importer Projet-Colmar\BD\SQL.sql via notament phpMyAdmin
 
-#### Première utilisation
+### Python
+Python 3+ est nécessaire pour le nuage de tag, si vous ne souhaitez pas utiliser cette option, son installation n'est pas nécessaire.
+
+#### Bibliothèque python
+De même il est nécessaire d'avoir les bibliothèques exterieures matplotlib et WordCloud. Un script marchant pour beaucoups d'ordinateur est disponible à la racine du projet "totalImport(.bat[windows]/.sh[linux non testé])"
+
+## Première utilisation
 ### Se Connecter
 Un utilisateur par défaut est inclus
 "andreasmulard@gmail.com" avec pour mot de passe motdepasseSafe101_
 
 Il est recommandé de modifier le mot de passe plus tard
-
 
 
 
