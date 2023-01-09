@@ -7,3 +7,6 @@ https://github.com/Keke-Groupe-Badass/Projet-Colmar.git
 
 # Aide
 lire installation.md
+
+#licence
+GPLv3.
