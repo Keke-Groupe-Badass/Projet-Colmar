@@ -34,6 +34,7 @@ L'image par défaut des lettrines est stockée dans Projet-Colmar\code\CleanProj
 ### Base de données
 #### Création
 Il faut créer une base de données MySql nommée "fprojectcolmar"
+
 #### Importation des données
 Importer Projet-Colmar\BD\SQL.sql dans la base de données fprojectcolmar sous phpMyAdmin
 
@@ -52,3 +53,6 @@ login : andreasmulard@gmail.com
 mot de passe : motdepasseSafe101_
 
 Il est recommandé de modifier le mot de passe plus tard. Pour ce faire, cliquer sur Utilisateurs dans la barre, puis créer un utilisateur
+
+### Ajout d'une Lettrine
+Les données à rentrer dans la base peuvent être rentrées directement dans l'application. En revanche, l'image associée à la lettrine à ajouter doivent absolument être au format jpg et être placée dans le dossier CleanProject/src/image.
